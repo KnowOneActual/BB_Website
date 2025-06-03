@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- It’s a bit messy, but it worked! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Personal portfolio showcasing work and personal brand" />
   <title>Beau Bremer</title>
   <link rel="icon" href="https://via.placeholder.com/32/fuchsia/ffffff?text=BB" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com" integrity="sha384-3lMDj6taqFU4WaVzghegEgWEX1nCLsIUZrlpmlpbokCN0Cfv3WQZD7N4svloi+3n" crossorigin="anonymous"></script>
   <style>
     /* Custom font styles for headings and body text. */
     h1, h2, h3, h4, h5, h6 {
@@ -205,7 +204,7 @@
   <section id="contact" class="bg-gray-950 py-20 px-6">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-3xl font-bold mb-2 fade-in">Talk Back Mic 🎙️</h2>
-      <p class="text-gray-400 mb-8 fade-in">Speak directly to me — leave your message, thoughts, or shout-outs!</p>
+      <p class="text-gray-400 mb-8 fade-in">Speak directly to Beau — leave your message, thoughts, or shout-outs!</p>
       <form id="talkBackForm" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in" action="https://formspree.io/f/mgvywyjv" method="POST" onsubmit="return validateForm()">
         <input type="text" name="name" placeholder="Your Name" required
           class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700" />
@@ -234,6 +233,5 @@
   <footer class="text-center py-6 bg-gray-900 text-gray-500">
     © 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or Night ever!
   </footer>
-<!-- V5.2-->
 </body>
 </html>

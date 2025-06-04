@@ -1,4 +1,4 @@
-// Easter Egg functions
+// Fun functions
 const egg = () => {
   console.log("%c👋 Well hey there, curious mind! You found the hidden message! 🎉", "color: fuchsia; font-size: 1.5rem;");
   // Using a custom modal-like message instead of alert() for better user experience.

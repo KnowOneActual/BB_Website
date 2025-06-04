@@ -17,3 +17,16 @@ body {
   transform: translateY(0); /* Move to its final position. */
 }
 
+/* New CSS class for the cat image */
+.cat-image {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 200px;
+  z-index: 1000;
+}
+
+/* Footer text color updated for better contrast */
+footer.text-center {
+  color: #D1D5DB; /* text-gray-300 for better contrast on bg-gray-900 */
+}

@@ -1,0 +1,18 @@
+/* Custom font styles for headings and body text. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+body {
+  font-family: 'Inter', sans-serif; /* Using Inter for body for consistency. */
+}
+
+/* CSS for the subtle fade-in animation as elements scroll into view. */
+.fade-in {
+  opacity: 0; /* Start completely transparent. */
+  transform: translateY(20px); /* Start slightly below its final position. */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition for opacity and position. */
+}
+.fade-in.appear {
+  opacity: 1; /* Become fully opaque. */
+  transform: translateY(0); /* Move to its final position. */
+}

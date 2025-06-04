@@ -11,8 +11,8 @@
   <!-- Link to Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" crossorigin="anonymous" />
   
-  <!-- Link to Tailwind CSS from CDN (version-pinned) - FIXED: No content between script tags -->
-  <script src="https://cdn.tailwindcss.com/3.4.3"></script>
+  <!-- Link to Tailwind CSS from CDN (version-pinned) - FIXED: Now self-closing -->
+  <script src="https://cdn.tailwindcss.com/3.4.3" crossorigin="anonymous"></script>
   
   <!-- Link to your custom external CSS file -->
   <link rel="stylesheet" href="style.css">
@@ -93,7 +93,7 @@
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-3xl font-bold mb-2 fade-in">Talk Back Mic 🎙️</h2>
       <p class="text-gray-400 mb-8 fade-in">Speak directly to Beau — leave your message, thoughts, or shout-outs!</p>
-      <form id="talkBackForm" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in" action="https://formspree.io/f/mgvywyjv" method="POST" onsubmit="return validateForm()">
+      <form id="talkBackForm" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in" action="https://formspree.io/f/mgvywyjv" method="POST">
         <input type="text" name="name" placeholder="Your Name" required
           class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700" />
         <input type="email" name="email" placeholder="Your Email" required

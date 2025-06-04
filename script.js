@@ -1,21 +1,20 @@
-// huh functions
+// Easter Egg functions
 const egg = () => {
   console.log("%c👋 Well hey there, curious mind! You found the hidden message! 🎉", "color: fuchsia; font-size: 1.5rem;");
   // Using a custom modal-like message instead of alert() for better user experience.
   showMessage("✨ You found the Easter Egg! Stay curious. Stay creative. ✨");
 };
+
 const catEgg = () => {
   const img = document.createElement("img");
   img.src = "https://cataas.com/cat/gif";
   img.alt = "Surprise Cat!";
-  img.style.position = "fixed";
-  img.style.bottom = "20px";
-  img.style.right = "20px";
-  img.style.width = "200px";
-  img.style.zIndex = 1000;
+  // Apply the new CSS class instead of inline styles
+  img.classList.add('cat-image'); 
   document.body.appendChild(img);
   setTimeout(() => img.remove(), 8000);
 };
+
 const jamEgg = () => {
   const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
   audio.volume = 0.3;
@@ -24,7 +23,7 @@ const jamEgg = () => {
   showMessage("🎶 Enjoy this chill track while you explore! 🎶");
 };
 
-// Keyboard event listener for HUH activation.
+// Keyboard event listener for Easter Egg activation.
 window.addEventListener("keydown", (e) => {
   window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
   if (window._eggCode.includes("beau")) {
@@ -52,10 +51,15 @@ function showMessage(message) {
   messageBox.innerHTML = `
     <div class="bg-gray-800 p-8 rounded-lg shadow-xl text-center max-w-sm mx-4 border border-fuchsia-600">
       <p class="text-lg text-white mb-6">${message}</p>
-      <button onclick="this.parentNode.parentNode.remove()" class="px-6 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded transition">Got It!</button>
+      <button id="messageBoxCloseButton" class="px-6 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded transition">Got It!</button>
     </div>
   `;
   document.body.appendChild(messageBox);
+
+  // Attach event listener to the close button after it's added to the DOM
+  document.getElementById('messageBoxCloseButton').addEventListener('click', () => {
+    messageBox.remove();
+  });
 }
 
 // Form validation function.
@@ -71,8 +75,20 @@ function validateForm() {
   return true;
 }
 
-// Intersection Observer for fade-in animation on scroll.
-document.addEventListener("DOMContentLoaded", () => {
+// Attach form submission listener after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const talkBackForm = document.getElementById('talkBackForm');
+  if (talkBackForm) {
+    talkBackForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      if (validateForm()) {
+        // If validation passes, manually submit the form
+        talkBackForm.submit();
+      }
+    });
+  }
+
+  // Intersection Observer for fade-in animation on scroll.
   const faders = document.querySelectorAll(".fade-in"); // Select all elements with the 'fade-in' class.
   const appearOptions = {
     threshold: 0.1, // Trigger when 10% of the element is visible.

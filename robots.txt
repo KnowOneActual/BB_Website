@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+#Hi there! nothing to see there
+# Disallow specific security-related paths from crawling
+Disallow: /.well-known/security.txt
+Disallow: /security-acknowledgements.html
+Disallow: /security-policy.html

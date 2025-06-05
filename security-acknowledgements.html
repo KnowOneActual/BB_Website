@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Acknowledgements - Beau Bremer</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" as="style" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A; /* bg-gray-950 */
+            color: #FFFFFF; /* text-white */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .card {
+            background-color: #1F2937; /* bg-gray-800 */
+            border: 1px solid #374151; /* border-gray-700 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 2rem;
+        }
+        .fuchsia-text {
+            color: #E879F9; /* fuchsia-400 */
+        }
+        .fuchsia-bg {
+            background-color: #C026D3; /* fuchsia-600 */
+        }
+        .fuchsia-hover:hover {
+            background-color: #A21CAF; /* fuchsia-700 */
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white min-h-screen flex flex-col">
+
+    <header class="py-12 px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold fuchsia-text mb-4">Security Acknowledgements</h1>
+        <p class="max-w-3xl mx-auto text-lg text-gray-300">
+            I take the security of my personal website seriously. This page is dedicated to acknowledging security researchers and individuals who have responsibly identified and reported vulnerabilities, helping to keep this platform safe.
+        </p>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-8">
+        <section class="max-w-4xl mx-auto mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold fuchsia-text mb-6 text-center">Responsible Disclosure Recognition</h2>
+            
+            <div class="card">
+                <p class="text-gray-300 mb-4">
+                    As of the current date, there are no specific vulnerabilities publicly acknowledged on this page. This list will be updated as and when responsible disclosures are received and addressed.
+                </p>
+                <p class="text-gray-300">
+                    My commitment to security means that I appreciate and encourage responsible vulnerability reporting. Your efforts help ensure the safety and integrity of online spaces.
+                </p>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-gray-300 mb-4">
+                    If you believe you've found a security vulnerability on this website, please refer to my <a href="/.well-known/security.txt" class="fuchsia-text hover:underline font-semibold">security.txt file</a> for the designated contact method.
+                </p>
+                <a href="/.well-known/security.txt" class="inline-block px-6 py-3 fuchsia-bg fuchsia-hover text-white font-bold rounded-lg transition duration-300 transform hover:scale-105">
+                    View Security Policy
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 bg-gray-900 text-gray-500">
+        &copy; 2025 Beau Bremer. All rights reserved.
+    </footer>
+
+</body>
+</html>

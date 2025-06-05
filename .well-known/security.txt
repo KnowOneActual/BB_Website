@@ -1,0 +1,15 @@
+# My Security Policy
+
+# Contact: This should be your primary contact for security issues.
+# It can be an email address, a link to a contact form, or a security team page.
+Contact: mailto:support@beaubremer.com
+
+# Expires: The date when this file should be considered outdated.
+# Format: Y2027-12-31T23:59:59Z (ISO 8601 UTC)
+
+
+# Encryption: Link to your PGP key for secure communication (optional but recommended for sensitive reports).
+# Encryption: https://beaubremer.com/BeauBremer-pgp-key.asc
+
+# Acknowledgments: Link to a page acknowledging security researchers (optional).
+# Acknowledgments: https://beaubremer/security-acknowledgements.html

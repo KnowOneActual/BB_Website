@@ -1,8 +1,5 @@
 /*
 Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-Cross-Origin-Opener-Policy: same-origin
-Cross-Origin-Embedder-Policy: require-corp
-Cross-Origin-Resource-Policy: same-origin
 Expect-CT: max-age=86400, report-uri="https://report-uri.com/r/d/ct/enforce"
 X-XSS-Protection: 1; mode=block
 Content-Security-Policy: default-src 'self' https://www.google.com https://www.gstatic.com https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.tailwindcss.com https://www.soundhelix.com https://cataas.com https://via.placeholder.com https://formspree.io https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; img-src 'self' data: https://cataas.com https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; form-action 'self' https://formspree.io; frame-src https://www.google.com; media-src 'self' https://www.soundhelix.com

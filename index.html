@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- It’s a bit messy, little by little cleaning it up! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
-    <!-- Favicon: Pointing to a local favicon.ico file -->
+  <!-- It’s a bit messy, little by little cleaning it up! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
   <link rel="canonical" href="https://beaubremer.com/" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Personal portfolio showcasing work and personal brand" />
-  <title>Beau Bremer</title>
+  <meta name="description" content="Beau Bremer's personal portfolio: showcasing expertise in frontend development, data visualization, UI/UX design, and web security. Explore my projects and learn more about my creative approach to tech solutions." />
+  <title>Beau Bremer |</title>
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" as="style" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" crossorigin="anonymous" />
@@ -101,25 +100,31 @@
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-2 fade-in">Talk Back Mic 🎙️</h2>
         <p class="text-gray-400 mb-8 fade-in">Speak directly to Beau — leave your message, thoughts, or shout-outs!</p>
-        <form id="talkBackForm" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in" action="https://formspree.io/f/mgvywyjv" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required
-            class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700" />
-          <input type="email" name="email" placeholder="Your Email" required
-            class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700" />
-          <textarea name="message" placeholder="Your Message or Shout-out" rows="5" required
-            class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700"></textarea>
+        <!-- Netlify Form Integration START -->
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in">
+            <input type="hidden" name="form-name" value="contact" />
+            <div hidden>
+                <label>Don’t fill this out: <input name="bot-field" /></label>
+            </div>
+            <input type="text" name="name" placeholder="Your Name" required
+              class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700" />
+            <input type="email" name="email" placeholder="Your Email" required
+              class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700" />
+            <textarea name="message" placeholder="Your Message or Shout-out" rows="5" required
+              class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700"></textarea>
 
-          <div class="g-recaptcha" data-sitekey="6LeghlArAAAAAMvF5u0Y4cFajLa21TEWokBOzKso"></div>
+            <div class="g-recaptcha" data-sitekey="6LeghlArAAAAAMvF5u0Y4cFajLa21TEWokBOzKso"></div>
 
-          <button type="submit"
-            class="px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded transition flex items-center justify-center space-x-2 talkback-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9 19V6a3 3 0 116 0v13M5 10h14" />
-            </svg>
-            <span>Send to the Booth</span>
-          </button>
+            <button type="submit"
+              class="px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded transition flex items-center justify-center space-x-2 talkback-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19V6a3 3 0 116 0v13M5 10h14" />
+              </svg>
+              <span>Send to the Booth</span>
+            </button>
         </form>
+        <!-- Netlify Form Integration END -->
         <div class="mt-8 flex justify-center space-x-4 fade-in">
           <a href="https://github.com/KnowOneActual" class="hover:text-fuchsia-400">GitHub</a>
           <a href="security-report.html" class="hover:text-fuchsia-400">Security Report</a>

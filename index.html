@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- It’s a bit messy, little by little cleaning it up! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
+   <!-- It’s a bit messy, little by little cleaning it up! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
   <link rel="canonical" href="https://beaubremer.com/" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Beau Bremer's personal portfolio: showcasing expertise in frontend development, data visualization, UI/UX design, and web security. Explore my projects and learn more about my creative approach to tech solutions." />
-  <title>Beau Bremer |</title>
+  <title>Beau Bremer | Frontend Developer & Data Visualization Specialist</title>
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" as="style" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" crossorigin="anonymous" />
@@ -101,6 +101,7 @@
         <h2 class="text-3xl font-bold mb-2 fade-in">Talk Back Mic 🎙️</h2>
         <p class="text-gray-400 mb-8 fade-in">Speak directly to Beau — leave your message, thoughts, or shout-outs!</p>
         <!-- Netlify Form Integration START -->
+        <!-- Removed action attribute and added form name for Netlify Forms -->
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in">
             <input type="hidden" name="form-name" value="contact" />
             <div hidden>

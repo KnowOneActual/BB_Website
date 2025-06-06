@@ -1,2 +1,3 @@
 # _redirects file
-https://beaubremer.com/  https://beaubremer.com/ 301!
+# Remove trailing slashes for paths (e.g., /about/ to /about)
+/:path/ /:path 301!

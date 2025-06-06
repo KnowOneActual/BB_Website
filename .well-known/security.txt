@@ -5,11 +5,12 @@
 Contact: mailto:support@beaubremer.com
 
 # Expires: The date when this file should be considered outdated.
-# Format: Y2027-12-31T23:59:59Z (ISO 8601 UTC)
+# Format: YYYY-MM-DDTHH:MM:SSZ (ISO 8601 UTC)
+Expires: 2027-12-31T23:59:59Z
 
 
 # Encryption: Link to your PGP key for secure communication (optional but recommended for sensitive reports).
 # Encryption: https://beaubremer.com/BeauBremer-pgp-key.asc
 
 # Acknowledgments: Link to a page acknowledging security researchers (optional).
-# Acknowledgments: https://beaubremer/security-acknowledgements.html
+Acknowledgments: https://beaubremer.com/security-acknowledgements.html

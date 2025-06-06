@@ -3,11 +3,6 @@
 # Redirect Netlify's default success path to your custom thank-you page
 /success /thank-you.html 200!
 
-# Explicitly handle POST submissions from the homepage for Netlify Forms
-# This rule tells Netlify to process POST requests to the root path
-# and then redirect to the thank-you page (which itself is redirected by /success)
-/ /thank-you.html 200!  Method=POST
-
 # Remove trailing slashes for clean URLs (optional, but good for SEO)
 /:path/ /:path 301!
 

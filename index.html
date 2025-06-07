@@ -3,6 +3,7 @@
 <head>
    <!-- It’s a bit messy, little by little cleaning it up! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
   <link rel="canonical" href="https://beaubremer.com/" />
+   <link rel="canonical" href="https://beaubremer.com/" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +17,6 @@
   
   <link rel="stylesheet" href="style.css">
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="bg-gray-950 text-white scroll-smooth">
@@ -100,9 +100,7 @@
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-2 fade-in">Talk Back Mic 🎙️</h2>
         <p class="text-gray-400 mb-8 fade-in">Speak directly to Beau — leave your message, thoughts, or shout-outs!</p>
-        <!-- Netlify Form Integration START -->
-        <!-- Action attribute removed. Netlify will default to /success after submission. -->
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in">
+        <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in">
             <input type="hidden" name="form-name" value="contact" />
             <div hidden>
                 <label>Don’t fill this out: <input name="bot-field" /></label>
@@ -114,7 +112,7 @@
             <textarea name="message" placeholder="Your Message or Shout-out" rows="5" required
               class="w-full p-3 rounded bg-gray-900 text-white border border-gray-700"></textarea>
 
-            <div class="g-recaptcha" data-sitekey="6LeghlArAAAAAMvF5u0Y4cFajLa21TEWokBOzKso"></div>
+            <div data-netlify-recaptcha="true"></div>
 
             <button type="submit"
               class="px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded transition flex items-center justify-center space-x-2 talkback-btn">
@@ -125,7 +123,6 @@
               <span>Send to the Booth</span>
             </button>
         </form>
-        <!-- Netlify Form Integration END -->
         <div class="mt-8 flex justify-center space-x-4 fade-in">
           <a href="https://github.com/KnowOneActual" class="hover:text-fuchsia-400">GitHub</a>
           <a href="security-report.html" class="hover:text-fuchsia-400">Security Report</a>

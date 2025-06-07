@@ -1,34 +1,12 @@
-// Easter Egg functions
-const egg = () => {
-  console.log("%c窓 Well hey there, curious mind! You found the hidden message! 脂", "color: fuchsia; font-size: 1.5rem;");
-  // Using a custom modal-like message instead of alert() for better user experience.
-  showMessage("笨ｨ You found the Easter Egg! Stay curious. Stay creative. 笨ｨ");
-};
+// --- Helper Functions ---
 
-const catEgg = () => {
-  const img = document.createElement("img");
-  img.src = "https://cataas.com/cat/gif";
-  img.alt = "Surprise Cat!";
-  // Apply the new CSS class instead of inline styles
-  img.classList.add('cat-image'); 
-  document.body.appendChild(img);
-  setTimeout(() => img.remove(), 8000);
-};
-
-const jamEgg = () => {
-  const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
-  audio.volume = 0.3;
-  audio.play();
-  // Using a custom modal-like message instead of alert().
-  showMessage("叱 Enjoy this chill track while you explore! 叱");
-};
-
-// Helper function for custom messages
-// This is a simple implementation. You might have a more complex modal system in your CSS/HTML.
+/**
+ * Displays a temporary message box on the screen.
+ * @param {string} msg - The message to display.
+ */
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;
-  // Basic inline styling for demonstration. Consider moving this to CSS.
   messageDiv.style.cssText = `
     position: fixed;
     top: 20%;
@@ -49,35 +27,61 @@ function showMessage(msg) {
   setTimeout(() => messageDiv.remove(), 5000); // Remove message after 5 seconds
 }
 
+// --- Easter Egg Functions ---
 
-// Keyboard event listener for Easter Egg activation.
-window.addEventListener("keydown", (e) => {
-  window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
-  if (window._eggCode.includes("beau")) {
-    egg();
-    window._eggCode = ""; // Reset code after activation
-  }
-  if (window._eggCode.includes("cat")) {
-    catEgg();
-    window._eggCode = ""; // Reset code after activation
-  }
-  if (window._eggCode.includes("jam")) {
-    jamEgg();
-    window._eggCode = ""; // Reset code after activation
-  }
-});
+const egg = () => {
+  console.log("%c🥚 Well hey there, curious mind! You found the hidden message! 🔮", "color: fuchsia; font-size: 1.5rem;");
+  showMessage("💡 You found the Easter Egg! Stay curious. Stay creative. 💡");
+};
 
+const catEgg = () => {
+  const img = document.createElement("img");
+  img.src = "https://cataas.com/cat/gif";
+  img.alt = "Surprise Cat!";
+  img.classList.add('cat-image');
+  document.body.appendChild(img);
+  setTimeout(() => img.remove(), 8000);
+};
 
-// --- FORM VALIDATION AND SUBMISSION LOGIC ---
+const jamEgg = () => {
+  const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+  audio.volume = 0.3;
+  audio.play();
+  showMessage("🎶 Enjoy this chill track while you explore! 🎶");
+};
 
-// Client-side validation for the contact form
+/**
+ * Initializes keyboard event listener for Easter Egg activation.
+ */
+function initializeEasterEggs() {
+  window.addEventListener("keydown", (e) => {
+    window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
+    if (window._eggCode.includes("beau")) {
+      egg();
+      window._eggCode = ""; // Reset code after activation
+    }
+    if (window._eggCode.includes("cat")) {
+      catEgg();
+      window._eggCode = ""; // Reset code after activation
+    }
+    if (window._eggCode.includes("jam")) {
+      jamEgg();
+      window._eggCode = ""; // Reset code after activation
+    }
+  });
+}
+
+// --- Form Validation Logic ---
+
+/**
+ * Validates the contact form fields.
+ * @returns {boolean} True if all fields are valid, false otherwise.
+ */
 function validateForm() {
-  // Select form fields using the form's name attribute
   const nameInput = document.querySelector('form[name="contact"] input[name="name"]');
   const emailInput = document.querySelector('form[name="contact"] input[name="email"]');
   const messageTextarea = document.querySelector('form[name="contact"] textarea[name="message"]');
 
-  // Check if fields exist and then get their values
   const name = nameInput ? nameInput.value.trim() : '';
   const email = emailInput ? emailInput.value.trim() : '';
   const message = messageTextarea ? messageTextarea.value.trim() : '';
@@ -87,58 +91,129 @@ function validateForm() {
     return false;
   }
 
-  // Basic email format validation using a regular expression
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     showMessage("Please enter a valid email address.");
     return false;
   }
 
-  // If all validations pass, return true
-  return true; 
+  return true;
 }
 
-// Attach event listeners once the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Select the form using its 'name' attribute, as it doesn't have an ID in index.html
-  const talkBackForm = document.querySelector('form[name="contact"]'); 
+/**
+ * Initializes the contact form submission logic.
+ */
+function initializeContactForm() {
+  const talkBackForm = document.querySelector('form[name="contact"]');
 
   if (talkBackForm) {
-    // Add a submit event listener to the form
     talkBackForm.addEventListener('submit', function(event) {
-      // Prevent the default form submission if validation fails
-      if (!validateForm()) { 
-        event.preventDefault(); 
+      if (!validateForm()) {
+        event.preventDefault();
       }
-      // If validateForm() returns true, the form will submit naturally.
-      // Netlify's built-in form handling will then process the submission
-      // and redirect to /success (or a page defined by your _redirects if present).
     });
   }
+}
 
-  // --- INTERSECTION OBSERVER FOR FADE-IN ANIMATION ---
-  const faders = document.querySelectorAll(".fade-in"); // Select all elements with the 'fade-in' class.
+// --- Three.js Background Animation ---
+
+/**
+ * Initializes and animates the Three.js background.
+ */
+function initializeThreeJSBackground() {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('hero-background') });
+
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setClearColor(0x000000, 0); // Transparent background
+
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
+  const material = new THREE.MeshBasicMaterial({ color: 0xC026D3, wireframe: true }); // Fuchsia wireframe
+
+  const cubes = [];
+  const numCubes = 50;
+  for (let i = 0; i < numCubes; i++) {
+    const cube = new THREE.Mesh(geometry, material);
+    cube.position.set(
+      (Math.random() - 0.5) * 20,
+      (Math.random() - 0.5) * 20,
+      (Math.random() - 0.5) * 20
+    );
+    cube.scale.setScalar(Math.random() * 0.5 + 0.1);
+    scene.add(cube);
+    cubes.push(cube);
+  }
+
+  camera.position.z = 5;
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  document.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    cubes.forEach(cube => {
+      cube.rotation.x += 0.001;
+      cube.rotation.y += 0.001;
+      cube.position.x += (Math.random() - 0.5) * 0.005;
+      cube.position.y += (Math.random() - 0.5) * 0.005;
+    });
+
+    camera.position.x += (mouseX * 0.1 - camera.position.x) * 0.05;
+    camera.position.y += (mouseY * 0.1 - camera.position.y) * 0.05;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+// --- Intersection Observer for Fade-In Animation ---
+
+/**
+ * Initializes the Intersection Observer for fade-in animations.
+ */
+function initializeFadeInAnimation() {
+  const faders = document.querySelectorAll(".fade-in");
   const appearOptions = {
-    threshold: 0.1, // Trigger when 10% of the element is visible.
-    // You can adjust this threshold as needed for different scroll behaviors.
+    threshold: 0.1,
   };
 
-  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
       if (!entry.isIntersecting) {
-        // If the element is not currently visible, do nothing.
         return;
       } else {
-        // If the element becomes visible, add the 'appear' class to trigger its CSS animation.
         entry.target.classList.add("appear");
-        // Stop observing the element once it has appeared to prevent the animation from re-triggering.
-        appearOnScroll.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   }, appearOptions);
 
-  // Apply the Intersection Observer to each element with the 'fade-in' class.
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
+}
+
+// --- DOM Content Loaded Entry Point ---
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeEasterEggs();
+  initializeContactForm();
+  initializeThreeJSBackground();
+  initializeFadeInAnimation();
 });

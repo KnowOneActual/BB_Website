@@ -30,8 +30,8 @@ function showMessage(msg) {
 // --- Easter Egg Functions ---
 
 const egg = () => {
-  console.log("%c窓 Well hey there, curious mind! You found the hidden message! 脂", "color: fuchsia; font-size: 1.5rem;");
-  showMessage("笨ｨ You found the Easter Egg! Stay curious. Stay creative. 笨ｨ");
+  console.log("%c🥚 Well hey there, curious mind! You found the hidden message! 🔮", "color: fuchsia; font-size: 1.5rem;");
+  showMessage("💡 You found the Easter Egg! Stay curious. Stay creative. 💡");
 };
 
 const catEgg = () => {
@@ -47,14 +47,14 @@ const jamEgg = () => {
   const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
   audio.volume = 0.3;
   audio.play();
-  showMessage("叱 Enjoy this chill track while you explore! 叱");
+  showMessage("🎶 Enjoy this chill track while you explore! 🎶");
 };
 
 // Keyboard event listener for Easter Egg activation.
 function initializeEasterEggs() {
   window.addEventListener("keydown", (e) => {
     // ---- THIS IS THE EXACT CHANGE FOR THE TypeError FIX ----
-    // Safely check if e and e.key exist before trying to access e.key.
+    // Safely check if e and e.key exist before accessing e.key.
     // If e.key is undefined, this block will be skipped, preventing the error.
     if (e && e.key) { 
       window._eggCode = (window._eggCode || "") + e.key.toLowerCase();

@@ -54,7 +54,9 @@ const jamEgg = () => {
  * Initializes keyboard event listener for Easter Egg activation.
  */
 function initializeEasterEggs() {
-  window.addEventListener("keydown", (e) => {
+window.addEventListener("keydown", (e) => {
+  // Add a check to ensure e and e.key exist before trying to access e.key
+  if (e && e.key) { 
     window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
     if (window._eggCode.includes("beau")) {
       egg();
@@ -68,7 +70,8 @@ function initializeEasterEggs() {
       jamEgg();
       window._eggCode = ""; // Reset code after activation
     }
-  });
+  }
+});
 }
 
 // --- Form Validation Logic ---

@@ -1,0 +1,19 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Content Security Policy (CSP) for frame-ancestors: Prevents your site from being embedded in iframes on other sites.
+    # This must be in netlify.toml as it's not supported in a meta tag.
+    Content-Security-Policy = "frame-ancestors 'none'"
+
+    # HTTP Strict Transport Security (HSTS): Forces browsers to use HTTPS for your site.
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # X-Content-Type-Options: Prevents MIME-sniffing attacks.
+    X-Content-Type-Options = "nosniff"
+
+    # Referrer-Policy: Controls how much referrer information is sent with requests.
+    Referrer-Policy = "no-referrer-when-downgrade" # You could also use 'strict-origin-when-cross-origin' for stricter control
+
+    # Permissions-Policy (formerly Feature-Policy): Allows you to selectively enable/disable browser features.
+    # Customize these based on features your site uses. Example disables geolocation and microphone.
+    Permissions-Policy = "geolocation=(), microphone=()"

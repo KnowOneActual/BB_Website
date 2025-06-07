@@ -17,6 +17,16 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' https://cataas.com;
+      connect-src 'self';
+      form-action 'self';
+      # frame-ancestors 'none'; <-- This line should NOT be active, it's just a comment here to show it was removed.
+  ">
 </head>
 <body class="bg-gray-950 text-white scroll-smooth">
 

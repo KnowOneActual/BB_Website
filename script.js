@@ -53,7 +53,9 @@ const jamEgg = () => {
 // Keyboard event listener for Easter Egg activation.
 function initializeEasterEggs() {
   window.addEventListener("keydown", (e) => {
-    // FIX: Safely check if e and e.key exist before accessing e.key
+    // ---- THIS IS THE EXACT CHANGE FOR THE TypeError FIX ----
+    // Safely check if e and e.key exist before trying to access e.key.
+    // If e.key is undefined, this block will be skipped, preventing the error.
     if (e && e.key) { 
       window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
       if (window._eggCode.includes("beau")) {
@@ -69,6 +71,7 @@ function initializeEasterEggs() {
         window._eggCode = ""; // Reset code after activation
       }
     }
+    // ---- END OF TypeError FIX ----
   });
 }
 

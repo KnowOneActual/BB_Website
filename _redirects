@@ -1,0 +1,2 @@
+/success /thank-you.html 200!
+/:path/ /:path 301!

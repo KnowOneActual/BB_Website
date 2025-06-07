@@ -30,15 +30,15 @@ function showMessage(msg) {
 // --- Easter Egg Functions ---
 
 const egg = () => {
-  console.log("%c🥚 Well hey there, curious mind! You found the hidden message! 🔮", "color: fuchsia; font-size: 1.5rem;");
-  showMessage("💡 You found the Easter Egg! Stay curious. Stay creative. 💡");
+  console.log("%c窓 Well hey there, curious mind! You found the hidden message! 脂", "color: fuchsia; font-size: 1.5rem;");
+  showMessage("笨ｨ You found the Easter Egg! Stay curious. Stay creative. 笨ｨ");
 };
 
 const catEgg = () => {
   const img = document.createElement("img");
   img.src = "https://cataas.com/cat/gif";
   img.alt = "Surprise Cat!";
-  img.classList.add('cat-image');
+  img.classList.add('cat-image'); 
   document.body.appendChild(img);
   setTimeout(() => img.remove(), 8000);
 };
@@ -47,38 +47,36 @@ const jamEgg = () => {
   const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
   audio.volume = 0.3;
   audio.play();
-  showMessage("🎶 Enjoy this chill track while you explore! 🎶");
+  showMessage("叱 Enjoy this chill track while you explore! 叱");
 };
 
-/**
- * Initializes keyboard event listener for Easter Egg activation.
- */
+// Keyboard event listener for Easter Egg activation.
 function initializeEasterEggs() {
-window.addEventListener("keydown", (e) => {
-  // Add a check to ensure e and e.key exist before trying to access e.key
-  if (e && e.key) { 
-    window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
-    if (window._eggCode.includes("beau")) {
-      egg();
-      window._eggCode = ""; // Reset code after activation
+  window.addEventListener("keydown", (e) => {
+    // FIX: Safely check if e and e.key exist before accessing e.key
+    if (e && e.key) { 
+      window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
+      if (window._eggCode.includes("beau")) {
+        egg();
+        window._eggCode = ""; // Reset code after activation
+      }
+      if (window._eggCode.includes("cat")) {
+        catEgg();
+        window._eggCode = ""; // Reset code after activation
+      }
+      if (window._eggCode.includes("jam")) {
+        jamEgg();
+        window._eggCode = ""; // Reset code after activation
+      }
     }
-    if (window._eggCode.includes("cat")) {
-      catEgg();
-      window._eggCode = ""; // Reset code after activation
-    }
-    if (window._eggCode.includes("jam")) {
-      jamEgg();
-      window._eggCode = ""; // Reset code after activation
-    }
-  }
-});
+  });
 }
 
-// --- Form Validation Logic ---
+// --- FORM VALIDATION AND SUBMISSION LOGIC ---
 
 /**
- * Validates the contact form fields.
- * @returns {boolean} True if all fields are valid, false otherwise.
+ * Performs client-side validation for the contact form fields.
+ * @returns {boolean} True if validation passes, false otherwise.
  */
 function validateForm() {
   const nameInput = document.querySelector('form[name="contact"] input[name="name"]');
@@ -100,20 +98,22 @@ function validateForm() {
     return false;
   }
 
-  return true;
+  return true; // Validation passes
 }
 
 /**
- * Initializes the contact form submission logic.
+ * Initializes form submission handling.
  */
-function initializeContactForm() {
-  const talkBackForm = document.querySelector('form[name="contact"]');
+function initializeFormHandling() {
+  const talkBackForm = document.querySelector('form[name="contact"]'); 
 
   if (talkBackForm) {
     talkBackForm.addEventListener('submit', function(event) {
-      if (!validateForm()) {
-        event.preventDefault();
+      if (!validateForm()) { 
+        event.preventDefault(); 
       }
+      // If validateForm() returns true, the form will submit naturally.
+      // Netlify will handle the redirection to /thank-you.html (via action attribute).
     });
   }
 }
@@ -121,12 +121,18 @@ function initializeContactForm() {
 // --- Three.js Background Animation ---
 
 /**
- * Initializes and animates the Three.js background.
+ * Initializes the Three.js interactive background animation.
  */
-function initializeThreeJSBackground() {
+function initializeThreeJsAnimation() {
+  const canvas = document.getElementById('hero-background');
+  if (!canvas) {
+      console.warn("Canvas with ID 'hero-background' not found. Three.js animation skipped.");
+      return;
+  }
+
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('hero-background') });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: canvas });
 
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -154,6 +160,7 @@ function initializeThreeJSBackground() {
   let mouseX = 0;
   let mouseY = 0;
 
+  // Add event listener to the document to capture mouse movement
   document.addEventListener('mousemove', (event) => {
     mouseX = (event.clientX / window.innerWidth) * 2 - 1;
     mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -212,11 +219,10 @@ function initializeFadeInAnimation() {
   });
 }
 
-// --- DOM Content Loaded Entry Point ---
-
-document.addEventListener('DOMContentLoaded', function() {
+// --- DOMContentLoaded Listener ---
+document.addEventListener('DOMContentLoaded', () => {
   initializeEasterEggs();
-  initializeContactForm();
-  initializeThreeJSBackground();
+  initializeFormHandling();
+  initializeThreeJsAnimation(); // Call the Three.js animation initialization
   initializeFadeInAnimation();
 });

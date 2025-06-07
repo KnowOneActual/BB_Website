@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- It’s a bit messy, little by little cleaning it up! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
+  <!-- v15 codebase: It’s a bit messy, little by little cleaning it up! This is my first time combining these elements, and I’m learning a lot as I gradually add features.-->
   <link rel="canonical" href="https://beaubremer.com/" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
@@ -17,6 +17,17 @@
   <link rel="stylesheet" href="style.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' https://cataas.com;
+      connect-src 'self';
+      form-action 'self';
+      # frame-ancestors 'none'; <-- REMOVED from here, moved to netlify.toml
+  ">
 </head>
 <body class="bg-gray-950 text-white scroll-smooth">
 
@@ -30,7 +41,6 @@
       </div>
     </section>
 
-    <!-- About Me Section -->
     <section class="bg-gray-900 py-20 px-6">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-4xl font-bold mb-8 text-center fade-in">About Me</h2>
@@ -50,11 +60,9 @@
       </div>
     </section>
 
-    <!-- Updated Projects Section -->
     <section class="max-w-5xl mx-auto py-20 px-6 bg-gray-950">
         <h2 class="text-4xl font-bold mb-12 text-center fade-in">🛠️ My Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1: SRI Hash Generator -->
             <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
                 <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">SRI Hash Generator</h3>
                 <p class="text-gray-300 text-sm mb-4">
@@ -63,7 +71,6 @@
                 <a href="https://github.com/KnowOneActual/generate-SRI" target="_blank" class="text-blue-400 hover:underline text-sm">View on GitHub &rarr;</a>
             </div>
 
-            <!-- Project 2: Metadata Remover for Images -->
             <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
                 <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Metadata Remover for Images</h3>
                 <p class="text-gray-300 text-sm mb-4">
@@ -72,7 +79,6 @@
                 <a href="https://github.com/KnowOneActual/Metadata-Remover-for-Images" target="_blank" class="text-blue-400 hover:underline text-sm">View on GitHub &rarr;</a>
             </div>
 
-            <!-- Project 3: Ping with Progress Percentage -->
             <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
                 <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Ping with Progress Percentage</h3>
                 <p class="text-gray-300 text-sm mb-4">
@@ -81,7 +87,6 @@
                 <a href="https://github.com/KnowOneActual/Ping-Logger" target="_blank" class="text-blue-400 hover:underline text-sm">View on GitHub &rarr;</a>
             </div>
 
-            <!-- Project 4: Simple Password Strength Checker -->
             <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
                 <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Simple Password Strength Checker</h3>
                 <p class="text-gray-300 text-sm mb-4">
@@ -89,9 +94,6 @@
                 </p>
                 <a href="https://github.com/KnowOneActual/password_strength_checker" target="_blank" class="text-blue-400 hover:underline text-sm">View on GitHub &rarr;</a>
             </div>
-
-            <!-- The following two projects have been removed -->
-            <!-- Smart Home Integration Hub and Cloud Cost Optimizer -->
 
         </div>
         <div class="text-center mt-12 fade-in">
@@ -177,7 +179,7 @@
               class="px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded transition flex items-center justify-center space-x-2 talkback-btn">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 19V6a3 3 0 116 0v13M5 10h14" />
+                  d="M9 19V6a3 3 0 116 0v13M5 10h14\" />
               </svg>
               <span>Push To Talk</span>
             </button>
@@ -195,5 +197,5 @@
   </footer>
 
   <script src="script.js" defer></script>
-</body>
+  </body>
 </html>

@@ -124,7 +124,7 @@ function initializeFormHandling() {
 
       try {
         // Send the form data to our new serverless function
-        const response = await fetch('/.netlify/functions/submit', {
+        const response = await fetch('/.netlify/functions/hello', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: formBody,

@@ -39,10 +39,10 @@ exports.handler = async (event) => {
         'Authorization': `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: 'Contact Form <noreply@beaubremer.com>', // Must be from your verified Resend domain
+        from: 'Contact Form <noreply@beaubremer.com>',
         to: 'support@beaubremer.com', // CHANGE THIS to your email
         subject: `New Message from ${name} on your Website`,
-        html: `<p>You received a new message:</p><ul><li><strong>Name:</strong> ${name}</li><li><strong>Email:</strong> <span class="math-inline">\{email\}</li\></ul\><p\><strong\>Message\:</strong\></p\><p\></span>{message}</p>`,
+        html: `<p>You received a new message:</p><ul><li><strong>Name:</strong> ${name}</li><li><strong>Email:</strong> ${email}</li></ul><p><strong>Message:</strong></p><p>${message}</p>`,
       }),
     });
 

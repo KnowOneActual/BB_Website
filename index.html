@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <!--what next v45.8-->
   <link rel="canonical" href="https://beaubremer.com/" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
@@ -19,8 +18,12 @@
     rel="stylesheet" crossorigin="anonymous" />
 
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
   <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body class="bg-gray-950 text-white scroll-smooth">
@@ -131,7 +134,30 @@
         <h2 class="text-3xl font-bold mb-8 text-center fade-in">🧰 Creative Resource Library</h2>
         <p class="text-center text-gray-400 mb-12 fade-in">A curated collection of tools, inspiration, and goodies I use
           and love. Updated often!</p>
-        <ul id="resource-library-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
+            <a href="https://coolors.co/" target="_blank"
+              class="text-xl font-semibold text-fuchsia-400 hover:underline">Coolors</a>
+            <p class="text-gray-300 mt-2">Quickly generate beautiful color palettes for your projects — a daily go-to
+              for design inspiration!</p>
+          </li>
+          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
+            <a href="https://fonts.google.com/" target="_blank"
+              class="text-xl font-semibold text-fuchsia-400 hover:underline">Google Fonts</a>
+            <p class="text-gray-300 mt-2">Free fonts for all your typography needs — essential for great web design.</p>
+          </li>
+          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
+            <a href="https://wirelesssystembuilder.com/" target="_blank"
+              class="text-xl font-semibold text-fuchsia-400 hover:underline">RF Venue</a>
+            <p class="text-gray-300 mt-2">Wireless System Builder — an invaluable tool for planning robust wireless
+              audio systems.</p>
+          </li>
+          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
+            <a href="https://unsplash.com/" target="_blank"
+              class="text-xl font-semibold text-fuchsia-400 hover:underline">Unsplash</a>
+            <p class="text-gray-300 mt-2">Stunning free images you can use for your designs — my first stop for
+              high-quality visuals.</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -170,6 +196,7 @@
         </blockquote>
       </div>
     </section>
+
 
     <section id="contact" class="bg-gray-950 py-20 px-6">
       <div class="max-w-2xl mx-auto text-center">
@@ -213,7 +240,6 @@
     © 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or Night ever!
   </footer>
 
-  <script src="/three.min.js"></script>
   <script src="script.js" defer></script>
 </body>
 

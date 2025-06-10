@@ -1,4 +1,4 @@
-// --- yeah right 44 Helper Functions ---
+// --- Helper Functions ---
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;
@@ -15,8 +15,8 @@ function showMessage(msg) {
 
 // --- Easter Egg Functions ---
 const egg = () => {
-  console.log("%c･�Well hey there, curious mind! You found the hidden message! 醗", "color: fuchsia; font-size: 1.5rem;");
-  showMessage("庁 You found the Easter Egg! Stay curious. Stay creative. 庁");
+  console.log(" !!Well hey there, curious mind! You found the hidden message!", "color: fuchsia; font-size: 1.5rem;");
+  showMessage("!! You found the Easter Egg! Stay curious. Stay creative. !!");
 };
 const catEgg = () => {
   const img = document.createElement("img");
@@ -90,29 +90,6 @@ function initializeFormHandling() {
   }
 }
 
-// --- DYNAMIC RESOURCE LIBRARY ---
-async function initializeResourceLibrary() {
-  const resourceList = document.getElementById('resource-library-list');
-  if (!resourceList) return;
-  try {
-    const response = await fetch('/data/v2_links.json');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const links = await response.json();
-    links.forEach(link => {
-      const listItem = document.createElement('li');
-      listItem.className = 'bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in';
-      listItem.innerHTML = `<a href="${link.url}" target="_blank" class="text-xl font-semibold text-fuchsia-400 hover:underline">${link.title}</a><p class="text-gray-300 mt-2">${link.description}</p>`;
-      resourceList.appendChild(listItem);
-    });
-  } catch (error) {
-    console.error('Error fetching or building resource library:', error);
-    resourceList.innerHTML = '<p class="text-center text-red-400">Could not load resources at this time.</p>';
-  }
-}
-
-
 // --- Three.js Background Animation ---
 function initializeThreeJsAnimation() {
   const canvas = document.getElementById('hero-background');
@@ -181,5 +158,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeFormHandling();
   initializeThreeJsAnimation();
   initializeFadeInAnimation();
-  initializeResourceLibrary();
 });

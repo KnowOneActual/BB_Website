@@ -1,14 +1,21 @@
+// Final Production Code for hello.js
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  const resendApiKey = process.env.RESEND_API_KEY;
+
   const body = new URLSearchParams(event.body);
+  const name = body.get('name');
+  const email = body.get('email');
+  const message = body.get('message');
   const turnstileToken = body.get('cf-turnstile-response');
 
   try {
-    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    // 1. Verify the Turnstile token
+    const turnstileResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -18,19 +25,38 @@ exports.handler = async (event) => {
       }),
     });
 
-    const cloudflareData = await response.json();
+    const turnstileData = await turnstileResponse.json();
+    if (!turnstileData.success) {
+      console.error("Turnstile verification failed:", turnstileData['error-codes']);
+      return { statusCode: 400, body: 'CAPTCHA verification failed.' };
+    }
 
-    // IMPORTANT: We are now sending the full Cloudflare response back to the browser for debugging.
+    // 2. Send the email via Resend if CAPTCHA was successful
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${resendApiKey}`,
+      },
+      body: JSON.stringify({
+        from: 'Contact Form <noreply@beaubremer.com>', // Must be from your verified Resend domain
+        to: 'support@beaubremer.com', // CHANGE THIS to your email
+        subject: `New Message from ${name} on your Website`,
+        html: `<p>You received a new message:</p><ul><li><strong>Name:</strong> ${name}</li><li><strong>Email:</strong> <span class="math-inline">\{email\}</li\></ul\><p\><strong\>Message\:</strong\></p\><p\></span>{message}</p>`,
+      }),
+    });
+
+    // 3. Return a success response to the browser
     return {
-      statusCode: 200, // Always return 200 OK so we can see the body
-      body: JSON.stringify(cloudflareData),
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Form submitted successfully!' }),
     };
 
   } catch (error) {
-    // If a lower-level error happens, send that back too.
+    console.error("An internal error occurred:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ success: false, error: error.message }),
+      body: JSON.stringify({ error: 'Sorry, something went wrong.' }),
     };
   }
 };

@@ -15,8 +15,8 @@ function showMessage(msg) {
 
 // --- Easter Egg Functions ---
 const egg = () => {
-  console.log("%c･�Well hey there, curious mind! You found the hidden message! 醗", "color: fuchsia; font-size: 1.5rem;");
-  showMessage("庁 You found the Easter Egg! Stay curious. Stay creative. 庁");
+  console.log(" !!Well hey there, curious mind! You found the hidden message!", "color: fuchsia; font-size: 1.5rem;");
+  showMessage("!! You found the Easter Egg! Stay curious. Stay creative. !!");
 };
 const catEgg = () => {
   const img = document.createElement("img");

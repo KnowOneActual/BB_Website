@@ -1,4 +1,4 @@
-// --- waht now Helper Functions ---
+// --- come on work  Helper Functions ---
 
 /**
  * Displays a temporary message box on the screen.
@@ -30,8 +30,8 @@ function showMessage(msg) {
 // --- Easter Egg Functions ---
 
 const egg = () => {
-  console.log("%c･�Well hey there, curious mind! You found the hidden message! 醗", "color: fuchsia; font-size: 1.5rem;");
-  showMessage("庁 You found the Easter Egg! Stay curious. Stay creative. 庁");
+  console.log("!!Well hey there, curious mind! You found the hidden message! !!, "color: fuchsia; font-size: 1.5rem;");
+  showMessage("!! You found the Easter Egg! Stay curious. Stay creative. !!");
 };
 const catEgg = () => {
   const img = document.createElement("img");
@@ -46,7 +46,7 @@ const jamEgg = () => {
   const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
   audio.volume = 0.3;
   audio.play();
-  showMessage("叱 Enjoy this chill track while you explore! 叱");
+  showMessage("*** Enjoy this chill track while you explore! *** ");
 };
 
 function initializeEasterEggs() {

@@ -184,4 +184,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeThreeJsAnimation();
   initializeFadeInAnimation();
   initializeResourceLibrary();
+  
 });

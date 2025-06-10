@@ -1,8 +1,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # This CSP is slightly more permissive for testing
-    Content-Security-Policy = "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; frame-src https://challenges.cloudflare.com;"
+    # This CSP allows your fonts, styles, and the necessary scripts to load
+    Content-Security-Policy = "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; frame-src https://challenges.cloudflare.com;"
     
     # Using a standard, safe referrer policy
     Referrer-Policy = "strict-origin-when-cross-origin"

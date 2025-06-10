@@ -1,4 +1,4 @@
-// --- Helper Functions ---
+// --- v20 json Helper Functions ---
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;
@@ -90,6 +90,31 @@ function initializeFormHandling() {
   }
 }
 
+// Add this new function to your script.js
+async function initializeResourceLibrary() {
+  const resourceList = document.getElementById('resource-library-list');
+  if (!resourceList) return;
+
+  try {
+    const response = await fetch('./links.json');
+    const links = await response.json();
+
+    links.forEach(link => {
+      const listItem = document.createElement('li');
+      listItem.className = 'bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in';
+      listItem.innerHTML = `
+        <a href="<span class="math-inline">\{link\.url\}" target\="\_blank" class\="text\-xl font\-semibold text\-fuchsia\-400 hover\:underline"\></span>{link.title}</a>
+        <p class="text-gray-300 mt-2">${link.description}</p>
+      `;
+      resourceList.appendChild(listItem);
+    });
+
+  } catch (error) {
+    console.error('Error fetching resource library:', error);
+    resourceList.innerHTML = '<p class="text-center text-red-400">Could not load resources at this time.</p>';
+  }
+}
+
 // --- Three.js Background Animation ---
 function initializeThreeJsAnimation() {
   const canvas = document.getElementById('hero-background');
@@ -158,4 +183,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeFormHandling();
   initializeThreeJsAnimation();
   initializeFadeInAnimation();
+  initializeResourceLibrary();
 });

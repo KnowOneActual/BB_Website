@@ -1,4 +1,4 @@
-// ---really is this it  Helper Functions ---
+// --- yeah right Helper Functions ---
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;

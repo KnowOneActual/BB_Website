@@ -128,7 +128,7 @@ async function initializeResourceLibrary() {
   if (!resourceList) return;
 
   try {
-    const response = await fetch('./links.json');
+    const response = await fetch('/links.json');;
     if (!response.ok) {
       // If the response is not OK (like a 404), throw an error to be caught below
       throw new Error(`HTTP error! status: ${response.status}`);

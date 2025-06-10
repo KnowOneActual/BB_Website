@@ -93,7 +93,7 @@ function validateForm() {
   return true;
 }
 
-// THIS IS THE NEW DEBUGGING VERSION OF THE FORM HANDLING FUNCTION
+/// Final Production Code for initializeFormHandling
 function initializeFormHandling() {
   const talkBackForm = document.querySelector('form[name="contact"]');
   if (talkBackForm) {
@@ -114,15 +114,10 @@ function initializeFormHandling() {
           body: formBody,
         });
 
-        const debugData = await response.json();
-
-        console.log("DEBUGGING RESPONSE FROM FUNCTION:", debugData);
-
-        if (debugData.success) {
+        if (response.ok) {
           window.location.href = '/thank-you.html';
         } else {
-          const errorInfo = debugData['error-codes'] ? debugData['error-codes'].join(', ') : 'Verification failed.';
-          showMessage(`Submission failed: ${errorInfo}`);
+          showMessage('Submission failed. Please try again.');
         }
 
       } catch (error) {

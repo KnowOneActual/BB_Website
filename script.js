@@ -18,7 +18,30 @@ const egg = () => {
   console.log("%c･�Well hey there, curious mind! You found the hidden message! 醗", "color: fuchsia; font-size: 1.5rem;");
   showMessage("庁 You found the Easter Egg! Stay curious. Stay creative. 庁");
 };
-// Other Easter egg functions (catEgg, jamEgg) and initializeEasterEggs() go here...
+const catEgg = () => {
+  const img = document.createElement("img");
+  img.src = "https://cataas.com/cat/gif";
+  img.alt = "Surprise Cat!";
+  img.classList.add('cat-image'); 
+  document.body.appendChild(img);
+  setTimeout(() => img.remove(), 8000);
+};
+const jamEgg = () => {
+  const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+  audio.volume = 0.3;
+  audio.play();
+  showMessage("叱 Enjoy this chill track while you explore! 叱");
+};
+function initializeEasterEggs() {
+  window.addEventListener("keydown", (e) => {
+    if (e && e.key) { 
+      window._eggCode = (window._eggCode || "") + e.key.toLowerCase();
+      if (window._eggCode.includes("beau")) { egg(); window._eggCode = ""; }
+      if (window._eggCode.includes("cat")) { catEgg(); window._eggCode = ""; }
+      if (window._eggCode.includes("jam")) { jamEgg(); window._eggCode = ""; }
+    }
+  });
+}
 
 // --- FORM VALIDATION AND SUBMISSION LOGIC ---
 function validateForm() {
@@ -40,7 +63,6 @@ function validateForm() {
   return true;
 }
 
-// FINAL PRODUCTION VERSION of the form handling function
 function initializeFormHandling() {
   const talkBackForm = document.querySelector('form[name="contact"]');
   if (talkBackForm) {
@@ -132,7 +154,7 @@ function initializeFadeInAnimation() {
 
 // --- DOMContentLoaded Listener ---
 document.addEventListener('DOMContentLoaded', () => {
-  // initializeEasterEggs(); // You can re-enable your Easter eggs if you like
+  initializeEasterEggs();
   initializeFormHandling();
   initializeThreeJsAnimation();
   initializeFadeInAnimation();

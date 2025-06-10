@@ -1,4 +1,4 @@
-// --- yeah right Helper Functions ---
+// --- yeah right 44 Helper Functions ---
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;
@@ -95,7 +95,7 @@ async function initializeResourceLibrary() {
   const resourceList = document.getElementById('resource-library-list');
   if (!resourceList) return;
   try {
-    const response = await fetch('/links.json');
+    const response = await fetch('/data/links.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

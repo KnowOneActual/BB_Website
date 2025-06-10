@@ -1,12 +1,10 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # This CSP allows your fonts, styles, and the necessary scripts to load
-    Content-Security-Policy = "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; frame-src https://challenges.cloudflare.com;"
+    # This policy allows everything your site needs: Google Fonts, Tailwind, Three.js, and Turnstile.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://challenges.cloudflare.com;"
     
-    # Using a standard, safe referrer policy
+    # Standard security headers
     Referrer-Policy = "strict-origin-when-cross-origin"
-
-    # These two are essential security headers with no known conflicts
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"

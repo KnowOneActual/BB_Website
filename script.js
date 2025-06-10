@@ -95,7 +95,7 @@ async function initializeResourceLibrary() {
   const resourceList = document.getElementById('resource-library-list');
   if (!resourceList) return;
   try {
-    const response = await fetch('/data/links.json');
+    const response = await fetch('/data/v2_links.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

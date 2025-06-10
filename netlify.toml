@@ -6,5 +6,3 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"

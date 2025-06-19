@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://beaubremer.com/" />
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/img/favicon/site.webmanifest" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Security and Performance Enhancements Report for BeauBremer.com" />
@@ -106,13 +111,13 @@
         <h2 class="text-3xl font-bold text-fuchsia-400 mb-4">Why Some Items Were Not Fully Addressed (Practical Considerations):</h2>
         <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
           <li>
-            <span class="font-semibold">'unsafe-inline' in CSP (Persistent Warning):</span> While I eliminated `'unsafe-inline'` for my custom code, it remains in the CSP for specific third-party integrations like Google reCAPTCHA and Tailwind CSS (from their CDN). These services dynamically inject small amounts of inline script and style. Implementing CSP nonces or hashes for such dynamically generated third-party resources is technically complex for a static site hosted on Netlify, often requiring server-side logic. For a personal portfolio, the robust domain whitelisting in my Content Security Policy (CSP) provides strong protection, making this a pragmatic and acceptable compromise for functionality.
+            <span class="font-semibold">'unsafe-inline' in CSP (Persistent Warning):</span> While I eliminated `'unsafe-inline'` for my custom code, it remains in the CSP for specific third-party integrations like Cloudflare Turnstile and Tailwind CSS (from their CDN). These services dynamically inject small amounts of inline script and style. Implementing CSP nonces or hashes for such dynamically generated third-party resources is technically complex for a static site hosted on Netlify, often requiring server-side logic. For a personal portfolio, the robust domain whitelisting in my Content Security Policy (CSP) provides strong protection, making this a pragmatic and acceptable compromise for functionality.
           </li>
           <li>
             <span class="font-semibold">Subresource Integrity (SRI) for Tailwind CSS:</span> My attempts to add SRI to the Tailwind CSS CDN link were unsuccessful because the CDN's Cross-Origin Resource Sharing (CORS) headers are not configured to support SRI requests. As this is a server-side limitation of the CDN, it cannot be fixed from my end. However, the explicit whitelisting of cdn.tailwindcss.com in my CSP still ensures that only the legitimate Tailwind CSS from that trusted domain can be loaded.
           </li>
           <li>
-            <span class="font-semibold">Absence of Anti-CSRF Tokens:</span> My contact form utilizes Formspree, a third-party service that typically handles CSRF protection on their backend. For a simple contact form that doesn't process sensitive data, this is an acceptable delegation of responsibility to a trusted service.
+            <span class="font-semibold">Absence of Anti-CSRF Tokens:</span> My contact form utilizes Resend, a third-party service that typically handles CSRF protection on their backend. For a simple contact form that doesn't process sensitive data, this is an acceptable delegation of responsibility to a trusted service.
           </li>
         </ul>
       </div>

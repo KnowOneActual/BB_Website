@@ -108,32 +108,18 @@
         import { getFirestore, doc, onSnapshot, collection, addDoc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- CONFIGURATION ---
-        // IMPORTANT 1: Get your free weather API key from OpenWeatherMap: https://openweathermap.org/api
-        const WEATHER_API_KEY = "302ec9f8c972dfe297c16c3adf990681"; // <-- PASTE YOUR KEY HERE
-
-        // IMPORTANT 2: Create a Firebase project (firebase.google.com) and paste your config object here.
-        // This is required for the app to work on your website.
-       // Import the functions you need from the SDKs you need
-        import { initializeApp } from "firebase/app";
-        import { getAnalytics } from "firebase/analytics";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+        const WEATHER_API_KEY = "302ec9f8c972dfe297c16c3adf990681";
 
         // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
             apiKey: "AIzaSyDH0Z31HUAbdJrwdr-nCS5OFPkBu5fClq0",
             authDomain: "bb-weather-f9363.firebaseapp.com",
             projectId: "bb-weather-f9363",
-            storageBucket: "bb-weather-f9363.firebasestorage.app",
+            storageBucket: "bb-weather-f9363.appspot.com",
             messagingSenderId: "395414091341",
             appId: "1:395414091341:web:fb6245e4500e33422d4e04",
             measurementId: "G-BBV2VK4W9E"
         };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
 
         const GEMINI_API_KEY = ""; // No key needed if using Gemini Flash 2.0
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'weather-bot-default';
@@ -152,6 +138,7 @@
         let unsubscribe;
 
         try {
+            // Initialize Firebase ONCE
             const app = initializeApp(firebaseConfig);
             db = getFirestore(app);
             auth = getAuth(app);
@@ -181,7 +168,7 @@
         } catch (e) {
             console.error("Firebase initialization failed:", e);
             statusEl.textContent = 'Error: Check Config';
-            addMessage('bot', `Failed to initialize the app. Did you paste your firebaseConfig object correctly?`);
+            addMessage('bot', `Failed to initialize the app. Did you paste your firebaseConfig object correctly? Error: ${e.message}`);
         }
 
         // --- CHAT FUNCTIONS ---
@@ -274,7 +261,7 @@
         }
 
         async function getWeatherData(city) {
-            if (WEATHER_API_KEY === "302ec9f8c972dfe297c16c3adf990681") {
+            if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
                 throw new Error("The Weather API key has not been configured by the developer yet.");
             }
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;

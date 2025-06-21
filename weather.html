@@ -99,9 +99,7 @@
         import { getFirestore, onSnapshot, collection, addDoc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- CONFIGURATION ---
-        const WEATHER_API_KEY = "302ec9f8c972dfe297c16c3adf990681";
-        const GEMINI_API_KEY = "AIzaSyCQ0nLRwLdm2GbzLtFUWwZPPtncH96d_no";
-
+        // API keys have been moved to a secure Netlify Function.
         const firebaseConfig = {
             apiKey: "AIzaSyDH0Z31HUAbdJrwdr-nCS5OFPkBu5fClq0",
             authDomain: "bb-weather-f9363.firebaseapp.com",
@@ -206,67 +204,6 @@
             });
         }
 
-        // --- AI & WEATHER API LOGIC ---
-        async function callGemini(prompt) {
-            // FIXED: This check was incorrect. It now correctly checks for the original placeholder.
-            if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
-                throw new Error("The Gemini API key has not been configured. Please add your key to the script.");
-            }
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-
-            if (!response.ok) {
-                const errorBody = await response.json();
-                console.error("Gemini API Error Body:", errorBody);
-                const errorMsg = errorBody?.error?.message || response.statusText;
-                throw new Error(`Gemini API error: ${errorMsg}`);
-            }
-            const result = await response.json();
-            return result?.candidates?.[0]?.content?.parts?.[0]?.text.trim();
-        }
-
-        async function getCityFromQuery(userQuery) {
-            const prompt = `From the user query, extract only the city or location. If none, respond "N/A". Query: "${userQuery}"`;
-            return callGemini(prompt);
-        }
-
-        async function getWeatherData(city) {
-            if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
-                throw new Error("The Weather API key has not been configured.");
-            }
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
-            const response = await fetch(apiUrl);
-            if (!response.ok) {
-                if (response.status === 404) throw new Error(`I couldn't find a city named "${city}". Please check the spelling.`);
-                throw new Error(`Weather API error: ${response.statusText}`);
-            }
-            const data = await response.json();
-            return {
-                city: data.name,
-                country: data.sys.country,
-                temperature_celsius: data.main.temp,
-                feels_like_celsius: data.main.feels_like,
-                condition: data.weather[0].main,
-                description: data.weather[0].description,
-                humidity_percent: data.main.humidity,
-                wind_speed_mps: data.wind.speed
-            };
-        }
-
-        async function getAIWeatherAnalysis(userQuery, weatherData) {
-            const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data is: ${JSON.stringify(weatherData)}. 
-            
-            All data provided to you is in metric units (Celsius, meters per second).
-            
-            Provide a conversational, one-paragraph response. Be natural and helpful. In your response, ALWAYS provide both metric and US standard (imperial) units for all relevant measurements.
-            - For temperature, show Celsius (°C) first, then Fahrenheit (°F) in parentheses. Formula: (Celsius * 9/5) + 32.
-            - For wind speed, show miles per hour (mph) first, then meters per second (m/s) in parentheses. Formula: (m/s * 2.237).
-            
-            Example response format for Chicago: "The weather in Chicago is currently 15°C (59°F)... with winds of 11.2 mph (5 m/s)."`;
-            return callGemini(prompt);
-        }
-
         // --- EVENT HANDLERS ---
         chatForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -279,14 +216,24 @@
             setTyping(true);
 
             try {
-                const city = await getCityFromQuery(userQuery);
-                if (city === 'N/A' || !city) {
-                    throw new Error("I'm sorry, I couldn't identify a city in your request. Could you please rephrase it?");
+                // All logic is now handled by the Netlify function.
+                const response = await fetch('/.netlify/functions/weather', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userQuery: userQuery }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'The server returned an error.');
                 }
-                const weatherData = await getWeatherData(city);
-                const botResponse = await getAIWeatherAnalysis(userQuery, weatherData);
+
+                const data = await response.json();
+                const botResponse = data.reply;
+
                 addMessage('bot', botResponse);
                 await saveMessage('bot', botResponse);
+
             } catch (error) {
                 console.error("Processing Error:", error);
                 const errorMessage = error.message || "Something went wrong. Please try again.";

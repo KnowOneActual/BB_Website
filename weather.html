@@ -12,41 +12,45 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Custom scrollbar for a cleaner look */
+        /* Custom scrollbar for dark theme */
         #chat-window::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         #chat-window::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: #1f2937;
+            /* bg-gray-800 */
         }
 
         #chat-window::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 3px;
+            background: #4b5563;
+            /* bg-gray-600 */
+            border-radius: 4px;
         }
 
         #chat-window::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+            background: #6b7280;
+            /* bg-gray-500 */
         }
     </style>
 </head>
 
-<body class="bg-slate-100 flex items-center justify-center min-h-screen">
+<body class="bg-black flex items-center justify-center min-h-screen">
 
-    <div class="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl flex flex-col h-[90vh] my-4">
+    <div
+        class="w-full max-w-2xl mx-auto bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[90vh] my-4 border border-gray-700">
         <!-- Header -->
-        <div class="p-4 border-b border-slate-200 bg-slate-50 rounded-t-2xl flex items-center space-x-3">
-            <div class="relative flex items-center justify-center w-12 h-12 bg-blue-500 rounded-full text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+        <div class="p-4 border-b border-gray-700 bg-gray-800 rounded-t-2xl flex items-center space-x-4">
+            <div class="relative flex items-center justify-center w-12 h-12 bg-amber-500 rounded-full text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                 </svg>
             </div>
             <div>
-                <h1 class="text-xl font-bold text-slate-800">Weather Query Bot</h1>
-                <p id="status" class="text-sm text-slate-500">Connecting...</p>
+                <h1 class="text-xl font-bold text-gray-100">Weather Query Bot</h1>
+                <p id="status" class="text-sm text-gray-400">Connecting...</p>
             </div>
         </div>
 
@@ -57,21 +61,21 @@
 
         <!-- Typing Indicator -->
         <div id="typing-indicator" class="px-6 pb-2 hidden">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-500" fill="none"
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                     </svg>
                 </div>
-                <div class="bg-slate-200 rounded-lg p-3">
+                <div class="bg-gray-700 rounded-lg p-3">
                     <div class="flex items-center space-x-1">
-                        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                        <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
                             style="animation-delay: 0s;"></span>
-                        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                        <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
                             style="animation-delay: 0.1s;"></span>
-                        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                        <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
                             style="animation-delay: 0.2s;"></span>
                     </div>
                 </div>
@@ -79,13 +83,13 @@
         </div>
 
         <!-- Input Form -->
-        <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-2xl">
+        <div class="p-4 border-t border-gray-700 bg-gray-800 rounded-b-2xl">
             <form id="chat-form" class="flex items-center space-x-3">
                 <input type="text" id="chat-input" placeholder="Ask about the weather..."
-                    class="flex-1 w-full px-4 py-3 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    class="flex-1 w-full px-4 py-3 bg-gray-700 text-gray-100 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                     autocomplete="off">
                 <button type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-lg transition-transform duration-200 active:scale-95 flex items-center space-x-2">
+                    class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-5 rounded-lg transition-transform duration-200 active:scale-95 flex items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path
                             d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
@@ -93,7 +97,7 @@
                     <span>Send</span>
                 </button>
             </form>
-            <div id="user-info" class="text-xs text-slate-400 pt-2 text-center truncate"></div>
+            <div id="user-info" class="text-xs text-gray-500 pt-2 text-center truncate"></div>
         </div>
     </div>
 
@@ -104,13 +108,34 @@
         import { getFirestore, doc, onSnapshot, collection, addDoc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- CONFIGURATION ---
-        // IMPORTANT: You must get your own free API key from a weather provider.
-        // I recommend OpenWeatherMap: https://openweathermap.org/api
+        // IMPORTANT 1: Get your free weather API key from OpenWeatherMap: https://openweathermap.org/api
         const WEATHER_API_KEY = "302ec9f8c972dfe297c16c3adf990681"; // <-- PASTE YOUR KEY HERE
 
-        const GEMINI_API_KEY = ""; // No key needed if using Gemini Flash 2.0
+        // IMPORTANT 2: Create a Firebase project (firebase.google.com) and paste your config object here.
+        // This is required for the app to work on your website.
+       // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : { apiKey: "YOUR_FALLBACK_API_KEY", authDomain: "...", projectId: "..." };
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDH0Z31HUAbdJrwdr-nCS5OFPkBu5fClq0",
+            authDomain: "bb-weather-f9363.firebaseapp.com",
+            projectId: "bb-weather-f9363",
+            storageBucket: "bb-weather-f9363.firebasestorage.app",
+            messagingSenderId: "395414091341",
+            appId: "1:395414091341:web:fb6245e4500e33422d4e04",
+            measurementId: "G-BBV2VK4W9E"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        const GEMINI_API_KEY = ""; // No key needed if using Gemini Flash 2.0
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'weather-bot-default';
 
         // --- DOM ELEMENTS ---
@@ -124,7 +149,7 @@
         // --- FIREBASE INITIALIZATION ---
         let db, auth;
         let userId = null;
-        let unsubscribe; // To detach the Firestore listener later
+        let unsubscribe;
 
         try {
             const app = initializeApp(firebaseConfig);
@@ -148,19 +173,18 @@
                     } catch (error) {
                         console.error("Authentication failed:", error);
                         statusEl.textContent = 'Authentication Failed';
-                        addMessage('bot', `I'm having trouble connecting. Please refresh the page. Error: ${error.message}`);
+                        addMessage('bot', `I'm having trouble connecting. Please refresh. Error: ${error.message}`);
                     }
                 }
             });
 
         } catch (e) {
             console.error("Firebase initialization failed:", e);
-            statusEl.textContent = 'Error';
-            addMessage('bot', `Failed to initialize the application. Please check the console for errors.`);
+            statusEl.textContent = 'Error: Check Config';
+            addMessage('bot', `Failed to initialize the app. Did you paste your firebaseConfig object correctly?`);
         }
 
         // --- CHAT FUNCTIONS ---
-
         function addMessage(sender, text, timestamp) {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('flex', 'items-start', 'space-x-3', 'max-w-lg');
@@ -170,24 +194,24 @@
             if (sender === 'user') {
                 messageDiv.classList.add('ml-auto', 'flex-row-reverse', 'space-x-reverse');
                 messageDiv.innerHTML = `
-                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold">U</div>
+                    <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-semibold">U</div>
                     <div>
-                        <div class="bg-blue-500 text-white p-3 rounded-lg rounded-br-none">
+                        <div class="bg-amber-500 text-white p-3 rounded-lg rounded-br-none">
                             <p>${text}</p>
                         </div>
-                        <span class="text-xs text-slate-400 mt-1 float-right">${time}</span>
+                        <span class="text-xs text-gray-500 mt-1 float-right">${time}</span>
                     </div>
                 `;
             } else {
                 messageDiv.innerHTML = `
-                    <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center">
-                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                    <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
                     </div>
                      <div>
-                        <div class="bg-slate-200 p-3 rounded-lg rounded-bl-none">
+                        <div class="bg-gray-700 text-gray-100 p-3 rounded-lg rounded-bl-none">
                             <p>${text}</p>
                         </div>
-                        <span class="text-xs text-slate-400 mt-1">${time}</span>
+                        <span class="text-xs text-gray-500 mt-1">${time}</span>
                     </div>
                 `;
             }
@@ -201,7 +225,6 @@
         }
 
         // --- FIRESTORE FUNCTIONS ---
-
         async function saveMessage(sender, text) {
             if (!userId) return;
             try {
@@ -218,18 +241,17 @@
 
         function loadChatHistory() {
             if (!userId) return;
-
-            // Unsubscribe from any previous listener
             if (unsubscribe) unsubscribe();
-
-            chatWindow.innerHTML = ''; // Clear previous messages
+            chatWindow.innerHTML = '';
 
             const messagesRef = collection(db, `artifacts/${appId}/users/${userId}/messages`);
             const q = query(messagesRef, orderBy("createdAt", "asc"));
 
             unsubscribe = onSnapshot(q, (snapshot) => {
-                chatWindow.innerHTML = ''; // Clear and redraw all messages on update
-                addMessage('bot', "Hello! Ask me anything about the weather. For example: 'What's the weather like in Tokyo?' or 'Is it cold in New York right now?'");
+                chatWindow.innerHTML = '';
+                if (snapshot.empty) {
+                    addMessage('bot', "Hello! Ask me anything about the weather. For example: 'What's the weather like in Tokyo?'");
+                }
                 snapshot.forEach((doc) => {
                     const data = doc.data();
                     addMessage(data.sender, data.text, data.createdAt);
@@ -240,74 +262,45 @@
             });
         }
 
-
         // --- AI & WEATHER API LOGIC ---
-
         async function getCityFromQuery(userQuery) {
             const prompt = `From the following user query, extract only the name of the city or location. If no city is mentioned, respond with "N/A". Do not add any extra text or punctuation. Query: "${userQuery}"`;
-
             const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
+            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
             if (!response.ok) throw new Error(`Gemini API error: ${response.statusText}`);
-
             const result = await response.json();
             return result.candidates[0].content.parts[0].text.trim();
         }
 
         async function getWeatherData(city) {
-            if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
-                throw new Error("Weather API key not configured.");
+            if (WEATHER_API_KEY === "302ec9f8c972dfe297c16c3adf990681") {
+                throw new Error("The Weather API key has not been configured by the developer yet.");
             }
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
-
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 if (response.status === 404) throw new Error(`I couldn't find a city named "${city}". Please check the spelling.`);
                 throw new Error(`Weather API error: ${response.statusText}`);
             }
             const data = await response.json();
-            // Simplify the data to send to the AI
             return {
-                city: data.name,
-                country: data.sys.country,
-                temperature_celsius: data.main.temp,
-                feels_like_celsius: data.main.feels_like,
-                condition: data.weather[0].main,
-                description: data.weather[0].description,
-                humidity_percent: data.main.humidity,
-                wind_speed_mps: data.wind.speed
+                city: data.name, country: data.sys.country, temperature_celsius: data.main.temp, feels_like_celsius: data.main.feels_like,
+                condition: data.weather[0].main, description: data.weather[0].description, humidity_percent: data.main.humidity, wind_speed_mps: data.wind.speed
             };
         }
 
         async function getAIWeatherAnalysis(userQuery, weatherData) {
-            const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data for their requested location is: ${JSON.stringify(weatherData)}. 
-            
-            Based on this data, provide a conversational, one-paragraph response. Be natural and helpful. For example, if it's cold, you might suggest wearing a jacket. If it's windy, you might mention it's a bit blustery. Always include the main temperature and condition.`;
-
+            const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data is: ${JSON.stringify(weatherData)}. Provide a conversational, one-paragraph response. Be natural and helpful. Always include the main temperature and condition.`;
             const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
+            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
             if (!response.ok) throw new Error(`Gemini API error: ${response.statusText}`);
-
             const result = await response.json();
             return result.candidates[0].content.parts[0].text.trim();
         }
 
         // --- EVENT HANDLERS ---
-
         chatForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const userQuery = chatInput.value.trim();
@@ -323,13 +316,10 @@
                 if (city === 'N/A') {
                     throw new Error("I'm sorry, I couldn't identify a city in your request. Could you please rephrase it?");
                 }
-
                 const weatherData = await getWeatherData(city);
                 const botResponse = await getAIWeatherAnalysis(userQuery, weatherData);
-
                 addMessage('bot', botResponse);
                 await saveMessage('bot', botResponse);
-
             } catch (error) {
                 console.error("Processing Error:", error);
                 const errorMessage = error.message || "Something went wrong. Please try again.";

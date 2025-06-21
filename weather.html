@@ -100,7 +100,7 @@
 
         // --- CONFIGURATION ---
         const WEATHER_API_KEY = "302ec9f8c972dfe297c16c3adf990681";
-        const GEMINI_API_KEY = "AIzaSyCQ0nLRwLdm2GbzLtFUWwZPPtncH96d_no";
+        const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDH0Z31HUAbdJrwdr-nCS5OFPkBu5fClq0",
@@ -194,7 +194,7 @@
             unsubscribe = onSnapshot(q, (snapshot) => {
                 chatWindow.innerHTML = '';
                 if (snapshot.empty) {
-                    addMessage('bot', "Hello! Ask me anything about the weather. For example: 'What's the weather in Tokyo?'");
+                    addMessage('bot', "Hello! Ask me anything about the weather. For example: 'What's the weather like in Tokyo?'");
                 }
                 snapshot.forEach((doc) => {
                     const data = doc.data();
@@ -208,7 +208,7 @@
 
         // --- AI & WEATHER API LOGIC ---
         async function callGemini(prompt) {
-            if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
+            if (!GEMINI_API_KEY || GEMINI_API_KEY === "AIzaSyCQ0nLRwLdm2GbzLtFUWwZPPtncH96d_no") {
                 throw new Error("The Gemini API key has not been configured. Please add your key to the script.");
             }
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
@@ -234,7 +234,6 @@
             if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
                 throw new Error("The Weather API key has not been configured.");
             }
-            // We request 'metric' units, which gives us Celsius.
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
@@ -242,7 +241,6 @@
                 throw new Error(`Weather API error: ${response.statusText}`);
             }
             const data = await response.json();
-            // We return a simplified object with clearly labeled units.
             return {
                 city: data.name,
                 country: data.sys.country,
@@ -256,12 +254,12 @@
         }
 
         async function getAIWeatherAnalysis(userQuery, weatherData) {
-            // UPDATED PROMPT: Explicitly tell the AI the units are Celsius and suggest converting to Fahrenheit.
-            const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data for their requested location is: ${JSON.stringify(weatherData)}. 
+            // UPDATED PROMPT: Make Fahrenheit conversion mandatory.
+            const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data is: ${JSON.stringify(weatherData)}. 
             
             All temperature values are in Celsius. 
             
-            Provide a conversational, one-paragraph response. Be natural and helpful. Always include the main temperature and specify the units as Celsius (or °C). If you think the user is in a location that primarily uses Fahrenheit (like the US), you may also provide the Fahrenheit conversion in parentheses. The formula is (Celsius * 9/5) + 32. For example, if it's 20°C, you could say 'It's currently 20°C (68°F).'`;
+            Provide a conversational, one-paragraph response. Be natural and helpful. Always include the main temperature and specify the units as Celsius (°C), and always provide the Fahrenheit conversion in parentheses. The formula is (Celsius * 9/5) + 32. For example, 'It's currently 20°C (68°F).'`;
             return callGemini(prompt);
         }
 
@@ -278,7 +276,7 @@
 
             try {
                 const city = await getCityFromQuery(userQuery);
-                if (city === 'N/A') {
+                if (city === 'N/A' || !city) {
                     throw new Error("I'm sorry, I couldn't identify a city in your request. Could you please rephrase it?");
                 }
                 const weatherData = await getWeatherData(city);

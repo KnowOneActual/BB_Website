@@ -208,7 +208,8 @@
 
         // --- AI & WEATHER API LOGIC ---
         async function callGemini(prompt) {
-            if (!GEMINI_API_KEY || GEMINI_API_KEY === "REMOVED_API_KEY") {
+            // FIXED: This check was incorrect. It now correctly checks for the original placeholder.
+            if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
                 throw new Error("The Gemini API key has not been configured. Please add your key to the script.");
             }
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
@@ -231,10 +232,9 @@
         }
 
         async function getWeatherData(city) {
-            if (WEATHER_API_KEY === "REMOVED_API_KEY") {
+            if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
                 throw new Error("The Weather API key has not been configured.");
             }
-            // Fetch metric units (Celsius, m/s) as a base
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
@@ -255,7 +255,6 @@
         }
 
         async function getAIWeatherAnalysis(userQuery, weatherData) {
-            // UPDATED PROMPT: Tell the AI all units are metric and to provide both metric and imperial conversions in the response.
             const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data is: ${JSON.stringify(weatherData)}. 
             
             All data provided to you is in metric units (Celsius, meters per second).

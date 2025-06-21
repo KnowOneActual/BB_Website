@@ -100,7 +100,7 @@
 
         // --- CONFIGURATION ---
         const WEATHER_API_KEY = "REMOVED_API_KEY";
-        const GEMINI_API_KEY = "REMOVED_API_KEY"; // <-- PASTE YOUR KEY FROM Google AI Studio HERE
+        const GEMINI_API_KEY = "REMOVED_API_KEY";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDH0Z31HUAbdJrwdr-nCS5OFPkBu5fClq0",
@@ -194,7 +194,7 @@
             unsubscribe = onSnapshot(q, (snapshot) => {
                 chatWindow.innerHTML = '';
                 if (snapshot.empty) {
-                    addMessage('bot', "Hello! Ask me anything about the weather. For example: 'What's the weather like in Tokyo?'");
+                    addMessage('bot', "Hello! Ask me anything about the weather. For example: 'What's the weather in Tokyo?'");
                 }
                 snapshot.forEach((doc) => {
                     const data = doc.data();
@@ -234,17 +234,34 @@
             if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
                 throw new Error("The Weather API key has not been configured.");
             }
+            // We request 'metric' units, which gives us Celsius.
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 if (response.status === 404) throw new Error(`I couldn't find a city named "${city}". Please check the spelling.`);
                 throw new Error(`Weather API error: ${response.statusText}`);
             }
-            return await response.json();
+            const data = await response.json();
+            // We return a simplified object with clearly labeled units.
+            return {
+                city: data.name,
+                country: data.sys.country,
+                temperature_celsius: data.main.temp,
+                feels_like_celsius: data.main.feels_like,
+                condition: data.weather[0].main,
+                description: data.weather[0].description,
+                humidity_percent: data.main.humidity,
+                wind_speed_mps: data.wind.speed
+            };
         }
 
         async function getAIWeatherAnalysis(userQuery, weatherData) {
-            const prompt = `You are a friendly weather bot. User asked: "${userQuery}". Current weather data: ${JSON.stringify(weatherData)}. Provide a conversational, one-paragraph response. Be natural. Include the main temperature and condition.`;
+            // UPDATED PROMPT: Explicitly tell the AI the units are Celsius and suggest converting to Fahrenheit.
+            const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data for their requested location is: ${JSON.stringify(weatherData)}. 
+            
+            All temperature values are in Celsius. 
+            
+            Provide a conversational, one-paragraph response. Be natural and helpful. Always include the main temperature and specify the units as Celsius (or °C). If you think the user is in a location that primarily uses Fahrenheit (like the US), you may also provide the Fahrenheit conversion in parentheses. The formula is (Celsius * 9/5) + 32. For example, if it's 20°C, you could say 'It's currently 20°C (68°F).'`;
             return callGemini(prompt);
         }
 

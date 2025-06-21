@@ -234,6 +234,7 @@
             if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
                 throw new Error("The Weather API key has not been configured.");
             }
+            // Fetch metric units (Celsius, m/s) as a base
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
@@ -254,12 +255,16 @@
         }
 
         async function getAIWeatherAnalysis(userQuery, weatherData) {
-            // UPDATED PROMPT: Make Fahrenheit conversion mandatory.
+            // UPDATED PROMPT: Tell the AI all units are metric and to provide both metric and imperial conversions in the response.
             const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data is: ${JSON.stringify(weatherData)}. 
             
-            All temperature values are in Celsius. 
+            All data provided to you is in metric units (Celsius, meters per second).
             
-            Provide a conversational, one-paragraph response. Be natural and helpful. Always include the main temperature and specify the units as Celsius (°C), and always provide the Fahrenheit conversion in parentheses. The formula is (Celsius * 9/5) + 32. For example, 'It's currently 20°C (68°F).'`;
+            Provide a conversational, one-paragraph response. Be natural and helpful. In your response, ALWAYS provide both metric and US standard (imperial) units for all relevant measurements.
+            - For temperature, show Celsius (°C) first, then Fahrenheit (°F) in parentheses. Formula: (Celsius * 9/5) + 32.
+            - For wind speed, show miles per hour (mph) first, then meters per second (m/s) in parentheses. Formula: (m/s * 2.237).
+            
+            Example response format for Chicago: "The weather in Chicago is currently 15°C (59°F)... with winds of 11.2 mph (5 m/s)."`;
             return callGemini(prompt);
         }
 

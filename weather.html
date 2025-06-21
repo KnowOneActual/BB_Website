@@ -12,25 +12,21 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Custom scrollbar for dark theme */
         #chat-window::-webkit-scrollbar {
             width: 8px;
         }
 
         #chat-window::-webkit-scrollbar-track {
             background: #1f2937;
-            /* bg-gray-800 */
         }
 
         #chat-window::-webkit-scrollbar-thumb {
             background: #4b5563;
-            /* bg-gray-600 */
             border-radius: 4px;
         }
 
         #chat-window::-webkit-scrollbar-thumb:hover {
             background: #6b7280;
-            /* bg-gray-500 */
         }
     </style>
 </head>
@@ -55,20 +51,17 @@
         </div>
 
         <!-- Chat Window -->
-        <div id="chat-window" class="flex-1 p-6 overflow-y-auto space-y-6">
-            <!-- Messages will be injected here -->
-        </div>
+        <div id="chat-window" class="flex-1 p-6 overflow-y-auto space-y-6"></div>
 
         <!-- Typing Indicator -->
         <div id="typing-indicator" class="px-6 pb-2 hidden">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                    </svg>
-                </div>
+                    </svg></div>
                 <div class="bg-gray-700 rounded-lg p-3">
                     <div class="flex items-center space-x-1">
                         <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
@@ -89,13 +82,11 @@
                     class="flex-1 w-full px-4 py-3 bg-gray-700 text-gray-100 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                     autocomplete="off">
                 <button type="submit"
-                    class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-5 rounded-lg transition-transform duration-200 active:scale-95 flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-5 rounded-lg transition-transform duration-200 active:scale-95 flex items-center space-x-2"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path
                             d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                    </svg>
-                    <span>Send</span>
-                </button>
+                    </svg><span>Send</span></button>
             </form>
             <div id="user-info" class="text-xs text-gray-500 pt-2 text-center truncate"></div>
         </div>
@@ -109,8 +100,8 @@
 
         // --- CONFIGURATION ---
         const WEATHER_API_KEY = "302ec9f8c972dfe297c16c3adf990681";
+        const GEMINI_API_KEY = "AIzaSyCQ0nLRwLdm2GbzLtFUWwZPPtncH96d_no"; // <-- PASTE YOUR KEY FROM Google AI Studio HERE
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDH0Z31HUAbdJrwdr-nCS5OFPkBu5fClq0",
             authDomain: "bb-weather-f9363.firebaseapp.com",
@@ -121,8 +112,7 @@
             measurementId: "G-BBV2VK4W9E"
         };
 
-        const GEMINI_API_KEY = ""; // No key needed if using Gemini Flash 2.0
-        const appId = 'weather-bot-beaubremer-com'; // A unique ID for your app on your site
+        const appId = 'weather-bot-beaubremer-com';
 
         // --- DOM ELEMENTS ---
         const chatWindow = document.getElementById('chat-window');
@@ -138,7 +128,6 @@
         let unsubscribe;
 
         try {
-            // Initialize Firebase ONCE
             const app = initializeApp(firebaseConfig);
             db = getFirestore(app);
             auth = getAuth(app);
@@ -146,13 +135,11 @@
 
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
-                    // User is signed in.
                     userId = user.uid;
                     statusEl.textContent = 'Online';
                     userInfoEl.textContent = `Session ID: ${userId.substring(0, 8)}...`;
                     loadChatHistory();
                 } else {
-                    // User is signed out. Sign them in anonymously.
                     try {
                         await signInAnonymously(auth);
                     } catch (error) {
@@ -162,43 +149,23 @@
                     }
                 }
             });
-
         } catch (e) {
             console.error("Firebase initialization failed:", e);
             statusEl.textContent = 'Error: Check Config';
-            addMessage('bot', `Failed to initialize the app. Did you paste your firebaseConfig object correctly? Error: ${e.message}`);
+            addMessage('bot', `Failed to initialize the app. Check console for errors. Error: ${e.message}`);
         }
 
         // --- CHAT FUNCTIONS ---
         function addMessage(sender, text, timestamp) {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('flex', 'items-start', 'space-x-3', 'max-w-lg');
-
-            const time = timestamp ? new Date(timestamp.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+            const time = timestamp ? new Date(timestamp.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
             if (sender === 'user') {
                 messageDiv.classList.add('ml-auto', 'flex-row-reverse', 'space-x-reverse');
-                messageDiv.innerHTML = `
-                    <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-semibold">U</div>
-                    <div>
-                        <div class="bg-amber-500 text-white p-3 rounded-lg rounded-br-none">
-                            <p>${text}</p>
-                        </div>
-                        <span class="text-xs text-gray-500 mt-1 float-right">${time}</span>
-                    </div>
-                `;
+                messageDiv.innerHTML = `<div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-semibold">U</div><div><div class="bg-amber-500 text-white p-3 rounded-lg rounded-br-none"><p>${text}</p></div><span class="text-xs text-gray-500 mt-1 float-right">${time}</span></div>`;
             } else {
-                messageDiv.innerHTML = `
-                    <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
-                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
-                    </div>
-                     <div>
-                        <div class="bg-gray-700 text-gray-100 p-3 rounded-lg rounded-bl-none">
-                            <p>${text}</p>
-                        </div>
-                        <span class="text-xs text-gray-500 mt-1">${time}</span>
-                    </div>
-                `;
+                messageDiv.innerHTML = `<div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg></div><div><div class="bg-gray-700 text-gray-100 p-3 rounded-lg rounded-bl-none"><p>${text}</p></div><span class="text-xs text-gray-500 mt-1">${time}</span></div>`;
             }
             chatWindow.appendChild(messageDiv);
             chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -206,30 +173,21 @@
 
         function setTyping(isTyping) {
             typingIndicator.style.display = isTyping ? 'block' : 'none';
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+            if (isTyping) chatWindow.scrollTop = chatWindow.scrollHeight;
         }
 
         // --- FIRESTORE FUNCTIONS ---
         async function saveMessage(sender, text) {
             if (!userId) return;
             try {
-                // Using a public path for simplicity on a public site
                 const messagesRef = collection(db, `artifacts/${appId}/public/users/${userId}/messages`);
-                await addDoc(messagesRef, {
-                    sender: sender,
-                    text: text,
-                    createdAt: serverTimestamp()
-                });
-            } catch (error) {
-                console.error("Error saving message: ", error);
-            }
+                await addDoc(messagesRef, { sender, text, createdAt: serverTimestamp() });
+            } catch (error) { console.error("Error saving message: ", error); }
         }
 
         function loadChatHistory() {
             if (!userId) return;
             if (unsubscribe) unsubscribe();
-            chatWindow.innerHTML = '';
-
             const messagesRef = collection(db, `artifacts/${appId}/public/users/${userId}/messages`);
             const q = query(messagesRef, orderBy("createdAt", "asc"));
 
@@ -249,19 +207,32 @@
         }
 
         // --- AI & WEATHER API LOGIC ---
-        async function getCityFromQuery(userQuery) {
-            const prompt = `From the following user query, extract only the name of the city or location. If no city is mentioned, respond with "N/A". Do not add any extra text or punctuation. Query: "${userQuery}"`;
-            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+        async function callGemini(prompt) {
+            if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
+                throw new Error("The Gemini API key has not been configured. Please add your key to the script.");
+            }
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
             const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-            if (!response.ok) throw new Error(`Gemini API error: ${response.statusText}`);
+
+            if (!response.ok) {
+                const errorBody = await response.json();
+                console.error("Gemini API Error Body:", errorBody);
+                const errorMsg = errorBody?.error?.message || response.statusText;
+                throw new Error(`Gemini API error: ${errorMsg}`);
+            }
             const result = await response.json();
-            return result.candidates[0].content.parts[0].text.trim();
+            return result?.candidates?.[0]?.content?.parts?.[0]?.text.trim();
+        }
+
+        async function getCityFromQuery(userQuery) {
+            const prompt = `From the user query, extract only the city or location. If none, respond "N/A". Query: "${userQuery}"`;
+            return callGemini(prompt);
         }
 
         async function getWeatherData(city) {
-            if (WEATHER_API_KEY === "302ec9f8c972dfe297c16c3adf990681") {
-                throw new Error("The Weather API key has not been configured by the developer yet.");
+            if (WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
+                throw new Error("The Weather API key has not been configured.");
             }
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
             const response = await fetch(apiUrl);
@@ -269,21 +240,12 @@
                 if (response.status === 404) throw new Error(`I couldn't find a city named "${city}". Please check the spelling.`);
                 throw new Error(`Weather API error: ${response.statusText}`);
             }
-            const data = await response.json();
-            return {
-                city: data.name, country: data.sys.country, temperature_celsius: data.main.temp, feels_like_celsius: data.main.feels_like,
-                condition: data.weather[0].main, description: data.weather[0].description, humidity_percent: data.main.humidity, wind_speed_mps: data.wind.speed
-            };
+            return await response.json();
         }
 
         async function getAIWeatherAnalysis(userQuery, weatherData) {
-            const prompt = `You are a friendly and helpful weather bot. A user asked: "${userQuery}". The current weather data is: ${JSON.stringify(weatherData)}. Provide a conversational, one-paragraph response. Be natural and helpful. Always include the main temperature and condition.`;
-            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-            if (!response.ok) throw new Error(`Gemini API error: ${response.statusText}`);
-            const result = await response.json();
-            return result.candidates[0].content.parts[0].text.trim();
+            const prompt = `You are a friendly weather bot. User asked: "${userQuery}". Current weather data: ${JSON.stringify(weatherData)}. Provide a conversational, one-paragraph response. Be natural. Include the main temperature and condition.`;
+            return callGemini(prompt);
         }
 
         // --- EVENT HANDLERS ---
@@ -292,7 +254,7 @@
             const userQuery = chatInput.value.trim();
             if (!userQuery || !userId) return;
 
-            addMessage('user', userQuery, { seconds: Date.now() / 1000 });
+            addMessage('user', userQuery);
             await saveMessage('user', userQuery);
             chatInput.value = '';
             setTyping(true);
@@ -315,7 +277,6 @@
                 setTyping(false);
             }
         });
-
     </script>
 </body>
 

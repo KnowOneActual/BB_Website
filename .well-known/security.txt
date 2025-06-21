@@ -1,11 +1,12 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 
+
 # My Security Policy
 
 # Contact: This should be your primary contact for security issues.
 # It can be an email address, a link to a contact form, or a security team page.
-Contact: mailto:support@beaubremer.com
+All security reports should be submitted through the secure contact form on my main portfolio site. (https://beaubremer.com/#contact)
 
 # Expires: The date when this file should be considered outdated.
 # Format: YYYY-MM-DDTHH:MM:SSZ (ISO 8601 UTC)
@@ -18,17 +19,17 @@ Encryption: https://beaubremer.com/BeauBremer-pgp-key.asc
 Acknowledgments: https://beaubremer.com/security-acknowledgements.html
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEE2p5rhCf/gM6yBG0QibA5HhpSgQMFAmhDFcAACgkQibA5HhpS
-gQMFUhAAnzfcZoooSLumnJ7J7Vpxh+4yTH0RdakGOtzL/LQIg7t56ZPYdLvMwogX
-DzlDMfOy32dHrcnpCEfvb8Y7Fohh47es9EKLmq/gmxVY7bO4JxZLHdSxL2wdKsKy
-M6ki4jcsg6WLKHV77lLQxS4xJ2JhwMMEUuqcUk5qt/MVv+M33pDd59F2kAg2YNDx
-eZ/jC/2YqoQKHwYCU1OAnXihhX3vYhVO0I8qfwbhM3dsks8z5Sw7Gmi7t3EBpMRd
-+EI3k/d5GQOCzqnYAzZIroqZuZ21A6dxH2RZyZzpI3LhD9KfsU1Ujf9PCGWbUpJQ
-KtT4O8vScJn4kkO/668F2wsUua5pyJXUYjynRot8BS4pDWTdxRPjdknqLr2YFFPQ
-nditS6mLhGvdZcdhX8X1jXKfKAh5ttyJF271buTcCBsU/dEbvoS6PGT65UEIgtmB
-hDapqyFGB2BTAJZjqseO7yenx1wrfXtg28cd/eV4jEka1PQJ3iBJXugZNtYCFBuO
-5I7j/I5CI1cLVzrAlM3vsDrBjJyQemx1d5Mqdi4XWCEZH6AsFo1cO/3OHG8Jm4Ju
-zZxbB4qkOOIUOrvFUdLdlX7LtrIwN00kA+m/nS8lCfGQVaC4oQREovEk7yOjzhFR
-vWpP3ErzjEt2x8hQg1PTN4GdvLGc39leBlHJu3DFbXfVOAlS38Q=
-=zq9U
+iQIzBAEBCAAdFiEE2p5rhCf/gM6yBG0QibA5HhpSgQMFAmhWIlQACgkQibA5HhpS
+gQNi8g//Ug+2zjIWq3l53HZEp7MRi5OzeYLqFJxwRtm9PiiBHs/tgPoUFKf47i0b
+ucjKpxuqwei2WUQNNGZjp+iEezLCJ7T0flWx0u2BeqsYNZzmgEkyCmp/StCRjrbo
+aQidPaxMAMq+XeBhUR9uvkbmMxQqUFJliLaAQee1oiO8ZqEElom3RznOqa8CnJSR
+Zj/9QmCTHJrnv+I8oMz9AJ6+LlgTBQmIIck90DZlxJ2q8GMFiym20vRlF4UaiqGi
+9rxdf5ROpkcvfmHw0tvKvOc/NsDvimwyFwjdwPQiXVCeab3x1FTj8ADhpEE0tSPS
+K2CrBlNL22PnS8cDitmGsxgtYQiBYg5SwwVPN0j9MtopUQlp9Vg/sP8uOaRoa6BV
+PqqlZSjCV03qJb+yS+/gS3/HpodvgSz7+PPGcuYICKezFZ2U4eRJwfqHHG+37AAL
+69naPrK460KVB7R3RKyWH6B2Yb4paGtGmRoGUtO48rfNkoXiyOV0Se70KvzYD+PK
+eABYTtbAiezqxRoKcsPjsBLDR9OtdJBHG5RYNdoywdybHcSEQIpPPHpcpeZPGN0o
+1VSsDPZtgItTF6xXGLmPPwWyCb5UUPQRuSpmWFefSOLJ/jKFw6Uq+i2b2MR9d0Yx
+SgqMl6rFJIAPXd7OEjkKyNGnkits74eOlBkX9uEHERx/qgpYT1I=
+=Jfml
 -----END PGP SIGNATURE-----

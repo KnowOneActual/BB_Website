@@ -178,7 +178,8 @@
         async function saveMessage(sender, text) {
             if (!userId) return;
             try {
-                const messagesRef = collection(db, `artifacts/${appId}/public/users/${userId}/messages`);
+                // FIXED: Corrected the Firestore path to have an odd number of segments.
+                const messagesRef = collection(db, `artifacts/${appId}/users/${userId}/messages`);
                 await addDoc(messagesRef, { sender, text, createdAt: serverTimestamp() });
             } catch (error) { console.error("Error saving message: ", error); }
         }
@@ -186,7 +187,8 @@
         function loadChatHistory() {
             if (!userId) return;
             if (unsubscribe) unsubscribe();
-            const messagesRef = collection(db, `artifacts/${appId}/public/users/${userId}/messages`);
+            // FIXED: Corrected the Firestore path to have an odd number of segments.
+            const messagesRef = collection(db, `artifacts/${appId}/users/${userId}/messages`);
             const q = query(messagesRef, orderBy("createdAt", "asc"));
 
             unsubscribe = onSnapshot(q, (snapshot) => {

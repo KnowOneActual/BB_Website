@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Custom font styles for headings and body text, matching your main site */
+    
     h1,
     h2,
     h3,
@@ -46,15 +46,18 @@
       /* text-white */
     }
 
-    /* Removed fuchsia-text, fuchsia-bg, fuchsia-hover as they are now directly Tailwind classes or adjusted */
+   
   </style>
 </head>
 
 <body class="bg-gray-950 text-white flex flex-col min-h-screen items-center justify-center text-center p-6">
 
   <main class="max-w-xl mx-auto space-y-6">
-    <img src="/img/404/404_robot.png" alt="Confused robot holding a tangle of wires and a question mark"
-      class="w-48 h-auto mx-auto mb-8">
+    <picture>
+      <source srcset="/img/404/404_robot.webp" type="image/webp">
+      <img src="/img/404/404_robot.png" alt="Confused robot holding a tangle of wires and a question mark"
+        class="w-48 h-auto mx-auto mb-8">
+      </picture>
     <h1 class="text-6xl md:text-7xl font-extrabold text-fuchsia-600">404</h1>
     <p class="text-2xl md:text-3xl font-light text-gray-300">
       Oops! It looks like you've stumbled off the path.

@@ -52,8 +52,9 @@
 
     <header class="text-center py-12 px-4 bg-gray-800">
         <h1 class="text-4xl md:text-5xl font-bold text-fuchsia-400 mb-4">Global Tech Market: Trends & Analysis 2025</h1>
-        <p class="max-w-3xl mx-auto text-lg text-gray-400">A comprehensive deep-dive into the market dynamics,
-            competitive landscape, and future growth drivers shaping the technology industry.</p>
+        <p class="max-w-3xl mx-auto text-lg text-gray-400">This interactive infographic serves as a **demonstration** of
+            dynamic data visualization and web development skills, presenting synthesized trends and analysis of the
+            global tech market.</p>
     </header>
 
     <main class="container mx-auto px-4 py-8">
@@ -183,7 +184,7 @@
                         <li>Global regulatory and data privacy changes.</li>
                         <li>Intense competition and price wars.</li>
                         <li>Geopolitical trade tensions.</li>
-                    </ul>
+                        </li>
                 </div>
             </div>
         </section>
@@ -386,6 +387,10 @@
                     ...customTooltip.plugins,
                     title: { display: true, text: 'Market Share Distribution', font: { size: 16, color: 'white' } },
                     legend: { position: 'bottom', labels: { color: 'white' } } // Ensure legend text is visible
+                },
+                scales: {
+                    // This is a doughnut chart, so x and y scales are not typically defined here.
+                    // Chart.js 3.x handles their absence gracefully.
                 }
             }
         });

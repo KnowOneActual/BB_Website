@@ -21,7 +21,6 @@
         rel="stylesheet" />
 
     <style>
-        /* Using the same font families from your site for consistency */
         h1,
         h2,
         h3,
@@ -35,14 +34,12 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Custom styles for a better-looking range slider */
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
             width: 20px;
             height: 20px;
             background: #C026D3;
-            /* fuchsia-600 */
             border-radius: 50%;
             cursor: pointer;
             margin-top: -6px;
@@ -52,9 +49,12 @@
             width: 20px;
             height: 20px;
             background: #C026D3;
-            /* fuchsia-600 */
             border-radius: 50%;
             cursor: pointer;
+        }
+
+        #tech-tip {
+            transition: opacity 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -87,6 +87,14 @@
                             class="w-20 p-3 rounded-md bg-gray-800 text-white border-2 border-gray-700 text-center text-lg focus:border-fuchsia-600 focus:outline-none" />
                     </div>
                 </div>
+            </div>
+
+            <div id="tech-tip" class="hidden bg-blue-900/50 border border-blue-600 p-4 rounded-lg">
+                <h3 class="font-bold text-blue-300">💡 Tech Tip</h3>
+                <p class="text-sm text-blue-200">You've entered a public IP. For most AV and show networks, you'll want
+                    to use a private IP range like <code class="bg-gray-700 p-1 rounded">192.168.x.x</code>, <code
+                        class="bg-gray-700 p-1 rounded">172.16.x.x - 172.31.x.x</code>, or <code
+                        class="bg-gray-700 p-1 rounded">10.x.x.x</code>.</p>
             </div>
 
             <div id="results-container" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
@@ -162,6 +170,8 @@
             const ipAddressInput = document.getElementById('ip-address');
             const cidrSlider = document.getElementById('cidr-slider');
             const cidrInput = document.getElementById('cidr-input');
+            const techTipEl = document.getElementById('tech-tip');
+
 
             const networkAddressEl = document.getElementById('network-address');
             const usableRangeEl = document.getElementById('usable-range');
@@ -182,6 +192,13 @@
             const ipToLong = (ip) => ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0) >>> 0;
             const longToIp = (long) => [(long >>> 24), (long >>> 16) & 255, (long >>> 8) & 255, long & 255].join('.');
 
+            const isPrivateIp = (ipLong) => {
+                return (ipLong >= ipToLong('10.0.0.0') && ipLong <= ipToLong('10.255.255.255')) ||
+                    (ipLong >= ipToLong('172.16.0.0') && ipLong <= ipToLong('172.31.255.255')) ||
+                    (ipLong >= ipToLong('192.168.0.0') && ipLong <= ipToLong('192.168.255.255'));
+            };
+
+
             // --- CORE LOGIC ---
             function calculateAndDisplay() {
                 const ip = ipAddressInput.value;
@@ -192,6 +209,19 @@
 
                 const cidr = parseInt(cidrInput.value, 10);
                 const ipLong = ipToLong(ip);
+
+                if (!isPrivateIp(ipLong)) {
+                    networkAddressEl.textContent = '-';
+                    usableRangeEl.innerHTML = '<span class="text-red-500">Private IPs only</span>';
+                    broadcastAddressEl.textContent = '-';
+                    totalHostsEl.textContent = '-';
+                    networkInfo = {};
+                    techTipEl.classList.remove('hidden');
+                    return;
+                } else {
+                    techTipEl.classList.add('hidden');
+                }
+
 
                 const subnetMask = (0xFFFFFFFF << (32 - cidr)) >>> 0;
                 const networkAddressLong = (ipLong & subnetMask) >>> 0;

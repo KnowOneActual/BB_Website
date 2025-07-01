@@ -98,30 +98,6 @@
                                 </tr>
                             </thead>
                             <tbody id="monitoringTable">
-                                <tr id="row-https://google.com" class="border-b border-gray-600 last:border-b-0">
-                                    <td class="py-2">https://google.com</td>
-                                    <td class="py-2"><span class="status-dot status-unknown"></span>Unknown</td>
-                                    <td class="py-2">--</td>
-                                    <td class="py-2">--</td>
-                                    <td class="py-2"><button data-endpoint="https://google.com"
-                                            class="text-red-400 hover:text-red-600 remove-btn">Remove</button></td>
-                                </tr>
-                                <tr id="row-https://cloudflare.com" class="border-b border-gray-600 last:border-b-0">
-                                    <td class="py-2">https://cloudflare.com</td>
-                                    <td class="py-2"><span class="status-dot status-unknown"></span>Unknown</td>
-                                    <td class="py-2">--</td>
-                                    <td class="py-2">--</td>
-                                    <td class="py-2"><button data-endpoint="https://cloudflare.com"
-                                            class="text-red-400 hover:text-red-600 remove-btn">Remove</button></td>
-                                </tr>
-                                <tr id="row-https://example.com" class="last:border-b-0">
-                                    <td class="py-2">https://example.com</td>
-                                    <td class="py-2"><span class="status-dot status-unknown"></span>Unknown</td>
-                                    <td class="py-2">--</td>
-                                    <td class="py-2">--</td>
-                                    <td class="py-2"><button data-endpoint="https://example.com"
-                                            class="text-red-400 hover:text-red-600 remove-btn">Remove</button></td>
-                                </tr>
                             </tbody>
                         </table>
                         <p id="noEndpointsMessage" class="text-center text-gray-400 py-4 hidden">No endpoints are being
@@ -135,8 +111,8 @@
                 <ul class="text-sm text-gray-300 space-y-1">
                     <li>• This is a **client-side only** monitor, implemented purely with JavaScript in your web
                         browser.</li>
-                    <li>• It sends a small `HEAD` request (or `GET` if `HEAD` is not supported by the endpoint) to each
-                        specified endpoint at a set interval.</li>
+                    <li>• It sends a small `GET` request (preferring `HEAD` if the server supports it efficiently) to
+                        each specified endpoint at a set interval.</li>
                     <li>• **Latency (ms):** Measures the round-trip time for each request.</li>
                     <li>• **Status:** "Up" indicates a successful response, "Down" indicates a network or server error,
                         and "Unknown" is the initial state.</li>
@@ -152,13 +128,20 @@
     </main>
 
     <script>
+        const STORAGE_KEY = 'networkMonitorEndpoints';
+        const DEFAULT_ENDPOINTS = [
+            'https://google.com',
+            'https://cloudflare.com',
+            'https://example.com' // Changed from httpbin.org/get due to 502 errors
+        ];
+
         class NetworkMonitor {
             constructor() {
                 this.endpoints = new Map(); // endpoint -> { intervalId, lastLatency, lastStatus }
                 this.monitoringInterval = 5000; // Default: 5 seconds
                 this.initDOM();
-                this.loadDefaultEndpoints();
-                this.startMonitoringAll(); // This call was previously misplaced.
+                this.loadEndpoints(); // Load from storage or defaults
+                this.startMonitoringAll();
             }
 
             initDOM() {
@@ -186,18 +169,29 @@
                 });
             }
 
-            loadDefaultEndpoints() {
-                const defaultEndpoints = [
-                    'https://google.com',
-                    'https://cloudflare.com',
-                    'https://example.com' // Changed from httpbin.org/get due to 502 errors
-                ];
-                defaultEndpoints.forEach(ep => {
-                    if (!this.endpoints.has(ep)) {
-                        this.addEndpointToMonitor(ep);
-                    }
+            loadEndpoints() {
+                // Stop all existing monitors and clear DOM/Map before loading
+                this.endpoints.forEach((_value, url) => this.stopMonitoring(url));
+                this.endpoints.clear();
+                this.monitoringTable.innerHTML = ''; // Clear DOM table
+
+                let savedUrls = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+                if (savedUrls.length === 0) {
+                    savedUrls = DEFAULT_ENDPOINTS;
+                    this.saveEndpoints(savedUrls); // Save defaults if loading them for the first time
+                }
+
+                savedUrls.forEach(url => {
+                    // This will now properly add them to the clean state
+                    this.addEndpointToMonitor(url, false); // Add without saving each time
                 });
+
                 this.updateNoEndpointsMessage();
+            }
+
+            saveEndpoints(urlsToSave = Array.from(this.endpoints.keys())) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(urlsToSave));
             }
 
             addEndpoint() {
@@ -222,17 +216,27 @@
                     return;
                 }
 
-                if (this.endpoints.has(parsedUrl.toString())) { // Use standardized URL for consistency
+                // Use standardized URL for consistency
+                const standardizedUrl = parsedUrl.toString();
+
+                if (this.endpoints.has(standardizedUrl)) {
                     alert('Endpoint already being monitored!');
                     return;
                 }
 
-                this.addEndpointToMonitor(parsedUrl.toString()); // Add standardized URL
+                this.addEndpointToMonitor(standardizedUrl, true); // Add and save
                 this.endpointInput.value = '';
                 this.updateNoEndpointsMessage();
             }
 
-            addEndpointToMonitor(url) {
+            addEndpointToMonitor(url, save = false) {
+                // This check now ensures no duplicates are processed if directly called,
+                // but loadEndpoints clears state before calling this.
+                if (this.endpoints.has(url)) {
+                    // Should ideally not happen if loadEndpoints clears first and addEndpoint checks
+                    return;
+                }
+
                 // Add to DOM
                 const row = this.monitoringTable.insertRow();
                 row.id = `row-${btoa(url)}`; // Base64 encode URL for safe ID
@@ -249,6 +253,10 @@
 
                 // Start monitoring this new endpoint
                 this.startMonitoring(url);
+
+                if (save) {
+                    this.saveEndpoints();
+                }
             }
 
             removeEndpoint(url) {
@@ -259,6 +267,7 @@
                     row.remove();
                 }
                 this.updateNoEndpointsMessage();
+                this.saveEndpoints(); // Save after removing
             }
 
             startMonitoring(url) {
@@ -271,7 +280,7 @@
                 }
             }
 
-            startMonitoringAll() { // Newly defined method
+            startMonitoringAll() {
                 this.endpoints.forEach((_value, url) => {
                     this.startMonitoring(url);
                 });
@@ -297,7 +306,7 @@
                 let status = 'Unknown';
                 let latency = '--';
                 const row = document.getElementById(`row-${btoa(url)}`);
-                if (!row) return; // Row might have been removed while check was in flight
+                if (!row) return;
 
                 const statusDot = row.querySelector('.status-dot');
                 const latencyCell = row.cells[2];
@@ -309,15 +318,14 @@
                 latencyCell.textContent = '...';
 
                 try {
-                    // Try HEAD first, then fallback to GET for better compatibility
-                    // For 'no-cors' mode, we cannot inspect response status/ok, only network errors.
-                    let method = 'HEAD';
+                    // Prioritize GET for better general compatibility with no-cors, then try HEAD
+                    let method = 'GET';
                     let response;
                     try {
                         response = await fetch(url, { method: method, cache: 'no-cache', mode: 'no-cors' });
-                    } catch (headError) {
-                        method = 'GET'; // Fallback
-                        response = await fetch(url, { method: method, cache: 'no-cors', mode: 'no-cors' });
+                    } catch (getError) {
+                        method = 'HEAD'; // Fallback to HEAD
+                        response = await fetch(url, { method: method, cache: 'no-cache', mode: 'no-cors' });
                     }
 
                     const endTime = performance.now();

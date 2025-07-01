@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!--test 2-->
 
 <head>
     <meta charset="UTF-8">
@@ -115,12 +114,12 @@
                                     <td class="py-2"><button data-endpoint="https://cloudflare.com"
                                             class="text-red-400 hover:text-red-600 remove-btn">Remove</button></td>
                                 </tr>
-                                <tr id="row-https://httpbin.org/get" class="last:border-b-0">
-                                    <td class="py-2">https://httpbin.org/get</td>
+                                <tr id="row-https://example.com" class="last:border-b-0">
+                                    <td class="py-2">https://example.com</td>
                                     <td class="py-2"><span class="status-dot status-unknown"></span>Unknown</td>
                                     <td class="py-2">--</td>
                                     <td class="py-2">--</td>
-                                    <td class="py-2"><button data-endpoint="https://httpbin.org/get"
+                                    <td class="py-2"><button data-endpoint="https://example.com"
                                             class="text-red-400 hover:text-red-600 remove-btn">Remove</button></td>
                                 </tr>
                             </tbody>
@@ -191,7 +190,7 @@
                 const defaultEndpoints = [
                     'https://google.com',
                     'https://cloudflare.com',
-                    'https://httpbin.org/get' // Using /get as HEAD might not be supported everywhere
+                    'https://example.com' // Changed from httpbin.org/get due to 502 errors
                 ];
                 defaultEndpoints.forEach(ep => {
                     if (!this.endpoints.has(ep)) {
@@ -313,7 +312,7 @@
                         response = await fetch(url, { method: method, cache: 'no-cache', mode: 'no-cors' });
                     } catch (headError) {
                         method = 'GET'; // Fallback
-                        response = await fetch(url, { method: method, cache: 'no-cache', mode: 'no-cors' });
+                        response = await fetch(url, { method: method, cache: 'no-cors', mode: 'no-cors' });
                     }
 
                     const endTime = performance.now();

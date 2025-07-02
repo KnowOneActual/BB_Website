@@ -15,17 +15,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/img/favicon/site.webmanifest" />
     <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
-
     <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
         as="style" crossorigin="anonymous" />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
         rel="stylesheet" crossorigin="anonymous" />
-
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Specific styles for this page */
+       
         .status-dot {
             width: 10px;
             height: 10px;
@@ -54,18 +52,16 @@
 <body class="bg-gray-950 text-white min-h-screen">
     <nav class="bg-gray-900 p-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-fuchsia-400 font-bold text-xl">← Back to Portfolio</a>
+            <a href="index.html" class="text-fuchsia-400 font-bold text-xl">← Back to Main Page</a>
             <h1 class="text-xl font-bold">Network Latency Monitor</h1>
         </div>
     </nav>
-
     <main class="max-w-4xl mx-auto py-12 px-6">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold mb-4 text-fuchsia-400">Network Latency Monitor</h1>
             <p class="text-gray-300 text-lg">Monitor the availability and latency of network endpoints in real-time.
                 **This page is for demonstration purposes only.**</p>
         </div>
-
         <div class="bg-gray-800 rounded-xl p-8 shadow-lg">
             <div class="mb-6">
                 <h2 class="text-2xl font-bold text-fuchsia-400 mb-4">Monitor Endpoints</h2>
@@ -75,14 +71,12 @@
                         placeholder="e.g., google.com or 1.1.1.1" />
                     <button id="addEndpointBtn"
                         class="px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-md transition duration-300 transform hover:scale-105">
-                        Add Endpoint
-                    </button>
+                        Add Endpoint </button>
                 </div>
-                <p class="text-sm text-gray-400">Monitoring interval: <span id="intervalDisplay">5</span> seconds</p>
+                <p class="text-sm text-gray-400">Monitoring interval: <span id="intervalDisplay">5</span> seconds </p>
                 <input type="range" id="intervalSlider" min="1" max="30" value="5"
                     class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer mt-2" />
             </div>
-
             <div class="w-full mt-8">
                 <h3 class="text-xl font-bold mb-4 text-fuchsia-400">Currently Monitoring</h3>
                 <div class="bg-gray-700 rounded-lg p-4">
@@ -97,15 +91,13 @@
                                     <th class="text-left py-2">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="monitoringTable">
-                            </tbody>
+                            <tbody id="monitoringTable"></tbody>
                         </table>
                         <p id="noEndpointsMessage" class="text-center text-gray-400 py-4 hidden">No endpoints are being
                             monitored.</p>
                     </div>
                 </div>
             </div>
-
             <div class="bg-gray-700 rounded-lg p-4 w-full mt-4">
                 <h4 class="font-bold mb-2 text-fuchsia-400">How it works:</h4>
                 <ul class="text-sm text-gray-300 space-y-1">
@@ -126,15 +118,10 @@
             </div>
         </div>
     </main>
-
     <script>
         const STORAGE_KEY = 'networkMonitorEndpoints';
-        const DEFAULT_ENDPOINTS = [
-            'https://google.com',
-            'https://cloudflare.com',
-            'https://example.com' // Changed from httpbin.org/get due to 502 errors
+        const DEFAULT_ENDPOINTS = ['https://google.com', 'https://cloudflare.com', 'https://example.com' // Changed from httpbin.org/get due to 502 errors
         ];
-
         class NetworkMonitor {
             constructor() {
                 this.endpoints = new Map(); // endpoint -> { intervalId, lastLatency, lastStatus }
@@ -143,7 +130,6 @@
                 this.loadEndpoints(); // Load from storage or defaults
                 this.startMonitoringAll();
             }
-
             initDOM() {
                 this.endpointInput = document.getElementById('endpointInput');
                 this.addEndpointBtn = document.getElementById('addEndpointBtn');
@@ -151,7 +137,6 @@
                 this.intervalDisplay = document.getElementById('intervalDisplay');
                 this.monitoringTable = document.getElementById('monitoringTable');
                 this.noEndpointsMessage = document.getElementById('noEndpointsMessage');
-
                 this.addEndpointBtn.addEventListener('click', () => this.addEndpoint());
                 this.endpointInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') this.addEndpoint();
@@ -168,42 +153,33 @@
                     }
                 });
             }
-
             loadEndpoints() {
-                // Stop all existing monitors and clear DOM/Map before loading
+                
                 this.endpoints.forEach((_value, url) => this.stopMonitoring(url));
                 this.endpoints.clear();
                 this.monitoringTable.innerHTML = ''; // Clear DOM table
-
                 let savedUrls = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-
                 if (savedUrls.length === 0) {
                     savedUrls = DEFAULT_ENDPOINTS;
                     this.saveEndpoints(savedUrls); // Save defaults if loading them for the first time
                 }
-
                 savedUrls.forEach(url => {
-                    // This will now properly add them to the clean state
+                   
                     this.addEndpointToMonitor(url, false); // Add without saving each time
                 });
-
                 this.updateNoEndpointsMessage();
             }
-
             saveEndpoints(urlsToSave = Array.from(this.endpoints.keys())) {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(urlsToSave));
             }
-
             addEndpoint() {
                 let url = this.endpointInput.value.trim();
                 if (!url) return;
-
                 // Prepend https:// if no scheme is provided
                 if (!url.startsWith('http://') && !url.startsWith('https://')) {
                     url = 'https://' + url;
                 }
-
-                // Validate URL format and scheme
+                
                 let parsedUrl;
                 try {
                     parsedUrl = new URL(url); // Use URL constructor for robust parsing
@@ -215,50 +191,49 @@
                     alert('Please enter a valid URL (e.g., google.com or https://example.com).');
                     return;
                 }
-
-                // Use standardized URL for consistency
+                
                 const standardizedUrl = parsedUrl.toString();
-
                 if (this.endpoints.has(standardizedUrl)) {
                     alert('Endpoint already being monitored!');
                     return;
                 }
-
                 this.addEndpointToMonitor(standardizedUrl, true); // Add and save
                 this.endpointInput.value = '';
                 this.updateNoEndpointsMessage();
             }
-
             addEndpointToMonitor(url, save = false) {
-                // This check now ensures no duplicates are processed if directly called,
-                // but loadEndpoints clears state before calling this.
+                
                 if (this.endpoints.has(url)) {
                     // Should ideally not happen if loadEndpoints clears first and addEndpoint checks
                     return;
                 }
-
                 // Add to DOM
                 const row = this.monitoringTable.insertRow();
                 row.id = `row-${btoa(url)}`; // Base64 encode URL for safe ID
                 row.innerHTML = `
-                    <td class="py-2">${url}</td>
-                    <td class="py-2"><span class="status-dot status-unknown"></span>Unknown</td>
-                    <td class="py-2">--</td>
-                    <td class="py-2">--</td>
-                    <td class="py-2"><button data-endpoint="${url}" class="text-red-400 hover:text-red-600 remove-btn">Remove</button></td>
+                    
+								<td class="py-2">${url}</td>
+								<td class="py-2">
+									<span class="status-dot status-unknown"></span>Unknown
+								</td>
+								<td class="py-2">--</td>
+								<td class="py-2">--</td>
+								<td class="py-2">
+									<button data-endpoint="${url}" class="text-red-400 hover:text-red-600 remove-btn">Remove</button>
+								</td>
                 `;
-
-                // Add to monitoring map
-                this.endpoints.set(url, { intervalId: null, lastLatency: '--', lastStatus: 'Unknown' });
-
-                // Start monitoring this new endpoint
+               
+                this.endpoints.set(url, {
+                    intervalId: null,
+                    lastLatency: '--',
+                    lastStatus: 'Unknown'
+                });
+                
                 this.startMonitoring(url);
-
                 if (save) {
                     this.saveEndpoints();
                 }
             }
-
             removeEndpoint(url) {
                 this.stopMonitoring(url);
                 this.endpoints.delete(url);
@@ -267,25 +242,22 @@
                     row.remove();
                 }
                 this.updateNoEndpointsMessage();
-                this.saveEndpoints(); // Save after removing
+                this.saveEndpoints(); 
             }
-
             startMonitoring(url) {
-                this.stopMonitoring(url); // Ensure no duplicate intervals
+                this.stopMonitoring(url); 
                 const data = this.endpoints.get(url);
                 if (data) {
                     data.intervalId = setInterval(() => this.checkEndpoint(url), this.monitoringInterval);
-                    // Run initial check immediately
+                    
                     this.checkEndpoint(url);
                 }
             }
-
             startMonitoringAll() {
                 this.endpoints.forEach((_value, url) => {
                     this.startMonitoring(url);
                 });
             }
-
             stopMonitoring(url) {
                 const data = this.endpoints.get(url);
                 if (data && data.intervalId) {
@@ -293,45 +265,46 @@
                     data.intervalId = null;
                 }
             }
-
             restartMonitoringAll() {
                 this.endpoints.forEach((_value, url) => {
                     this.stopMonitoring(url);
                     this.startMonitoring(url);
                 });
             }
-
             async checkEndpoint(url) {
                 const startTime = performance.now();
                 let status = 'Unknown';
                 let latency = '--';
                 const row = document.getElementById(`row-${btoa(url)}`);
                 if (!row) return;
-
                 const statusDot = row.querySelector('.status-dot');
                 const latencyCell = row.cells[2];
                 const lastCheckCell = row.cells[3];
-
                 // Set checking state
                 statusDot.className = 'status-dot status-unknown';
                 row.cells[1].lastChild.textContent = 'Checking...';
                 latencyCell.textContent = '...';
-
                 try {
-                    // Prioritize GET for better general compatibility with no-cors, then try HEAD
+                    
                     let method = 'GET';
                     let response;
                     try {
-                        response = await fetch(url, { method: method, cache: 'no-cache', mode: 'no-cors' });
+                        response = await fetch(url, {
+                            method: method,
+                            cache: 'no-cache',
+                            mode: 'no-cors'
+                        });
                     } catch (getError) {
                         method = 'HEAD'; // Fallback to HEAD
-                        response = await fetch(url, { method: method, cache: 'no-cache', mode: 'no-cors' });
+                        response = await fetch(url, {
+                            method: method,
+                            cache: 'no-cache',
+                            mode: 'no-cors'
+                        });
                     }
-
                     const endTime = performance.now();
                     latency = Math.round(endTime - startTime);
                     status = 'Up'; // If fetch didn't throw, assume it's up.
-
                 } catch (error) {
                     console.error(`Error checking ${url}:`, error);
                     status = 'Down';
@@ -342,7 +315,6 @@
                     row.cells[1].lastChild.textContent = status;
                     latencyCell.textContent = `${latency} ms`;
                     lastCheckCell.textContent = new Date().toLocaleTimeString();
-
                     // Update internal state
                     const data = this.endpoints.get(url);
                     if (data) {
@@ -351,12 +323,10 @@
                     }
                 }
             }
-
             updateNoEndpointsMessage() {
                 this.noEndpointsMessage.classList.toggle('hidden', this.endpoints.size > 0);
             }
         }
-
         document.addEventListener('DOMContentLoaded', () => {
             new NetworkMonitor();
         });
@@ -368,11 +338,8 @@
             <a href="technology_security.html" class="hover:text-fuchsia-400 mx-2">Site Technology Report</a>
         </div>
         <p>© 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or
-            Night
-            ever!
-        </p>
+            Night ever! </p>
     </footer>
-
 </body>
 
 </html>

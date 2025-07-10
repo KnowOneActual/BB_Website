@@ -1,2 +1,11 @@
 # Local Netlify folder
 .netlify
+
+# Node.js
+node_modules
+npm-debug.log
+.npm
+
+# Operating System Files
+.DS_Store
+Thumbs.db

@@ -1,3 +1,42 @@
-User-agent: *
+#   ____         _    _           _   ____               _           _ 
+#  | __ )  ___  | | _(_)_ __   __| | |  _ \ _____      _(_)_ __   __| |
+#  |  _ \ / _ \ | |/ / | '_ \ / _` | | |_) / _ \ \ /\ / / | '_ \ / _` |
+#  | |_) |  __/ |   <| | | | | (_| | |  _ <  __/\ V  V /| | | | | (_| |
+#  |____/ \___| |_|\_\_|_| |_|\__,_| |_| \_\___| \_/\_/ |_|_| |_|\__,_|
+#                                                                      
 #Hi there! nothing to see here
+User-Agent: T-1000
+User-Agent: T-800
+Disallow: /+LarryPage
+Disallow: /+SergeyBrin
+Disallow: /+TimCook
+Disallow: /+SteveJobs
+User-agent: Teoma
 Disallow: /
+User-agent: Gigabot
+Disallow: /
+User-agent: Robozilla
+Disallow: /
+User-agent: Nutch
+Disallow: /
+User-agent: ia_archiver
+Disallow: /
+User-agent: baiduspider
+Disallow: /
+User-agent: naverbot
+Disallow: /
+User-agent: yeti
+Disallow: /
+User-agent: psbot
+Disallow: /
+User-agent: *
+Disallow: 
+Crawl-delay: 60
+Disallow: /cgi-bin/
+Disallow: /lp
+Disallow: /feedback
+Disallow: /langtest
+#Netlify functions folder
+Disallow: /.netlify/
+Sitemap: https://www.beaubremer.com/sitemap.xml
+

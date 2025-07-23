@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/favicon/favicon.svg" alt="alt text" width="200">
+  <img src="img/favicon/favicon_email.svg" alt="alt text" width="200">
 </p>
 
 # Beau Bremer's Personal Website

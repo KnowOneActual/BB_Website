@@ -5,23 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beau Bremer - Onion Site</title>
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* Simple styles for readability */
         body {
             font-family: sans-serif;
             line-height: 1.6;
             margin: 0 auto;
             max-width: 800px;
             padding: 2em;
+            background-color: #fdfdfd;
+            color: #333;
+        }
+
+        header,
+        section {
+            margin-bottom: 2.5em;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 0.5em;
+        }
+
+        header p {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 2em 0;
         }
 
         pre {
-            background-color: #f4f4f4;
+            background-color: #ecf0f1;
             padding: 1em;
             white-space: pre-wrap;
-            /* Helps with long key lines */
             word-wrap: break-word;
+            border-radius: 4px;
+            border: 1px solid #bdc3c7;
+            font-size: 0.9em;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .note {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 1em;
+            margin: 1em 0;
         }
     </style>
 </head>
@@ -30,49 +85,88 @@
 
     <header>
         <h1>Beau Bremer</h1>
-        <p>Welcome to the onion-version of my personal website.</p>
+        <p>A privacy-focused version of my personal website, hosted on the Tor network.</p>
     </header>
 
     <main>
-        <h2>Project Status</h2>
-        <p>
-            <strong>This site is a placeholder and a proof of concept.</strong>
-        </p>
-        <p>
-            It is not actively maintained and may not always be online. For the most up-to-date information about me,
-            please visit my main website at <a href="https://beaubremer.com" target="_blank" rel="noopener noreferrer">beaubremer.com</a>.
-        </p>
-        <h2>About This Site</h2>
-        <p>
-            This site is an experiment in privacy-first web design, built specifically for the Tor network. It is
-            intentionally simple, lightweight, and does not use JavaScript or third-party resources.
-        </p>
-        <p>
-        The primary goal of this project was to learn the process of setting up a Tor onion service from scratch on a cloud
-        server. It serves as a successful demonstration of that experiment. More content and privacy-focused tools may be
-        added over time.
-        </p>
-        
-        <p>
-            Many features from my main website—like the weather app, analytics, and interactive elements—have been
-            stripped away. This is not because they are broken, but because they are incompatible with the goal of a
-            truly private and secure browsing experience. Features that rely on knowing your location or running complex
-            scripts could compromise your anonymity, so they have been removed by design.
-        </p>
-        <p>
-            What's left is pure, simple content.
-        </p>
+        <section id="about-me">
+            <h2>About Me</h2>
+            <p>
+                I'm a tech generalist with a deep-seated passion for ensuring systems run smoothly and efficiently. With
+                a background spanning IT operations, audio-visual technical services, and project management, I bring a
+                highly analytical and solution-oriented approach to complex challenges. I thrive on applying my
+                problem-solving skills to identify root causes and implement lasting solutions.
+            </p>
+        </section>
 
         <hr>
 
-        <h2>Secure Contact</h2>
-        <p>
-            Standard web contact forms can expose user data. For secure and private communication, please use my PGP
-            public key to send an encrypted message.
-        </p>
+        <section id="expertise">
+            <h2>My Expertise</h2>
+            <ul>
+                <li>Full lifecycle of technical support, including meticulous configuration, installation, proactive
+                    maintenance, and rapid troubleshooting.</li>
+                <li>Coordination of large-scale asset deployments and management of workloads for responsive 24/7
+                    support.</li>
+                <li>Delivering seamless functionality for significant projects, from optimizing network POS systems to
+                    integrating professional AV setups.</li>
+                <li>Actively expanding my capabilities in network troubleshooting (Wireshark) and leveraging Python for
+                    scripting and automation.</li>
+            </ul>
+        </section>
 
-        <h3>My PGP Public Key</h3>
-        <pre>
+        <hr>
+
+        <section id="about-this-site">
+            <h2>About This Onion Service</h2>
+            <p>
+                This site is an experiment in privacy-first web development, built specifically to run as a Tor Onion
+                Service. It is intentionally simple, lightweight, and avoids all JavaScript, tracking, and third-party
+                resources.
+            </p>
+            <p>
+                The primary goal of this project was to learn the process of setting up a hidden service from scratch on
+                a cloud server. It demonstrates proficiency in Linux server administration (Ubuntu), web server
+                configuration (Nginx), and networking (Tor). Many features from my main website—like the weather app,
+                analytics, and interactive elements—have been removed by design, as they are incompatible with the goal
+                of a truly private and secure browsing experience.
+            </p>
+            <p class="note">
+                <strong>For the most up-to-date information, please visit my main website:</strong> <a
+                    href="https://beaubremer.com" target="_blank" rel="noopener noreferrer">beaubremer.com</a>.
+            </p>
+        </section>
+
+        <hr>
+
+        <section id="featured-projects">
+            <h2>Featured Projects</h2>
+            <p>Here are a few projects from my main portfolio. For the full experience, please visit my main website.
+            </p>
+            <ul>
+                <li><strong>Conversational Weather Bot:</strong> An interactive bot using Google's Gemini API and
+                    OpenWeatherMap for live data.</li>
+                <li><strong>AV IP Subnet Calculator:</strong> A tool for AV technicians to map lighting, audio, and
+                    control gear to IP addresses.</li>
+                <li><strong>Metadata Remover for Images:</strong> A Python script to strip EXIF data from images to
+                    protect privacy.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <p>
+                Communicating securely is important. Below are a few ways to get in touch.
+            </p>
+
+            <h3>Secure Contact (PGP)</h3>
+            <p>
+                For technical or security-conscious users, the best way to contact me is via encrypted email. You can
+                use my PGP public key below. My email address can be found on my main website.
+            </p>
+            <pre>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGhB0PkBEADVUZZppnRh98BErqzkmHi4f5VDJLUBFNpi9VqbmzTq8kkFWoEi
@@ -125,10 +219,15 @@ TGH9r06mw+OYzQE7186KhqmCurzEdweUD+n9tjYxbOmWVf7Nt/6MZkNY2pPFqyTk
 rdb/haGMU7oJOFGGr7Fa3BagLQWg4R1GRHIAAO1IGjiXUg==
 =zKK1
 -----END PGP PUBLIC KEY BLOCK-----
-        </pre>
-        <p>
-            You can find my contact email on my main website. You will need a PGP client to encrypt your message.
-        </p>
+            </pre>
+
+            <h3>Standard Contact</h3>
+            <p>
+                If you are not familiar with PGP, you can email me directly. To prevent spam, my email address is not
+                listed here, but it is available on the contact page of my main website: <a
+                    href="https://beaubremer.com" target="_blank" rel="noopener noreferrer">beaubremer.com</a>.
+            </p>
+        </section>
     </main>
 
 </body>

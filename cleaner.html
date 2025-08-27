@@ -2,9 +2,22 @@
 <html lang="en">
 
 <head>
+    <link rel="canonical" href="http://32fd3d4gq3u4qqpofstaiq3sf3h6tnyrdpqdcgdszbrhovv25yfxzhqd.onion" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/img/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Showcasing my background in technical project management and AV/IT system implementation, ensuring seamless functionality and timely delivery in dynamic environments." />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Image Cleaner - Beau Bremer</title>
+   <title>Secure Image Cleaner - Beau Bremer</title>
     <style>
         body {
             font-family: sans-serif;
@@ -64,6 +77,11 @@
             padding: 1em;
             margin: 1em 0;
         }
+
+        .limit-note {
+            font-size: 0.9em;
+            color: #555;
+        }
     </style>
 </head>
 
@@ -88,6 +106,7 @@
         <div class="upload-form">
             <form action="/upload" method="post" enctype="multipart/form-data">
                 <h3>1. Select image to clean:</h3>
+                <p class="limit-note">Maximum file size: 10 MB. Upload and Download may be slow depending on Tor network</p>
                 <input type="file" name="image" accept="image/jpeg, image/png" required>
                 <br>
                 <h3>2. Upload and download:</h3>

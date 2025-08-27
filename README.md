@@ -50,6 +50,27 @@ I take security and performance seriously. Here are some of the measures I've im
 * **Code Quality:** I've refactored the codebase to move all inline JavaScript and CSS into external files, which not only improves security by allowing for a stricter CSP but also enhances maintainability.
 * **Accessibility:** I've addressed color contrast issues and used semantic HTML to ensure the site is accessible to all users.
 
+## Tor Onion Service Version
+
+This repository contains a branch named `onion-version` which hosts a privacy-first, minimalist version of this website. This version is designed to be served as a Tor Onion Service.
+
+### Purpose
+
+The `onion-version` of this site is a learning project and a proof of concept with several key goals:
+
+* **Privacy-First:** It is intentionally stripped of all JavaScript, third-party trackers, and external API calls to maximize user anonymity.
+* **Lightweight:** By using simple, clean HTML and CSS, the site is fast and efficient, which is ideal for the higher-latency environment of the Tor network.
+* **Self-Contained:** All necessary assets are hosted locally to prevent any data leaks to outside services.
+* **Educational:** It serves as a practical demonstration of how to deploy a secure and anonymous web presence.
+
+### Deployment
+
+The onion site is hosted on a Google Cloud "Always Free" `e2-micro` VM. Updates are managed via a simple deployment script on the server (`deploy.sh`) which pulls the latest changes from the `onion-version` branch and copies them to the web root.
+
+### Accessing the Onion Site
+
+You can access the live site using the [Tor Browser via this link](http://32fd3d4gq3u4qqpofstaiq3sf3h6tnyrdpqdcgdszbrhovv25yfxzhqd.onion). Please note that this link will only resolve if you are using the Tor Browser. (32fd3d4gq3u4qqpofstaiq3sf3h6tnyrdpqdcgdszbrhovv25yfxzhqd.onion)
+
 ## Contact
 
 Have a question, a comment, or just want to say hi? Feel free to reach out via the contact form on my website.

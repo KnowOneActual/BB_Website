@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Image Cleaner - Beau Bremer</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 2em;
+            background-color: #fdfdfd;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            margin-top: 2em;
+        }
+
+        .upload-form {
+            background-color: #ecf0f1;
+            padding: 1.5em;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 1em;
+        }
+
+        input[type="submit"] {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3498db;
+        }
+
+        .note {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 1em;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Secure Image Cleaner</h1>
+        <p>A privacy-focused tool to remove metadata from your images.</p>
+    </header>
+
+    <main class="container">
+        <h2>About This Tool</h2>
+        <p>
+            When you take a photo, your camera saves hidden information inside the image file, known as EXIF metadata.
+            This can include your location (GPS coordinates), the make and model of your device, and even the date and
+            time the photo was taken.
+        </p>
+        <p>
+            This tool removes that metadata, creating a clean version of your image that you can share more privately.
+        </p>
+
+        <div class="upload-form">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <h3>1. Select image to clean:</h3>
+                <input type="file" name="image" accept="image/jpeg, image/png" required>
+                <br>
+                <h3>2. Upload and download:</h3>
+                <input type="submit" value="Clean and Download">
+            </form>
+        </div>
+
+        <div class="note">
+            <strong>How it works:</strong> Your image is securely uploaded to the server, all metadata is stripped, and
+            then you'll be prompted to download the clean file. The original and cleaned images are immediately deleted
+            from the server. No data is logged or stored.
+        </div>
+
+        <p><a href="onion.html">&larr; Back to main site</a></p>
+    </main>
+
+</body>
+
+</html>

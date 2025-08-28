@@ -7,8 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const linkElement = document.createElement('a');
                 linkElement.href = link.url;
                 linkElement.target = '_blank';
-                linkElement.className = 'block bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-4 px-8 rounded-full transition duration-300 transform hover:scale-105';
-                linkElement.textContent = link.title;
+                linkElement.className = 'link-button';
+
+                // Create icon element
+                const iconElement = document.createElement('i');
+                iconElement.className = `${link.icon} link-icon`;
+
+                // Create span for the title
+                const titleElement = document.createElement('span');
+                titleElement.textContent = link.title;
+
+                linkElement.appendChild(iconElement);
+                linkElement.appendChild(titleElement);
                 linksContainer.appendChild(linkElement);
             });
         })

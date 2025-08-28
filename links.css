@@ -1,5 +1,30 @@
-#links-container a {
-    display: block;
-    margin-bottom: 1rem;
+body {
+    background: linear-gradient(135deg, #1a001a, #2c003e);
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 9999px; /* pill shape */
+    background-color: rgba(212, 59, 212, 0.1); /* transparent fuchsia */
+    border: 1px solid #d43bd4;
+    color: white;
+    font-weight: 600;
     text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.link-button:hover {
+    background-color: #d43bd4;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(212, 59, 212, 0.2);
+}
+
+.link-icon {
+    font-size: 1.25rem;
+    width: 20px; /* Ensures alignment */
+    text-align: center;
 }

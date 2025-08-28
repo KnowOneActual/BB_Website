@@ -47,3 +47,7 @@ body {
     width: 20px; /* Ensures alignment */
     text-align: center;
 }
+/* Add this to links.css to fix the text color */
+.links-container-main p {
+    color: #9ca3af; /* This is the same color as text-gray-400 */
+}

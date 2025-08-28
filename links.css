@@ -2,6 +2,18 @@ body {
     background: linear-gradient(135deg, #1a001a, #2c003e);
 }
 
+/* New styles for the profile image */
+.profile-image {
+    width: 96px; /* 6rem */
+    height: 96px; /* 6rem */
+    border-radius: 9999px; /* full */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem; /* 24px */
+    border: 3px solid #d43bd4;
+    box-shadow: 0 0 20px rgba(212, 59, 212, 0.3);
+}
+
 .link-button {
     display: flex;
     align-items: center;

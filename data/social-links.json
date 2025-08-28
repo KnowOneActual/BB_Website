@@ -1,0 +1,18 @@
+[
+    {
+        "title": "My Blog",
+        "url": "https://blog.beaubremer.com/"
+    },
+    {
+        "title": "GitHub",
+        "url": "https://github.com/KnowOneActual"
+    },
+    {
+        "title": "Latest Project: Conversational Weather Bot",
+        "url": "/weather.html"
+    },
+    {
+        "title": "Privacy-First Image Cleaner Write-up",
+        "url": "https://blog.beaubremer.com/posts/iimage_cleaner_on_a_tor_onion_service/"
+    }
+]

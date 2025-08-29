@@ -84,7 +84,7 @@ The onion site is hosted on a Google Cloud "Always Free" `e2-micro` VM. Updates 
 
 ### Accessing the Onion Site
 
-You can access the live site using the [Tor Browser via this link](https://www.google.com/search?q=http://32fd3d4gq3u4qqpofstaiq3sf3h6tnyrdpqdcgdszbrhovv25yfxzhqd.onion). Please note that this link will only resolve if you are using the Tor Browser. (32fd3d4gq3u4qqpofstaiq3sf3h6tnyrdpqdcgdszbrhovv25yfxzhqd.onion)
+You can access the live site using the [Tor Browser via this link](http://32fd3d4gq3u4qqpofstaiq3sf3h6tnyrdpqdcgdszbrhovv25yfxzhqd.onion). Please note that this link will only resolve if you are using the Tor Browser. (32fd3d4gq3u4qqpofstaiq3sf3h6tnyrdpqdcgdszbrhovv25yfxzhqd.onion)
 
 ## Contact
 

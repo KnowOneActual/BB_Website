@@ -1,33 +1,55 @@
+/* Main Body & Layout */
+body {
+    background: linear-gradient(135deg, #1a001a, #2c003e);
+    display: flex; /* Establishes a flex container */
+    flex-direction: column; /* Stacks children vertically */
+}
+
 .links-container-main {
+    flex-grow: 1; /* Allows this container to grow and push the footer down */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-body {
-    background: linear-gradient(135deg, #1a001a, #2c003e);
+/* Footer Styling */
+footer {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: #9ca3af; /* Tailwind's text-gray-400 */
 }
 
-/* New styles for the profile image */
+footer a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #d43bd4; /* Fuchsia color on hover */
+}
+
+/* Profile Image */
 .profile-image {
-    width: 96px; /* 6rem */
-    height: 96px; /* 6rem */
-    border-radius: 9999px; /* full */
+    width: 96px;
+    height: 96px;
+    border-radius: 9999px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1.5rem; /* 24px */
+    margin-bottom: 1.5rem;
     border: 3px solid #d43bd4;
     box-shadow: 0 0 20px rgba(212, 59, 212, 0.3);
 }
 
+/* Link Buttons */
 .link-button {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     padding: 1rem 1.5rem;
-    border-radius: 9999px; /* pill shape */
-    background-color: rgba(212, 59, 212, 0.1); /* transparent fuchsia */
+    border-radius: 9999px;
+    background-color: rgba(212, 59, 212, 0.1);
     border: 1px solid #d43bd4;
     color: white;
     font-weight: 600;
@@ -43,18 +65,14 @@ body {
 
 .link-icon {
     font-size: 1.25rem;
-    width: 20px; /* Ensures alignment */
+    width: 20px;
     text-align: center;
 }
-/* Add this to links.css to fix the text color */
-.links-container-main p {
-    color: #9ca3af; /* This is the same color as text-gray-400 */
-}
-/* Add this to links.css to fix the heading color */
+
+/* Text Color Fixes */
 .links-container-main h1 {
-    color: #c026d3; /* This is the same color as text-fuchsia-400 */
+    color: #c026d3;
 }
-/* Add this to links.css */
-footer {
-    margin-top: auto;
+.links-container-main p {
+    color: #9ca3af;
 }

@@ -54,3 +54,7 @@ body {
 .links-container-main h1 {
     color: #c026d3; /* This is the same color as text-fuchsia-400 */
 }
+/* Add this to links.css */
+footer {
+    margin-top: auto;
+}

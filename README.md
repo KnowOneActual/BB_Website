@@ -4,6 +4,14 @@
 
 # Beau Bremer's Personal Website
 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/80028065-01f6-4f67-9922-c62f7feb32b7/deploy-status)](https://app.netlify.com/projects/bb-main-site/deploys)
+![Security](https://img.shields.io/badge/Security-Policy-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 Hello there! Welcome to the GitHub repository for my personal website, [beaubremer.com](https://beaubremer.com). This is a living project where I experiment with new technologies, build fun tools, and share my work. I handle everything you see here, from the big features to the little details, as a way to continuously learn and grow as a tech professional.
 
 ## About The Project

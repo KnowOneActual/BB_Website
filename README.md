@@ -88,4 +88,4 @@ You can access the live site using the [Tor Browser via this link](http://32fd3d
 
 ## Contact
 
-Have a question, a comment, or just want to say hi? Feel free to reach out via the contact form on my website. or just want to say hi? Feel free to reach out via the contact form on my website.
+Have a question, a comment, or just want to say hi? Feel free to reach out via the contact form on my website.

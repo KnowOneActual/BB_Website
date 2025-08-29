@@ -1,4 +1,9 @@
 [
+   {
+    "title": "My Wedsite",
+    "url": "https://beaubremer.com/",
+    "icon": "fa-solid fa-globe-pointer"
+    },
     {
         "title": "My Blog",
         "url": "https://blog.beaubremer.com/",
@@ -10,6 +15,11 @@
         "icon": "fa-brands fa-github"
     },
     {
+        "title": "My IP & Browser Information",
+        "url": "/my_ip.html",
+        "icon": "fa-solid fa-network-wired"
+    },
+    {
         "title": "Weather Bot Project",
         "url": "/weather.html",
         "icon": "fa-solid fa-cloud-sun-rain"
@@ -19,4 +29,15 @@
         "url": "https://blog.beaubremer.com/posts/iimage_cleaner_on_a_tor_onion_service/",
         "icon": "fa-solid fa-file-lines"
     }
+    {
+        "title": "Profit and Ego | EaaS",
+        "url": "https://profitandego.com/",
+        "icon": "fa-solid fa-money-bills"
+    }
+    {
+        "title": "Tuesday Firm",
+        "url": "https://tuesdayfirm.dev/",
+        "icon": "fa-brands fa-dev"
+    }
+    
 ]

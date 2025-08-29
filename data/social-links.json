@@ -1,8 +1,8 @@
 [
-   {
-    "title": "My Wedsite",
-    "url": "https://beaubremer.com/",
-    "icon": "fa-solid fa-globe-pointer"
+    {
+        "title": "My Website",
+        "url": "https://beaubremer.com/",
+        "icon": "fa-solid fa-globe"
     },
     {
         "title": "My Blog",
@@ -28,16 +28,15 @@
         "title": "Image Cleaner Write-up",
         "url": "https://blog.beaubremer.com/posts/iimage_cleaner_on_a_tor_onion_service/",
         "icon": "fa-solid fa-file-lines"
-    }
+    },
     {
         "title": "Profit and Ego | EaaS",
         "url": "https://profitandego.com/",
         "icon": "fa-solid fa-money-bills"
-    }
+    },
     {
         "title": "Tuesday Firm",
         "url": "https://tuesdayfirm.dev/",
         "icon": "fa-brands fa-dev"
     }
-    
 ]

@@ -1,21 +1,36 @@
-# Security Policy
+## Security Policy
 
-## Supported Versions
+I take the security of my personal website seriously. If you've discovered a security vulnerability, I appreciate your help in disclosing it to me in a responsible manner.
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+---
+### Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+This is my personal website and is a living project. I don't have different versions, so it's always running on the latest code. I'm committed to promptly addressing any security issues that are discovered.
 
-## Reporting a Vulnerability
+---
+### Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you believe you have found a security vulnerability, please submit a report through my secure contact form:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+* **[https://beaubremer.com/#contact](https://beaubremer.com/#contact)**
+
+When submitting your report, please provide as much detail as you can, including:
+
+* A description of the vulnerability and its potential impact.
+* Steps to reproduce the issue.
+* Any relevant URLs, screenshots, or code snippets.
+
+For encrypted communication, you can use my PGP key, which is available at:
+
+* **[https://beaubremer.com/BeauBremer-pgp-key.asc](https://beaubremer.com/BeauBremer-pgp-key.asc)**
+
+I will do my best to respond to your report within 48 hours. Once a report is validated, I will work to fix the issue as quickly as possible.
+
+---
+### Acknowledgements
+
+I value the work of security researchers and will publicly acknowledge those who responsibly disclose vulnerabilities. You can view the acknowledgements page here:
+
+* **[https://beaubremer.com/security-acknowledgements.html](https://beaubremer.com/security-acknowledgements.html)**
+
+Thank you for helping to keep my website secure!

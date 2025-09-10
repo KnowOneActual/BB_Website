@@ -159,3 +159,53 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeThreeJsAnimation();
   initializeFadeInAnimation();
 });
+
+// --- Fetch and Display Blog Posts ---
+async function fetchAndDisplayBlogPosts() {
+  const container = document.getElementById('blog-posts-container');
+  if (!container) return;
+
+  try {
+    const response = await fetch('/.netlify/functions/fetch-posts');
+    if (!response.ok) {
+      throw new Error('Failed to fetch blog posts');
+    }
+    const posts = await response.json();
+
+    // Clear any placeholder content
+    container.innerHTML = '';
+
+    posts.forEach(post => {
+      const postElement = document.createElement('div');
+      postElement.className = 'bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1';
+
+      const postDate = new Date(post.pubDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      postElement.innerHTML = `
+        <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">${post.title}</h3>
+        <p class="text-gray-400 text-sm mb-2">${postDate}</p>
+        <p class="text-gray-300 text-sm mb-4">${post.snippet}</p>
+        <div class="mt-4 flex flex-wrap gap-4">
+          <a href="${post.link}" target="_blank"
+            class="text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm">Read More
+            &rarr;</a>
+        </div>
+      `;
+      container.appendChild(postElement);
+    });
+
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    container.innerHTML = '<p class="text-gray-400 text-center col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
+  }
+}
+
+// Add this to your DOMContentLoaded listener in script.js
+document.addEventListener('DOMContentLoaded', () => {
+  // ... your existing code ...
+  fetchAndDisplayBlogPosts();
+});

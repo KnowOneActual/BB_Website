@@ -8,8 +8,8 @@ exports.handler = async function (event) {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/';
-
+  const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
+  
   try {
     const feed = await parser.parseURL(BLOG_RSS_URL);
     const posts = feed.items.slice(0, 3).map(item => ({
@@ -23,7 +23,7 @@ exports.handler = async function (event) {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Or your specific domain for better security
+        'Access-Control-Allow-Origin': '*', 
       },
       body: JSON.stringify(posts),
     };

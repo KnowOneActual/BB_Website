@@ -1,8 +1,20 @@
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## [1.1.1] - 2025-09-11
+
+
+### Security
+
+
+
+* **Mitigated DoS Vulnerability:** Patched a "Allocation of Resources Without Limits or Throttling" vulnerability flagged by Snyk. Added maxContentLength and maxBodyLength limits to all axios calls in the Netlify functions (fetch-posts.js and weather.js) to prevent potential Denial of Service attacks from malicious server responses.
 
 
 ## [1.1.0] - 2025-09-11

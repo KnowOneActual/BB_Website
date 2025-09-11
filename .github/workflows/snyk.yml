@@ -1,0 +1,37 @@
+# This is a GitHub Action to automatically scan your project for vulnerabilities using Snyk.
+name: Snyk Security Scan
+
+# This action will run on every push to the 'main' branch and on any pull request.
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  snyk:
+    # This job runs on the latest version of Ubuntu.
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out your code from the repository.
+      - uses: actions/checkout@v3
+
+      # Step 2: Install Node.js, which is needed to install your dependencies.
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Using a stable LTS version of Node.js
+
+      # Step 3: Install the dependencies from your package.json file.
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run the Snyk security scan.
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        # This tells the action to continue even if vulnerabilities are found.
+        # You can change 'continue-on-error: true' to 'false' if you want the build to fail when issues are found.
+        continue-on-error: true 
+        env:
+          # The SNYK_TOKEN is a secret you will add to your GitHub repository settings.
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

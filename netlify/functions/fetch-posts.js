@@ -5,7 +5,6 @@ const axios = require('axios');
 const parser = new Parser();
 
 exports.handler = async function (event) {
-  // Only allow GET requests
   if (event.httpMethod !== 'GET') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
@@ -13,13 +12,23 @@ exports.handler = async function (event) {
   const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 
   try {
-    // First, fetch the RSS feed as plain text using axios
-    const response = await axios.get(BLOG_RSS_URL, { responseType: 'text' });
+    const response = await axios.get(BLOG_RSS_URL, {
+      responseType: 'text',
+      maxContentLength: 5 * 1024 * 1024, // 5MB limit
+      maxBodyLength: 5 * 1024 * 1024, // 5MB limit
+    });
+
+    if (!response || !response.data) {
+        throw new Error('No data received from RSS feed URL.');
+    }
     
-    // Then, parse that text into a structured object
     const feed = await parser.parseString(response.data);
 
-    // Now, process the parsed feed to get the posts
+    if (!feed || !feed.items || !Array.isArray(feed.items)) {
+      console.error('Parsed feed is missing or does not have an "items" array:', feed);
+      throw new Error('Parsed feed is not in the expected format.');
+    }
+
     const posts = feed.items.slice(0, 3).map(item => ({
       title: item.title,
       link: item.link,
@@ -27,17 +36,13 @@ exports.handler = async function (event) {
       snippet: item.contentSnippet ? item.contentSnippet.substring(0, 150) + '...' : ''
     }));
 
-    // Finally, return the posts as a JSON string
     return {
       statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(posts),
     };
   } catch (error) {
-    // If anything goes wrong, log the error and return a helpful message
-    console.error('Error in fetch-posts function:', error);
+    console.error('Error in fetch-posts function:', error.message);
     return {
       statusCode: 500,
       body: JSON.stringify({
@@ -47,3 +52,4 @@ exports.handler = async function (event) {
     };
   }
 };
+

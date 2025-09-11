@@ -152,33 +152,24 @@ function initializeFadeInAnimation() {
   faders.forEach(fader => { appearOnScroll.observe(fader); });
 }
 
-// --- DOMContentLoaded Listener ---
-document.addEventListener('DOMContentLoaded', () => {
-  initializeEasterEggs();
-  initializeFormHandling();
-  initializeThreeJsAnimation();
-  initializeFadeInAnimation();
-});
-
 // --- Fetch and Display Blog Posts ---
 async function fetchAndDisplayBlogPosts() {
   const container = document.getElementById('blog-posts-container');
-  if (!container) return;
+  if (!container) return; // Exit if the container isn't on the page
 
   try {
     const response = await fetch('/.netlify/functions/fetch-posts');
     if (!response.ok) {
-      throw new Error('Failed to fetch blog posts');
+      throw new Error(`Server responded with status: ${response.status}`);
     }
     const posts = await response.json();
 
-    // Clear any placeholder content
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear placeholder content
 
     posts.forEach(post => {
       const postElement = document.createElement('div');
       postElement.className = 'bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1';
-
+      
       const postDate = new Date(post.pubDate).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -198,14 +189,21 @@ async function fetchAndDisplayBlogPosts() {
       container.appendChild(postElement);
     });
 
+    // Re-run the fade-in animation logic for the newly added blog posts
+    initializeFadeInAnimation();
+
   } catch (error) {
     console.error('Error fetching blog posts:', error);
-    container.innerHTML = '<p class="text-gray-400 text-center col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
+    container.innerHTML = '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
   }
 }
 
-// Add this to your DOMContentLoaded listener in script.js
+
+// --- DOMContentLoaded Listener ---
 document.addEventListener('DOMContentLoaded', () => {
-  // ... your existing code ...
-  fetchAndDisplayBlogPosts();
+  initializeEasterEggs();
+  initializeFormHandling();
+  initializeThreeJsAnimation();
+  initializeFadeInAnimation();
+  fetchAndDisplayBlogPosts(); // Fetch blog posts after the page has loaded
 });

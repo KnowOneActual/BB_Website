@@ -1,5 +1,5 @@
 // /netlify/functions/fetch-posts.js
-const Parser = require('rss-parser');
+import Parser from 'rss-parser';
 const parser = new Parser();
 
 exports.handler = async function (event) {
@@ -9,7 +9,7 @@ exports.handler = async function (event) {
   }
 
   const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
-  
+
   try {
     const feed = await parser.parseURL(BLOG_RSS_URL);
     const posts = feed.items.slice(0, 3).map(item => ({

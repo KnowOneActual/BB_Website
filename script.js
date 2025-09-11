@@ -1,4 +1,4 @@
-// --- Helper Functions ---
+// --- top ---
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;

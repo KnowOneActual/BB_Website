@@ -1,5 +1,7 @@
 // /netlify/functions/fetch-posts.js
-import Parser from 'rss-parser';
+const Parser = require('rss-parser');
+const axios = require('axios');
+
 const parser = new Parser();
 
 exports.handler = async function (event) {
@@ -11,7 +13,13 @@ exports.handler = async function (event) {
   const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 
   try {
-    const feed = await parser.parseURL(BLOG_RSS_URL);
+    // First, fetch the RSS feed as plain text using axios
+    const response = await axios.get(BLOG_RSS_URL, { responseType: 'text' });
+    
+    // Then, parse that text into a structured object
+    const feed = await parser.parseString(response.data);
+
+    // Now, process the parsed feed to get the posts
     const posts = feed.items.slice(0, 3).map(item => ({
       title: item.title,
       link: item.link,
@@ -19,19 +27,23 @@ exports.handler = async function (event) {
       snippet: item.contentSnippet ? item.contentSnippet.substring(0, 150) + '...' : ''
     }));
 
+    // Finally, return the posts as a JSON string
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', 
       },
       body: JSON.stringify(posts),
     };
   } catch (error) {
-    console.error("Error fetching or parsing RSS feed:", error);
+    // If anything goes wrong, log the error and return a helpful message
+    console.error('Error in fetch-posts function:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to fetch blog posts.' }),
+      body: JSON.stringify({
+        error: 'Failed to fetch or parse blog posts.',
+        details: error.message,
+      }),
     };
   }
 };

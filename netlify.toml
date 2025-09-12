@@ -11,3 +11,4 @@
 
 [build]
   functions = "netlify/functions"
+  command = "npm run build:css"

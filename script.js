@@ -1,4 +1,4 @@
-// --- top ---
+// --- Helper Functions ---
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;
@@ -30,7 +30,7 @@ const jamEgg = () => {
   const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
   audio.volume = 0.3;
   audio.play();
-  showMessage("叱 Enjoy this chill track while you explore! 叱");
+  showMessage("Enjoy this chill track while you explore!");
 };
 function initializeEasterEggs() {
   window.addEventListener("keydown", (e) => {
@@ -164,7 +164,14 @@ async function fetchAndDisplayBlogPosts() {
     }
     const posts = await response.json();
 
-    container.innerHTML = ''; // Clear placeholder content
+    // Handle the case where the feed is empty
+    if (posts.length === 0) {
+      container.innerHTML = '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">No recent blog posts found. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
+      return; // Stop the function here
+    }
+
+    // If we have posts, clear the skeleton loader
+    container.innerHTML = ''; 
 
     posts.forEach(post => {
       const postElement = document.createElement('div');
@@ -190,10 +197,12 @@ async function fetchAndDisplayBlogPosts() {
     });
 
     // Re-run the fade-in animation logic for the newly added blog posts
+    // This needs to be called again to apply the animation to the new elements.
     initializeFadeInAnimation();
 
   } catch (error) {
     console.error('Error fetching blog posts:', error);
+    // This is our error state
     container.innerHTML = '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
   }
 }
@@ -207,3 +216,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeFadeInAnimation();
   fetchAndDisplayBlogPosts(); // Fetch blog posts after the page has loaded
 });
+

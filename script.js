@@ -164,7 +164,14 @@ async function fetchAndDisplayBlogPosts() {
     }
     const posts = await response.json();
 
-    container.innerHTML = ''; // Clear placeholder content
+    // Handle the case where the feed is empty
+    if (posts.length === 0) {
+      container.innerHTML = '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">No recent blog posts found. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
+      return; // Stop the function here
+    }
+
+    // If we have posts, clear the skeleton loader
+    container.innerHTML = ''; 
 
     posts.forEach(post => {
       const postElement = document.createElement('div');
@@ -175,6 +182,29 @@ async function fetchAndDisplayBlogPosts() {
         month: 'long',
         day: 'numeric'
       });
+
+      postElement.innerHTML = `
+        <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">${post.title}</h3>
+        <p class="text-gray-400 text-sm mb-2">${postDate}</p>
+        <p class="text-gray-300 text-sm mb-4">${post.snippet}</p>
+        <div class="mt-4 flex flex-wrap gap-4">
+          <a href="${post.link}" target="_blank"
+            class="text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm">Read More
+            &rarr;</a>
+        </div>
+      `;
+      container.appendChild(postElement);
+    });
+
+    // Re-run the fade-in animation logic for the newly added blog posts
+    initializeFadeInAnimation();
+
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    // This is our error state
+    container.innerHTML = '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
+  }
+}
 
       postElement.innerHTML = `
         <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">${post.title}</h3>

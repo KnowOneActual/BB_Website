@@ -7,7 +7,7 @@ const parser = new Parser();
 exports.handler = async function (event) {
   // --- TEMPORARY CODE FOR TESTING ---
   return {
-    statusCode: 200,
+    statusCode: 500,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify([]), // Return an empty array
   };

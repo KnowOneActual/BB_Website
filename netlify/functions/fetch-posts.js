@@ -5,12 +5,9 @@ const axios = require('axios');
 const parser = new Parser();
 
 exports.handler = async function (event) {
-  // --- TEMPORARY CODE FOR TESTING ---
-  return {
-    statusCode: 500,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify([]), // Return an empty array
-  };
+  if (event.httpMethod !== 'GET') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
 
   const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 

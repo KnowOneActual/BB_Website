@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    // This tells Tailwind to scan all of your HTML and JavaScript files for classes.
+    // This now specifically targets HTML and JS files in your project's root 
+    // and other relevant folders, safely ignoring node_modules.
     "./*.html",
-    "./**/*.js",
+    "./*.js",
+    "./js_piano_assets/*.js",
   ],
   theme: {
     extend: {},

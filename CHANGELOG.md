@@ -6,75 +6,113 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [1.2.0] - 2025-09-11
+## **[1.3.0] - 2025-09-12**
 
 
-### Added
-
-
-
-* **Automated Security Scanning:** Integrated the Snyk GitHub Action to provide continuous security monitoring. The action automatically scans project dependencies for vulnerabilities on every push and pull request to the main branch.
-
-
-## [1.1.1] - 2025-09-11
-
-
-### Security
+### **Added**
 
 
 
-* **Mitigated DoS Vulnerability:** Patched a "Allocation of Resources Without Limits or Throttling" vulnerability flagged by Snyk. Added maxContentLength and maxBodyLength limits to all axios calls in the Netlify functions (fetch-posts.js and weather.js) to prevent potential Denial of Service attacks from malicious server responses.
+* A build process for Tailwind CSS using its CLI to generate an optimized, production-ready stylesheet from the project's source files.
+* A script to package.json (npm run build:css) to execute the Tailwind CSS build process.
+* A script to package.json (npm run update-browsers) to update the browser compatibility database.
 
 
-## [1.1.0] - 2025-09-11
-
-
-### Added
-
-
-
-* **Recent Blog Posts Section:** Integrated the latest posts from the external blog (blog.beaubremer.com) onto the main page. This is powered by a new Netlify serverless function (fetch-posts.js) that fetches and parses the blog's RSS feed.
-* **New Dependencies:** Added axios and rss-parser to package.json to support the new blog integration feature.
-
-
-### Changed
+### **Changed**
 
 
 
-* Updated the main script.js to include logic for fetching and dynamically displaying the recent blog posts.
-* Refined the main DOMContentLoaded event listener to orchestrate all page-load functionalities, including the new blog post fetch.
+* Removed the Tailwind CSS CDN script from all HTML files in favor of a locally generated style.css file.
+* Updated netlify.toml to run the npm run build:css command on every deploy, automating the optimization process.
+* Refined the tailwind.config.js to be more specific about which files to scan, improving build performance.
 
 
-## [1.0.0] - 2025-09-09
-
-This was the first entry for the changelog, summarizing the major features and improvements made to the website up to that point.
-
-
-### Added
+### **Improved**
 
 
 
-* **Conversational Weather Bot:** An interactive bot using Google's Gemini API for natural language processing and the OpenWeatherMap API for live data, with chat history stored in Firebase Firestore.
-* **AV IP Subnet Calculator:** A utility for AV technicians to plan on-site networks by mapping devices to IP addresses.
-* **Network Diagnostic Tools:** A suite of client-side tools including a Network Latency Monitor and a Network Speed Test.
-* **Data Visualization Project:** An interactive infographic built with Chart.js to demonstrate dynamic data presentation.
-* **Site Technology & Security Report Page:** A dedicated page to document the technologies and security practices used on the site.
-* **Creative Resource Library:** A curated collection of tools and resources for creative and technical work.
-* **security.txt File:** Implemented a security.txt file to provide a clear channel for vulnerability reporting.
+* Site performance by significantly reducing the final CSS file size for production builds.
 
 
-### Changed
+## **[1.2.0] - 2025-09-11**
+
+
+### **Added**
 
 
 
-* **Security Headers:** Implemented a comprehensive _headers file for Netlify, defining a strong Content-Security-Policy (CSP) and other security headers.
-* **Code Refactoring:** Moved all inline JavaScript and CSS into dedicated external files (script.js, style.css), improving security.
-* **Performance Optimization:** Removed an unnecessary 4.1 MB text file that was being loaded on every page visit, significantly improving page load times.
-* **Accessibility:** Addressed color contrast issues in the footer and implemented the &lt;main> HTML5 semantic tag for better structure.
+* Integrated Snyk's free GitHub Action to automatically scan for dependency vulnerabilities on every push and pull request to the main branch.
+* Created a .github/workflows/snyk.yml file to configure the automated security scans.
 
 
-### Fixed
+### **Security**
 
 
 
-* **Favicon Reliability:** Updated the favicon link to a standard .ico file, resolving a console error and ensuring it loads reliably.
+* Added SNYK_TOKEN as a secret to the GitHub repository to allow the Snyk action to report to the Snyk dashboard.
+
+
+## **[1.1.1] - 2025-09-11**
+
+
+### **Security**
+
+
+
+* Fixed a "Allocation of Resources Without Limits or Throttling" vulnerability in axios reported by Snyk.
+* Added maxContentLength and maxBodyLength limits to all axios requests in the Netlify functions (fetch-posts.js, weather.js) to prevent potential Denial of Service (DoS) attacks.
+* Updated the weather.js function to use axios for consistency and to apply the security fix.
+
+
+## **[1.1.0] - 2025-09-10**
+
+
+### **Added**
+
+
+
+* A "Recent Blog Posts" section to the homepage that dynamically fetches and displays the latest posts from the blog.beaubremer.com RSS feed.
+* A new Netlify serverless function (fetch-posts.js) to parse the RSS feed and return it as JSON.
+* The rss-parser dependency to handle XML parsing in the new serverless function.
+
+
+### **Fixed**
+
+
+
+* Resolved a series of issues in the fetch-posts.js function and script.js to correctly fetch, parse, and render blog posts.
+
+
+## **[1.0.0] - 2025-09-09**
+
+This is the inaugural entry for the changelog, summarizing the major features and improvements made to the website up to this point.
+
+
+### **Added**
+
+
+
+* Conversational Weather Bot using Google's Gemini API, OpenWeatherMap API, and Firebase Firestore.
+* AV IP Subnet Calculator for on-site network planning.
+* Network Diagnostic Tools including a Latency Monitor and Speed Test.
+* Data Visualization Project using Chart.js.
+* Site Technology & Security Report Page.
+* Creative Resource Library with tools and guides.
+* security.txt file for vulnerability reporting.
+
+
+### **Changed**
+
+
+
+* Implemented a strong Content-Security-Policy (CSP) and other security headers via a _headers file for Netlify.
+* Refactored all inline JavaScript and CSS into external files for improved security and maintainability.
+* Optimized site performance by removing a 4.1 MB unnecessary payload.
+* Improved accessibility by fixing color contrast issues and using semantic HTML.
+
+
+### **Fixed**
+
+
+
+* Corrected a console error related to the favicon by updating it to a standard .ico file.

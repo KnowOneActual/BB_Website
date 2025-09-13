@@ -33,5 +33,17 @@
         "title": "Tuesday Firm",
         "url": "https://tuesdayfirm.dev/",
         "icon": "fa-brands fa-dev"
+    },
+
+    {
+        "title": "Mastodon",
+        "url": "https://mastodon.social/@grimburly",
+        "icon": "fa-brands fa-mastodon"
+    },
+    
+    {
+        "title": "Bluesky",
+        "url": "https://bsky.app/profile/grimburly.bsky.social",
+        "icon": "fa-solid fa-message"
     }
 ]

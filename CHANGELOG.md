@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2025-09-13
+
+### Added
+
+- A `links.beaubremer.com` subdomain to provide a direct, shareable URL for the Links page.
+- A domain-level redirect rule to the `_redirects` file to route traffic from the new subdomain to the `/links` page.
+
+### Improved
+
+- User experience by providing a short, memorable URL for a key landing page.
+
+### Fixed
+
+- An issue where the initial domain-level redirect was not being applied. The rule in `_redirects` was updated with a wildcard (`*`) and a force flag (`!`) to ensure it is always processed correctly.
+
 
 ## [1.4.0] - 2025-09-12
 

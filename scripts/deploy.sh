@@ -1,62 +1,56 @@
 #!/bin/bash
 
-# A script to deploy the onion site and the image cleaner app from GitHub
+# A script to pull the latest changes from GitHub and deploy them to the live server.
+# This script handles both the static website and the Python Flask application.
 
-echo "--- Starting deployment ---"
+# Exit immediately if a command exits with a non-zero status.
+set -e
 
-# --- Step 1: Deploy the Static Website ---
-echo "[1/4] Deploying the static HTML site..."
+echo "--- Starting Deployment ---"
 
-# Navigate to the project directory
-cd ~/BB_Website || { echo "Failed to cd to BB_Website"; exit 1; }
-
-# Pull the latest changes
+# --- 1. Update the local repository from GitHub ---
+echo "[1/4] Pulling latest changes from GitHub..."
+cd ~/BB_Website || exit
 git checkout onion-version
 git pull origin onion-version
 
-# Copy web-facing files, excluding the app code and git directory
-echo "Copying HTML/CSS files to /var/www/html/..."
-sudo rsync -av --delete --exclude='.git' --exclude='image_cleaner.py' --exclude='requirements.txt' --exclude='scripts' ~/BB_Website/ /var/www/html/
+
+# --- 2. Deploy the Static Website Files ---
+echo "[2/4] Syncing website files to /var/www/html/..."
+# Use rsync to efficiently copy files and set correct ownership in one step.
+sudo rsync -av --delete \
+    --exclude='.git' \
+    --exclude='image_cleaner.py' \
+    --exclude='requirements.txt' \
+    --exclude='deploy.sh' \
+    ~/BB_Website/ /var/www/html/
+
+# Fix permissions for the web server
+echo "Setting permissions for Nginx..."
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
 
 
-# --- Step 2: Set up the Python Image Cleaner App ---
-echo "[2/4] Setting up the Python image cleaner app..."
-
-# Define the location for our Flask app
+# --- 3. Deploy the Python Application ---
+echo "[3/4] Updating the Python image cleaner application..."
 APP_DIR=~/image_cleaner_app
-VENV_DIR=$APP_DIR/venv
 
-# Create the app directory if it doesn't exist
-mkdir -p $APP_DIR
-
-# Copy the Python app files from the repo to the app directory
+# Copy the latest version of the app and its requirements
 cp ~/BB_Website/image_cleaner.py $APP_DIR/
 cp ~/BB_Website/requirements.txt $APP_DIR/
 
-
-# --- Step 3: Create Virtual Environment & Install Dependencies ---
-echo "[3/4] Checking for virtual environment..."
-
-# Check if the venv exists. If not, create it.
-if [ ! -d "$VENV_DIR" ]; then
-  echo "Virtual environment not found. Creating one..."
-  python3 -m venv $VENV_DIR
-fi
-
-# Activate the virtual environment
-source $VENV_DIR/bin/activate
-
-# Install dependencies from requirements.txt
-echo "Installing/updating Python dependencies..."
+# Install any new dependencies into the virtual environment
+source $APP_DIR/venv/bin/activate
 pip install -r $APP_DIR/requirements.txt
-
-# Deactivate the virtual environment
 deactivate
 
 
-# --- Step 4: Restart the Application Service ---
-# This step is for when we create a systemd service later.
-echo "[4/4] Restarting the application service (if configured)..."
-# sudo systemctl restart image_cleaner
+# --- 4. Restart Services ---
+echo "[4/4] Restarting services to apply all changes..."
+# Restart the Python application service
+sudo systemctl restart image_cleaner.service
 
-echo "--- Deployment finished successfully! ---"
+# Reload Nginx to ensure it's running the latest config (if any changes were made)
+sudo systemctl reload nginx
+
+echo "--- Deployment Finished Successfully! ---"

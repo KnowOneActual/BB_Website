@@ -1,5 +1,14 @@
 Onion Site
 
+## 2025-09-15
+
+### Fixed
+- Resolved a critical issue where the Tor onion service would become unreachable. The root cause was identified as the `tor@default.service` daemon failing to start automatically after a server reboot.
+
+### Changed
+- Updated server configuration to use `sudo systemctl enable tor.service` as the correct method for enabling the Tor service on boot. This ensures the `tor@default.service` instance is properly managed by the master service.
+- (Recommended) Updated the `Main Site Tor.md` runbook to reflect the correct troubleshooting and service enablement procedures for `systemd`.
+
 ### ## Changelog: September 14, 2025
 
 This update marks the initial deployment and stabilization of the Tor Onion Service for the website, including the launch of the new Secure Image Cleaner application and initial server hardening.

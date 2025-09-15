@@ -14,10 +14,17 @@ cd ~/BB_Website || exit
 git checkout onion-version
 git pull origin onion-version
 
+# --- SANITY CHECK ---
+# Verify that the index.html file exists before we deploy.
+if [ ! -f "index.html" ]; then
+    echo "ERROR: index.html not found after git pull. Aborting deployment to prevent site outage."
+    exit 1
+fi
+# --- END SANITY CHECK ---
+
 
 # --- 2. Deploy the Static Website Files ---
 echo "[2/4] Syncing website files to /var/www/html/..."
-# Use rsync to efficiently copy files and set correct ownership in one step.
 sudo rsync -av --delete \
     --exclude='.git' \
     --exclude='image_cleaner.py' \
@@ -47,10 +54,7 @@ deactivate
 
 # --- 4. Restart Services ---
 echo "[4/4] Restarting services to apply all changes..."
-# Restart the Python application service
 sudo systemctl restart image_cleaner.service
-
-# Reload Nginx to ensure it's running the latest config (if any changes were made)
 sudo systemctl reload nginx
 
 echo "--- Deployment Finished Successfully! ---"

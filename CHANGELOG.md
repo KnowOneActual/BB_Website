@@ -1,3 +1,4 @@
+Onion Site
 
 ### ## Changelog: September 14, 2025
 
@@ -20,6 +21,7 @@ This update marks the initial deployment and stabilization of the Tor Onion Serv
 ### ### Infrastructure & Deployment
 
 * **Deployment Script:** Created a comprehensive `deploy.sh` script to automate pulling the latest changes from GitHub, syncing both the static site and the Python application, setting permissions, and restarting all necessary services.
+    * **Improved Script Stability:** Added a sanity check to the deployment script to verify `index.html` exists before syncing. This prevents the script from accidentally deleting the homepage and causing a site outage.
 * **Service Enablement:** Nginx, Tor, and the `image_cleaner` services have all been enabled to ensure they start automatically after a server reboot.
 * **Nginx Configuration:**
     * Fixed a persistent "403 Forbidden" error by updating the configuration to correctly identify `index.html` as the default document.

@@ -22,7 +22,7 @@ A typical visitor request follows this path:
 
 ## Troubleshooting Log
 
-Here we document specific issues, their diagnosis, and the final solution.
+Here are the document-specific issues, their diagnosis, and the final solution.
 
 ### **Issue #1: Onion Site Times Out**
 

@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Fixed
 
-The BlueSky icon didn't display until I updated to AwesomeFonts 6.7.2. <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+The BlueSky icon didn't display until I updated to AwesomeFonts 6.7.2. <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> Then update to version 7.0.0.
 
 
 

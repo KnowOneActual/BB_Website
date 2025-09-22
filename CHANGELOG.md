@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Fixed
+
+The BlueSky icon didn't display until I updated to AwesomeFonts 6.7.2. <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
 ## [1.5.0] - 2025-09-13
 
 ### Added
@@ -36,7 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 
 
-* The user experience by providing clear visual feedback during the data fetching process for the blog section.
+* The user experience is improved by providing clear visual feedback during the data fetching process for the blog section.
 
 
 ### Fixed
@@ -54,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 
 * A build process for Tailwind CSS using its CLI to generate an optimized, production-ready stylesheet.
-* A script to package.json (npm run build:css) to execute the Tailwind CSS build process.
+* A script in package.json (npm run build:css) to execute the Tailwind CSS build process.
 * A script to package.json (npm run update-browsers) to update the browser compatibility database.
 
 
@@ -63,7 +69,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 
 * Removed the Tailwind CSS CDN script from all HTML files in favor of a locally generated style.css file.
-* Updated netlify.toml to run the npm run build:css command on every deploy.
+* Updated Netlify. toml to run the npm run build:css command on every deploy.
 * Refined the tailwind.config.js to be more specific, improving build performance.
 
 
@@ -111,21 +117,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 
 
-* A "Recent Blog Posts" section to the homepage that dynamically fetches posts from an RSS feed.
+* A "Recent Blog Posts" section on the homepage that dynamically fetches posts from an RSS feed.
 * A new Netlify serverless function (fetch-posts.js) to parse the RSS feed.
-* The rss-parser dependency to handle XML parsing.
+* The RSS-parser dependency to handle XML parsing.
 
 
 ### Fixed
 
 
 
-* Resolved a series of issues in the fetch-posts.js function and script.js to correctly fetch, parse, and render blog posts.
+* Resolved a series of issues in the fetch-posts.js function and script.js to fetch, parse, and render blog posts correctly.
 
 
 ## [1.0.0] - 2025-09-09
 
-This is the inaugural entry for the changelog, summarizing the major features and improvements made to the website up to this point.
+This is the inaugural entry for the changelog, summarizing the significant features and improvements made to the website up to this point.
 
 
 ### Added
@@ -134,7 +140,7 @@ This is the inaugural entry for the changelog, summarizing the major features an
 
 * Conversational Weather Bot using Google's Gemini API, OpenWeatherMap API, and Firebase Firestore.
 * AV IP Subnet Calculator for on-site network planning.
-* Network Diagnostic Tools including a Latency Monitor and Speed Test.
+* Network Diagnostic Tools, including a Latency Monitor and Speed Test.
 * Data Visualization Project using Chart.js.
 * Site Technology & Security Report Page.
 * Creative Resource Library with tools and guides.

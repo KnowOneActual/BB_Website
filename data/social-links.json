@@ -38,6 +38,6 @@
     {
         "title": "Bluesky",
         "url": "https://bsky.app/profile/@grimburly.xyz",
-        "icon": "fa-brands fa-square-bluesky"
+        "icon": "fab fa-bluesky fa-lg"
     }
 ]

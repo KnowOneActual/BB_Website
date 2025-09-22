@@ -36,14 +36,8 @@
     },
 
     {
-        "title": "Mastodon",
-        "url": "https://mastodon.social/@grimburly",
-        "icon": "fa-brands fa-mastodon"
-    },
-    
-    {
         "title": "Bluesky",
         "url": "https://bsky.app/profile/@grimburly.xyz",
-        "icon": "fa-solid fa-message"
+        "icon": "fa-brands fa-square-bluesky"
     }
 ]

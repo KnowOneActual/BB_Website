@@ -12,14 +12,10 @@
 # /netlify.toml
 
 [build]
-  # This command builds your CSS
+ [build]
   command = "npm run build:css"
-  
-  # This is the directory that contains your HTML, CSS, and JS files
-  publish = "." 
-  
-  # This tells Netlify where to find your serverless functions
-  functions = "netlify/functions"
+  publish = "."
+  functions = "netlify/functions" 
 
 [functions]
   # This ensures node-fetch is bundled correctly with your function

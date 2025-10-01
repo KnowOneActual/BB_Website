@@ -1,6 +1,6 @@
 // /netlify/functions/fetch-posts.js
 const Parser = require('rss-parser');
-const fetch = require('node-fetch'); // Use node-fetch
+const fetch = require('node-fetch'); // Using node-fetch, which is proven to work in your environment
 
 const parser = new Parser();
 
@@ -12,13 +12,14 @@ exports.handler = async function (event) {
   const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 
   try {
-    const response = await fetch(BLOG_RSS_URL); // Use fetch here
+    // Use the node-fetch library to get the RSS feed
+    const response = await fetch(BLOG_RSS_URL); 
 
     if (!response.ok) {
         throw new Error(`Failed to fetch RSS feed. Status: ${response.status}`);
     }
     
-    // Get the response as text to be parsed
+    // Get the response as text, since the parser expects an XML string
     const xmlData = await response.text(); 
 
     if (!xmlData) {

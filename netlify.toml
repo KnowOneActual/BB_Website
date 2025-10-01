@@ -10,19 +10,8 @@
     X-Content-Type-Options = "nosniff"
 
 [build]
-  # This command builds your CSS
-  command = "npm run build:css"
-  
-  # This is the directory that contains your HTML, CSS, and JS files
-  publish = "." 
-  
-  # This tells Netlify where to find your serverless functions
   functions = "netlify/functions"
-
-[functions]
-  # This ensures node-fetch is bundled correctly with your function
-  external_node_modules = ["node-fetch"]
-  node_bundler = "esbuild"
+  command = "npm run build:css"
   
 [[redirects]]
   from = "/blog"

@@ -1,6 +1,6 @@
 // /netlify/functions/fetch-posts.js
 const Parser = require('rss-parser');
-const fetch = require('node-fetch'); // Using node-fetch
+const fetch = require('node-fetch');
 
 const parser = new Parser();
 
@@ -12,22 +12,25 @@ exports.handler = async function (event) {
   const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 
   try {
-    const response = await fetch(BLOG_RSS_URL); 
+    const response = await fetch(BLOG_RSS_URL);
 
     if (!response.ok) {
-        throw new Error(`Failed to fetch RSS feed. Status: ${response.status}`);
+      // Log the failing status and status text
+      console.error(`RSS feed fetch failed with status: ${response.status} ${response.statusText}`);
+      throw new Error(`Failed to fetch RSS feed. Status: ${response.status}`);
     }
-    
-    const xmlData = await response.text(); 
+
+    const xmlData = await response.text();
 
     if (!xmlData) {
-        throw new Error('No data received from RSS feed URL.');
+      console.error('No data received from RSS feed URL.');
+      throw new Error('No data received from RSS feed URL.');
     }
-    
+
     const feed = await parser.parseString(xmlData);
 
     if (!feed || !feed.items || !Array.isArray(feed.items)) {
-      console.error('Parsed feed is missing or does not have an "items" array:', feed);
+      console.error('Parsed feed is not in the expected format:', feed);
       throw new Error('Parsed feed is not in the expected format.');
     }
 
@@ -44,12 +47,15 @@ exports.handler = async function (event) {
       body: JSON.stringify(posts),
     };
   } catch (error) {
-    console.error('Error in fetch-posts function:', error.message);
+    // Log the entire error object for detailed debugging
+    console.error('Error in fetch-posts function:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({
         error: 'Failed to fetch or parse blog posts.',
+        // Send the detailed error message back to the client
         details: error.message,
+        stack: error.stack // Also include the stack trace
       }),
     };
   }

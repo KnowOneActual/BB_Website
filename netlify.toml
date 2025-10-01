@@ -9,13 +9,22 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
 
+# /netlify.toml
+
 [build]
+  # This command builds your CSS
   command = "npm run build:css"
-  publish = "."
+  
+  # This is the directory that contains your HTML, CSS, and JS files
+  publish = "." 
+  
+  # This tells Netlify where to find your serverless functions
   functions = "netlify/functions"
 
 [functions]
-  node_bundler = "zisi" 
+  # This ensures node-fetch is bundled correctly with your function
+  external_node_modules = ["node-fetch"]
+  node_bundler = "esbuild"
   
 [[redirects]]
   from = "/blog"

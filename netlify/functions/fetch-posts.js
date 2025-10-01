@@ -1,6 +1,5 @@
-// TOP /netlify/functions/fetch-posts.js
 const Parser = require('rss-parser');
-const axios = require('axios');
+const fetch = require('node-fetch');
 
 const parser = new Parser();
 
@@ -12,22 +11,19 @@ exports.handler = async function (event) {
     const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 
     try {
-        const response = await axios.get(BLOG_RSS_URL, {
-            responseType: 'text',
-            maxContentLength: 5 * 1024 * 1024, // 5MB limit
-            maxBodyLength: 5 * 1024 * 1024, // 5MB limit
+        const response = await fetch(BLOG_RSS_URL, {
+            headers: {
+                // This is our unique identifier or "secret handshake"
+                'User-Agent': 'Beau-Bremer-Website-Blog-Fetcher/1.0',
+            },
         });
 
-        if (!response || !response.data) {
-            throw new Error('No data received from RSS feed URL.');
+        if (!response.ok) {
+            throw new Error(`Failed to fetch RSS feed. Status: ${response.status}`);
         }
 
-        const feed = await parser.parseString(response.data);
-
-        if (!feed || !feed.items || !Array.isArray(feed.items)) {
-            console.error('Parsed feed is missing or does not have an "items" array:', feed);
-            throw new Error('Parsed feed is not in the expected format.');
-        }
+        const xmlData = await response.text();
+        const feed = await parser.parseString(xmlData);
 
         const posts = feed.items.slice(0, 3).map((item) => ({
             title: item.title,
@@ -42,13 +38,10 @@ exports.handler = async function (event) {
             body: JSON.stringify(posts),
         };
     } catch (error) {
-        console.error('Error in fetch-posts function:', error.message);
+        console.error('Error in fetch-posts function:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({
-                error: 'Failed to fetch or parse blog posts.',
-                details: error.message,
-            }),
+            body: JSON.stringify({ error: 'Failed to fetch or parse blog posts.' }),
         };
     }
 };

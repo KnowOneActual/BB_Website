@@ -9,8 +9,6 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
 
-# /netlify.toml
-
 [build]
   # This command builds your CSS
   command = "npm run build:css"

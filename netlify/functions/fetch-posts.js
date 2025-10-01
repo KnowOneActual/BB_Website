@@ -1,5 +1,4 @@
 const Parser = require('rss-parser');
-// We will use node-fetch which is already a dependency in your project.
 const fetch = require('node-fetch');
 
 const parser = new Parser();
@@ -13,16 +12,13 @@ exports.handler = async function (event) {
 
     try {
         const response = await fetch(BLOG_RSS_URL, {
-            // This header makes the request look like it's coming from a browser,
-            // which will prevent the 403 Forbidden error.
             headers: {
-                'User-Agent':
-                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+                // This is our unique identifier or "secret handshake"
+                'User-Agent': 'Beau-Bremer-Website-Blog-Fetcher/1.0',
             },
         });
 
         if (!response.ok) {
-            // This will now correctly report if the server gives another error.
             throw new Error(`Failed to fetch RSS feed. Status: ${response.status}`);
         }
 
@@ -45,10 +41,7 @@ exports.handler = async function (event) {
         console.error('Error in fetch-posts function:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({
-                error: 'Failed to fetch or parse blog posts.',
-                details: error.message,
-            }),
+            body: JSON.stringify({ error: 'Failed to fetch or parse blog posts.' }),
         };
     }
 };

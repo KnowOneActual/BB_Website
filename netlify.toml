@@ -10,5 +10,21 @@
     X-Content-Type-Options = "nosniff"
 
 [build]
-  functions = "netlify/functions"
   command = "npm run build:css"
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "zisi" 
+  
+[[redirects]]
+  from = "/blog"
+  to = "https://blog.beaubremer.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "https://blog.beaubremer.com/:splat"
+  status = 301
+  force = true

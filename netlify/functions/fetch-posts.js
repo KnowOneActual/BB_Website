@@ -1,6 +1,6 @@
 // TOP /netlify/functions/fetch-posts.js
 const Parser = require('rss-parser');
-const axios = require('axios');
+const fetch = require('node-fetch'); // Changed from axios
 
 const parser = new Parser();
 
@@ -12,17 +12,19 @@ exports.handler = async function (event) {
   const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 
   try {
-    const response = await axios.get(BLOG_RSS_URL, {
-      responseType: 'text',
-      maxContentLength: 5 * 1024 * 1024, // 5MB limit
-      maxBodyLength: 5 * 1024 * 1024, // 5MB limit
-    });
+    const response = await fetch(BLOG_RSS_URL); // Using node-fetch
 
-    if (!response || !response.data) {
+    if (!response.ok) {
+        throw new Error(`Failed to fetch RSS feed. Status: ${response.status}`);
+    }
+    
+    const xmlData = await response.text(); // Get the response as text
+
+    if (!xmlData) {
         throw new Error('No data received from RSS feed URL.');
     }
     
-    const feed = await parser.parseString(response.data);
+    const feed = await parser.parseString(xmlData); // Parse the text data
 
     if (!feed || !feed.items || !Array.isArray(feed.items)) {
       console.error('Parsed feed is missing or does not have an "items" array:', feed);
@@ -52,4 +54,3 @@ exports.handler = async function (event) {
     };
   }
 };
-

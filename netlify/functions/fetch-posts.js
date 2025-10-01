@@ -1,6 +1,6 @@
-// TOP /netlify/functions/fetch-posts.js
 const Parser = require('rss-parser');
-const axios = require('axios');
+// We will use node-fetch which is already a dependency in your project.
+const fetch = require('node-fetch');
 
 const parser = new Parser();
 
@@ -12,22 +12,22 @@ exports.handler = async function (event) {
     const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
 
     try {
-        const response = await axios.get(BLOG_RSS_URL, {
-            responseType: 'text',
-            maxContentLength: 5 * 1024 * 1024, // 5MB limit
-            maxBodyLength: 5 * 1024 * 1024, // 5MB limit
+        const response = await fetch(BLOG_RSS_URL, {
+            // This header makes the request look like it's coming from a browser,
+            // which will prevent the 403 Forbidden error.
+            headers: {
+                'User-Agent':
+                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+            },
         });
 
-        if (!response || !response.data) {
-            throw new Error('No data received from RSS feed URL.');
+        if (!response.ok) {
+            // This will now correctly report if the server gives another error.
+            throw new Error(`Failed to fetch RSS feed. Status: ${response.status}`);
         }
 
-        const feed = await parser.parseString(response.data);
-
-        if (!feed || !feed.items || !Array.isArray(feed.items)) {
-            console.error('Parsed feed is missing or does not have an "items" array:', feed);
-            throw new Error('Parsed feed is not in the expected format.');
-        }
+        const xmlData = await response.text();
+        const feed = await parser.parseString(xmlData);
 
         const posts = feed.items.slice(0, 3).map((item) => ({
             title: item.title,
@@ -42,7 +42,7 @@ exports.handler = async function (event) {
             body: JSON.stringify(posts),
         };
     } catch (error) {
-        console.error('Error in fetch-posts function:', error.message);
+        console.error('Error in fetch-posts function:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({

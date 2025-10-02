@@ -13,7 +13,10 @@ exports.handler = async function (event) {
     try {
         const response = await fetch(BLOG_RSS_URL, {
             headers: {
-                // This is our unique identifier or "secret handshake"
+                // This custom User-Agent is required to bypass Cloudflare's bot detection,
+                // which was blocking the function from fetching the RSS feed.
+                // A corresponding "Skip" rule is configured in Cloudflare's Security Rules.
+                // This is the unique identifier or "secret handshake"
                 'User-Agent': 'Beau-Bremer-Website-Blog-Fetcher/1.0',
             },
         });

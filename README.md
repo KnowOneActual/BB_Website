@@ -86,6 +86,13 @@ The onion site is hosted on a Google Cloud "Always Free" `e2-micro` VM. Updates 
 
 You can access the live site using the [Tor Browser via this link](http://wb7kwfl6bygqg4zh2fdk7jk6v2ab3bhmjo63xtdm2nltl33vuwoqlkqd.onion). Please note that this link will only resolve if you are using the Tor Browser. (wb7kwfl6bygqg4zh2fdk7jk6v2ab3bhmjo63xtdm2nltl33vuwoqlkqd.onion)
 
+## External Dependencies
+
+### Cloudflare Security Rule
+
+The "Recent Blog Posts" section relies on a serverless function that fetches an RSS feed from `blog.beaubremer.com`. This domain is protected by Cloudflare's bot detection. A **Security Rule** has been created in the Cloudflare dashboard for `beaubremer.com` to allow requests that contain the `User-Agent` string `Beau-Bremer-Website-Blog-Fetcher`. If this feature breaks, verify that the Cloudflare rule is still active.
+
+
 ## Contact
 
 Have a question, a comment, or just want to say hi? Feel free to reach out via the contact form on my website.

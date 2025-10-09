@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.4] - 2025-10-09
+
+### Fixed
+
+- Corrected several CSS linting warnings to improve cross-browser compatibility and code quality.
+- Added the standard `appearance` property alongside the `-webkit-` prefix for form and search inputs.
+- Added the standard `text-size-adjust` property to ensure consistent text rendering on mobile devices.
+- Removed a redundant `vertical-align` property that was being ignored by the browser.
+
 ## [1.5.3] - 2025-10-09
 
 ### Security

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const link = document.createElement('a');
           link.href = item.url;
           link.target = '_blank';
+          link.rel = 'noopener noreferrer';
           link.className = 'block h-full';
           title.className =
             'text-xl font-semibold text-fuchsia-400 hover:underline mb-2';

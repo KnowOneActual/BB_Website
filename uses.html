@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://beaubremer.com/" />
-    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="canonical" href="https://beaubremer.com/">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
     <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
     <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
-    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/img/favicon/site.webmanifest" />
-    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uses | Beau Bremer</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -40,8 +40,10 @@
 <body class="bg-gray-950 text-white antialiased">
 
     <header class="text-center py-12 px-4 bg-gray-900">
-        <h1 class="text-4xl md:text-5xl font-bold text-fuchsia-400 mb-4">What I Use</h1>
-        <p class="max-w-3xl mx-auto text-lg text-gray-400">A look at the tech I use for my projects and daily work. I like trying new apps to see if there is something that suits my needs better.</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-fuchsia-400 mb-4">My Toolkit & Philosophy</h1>
+        <p class="max-w-3xl mx-auto text-lg text-gray-400">
+            Here's a look at my current toolkit. My professional experience began with industry standards like Adobe and Autodesk, but I've since shifted my focus to powerful, cross-platform alternatives. My experience has taught me the importance of cost-effective and accessible tools, especially for freelancers and small teams. This list reflects my commitment to always learning, adapting, and finding the best tool for the job.
+        </p>
     </header>
 
     <main class="container mx-auto px-4 py-8">
@@ -68,60 +70,7 @@
         <p><a href="https://github.com/sponsors/KnowOneActual" class="text-fuchsia-400">Sponsor my work on GitHub</a></p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('data/uses.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Hardware
-                    const hardwareSection = document.getElementById('hardware-section');
-                    let hardwareHtml = '<div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">';
-                    hardwareHtml += '<h2 class="text-3xl font-bold text-fuchsia-400 mb-6">Hardware</h2>';
-                    hardwareHtml += '<ul class="list-disc list-inside text-gray-300 space-y-2">';
-                    data.hardware.forEach(item => {
-                        hardwareHtml += `<li><b>${item.name}:</b> ${item.description}</li>`;
-                    });
-                    hardwareHtml += '</ul></div>';
-                    hardwareSection.innerHTML = hardwareHtml;
-
-                    // Software
-                    const softwareSection = document.getElementById('software-section');
-                    let softwareHtml = '<div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">';
-                    softwareHtml += '<h2 class="text-3xl font-bold text-fuchsia-400 mb-6">Software</h2>';
-                    for (const category in data.software) {
-                        softwareHtml += `<h3 class="text-2xl font-bold text-fuchsia-400 mt-6 mb-4">${category.charAt(0).toUpperCase() + category.slice(1)}</h3>`;
-                        softwareHtml += '<ul class="list-disc list-inside text-gray-300 space-y-2">';
-                        data.software[category].forEach(item => {
-                            let content = `<b>${item.name}:</b> ${item.description}`;
-                            if (item.url) {
-                                content = `<b>${item.name}:</b> <a href="${item.url}" target="_blank" class="text-fuchsia-400 hover:underline">${item.description}</a>`;
-                            }
-                            softwareHtml += `<li>${content}</li>`;
-                        });
-                        softwareHtml += '</ul>';
-                    }
-                    softwareHtml += '</div>';
-                    softwareSection.innerHTML = softwareHtml;
-
-                    // Services
-                    const servicesSection = document.getElementById('services-section');
-                    let servicesHtml = '<div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">';
-                    servicesHtml += '<h2 class="text-3xl font-bold text-fuchsia-400 mb-6">Services</h2>';
-                    servicesHtml += '<ul class="list-disc list-inside text-gray-300 space-y-2">';
-                    data.services.forEach(item => {
-                        servicesHtml += `<li><b>${item.name}</b> - ${item.description}</li>`;
-                    });
-                    servicesHtml += '</ul></div>';
-                    servicesSection.innerHTML = servicesHtml;
-                })
-                .catch(error => console.error('Error fetching uses data:', error));
-        });
-    </script>
+    <script src="uses.js" defer></script>
 
 </body>
 

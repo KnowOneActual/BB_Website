@@ -16,7 +16,7 @@
   "software": {
     "general": [
       {
-        "name": "Browsers: Waterfox, Brave Browser, Firefox, LibreWolf",
+        "name": "Browsers: Firefox (primary browser), Brave Browser, Firefox, Waterfox, LibreWolf",
         "description": "Extensions: Proton Pass, Obsidian Chipper, Grammarly"
       },
       {
@@ -25,18 +25,18 @@
         "url": "https://www.betterbird.eu/"
       },
       {
-        "name": "Notes: Standard Notes, Notebooks, Obsidian",
+        "name": "Notes: Standard Notes, Notebooks (test this as now), Obsidian",
         "description": "For everything from quick notes to a personal knowledge base."
       },
       {
-        "name": "Word Processing: LibreOffice, Google Docs, Apple Pages & Numbers",
+        "name": "Word Processing: LibreOffice (desktop) Google Docs(on the go), Apple Pages & Numbers",
         "description": "For standard document creation and editing."
       }
     ],
     "development": [
       {
-        "name": "Text Editors / IDE: VS Code (VSCodium)",
-        "description": "My main editor. Extensions: Catppuccin for VSCode, Error Lens, ESLint, GitHub Pull Requests, HTMLHint, Live Server Lite, Peacock, Prettier, webhint, and Rainbow CSV",
+        "name": "Text Editors / IDE: VSCodium, VSCode, Zed (Atom), Sublime Text 3, BBEit",
+        "description": "My setup is optimized for web and Python development with extensions for linting, formatting, and live previews, which helps me maintain a clean and efficient workflow. My main editor. Extensions: Catppuccin for VSCode, Error Lens, ESLint, GitHub Pull Requests, HTMLHint, Live Server Lite, Peacock, Prettier, webhint, and Rainbow CSV",
         "url": "https://vscodium.com/"
       },
       {
@@ -46,10 +46,10 @@
       },
       {
         "name": "Virtualization: VMWare Fusion Pro",
-        "description": "(VMs; Win11, Win7, Mint Linux, Debian Linux, Remnux, Parrot Linux, Kali Linux, Ubuntu Server). Been using this since about 2009. Looking for an alt as support on the Apple M chip is dicey."
+        "description": "(VMs; Win11, Win7, Mint Linux, Debian Linux, Remnux, Parrot Linux, Kali Linux, Ubuntu Server). I've relied on this software since 2009; however, I am now looking for a replacement because of inconsistent support for Apple's M-series chips"
       },
       {
-        "name": "Networking: Wireshark",
+        "name": "Networking: Wireshark, NMap, Network Triage Tool",
         "description": "For network troubleshooting and analysis.",
         "url": "https://www.wireshark.org/"
       }
@@ -57,7 +57,7 @@
     "creative": [
       {
         "name": "Graphics: Affinity Photo, Affinity Designer, Gimp, Inkscape",
-        "description": "A suite of tools for photo editing and vector graphics."
+        "description": "A powerful and affordable alternative to Adobe's creative suite, which allows me to produce high-quality graphics without the burden of a subscription model."
       },
       {
         "name": "3D and CAD: Blender, Freecad, eDrawings",
@@ -72,7 +72,7 @@
   "services": [
     {
       "name": "Netlify",
-      "description": "For hosting and serverless functions."
+      "description": "For its seamless git-based workflow, robust free tier, and powerful serverless functions. "
     },
     {
       "name": "GitHub",

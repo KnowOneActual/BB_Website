@@ -1,0 +1,90 @@
+{
+  "hardware": [
+    {
+      "name": "MacBook Pro (16-inch, 2021) Sequoia 15.7",
+      "description": "My primary machine for development and creative work."
+    },
+    {
+      "name": "Dell Latitude 14",
+      "description": "Secondary machine running Windows 10 and ParrotOS for testing."
+    },
+    {
+      "name": "Focusrite Scarlett 2i2 Audio Interface",
+      "description": "For high-quality audio recording and monitoring."
+    }
+  ],
+  "software": {
+    "general": [
+      {
+        "name": "Browsers: Waterfox, Brave Browser, Firefox, LibreWolf",
+        "description": "Extensions: Proton Pass, Obsidian Chipper, Grammarly"
+      },
+      {
+        "name": "Email: Betterbird",
+        "description": "A powerful, open-source alternative to Thunderbird.",
+        "url": "https://www.betterbird.eu/"
+      },
+      {
+        "name": "Notes: Standard Notes, Notebooks, Obsidian",
+        "description": "For everything from quick notes to a personal knowledge base."
+      },
+      {
+        "name": "Word Processing: LibreOffice, Google Docs, Apple Pages & Numbers",
+        "description": "For standard document creation and editing."
+      }
+    ],
+    "development": [
+      {
+        "name": "Text Editors / IDE: VS Code (VSCodium)",
+        "description": "My main editor. Extensions: Catppuccin for VSCode, Error Lens, ESLint, GitHub Pull Requests, HTMLHint, Live Server Lite, Peacock, Prettier, webhint, and Rainbow CSV",
+        "url": "https://vscodium.com/"
+      },
+      {
+        "name": "Terminal: Warp, Ghostty, kitty",
+        "description": "Modern and fast terminal emulators.",
+        "url": "https://www.warp.dev/"
+      },
+      {
+        "name": "Virtualization: VMWare Fusion Pro",
+        "description": "(VMs; Win11, Win7, Mint Linux, Debian Linux, Remnux, Parrot Linux, Kali Linux, Ubuntu Server). Been using this since about 2009. Looking for an alt as support on the Apple M chip is dicey."
+      },
+      {
+        "name": "Networking: Wireshark",
+        "description": "For network troubleshooting and analysis.",
+        "url": "https://www.wireshark.org/"
+      }
+    ],
+    "creative": [
+      {
+        "name": "Graphics: Affinity Photo, Affinity Designer, Gimp, Inkscape",
+        "description": "A suite of tools for photo editing and vector graphics."
+      },
+      {
+        "name": "3D and CAD: Blender, Freecad, eDrawings",
+        "description": "For 3D modeling, animation, and CAD."
+      },
+      {
+        "name": "Audio: Reaper, Logic Pro, Audacity, iZotope RX",
+        "description": "For audio recording, editing, and mastering."
+      }
+    ]
+  },
+  "services": [
+    {
+      "name": "Netlify",
+      "description": "For hosting and serverless functions."
+    },
+    {
+      "name": "GitHub",
+      "description": "For version control and collaboration."
+    },
+    {
+      "name": "Cloudflare",
+      "description": "For DNS and security."
+    },
+    {
+      "name": "Resend",
+      "description": "For email delivery."
+    }
+  ]
+}

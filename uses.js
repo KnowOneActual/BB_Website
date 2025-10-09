@@ -96,6 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Live Production
+      populateSection(
+        'live-production-section',
+        'Live Production',
+        data.live_production,
+        'lg:grid-cols-3',
+      );
+
+      // Services
       populateSection(
         'services-section',
         'Services',

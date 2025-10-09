@@ -89,7 +89,7 @@
                         class="px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-md transition duration-300 transform hover:scale-105">
                         Add Endpoint </button>
                 </div>
-                <p class="text-sm text-gray-400">Monitoring interval: <span id="intervalDisplay">5</span> seconds </p>
+                <label for="intervalSlider" class="text-sm text-gray-400">Monitoring interval: <span id="intervalDisplay">5</span> seconds </label>
                 <input type="range" id="intervalSlider" min="1" max="30" value="5"
                     class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer mt-2" />
             </div>
@@ -237,38 +237,52 @@
                 this.updateNoEndpointsMessage();
             }
             addEndpointToMonitor(url, save = false) {
+    if (this.endpoints.has(url)) {
+        return;
+    }
 
-                if (this.endpoints.has(url)) {
+    const row = this.monitoringTable.insertRow();
+    row.id = `row-${btoa(url)}`;
 
-                    return;
-                }
+    // Safely create and append each cell
+    const urlCell = row.insertCell();
+    urlCell.className = 'py-2';
+    urlCell.textContent = url; // Use textContent to prevent XSS
 
-                const row = this.monitoringTable.insertRow();
-                row.id = `row-${btoa(url)}`;
-                row.innerHTML = `
-                    
-								<td class="py-2">${url}</td>
-								<td class="py-2">
-									<span class="status-dot status-unknown"></span>Unknown
-								</td>
-								<td class="py-2">--</td>
-								<td class="py-2">--</td>
-								<td class="py-2">
-									<button data-endpoint="${url}" class="text-red-400 hover:text-red-600 remove-btn">Remove</button>
-								</td>
-                `;
+    const statusCell = row.insertCell();
+    statusCell.className = 'py-2';
+    const statusDot = document.createElement('span');
+    statusDot.className = 'status-dot status-unknown';
+    statusCell.appendChild(statusDot);
+    statusCell.appendChild(document.createTextNode('Unknown'));
 
-                this.endpoints.set(url, {
-                    intervalId: null,
-                    lastLatency: '--',
-                    lastStatus: 'Unknown'
-                });
+    const latencyCell = row.insertCell();
+    latencyCell.className = 'py-2';
+    latencyCell.textContent = '--';
 
-                this.startMonitoring(url);
-                if (save) {
-                    this.saveEndpoints();
-                }
-            }
+    const lastCheckCell = row.insertCell();
+    lastCheckCell.className = 'py-2';
+    lastCheckCell.textContent = '--';
+
+    const actionsCell = row.insertCell();
+    actionsCell.className = 'py-2';
+    const removeButton = document.createElement('button');
+    removeButton.dataset.endpoint = url; // Set data attribute safely
+    removeButton.className = 'text-red-400 hover:text-red-600 remove-btn';
+    removeButton.textContent = 'Remove';
+    actionsCell.appendChild(removeButton);
+
+    this.endpoints.set(url, {
+        intervalId: null,
+        lastLatency: '--',
+        lastStatus: 'Unknown'
+    });
+
+    this.startMonitoring(url);
+    if (save) {
+        this.saveEndpoints();
+    }
+}
             removeEndpoint(url) {
                 this.stopMonitoring(url);
                 this.endpoints.delete(url);
@@ -368,8 +382,8 @@
     </script>
     <footer class="text-center py-6 bg-gray-950 text-gray-500">
         <div class="mb-2">
-            <a href="https://blog.beaubremer.com/" target="_blank" class="hover:text-fuchsia-400 mx-2">Blog</a>
-            <a href="https://github.com/KnowOneActual" target="_blank" class="hover:text-fuchsia-400 mx-2">GitHub</a>
+            <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">Blog</a>
+            <a href="https://github.com/KnowOneActual" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">GitHub</a>
             <a href="technology_security.html" class="hover:text-fuchsia-400 mx-2">Site Technology Report</a>
         </div>
         <p>© 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or

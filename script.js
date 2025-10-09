@@ -112,7 +112,7 @@ function initializeFormHandling() {
   }
 }
 
-// --- Three.js Background Animation ---
+// --- 3D Background Animation ---
 function initializeThreeJsAnimation() {
   const canvas = document.getElementById('hero-background');
   if (!canvas) {
@@ -176,7 +176,7 @@ function initializeThreeJsAnimation() {
   });
 }
 
-// --- Intersection Observer for Fade-In Animation ---
+// --- Fade-In Animation ---
 function initializeFadeInAnimation() {
   const faders = document.querySelectorAll('.fade-in');
   const appearOptions = { threshold: 0.1 };
@@ -264,7 +264,7 @@ async function fetchAndDisplayBlogPosts() {
   }
 }
 
-// --- DOMContentLoaded Listener ---
+// --- DOMContent Listener ---
 document.addEventListener('DOMContentLoaded', () => {
   initializeEasterEggs();
   initializeFormHandling();

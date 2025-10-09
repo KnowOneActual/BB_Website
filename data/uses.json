@@ -59,6 +59,10 @@
         "description": "A suite of tools for photo editing and vector graphics."
       },
       {
+        "name": "Video Editing: DaVinci Resolve, LosslessCut, Kdenlive",
+        "description": "Tools for video editing."
+      },
+      {
         "name": "3D and CAD: Blender, Freecad, eDrawings",
         "description": "For 3D modeling, animation, and CAD."
       },

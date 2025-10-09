@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.3] - 2025-10-09
+
+### Security
+
+- Fixed multiple DOM-based Cross-site Scripting (XSS) vulnerabilities by refactoring JavaScript to build DOM elements programmatically instead of using `innerHTML`. This affects:
+    - The blog post section on `index.html` (via `script.js`).
+    - The test history table in `speed_test.html`.
+    - The endpoint monitoring table in `network_latency_monitor.html`.
+
+### Fixed
+
+- Resolved an accessibility warning in `network_latency_monitor.html` by adding a `<label>` to the monitoring interval slider.
+- Removed a redundant inline style from `speed_test.html` to resolve a linter warning and improve code quality.
+
 ## [1.5.2] - 2025-10-09
 
 ### Added

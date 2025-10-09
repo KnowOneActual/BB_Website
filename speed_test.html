@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Network Speed Test | Beau Bremer</title>
-    <link rel="canonical" href="https://beaubremer.com/" />
-    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="canonical" href="https://beaubremer.com/">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
     <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
     <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
-    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" /
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/img/favicon/site.webmanifest" />
-    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
     <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
         as="style" crossorigin="anonymous" />
@@ -89,8 +89,7 @@
                 <div class="w-full max-w-md">
                     <div class="bg-gray-700 rounded-full h-4 overflow-hidden">
                         <div id="progressBar"
-                            class="h-full bg-gradient-to-r from-fuchsia-500 to-purple-500 transition-all duration-300"
-                            style="width: 0%"></div>
+                            class="h-full bg-gradient-to-r from-fuchsia-500 to-purple-500 transition-all duration-300"></div>
                     </div>
                     <div class="text-center mt-2 text-sm text-gray-400" id="progressText">Ready to test</div>
                 </div>
@@ -448,19 +447,42 @@
             }
 
             loadHistory() {
+                // Clear existing table content
+                this.historyTable.innerHTML = '';
+
                 if (this.testHistory.length === 0) {
-                    this.historyTable.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-gray-400">No tests performed yet</td></tr>';
+                    const row = this.historyTable.insertRow();
+                    const cell = row.insertCell();
+                    cell.colSpan = 4;
+                    cell.className = 'text-center py-4 text-gray-400';
+                    cell.textContent = 'No tests performed yet';
                     return;
                 }
 
-                this.historyTable.innerHTML = this.testHistory.map(result => `
-                    <tr class="border-b border-gray-600">
-                        <td class="py-2">${result.timestamp}</td>
-                        <td class="py-2 text-green-400">${result.download}</td>
-                        <td class="py-2 text-blue-400">${result.upload}</td>
-                        <td class="py-2 text-yellow-400">${result.ping}</td>
-                    </tr>
-                `).join('');
+                this.testHistory.forEach(result => {
+                    const row = this.historyTable.insertRow();
+                    row.className = 'border-b border-gray-600';
+
+                    // Timestamp cell
+                    const timeCell = row.insertCell();
+                    timeCell.className = 'py-2';
+                    timeCell.textContent = result.timestamp;
+
+                    // Download cell
+                    const downloadCell = row.insertCell();
+                    downloadCell.className = 'py-2 text-green-400';
+                    downloadCell.textContent = result.download;
+
+                    // Upload cell
+                    const uploadCell = row.insertCell();
+                    uploadCell.className = 'py-2 text-blue-400';
+                    uploadCell.textContent = result.upload;
+
+                    // Ping cell
+                    const pingCell = row.insertCell();
+                    pingCell.className = 'py-2 text-yellow-400';
+                    pingCell.textContent = result.ping;
+                });
             }
         }
 
@@ -471,8 +493,8 @@
     </script>
     <footer class="text-center py-6 bg-gray-950 text-gray-500">
         <div class="mb-2">
-            <a href="https://blog.beaubremer.com/" target="_blank" class="hover:text-fuchsia-400 mx-2">Blog</a>
-            <a href="https://github.com/KnowOneActual" target="_blank" class="hover:text-fuchsia-400 mx-2">GitHub</a>
+            <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">Blog</a>
+            <a href="https://github.com/KnowOneActual" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">GitHub</a>
             <a href="technology_security.html" class="hover:text-fuchsia-400 mx-2">Site Technology Report</a>
         </div>
         <p>© 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or

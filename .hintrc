@@ -10,6 +10,14 @@
           "link[sizes]"
         ]
       }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "text-size-adjust"
+        ]
+      }
     ]
   },
   "browserslist": [

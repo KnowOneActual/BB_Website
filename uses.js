@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Set content
         title.textContent = item.name;
-        description.textContent = item.description;
+        description.innerHTML = item.description; // Changed to innerHTML to support bold/italic tags
 
         if (item.url) {
           const link = document.createElement('a');

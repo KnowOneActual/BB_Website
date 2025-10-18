@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.6] - 2025-10-18
+
+### Fixed
+
+- **Network Monitor Stability:** Resolved an issue in `network_latency_monitor.html` where domain pings (e.g., Google, Yahoo) incorrectly showed a "Down" status. The fix implements a `HEAD` request with a cache-buster (`_cb`) inside a `no-cors` fetch to reliably bypass aggressive browser caching and optimization logic, ensuring accurate network reachability checks.
+- **Code Consistency:** Removed a redundant CDN link (`https://cdn.tailwindcss.com`) from `uses.html` to fully commit to a local Tailwind build and maintain a strict Content-Security-Policy.
+- **Style Cleanup:** Refactored animation logic in `links.js` to rely on CSS classes and `requestAnimationFrame`, eliminating verbose JavaScript inline styling and `setTimeout` calls for a cleaner, CSS-driven animation.
+
+
+
+## [1.5.5] - 2025-10-18
+
+### Added
+
+- A dedicated **"My Tooling Philosophy"** section to `uses.html` to provide clear professional context for tool choices.
+- A **Quick Jump (Table of Contents)** navigation bar to `uses.html` for faster access to sections.
+- Dynamic Font Awesome icons added to all major section headers on `uses.html` (via `uses.js`) for improved scannability.
+
+### Improved
+
+- All tool descriptions in `data/uses.json` were updated with a stronger narrative, emphasizing AV/IT, FOSS (Free and Open-Source Software), and specialized roles like **deep network troubleshooting** and **Python development**.
+- The layout for the **Live Production** section on `uses.html` was adjusted for a tighter, more scannable display of industry-specific tools.
+
+### Fixed
+
+- **CRITICAL SECURITY FIX:** Removed DOM-based XSS vulnerability by switching the injection of externally sourced content (`item.description`) in `uses.js` from the insecure `.innerHTML` to the safe `.textContent`.
+
+
+
 ## [1.5.4] - 2025-10-09
 
 ### Fixed

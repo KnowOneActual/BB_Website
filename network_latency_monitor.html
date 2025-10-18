@@ -321,11 +321,9 @@
                 });
             }
             async checkEndpoint(url) {
-                const startTime = performance.now();
-                let status = 'Unknown';
-                let latency = '--';
                 const row = document.getElementById(`row-${btoa(url)}`);
                 if (!row) return;
+
                 const statusDot = row.querySelector('.status-dot');
                 const latencyCell = row.cells[2];
                 const lastCheckCell = row.cells[3];
@@ -333,38 +331,66 @@
                 statusDot.className = 'status-dot status-unknown';
                 row.cells[1].lastChild.textContent = 'Checking...';
                 latencyCell.textContent = '...';
+
+                // --- NEW PROMISE-BASED IMAGE LOAD TEST ---
                 
-                // --- FIX: Add a unique cachebuster to force a fresh network request ---
-                const finalUrl = `${url}?_cb=${Date.now()}`;
+                const finalUrl = `${url}?_cb=${Date.now()}`; // Cachebuster for freshness
 
-                try {
-                    await fetch(finalUrl, { // Use the cachebuster URL
-                        method: 'HEAD',
-                        cache: 'no-cache',
-                        mode: 'no-cors'
-                    });
+                return new Promise((resolve) => {
+                    const startTime = performance.now();
+                    let status = 'Down';
+                    let latency = 'Fail';
+                    
+                    const testImage = document.createElement('img');
+                    testImage.style.display = 'none';
+                    testImage.crossOrigin = 'anonymous'; // May help avoid opaque responses
 
-                    // Success is determined by the fetch promise resolving (no critical network error).
-                    const endTime = performance.now();
-                    latency = Math.round(endTime - startTime);
-                    status = 'Up';
-                } catch (error) {
-                    // This catches critical network errors (DNS, connection refusal, etc.)
-                    console.error(`Error checking ${url}:`, error);
-                    status = 'Down';
-                    latency = 'Fail';
-                } finally {
-                    statusDot.className = `status-dot status-${status.toLowerCase()}`;
-                    row.cells[1].lastChild.textContent = status;
-                    latencyCell.textContent = `${latency} ms`;
-                    lastCheckCell.textContent = new Date().toLocaleTimeString();
+                    const updateUI = () => {
+                        const endTime = performance.now();
+                        latency = status === 'Up' ? Math.round(endTime - startTime) : 'Fail';
 
-                    const data = this.endpoints.get(url);
-                    if (data) {
-                        data.lastLatency = latency;
-                        data.lastStatus = status;
-                    }
-                }
+                        statusDot.className = `status-dot status-${status.toLowerCase()}`;
+                        row.cells[1].lastChild.textContent = status;
+                        latencyCell.textContent = `${latency} ms`;
+                        lastCheckCell.textContent = new Date().toLocaleTimeString();
+
+                        const data = this.endpoints.get(url);
+                        if (data) {
+                            data.lastLatency = latency;
+                            data.lastStatus = status;
+                        }
+                        // Clean up the temporary element
+                        testImage.remove();
+                        resolve();
+                    };
+
+                    testImage.onload = () => {
+                        status = 'Up';
+                        updateUI();
+                    };
+
+                    testImage.onerror = () => {
+                        // In cross-origin, an error can mean either Down or the resource is valid 
+                        // but the server didn't allow image loading (CORS policy). 
+                        // For a pure reachability test, we'll treat error as Down/Fail.
+                        status = 'Down';
+                        updateUI();
+                    };
+
+                    // Set a timeout to prevent indefinite waiting for non-responsive servers
+                    const timeout = setTimeout(() => {
+                        testImage.onload = null;
+                        testImage.onerror = null;
+                        status = 'Down';
+                        updateUI();
+                    }, this.monitoringInterval - 100); 
+
+                    // Start the load attempt
+                    testImage.src = finalUrl; 
+                    
+                    // The element must be in the DOM for some browsers to trigger events
+                    document.body.appendChild(testImage); 
+                });
             }
             updateNoEndpointsMessage() {
                 this.noEndpointsMessage.classList.toggle('hidden', this.endpoints.size > 0);

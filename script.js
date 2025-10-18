@@ -2,13 +2,9 @@
 function showMessage(msg) {
   const messageDiv = document.createElement('div');
   messageDiv.textContent = msg;
-  messageDiv.style.cssText = `
-    position: fixed; top: 20%; left: 50%; transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8); color: white; padding: 15px 25px;
-    border-radius: 8px; z-index: 1000; font-family: 'Inter', sans-serif;
-    font-size: 1rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center; max-width: 80%;
-  `;
+  // Apply the new CSS class for cleaner code
+  messageDiv.classList.add('toast-message');
+
   document.body.appendChild(messageDiv);
   setTimeout(() => messageDiv.remove(), 5000);
 }

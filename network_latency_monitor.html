@@ -134,7 +134,7 @@
             </div>
         </div>
     </main>
-    <script>
+<script>
         const STORAGE_KEY = 'networkMonitorEndpoints';
         const DEFAULT_ENDPOINTS = ['https://google.com', 'https://cloudflare.com', 'https://example.com'
         ];
@@ -333,33 +333,26 @@
                 statusDot.className = 'status-dot status-unknown';
                 row.cells[1].lastChild.textContent = 'Checking...';
                 latencyCell.textContent = '...';
+                
                 try {
+                    // Optimized: Use HEAD method for minimal data transfer, ideal for latency checking.
+                    // Removed the redundant inner try/catch and unnecessary GET fallback.
+                    await fetch(url, {
+                        method: 'HEAD',
+                        cache: 'no-cache',
+                        mode: 'no-cors'
+                    });
 
-                    let method = 'GET';
-                    let response;
-                    try {
-                        response = await fetch(url, {
-                            method: method,
-                            cache: 'no-cache',
-                            mode: 'no-cors'
-                        });
-                    } catch (getError) {
-                        method = 'HEAD';
-                        response = await fetch(url, {
-                            method: method,
-                            cache: 'no-cache',
-                            mode: 'no-cors'
-                        });
-                    }
+                    // Success is determined by the fetch promise resolving, which indicates a path open on the network.
                     const endTime = performance.now();
                     latency = Math.round(endTime - startTime);
                     status = 'Up';
                 } catch (error) {
+                    // This catches network errors (DNS, connection refused, etc.)
                     console.error(`Error checking ${url}:`, error);
                     status = 'Down';
                     latency = 'Fail';
                 } finally {
-
                     statusDot.className = `status-dot status-${status.toLowerCase()}`;
                     row.cells[1].lastChild.textContent = status;
                     latencyCell.textContent = `${latency} ms`;

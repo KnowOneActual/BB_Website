@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.5] - 2025-10-18
+
+### Added
+
+- A dedicated **"My Tooling Philosophy"** section to `uses.html` to provide clear professional context for tool choices.
+- A **Quick Jump (Table of Contents)** navigation bar to `uses.html` for faster access to sections.
+- Dynamic Font Awesome icons added to all major section headers on `uses.html` (via `uses.js`) for improved scannability.
+
+### Improved
+
+- All tool descriptions in `data/uses.json` were updated with a stronger narrative, emphasizing AV/IT, FOSS (Free and Open-Source Software), and specialized roles like **deep network troubleshooting** and **Python development**.
+- The layout for the **Live Production** section on `uses.html` was adjusted for a tighter, more scannable display of industry-specific tools.
+
+### Fixed
+
+- **CRITICAL SECURITY FIX:** Removed DOM-based XSS vulnerability by switching the injection of externally sourced content (`item.description`) in `uses.js` from the insecure `.innerHTML` to the safe `.textContent`.
+
+
+
 ## [1.5.4] - 2025-10-09
 
 ### Fixed

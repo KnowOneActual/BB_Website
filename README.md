@@ -12,7 +12,8 @@
 ![Security](https://img.shields.io/badge/Security-Policy-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Welcome to the GitHub repository for my personal website, [beaubremer.com](https://beaubremer.com). This is a living project where I experiment with new technologies, build fun tools, and share my work. I handle everything you see here, from the big features to the little details, as a way to continuously learn and grow as a tech professional.
+
+Welcome to the GitHub repository for my personal website, [beaubremer.com](https://beaubremer.com/). This is a living project where I experiment with new technologies, build fun tools, and share my work. I handle everything you see here, from the big features to the little details, as a way to continuously learn and grow as a tech professional.
 
 ## About The Project
 
@@ -22,6 +23,7 @@ Here, you'll find a collection of interactive tools and resources I've built, re
 
 ### Key Features
 
+  * **My Toolkit & Philosophy Page:** A comprehensive breakdown of my professional tool stack (hardware, FOSS software, AV/IT gear) designed with a strong focus on cost-effectiveness, cross-platform use, and problem-solving through tools like Python and network analyzers.
   * **Conversational Weather Bot:** An interactive chatbot that uses Google's Gemini API for natural language processing and the OpenWeatherMap API to provide live weather data. Chat history is stored in Firebase Firestore.
   * **Secure Image Cleaner:** A privacy-first tool hosted on the Tor Onion Service version of the site. It's a server-side utility that strips all EXIF metadata from images, demonstrating a practical application of secure, anonymous web services.
   * **AV IP Subnet Calculator:** A practical tool for AV technicians to plan on-site networks, mapping devices to IP addresses.
@@ -53,10 +55,10 @@ This website is built with a focus on modern, efficient, and secure technologies
 
 I take security and performance seriously. Here are some of the measures I've implemented:
 
+  * **Code Quality & Security Hardening:** Refactored multiple DOM manipulation patterns across the site to eliminate potential **DOM-based XSS vulnerabilities** (e.g., switching from `.innerHTML` to `.textContent` for external data). This improves security and maintains strict CSP compliance.
   * **Robust HTTP Security Headers:** A strong Content-Security-Policy (CSP) is in place to prevent XSS and data injection attacks. Other headers like `X-Frame-Options` and `X-Content-Type-Options` are also configured to enhance security.
   * **Responsible Disclosure:** I have a `security.txt` file and a security acknowledgements page to provide a clear channel for reporting vulnerabilities.
   * **Performance Optimization:** I'm mindful of the user experience, which is why I've taken steps like removing a 4.1 MB unnecessary payload, drastically reducing page load times.
-  * **Code Quality:** I've refactored the codebase to move all inline JavaScript and CSS into external files, which not only improves security by allowing for a stricter CSP but also enhances maintainability.
   * **Accessibility:** I've addressed color contrast issues and used semantic HTML to ensure the site is accessible to all users.
 
 ## Tor Onion Service Version
@@ -91,7 +93,6 @@ You can access the live site using the [Tor Browser via this link](http://wb7kwf
 ### Cloudflare Security Rule
 
 The "Recent Blog Posts" section relies on a serverless function that fetches an RSS feed from `blog.beaubremer.com`. This domain is protected by Cloudflare's bot detection. A **Security Rule** has been created in the Cloudflare dashboard for `beaubremer.com` to allow requests that contain the `User-Agent` string `Beau-Bremer-Website-Blog-Fetcher`. If this feature breaks, verify that the Cloudflare rule is still active.
-
 
 ## Contact
 

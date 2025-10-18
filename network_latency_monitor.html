@@ -334,21 +334,22 @@
                 row.cells[1].lastChild.textContent = 'Checking...';
                 latencyCell.textContent = '...';
                 
+                // --- FIX: Add a unique cachebuster to force a fresh network request ---
+                const finalUrl = `${url}?_cb=${Date.now()}`;
+
                 try {
-                    // Optimized: Use HEAD method for minimal data transfer, ideal for latency checking.
-                    // Removed the redundant inner try/catch and unnecessary GET fallback.
-                    await fetch(url, {
+                    await fetch(finalUrl, { // Use the cachebuster URL
                         method: 'HEAD',
                         cache: 'no-cache',
                         mode: 'no-cors'
                     });
 
-                    // Success is determined by the fetch promise resolving, which indicates a path open on the network.
+                    // Success is determined by the fetch promise resolving (no critical network error).
                     const endTime = performance.now();
                     latency = Math.round(endTime - startTime);
                     status = 'Up';
                 } catch (error) {
-                    // This catches network errors (DNS, connection refused, etc.)
+                    // This catches critical network errors (DNS, connection refusal, etc.)
                     console.error(`Error checking ${url}:`, error);
                     status = 'Down';
                     latency = 'Fail';

@@ -134,7 +134,7 @@
             </div>
         </div>
     </main>
-    <script>
+<script>
         const STORAGE_KEY = 'networkMonitorEndpoints';
         const DEFAULT_ENDPOINTS = ['https://google.com', 'https://cloudflare.com', 'https://example.com'
         ];
@@ -321,11 +321,9 @@
                 });
             }
             async checkEndpoint(url) {
-                const startTime = performance.now();
-                let status = 'Unknown';
-                let latency = '--';
                 const row = document.getElementById(`row-${btoa(url)}`);
                 if (!row) return;
+
                 const statusDot = row.querySelector('.status-dot');
                 const latencyCell = row.cells[2];
                 const lastCheckCell = row.cells[3];
@@ -333,33 +331,34 @@
                 statusDot.className = 'status-dot status-unknown';
                 row.cells[1].lastChild.textContent = 'Checking...';
                 latencyCell.textContent = '...';
-                try {
 
-                    let method = 'GET';
-                    let response;
-                    try {
-                        response = await fetch(url, {
-                            method: method,
-                            cache: 'no-cache',
-                            mode: 'no-cors'
-                        });
-                    } catch (getError) {
-                        method = 'HEAD';
-                        response = await fetch(url, {
-                            method: method,
-                            cache: 'no-cache',
-                            mode: 'no-cors'
-                        });
-                    }
+                // --- CORE FIX: Use HEAD/no-cors with cachebuster for pure network reachability ---
+                
+                // Add a unique cachebuster parameter to the URL to bypass any caching or aggressive optimization logic
+                const finalUrl = `${url}?_cb=${Date.now()}`; 
+
+                const startTime = performance.now();
+                let status = 'Down';
+                let latency = 'Fail';
+
+                try {
+                    // Use HEAD for minimum overhead and no-cors to bypass SOP/CORS restrictions.
+                    // This is the cleanest and most reliable method in the browser.
+                    await fetch(finalUrl, {
+                        method: 'HEAD',
+                        cache: 'no-cache',
+                        mode: 'no-cors'
+                    });
+
+                    // If the promise resolves, it means the network path was open.
                     const endTime = performance.now();
                     latency = Math.round(endTime - startTime);
                     status = 'Up';
                 } catch (error) {
-                    console.error(`Error checking ${url}:`, error);
+                    // Catch network-level failures (DNS, connection errors, timeouts)
                     status = 'Down';
                     latency = 'Fail';
                 } finally {
-
                     statusDot.className = `status-dot status-${status.toLowerCase()}`;
                     row.cells[1].lastChild.textContent = status;
                     latencyCell.textContent = `${latency} ms`;

@@ -1,12 +1,12 @@
 {
   "hardware": [
     {
-      "name": "MacBook Pro (16-inch, 2021) Sequoia 15.7",
+      "name": "MacBook Pro (16-inch) Sequoia 15.7",
       "description": "My primary machine for development and creative work."
     },
     {
       "name": "Dell Latitude 14",
-      "description": "Secondary machine running Windows 10 and ParrotOS for testing."
+      "description": "Secondary machine running Windows 10 and ParrotOS for critical network/security testing and compatibility checks."
     },
     {
       "name": "Focusrite Scarlett 2i2 Audio Interface",
@@ -36,7 +36,7 @@
     "development": [
       {
         "name": "Text Editors / IDE: VSCodium, VS Code, Sublime Text, Zed, BBEdit",
-        "description": "My setup is optimized for web and Python development with extensions for linting, formatting, and live previews, which helps me maintain a clean and efficient workflow. Extensions: Catppuccin for VSCode, Error Lens, ESLint, GitHub Pull Requests, HTMLHint, Live Server Lite, Peacock, Prettier, webhint, and Rainbow CSV",
+        "description": "Optimized for FOSS web and Python development. My setup includes extensions for linting, formatting, and live previews (like ESLint, Prettier, and Error Lens), which ensures a clean, efficient workflow and high code quality. Uses VSCodium, VS Code, Sublime Text, Zed, and BBEdit.",
         "url": "https://vscodium.com/"
       },
       {
@@ -50,7 +50,7 @@
       },
       {
         "name": "Networking: Wireshark, NMap, Network Triage Tool, WiFi Explorer",
-        "description": "For network troubleshooting and analysis."
+        "description": "Essential for deep network troubleshooting and security analysis. Critical for identifying root-cause issues in complex AV/IT and corporate network deployments."
       }
     ],
     "creative": [
@@ -89,7 +89,7 @@
   "services": [
     {
       "name": "Netlify",
-      "description": "For its seamless git-based workflow, robust free tier, and serverless functions."
+      "description": "Core host for this site; utilizes a seamless Git-based workflow and serverless functions for dynamic content (like the Weather Bot project)."
     },
     {
       "name": "GitHub",

@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [1.5.7] - 2025-10-19
+
+### Added
+- Created a new "My Toolbag" section on the homepage to better showcase the tools and technologies I use.
+- Added three new projects to the "My Projects" section:
+    - Python File Encryption Tool
+    - Network Triage Tool
+    - Python Image Processor
+- Added "Feather Icons" to the "Creative Resource Library."
+
+### Changed
+- Renamed `uses.html` to `toolbag.html` for a more personal touch.
+- Renamed `uses.js` to `toolbag.js` to match the new page name.
+- Updated the link in `toolbag.html` to correctly point to `toolbag.js`.
+- Curated the "My Projects" section for a more focused portfolio by removing:
+    - Simple Password Strength Checker
+    - SRI Hash Generator
+    - Metadata Remover for Images
+    - Ping with Progress Percentage
+
+
+
 ## [1.5.6] - 2025-10-18
 
 ### Fixed

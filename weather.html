@@ -16,8 +16,8 @@
     <link rel="manifest" href="/img/favicon/site.webmanifest">
     <link rel="shortcut icon" href="/img/favicon/favicon.ico">
     <link rel="stylesheet" href="style.css">
-    
-    
+
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -169,8 +169,10 @@
 
             if (sender === 'user') {
                 messageDiv.classList.add('ml-auto', 'flex-row-reverse', 'space-x-reverse');
+                // Vulnerable line using innerHTML:
                 messageDiv.innerHTML = `<div class="w-10 h-10 rounded-full bg-fuchsia-600 flex items-center justify-center text-white font-semibold">U</div><div><div class="bg-fuchsia-600 text-white p-3 rounded-lg rounded-br-none"><p>${text}</p></div><span class="text-xs text-gray-500 mt-1 float-right">${time}</span></div>`;
             } else {
+                 // Vulnerable line using innerHTML:
                 messageDiv.innerHTML = `<div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg></div><div><div class="bg-gray-700 text-gray-100 p-3 rounded-lg rounded-bl-none"><p>${text}</p></div><span class="text-xs text-gray-500 mt-1">${time}</span></div>`;
             }
             chatWindow.appendChild(messageDiv);
@@ -200,7 +202,7 @@
             const q = query(messagesRef, orderBy("createdAt", "asc"));
 
             unsubscribe = onSnapshot(q, (snapshot) => {
-                chatWindow.innerHTML = '';
+                chatWindow.innerHTML = ''; // Clear previous messages
                 if (snapshot.empty) {
                     addMessage('bot', "Hello! Ask me anything about the weather. For example: 'What's the weather like in Tokyo?'");
                 }

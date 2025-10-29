@@ -13,7 +13,7 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 
-Welcome to the GitHub repository for my personal website, [beaubremer.com](https://beaubremer.com/). This is a living project where I experiment with new technologies, build fun tools, and share my work. I handle everything you see here, from the big features to the little details, as a way to continuously learn and grow as a tech professional.
+Welcome to the GitHub repository for my personal website, [beaubremer.com](https://beaubremer.com/). This is a living project where I experiment with new technologies, build fun tools, and share my work. I handle everything you see here, from the big features to the little details, as a way to continuously learn and grow.
 
 ## About The Project
 

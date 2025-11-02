@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Proton Mail Inbox",
+    "url": "https://mail.proton.me/u/0/inbox",
+    "category": "Communication & Time",
+    "icon": "fa-solid fa-envelope"
+  },
+  {
+    "title": "Proton Calendar",
+    "url": "https://calendar.proton.me/u/0/",
+    "category": "Communication & Time",
+    "icon": "fa-solid fa-calendar-alt"
+  },
+  {
+    "title": "iCloud",
+    "url": "https://www.icloud.com",
+    "category": "Communication & Time",
+    "icon": "fa-solid fa-cloud"
+  },
+  {
+    "title": "My GitHub Profile",
+    "url": "https://github.com/KnowOneActual",
+    "category": "Development & Web",
+    "icon": "fa-brands fa-github"
+  },
+  {
+    "title": "Gemini",
+    "url": "https://gemini.google.com/",
+    "category": "Development & Web",
+    "icon": "fa-solid fa-brain"
+  },
+  {
+    "title": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/en-US/",
+    "category": "Development & Web",
+    "icon": "fa-brands fa-firefox-browser"
+  },
+  {
+    "title": "Tailwind CSS Docs",
+    "url": "https://tailwindcss.com/docs",
+    "category": "Development & Web",
+    "icon": "fa-solid fa-swatchbook"
+  },
+  {
+    "title": "Netlify Dashboard",
+    "url": "https://www.netlify.com/",
+    "category": "Infrastructure & Hosting",
+    "icon": "fa-solid fa-server"
+  },
+  {
+    "title": "Cloudflare Dashboard",
+    "url": "https://www.cloudflare.com/",
+    "category": "Infrastructure & Hosting",
+    "icon": "fa-solid fa-shield-alt"
+  },
+  {
+    "title": "UniFi Controller",
+    "url": "https://unifi.ui.com/",
+    "category": "Infrastructure & Hosting",
+    "icon": "fa-solid fa-wifi"
+  },
+  {
+    "title": "Porkbun (Domain Registrar)",
+    "url": "https://porkbun.com/",
+    "category": "Infrastructure & Hosting",
+    "icon": "fa-solid fa-globe"
+  },
+  {
+    "title": "MXToolbox",
+    "url": "https://mxtoolbox.com/",
+    "category": "Networking & Diagnostics",
+    "icon": "fa-solid fa-toolbox"
+  },
+  {
+    "title": "Speedtest by Ookla",
+    "url": "https://www.speedtest.net/",
+    "category": "Networking & Diagnostics",
+    "icon": "fa-solid fa-gauge"
+  },
+  {
+    "title": "DNS Checker",
+    "url": "https://dnschecker.org/",
+    "category": "Networking & Diagnostics",
+    "icon": "fa-solid fa-server"
+  },
+  {
+    "title": "AVIXA Standard Calculators",
+    "url": "https://www.avixa.org/",
+    "category": "AV System Design",
+    "icon": "fa-solid fa-calculator"
+  },
+  {
+    "title": "Audio Signal Conversions (Rane)",
+    "url": "https://www.rane.com/note160.html",
+    "category": "AV System Design",
+    "icon": "fa-solid fa-volume-up"
+  },
+  {
+    "title": "CyberChef (With Recipe)",
+    "url": "https://gchq.github.io/CyberChef/#recipe=To_Lower_case()Pad_lines('Start',5,'%20-'/disabled)Find_/_Replace(%7B'option':'Regex','string':'%20'%7D,'_',true,false,true,false)&input=QXBwcmVjaWF0aW9uIExldHRlciAtIEFsaSBSYXphIC0gYmVhdWJyZW1lci5jb20ucGRm",
+    "category": "Tools & Utilities",
+    "icon": "fa-solid fa-utensils"
+  },
+  {
+    "title": "URL Encoder/Decoder",
+    "url": "https://www.urlencoder.org/",
+    "category": "Tools & Utilities",
+    "icon": "fa-solid fa-code"
+  },
+  {
+    "title": "YouTube Music",
+    "url": "https://music.youtube.com/",
+    "category": "Personal & Entertainment",
+    "icon": "fa-solid fa-music"
+  },
+  {
+    "title": "Hacker News (Y Combinator)",
+    "url": "https://news.ycombinator.com/",
+    "category": "Industry News",
+    "icon": "fa-solid fa-newspaper"
+  }
+]

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.9] - 2025-11-02
+
+### Added
+- Created the **Daily Links Hub**, a new internal utility page (`dayl.html`) for fast, universal access to frequently used external resources.
+- Introduced a new data structure file: `data/daily-links.json` to store categorized links and metadata.
+- Added a dedicated script: `daily-links.js` to fetch and dynamically render links by category and build the card-based interface.
+- Included several new essential links in the initial data set, focusing on **AV System Design** and **Networking/Developer Tools**.
+
+### Improved
+- **User Experience (UX):** Links are now dynamically grouped by categories (e.g., Development & Web, Networking & Diagnostics) for better scannability and organization.
+- **Maintainability:** Converted the initial flat Markdown list into a structured, JSON-based format for easier management and scaling.
+
+
+
 [1.5.8] - 2025-10-26
 
 Security

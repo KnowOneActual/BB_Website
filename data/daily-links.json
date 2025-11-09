@@ -24,9 +24,15 @@
     "icon": "fa-brands fa-github"
   },
   {
+    "title": "Grammarly AI Writing Assistant",
+    "url": "https://account.grammarly.com",
+    "category": "LLM Tools",
+    "icon": "fa-solid fa-spell-check"
+  },
+  {
     "title": "Gemini",
     "url": "https://gemini.google.com/",
-    "category": "Development & Web",
+    "category": "LLM Tools",
     "icon": "fa-solid fa-brain"
   },
   {

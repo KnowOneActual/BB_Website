@@ -97,7 +97,7 @@
   },
   {
     "title": "CyberChef (With Recipe)",
-    "url": "https://gchq.github.io/CyberChef/#recipe=To_Lower_case()Pad_lines('Start',5,'%20-'/disabled)Find_/_Replace(%7B'option':'Regex','string':'%20'%7D,'_',true,false,true,false)&input=QXBwcmVjaWF0aW9uIExldHRlciAtIEFsaSBSYXphIC0gYmVhdWJyZW1lci5jb20ucGRm",
+    "url": "https://gchq.github.io/CyberChef/#recipe=To_Lower_case()Pad_lines('Start',5,'%20-'/disabled)Find_/_Replace(%7B'option':'Regex','string':'%20'%7D,'_',true,false,true,false)&input=Cg",
     "category": "Tools & Utilities",
     "icon": "fa-solid fa-utensils"
   },
@@ -112,6 +112,12 @@
     "url": "https://music.youtube.com/",
     "category": "Personal & Entertainment",
     "icon": "fa-solid fa-music"
+  },
+  {
+    "title": "Squoosh Image Reducer",
+    "url": "https://squoosh.app/",
+    "category": "Tools & Utilities",
+    "icon": "fa-solid fa-images"
   },
   {
     "title": "Hacker News (Y Combinator)",

@@ -108,16 +108,22 @@
     "icon": "fa-solid fa-code"
   },
   {
-    "title": "YouTube Music",
-    "url": "https://music.youtube.com/",
-    "category": "Personal & Entertainment",
-    "icon": "fa-solid fa-music"
-  },
-  {
     "title": "Squoosh Image Reducer",
     "url": "https://squoosh.app/",
     "category": "Tools & Utilities",
     "icon": "fa-solid fa-images"
+  },
+  {
+    "title": "PairDrop (send files locally)",
+    "url": "https://pairdrop.net/",
+    "category": "Tools & Utilities",
+    "icon": "fa-solid fa-file-import"
+  },
+  {
+    "title": "YouTube Music",
+    "url": "https://music.youtube.com/",
+    "category": "Personal & Entertainment",
+    "icon": "fa-solid fa-music"
   },
   {
     "title": "Hacker News (Y Combinator)",

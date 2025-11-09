@@ -48,6 +48,12 @@
     "icon": "fa-solid fa-swatchbook"
   },
   {
+    "title": "Awesome Fonts",
+    "url": "https://fontawesome.com",
+    "category": "Development & Web",
+    "icon": "fa-brands fa-font-awesome"
+  },
+  {
     "title": "Netlify Dashboard",
     "url": "https://www.netlify.com/",
     "category": "Infrastructure & Hosting",

@@ -84,16 +84,16 @@
     "icon": "fa-solid fa-server"
   },
   {
-    "title": "AVIXA Standard Calculators",
-    "url": "https://www.avixa.org/",
-    "category": "AV System Design",
-    "icon": "fa-solid fa-calculator"
-  },
-  {
-    "title": "Audio Signal Conversions (Rane)",
-    "url": "https://www.rane.com/note160.html",
+    "title": "TapTempo.io",
+    "url": "https://taptempo.io/",
     "category": "AV System Design",
     "icon": "fa-solid fa-volume-up"
+  },
+  {
+    "title": "Bitrate Calculator (castr.com)",
+    "url": "https://castr.com/bitrate-calculator/",
+    "category": "AV System Design",
+    "icon": "fa-solid fa-calculator"
   },
   {
     "title": "CyberChef (With Recipe)",

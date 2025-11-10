@@ -96,6 +96,12 @@
     "icon": "fa-solid fa-server"
   },
   {
+    "title": "MAC Address Lookup",
+    "url": "https://maclookup.app/",
+    "category": "Networking & Diagnostics",
+    "icon": "fa-solid fa-laptop"
+  },
+  {
     "title": "TapTempo.io",
     "url": "https://taptempo.io/",
     "category": "AV System Design",

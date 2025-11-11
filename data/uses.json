@@ -21,11 +21,11 @@
       },
       {
         "name": "Email: Betterbird",
-        "description": "A powerful, open-source alternative to Thunderbird.",
+        "description": "An open-source email client derived from Thunderbird.",
         "url": "https://www.betterbird.eu/"
       },
       {
-        "name": "Notes: Standard Notes, Notebooks, Obsidian",
+        "name": "Notes: Notesnookooks, Obsidian",
         "description": "For everything from quick notes to a personal knowledge base."
       },
       {
@@ -41,8 +41,7 @@
       },
       {
         "name": "Terminal: Warp, Ghostty, kitty",
-        "description": "Modern and fast terminal emulators.",
-        "url": "https://www.warp.dev/"
+        "description": "Modern and fast terminal emulators."
       },
       {
         "name": "Virtualization: VMWare Fusion Pro",
@@ -83,7 +82,7 @@
     },
     {
       "name": "Video & Lighting Tools",
-      "description": "Millumin3, Kards, Slideshow Timer, and QLC+ for video mapping and lighting control."
+      "description": "Millumin4, Kards, Slideshow Timer, and QLC+ for video mapping and lighting control."
     }
   ],
   "services": [

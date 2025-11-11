@@ -10,7 +10,7 @@
     },
     {
       "name": "Focusrite Scarlett 2i2 Audio Interface",
-      "description": "For high-quality audio recording and monitoring."
+      "description": "For audio recording and monitoring."
     }
   ],
   "software": {
@@ -25,7 +25,7 @@
         "url": "https://www.betterbird.eu/"
       },
       {
-        "name": "Notes: Notesnookooks, Obsidian",
+        "name": "Notes: Notesnook, Obsidian",
         "description": "For everything from quick notes to a personal knowledge base."
       },
       {

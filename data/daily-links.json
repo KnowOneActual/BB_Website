@@ -12,6 +12,18 @@
     "icon": "fa-solid fa-calendar-alt"
   },
   {
+    "title": "Proton Drive",
+    "url": "https://drive.proton.me/",
+    "category": "Communication & Time",
+    "icon": "fa-solid fa-file"
+  },
+  {
+    "title": "Proton Pass",
+    "url": "https://account.proton.me/pass",
+    "category": "Communication & Time",
+    "icon": "fa-solid fa-lock"
+  },
+  {
     "title": "iCloud",
     "url": "https://www.icloud.com",
     "category": "Communication & Time",
@@ -132,7 +144,7 @@
     "icon": "fa-solid fa-cube"
   },
   {
-    "title": "SoundBase (AV Tools)",
+    "title": "SoundBase (RF Manger)",
     "url": "https://soundbase.app/",
     "category": "AV System Design",
     "icon": "fa-solid fa-sliders"

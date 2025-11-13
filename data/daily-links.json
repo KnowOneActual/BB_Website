@@ -156,12 +156,6 @@
     "icon": "fa-solid fa-utensils"
   },
   {
-    "title": "URL Encoder/Decoder",
-    "url": "https://www.urlencoder.org/",
-    "category": "Tools & Utilities",
-    "icon": "fa-solid fa-code"
-  },
-  {
     "title": "Squoosh Image Reducer",
     "url": "https://squoosh.app/",
     "category": "Tools & Utilities",

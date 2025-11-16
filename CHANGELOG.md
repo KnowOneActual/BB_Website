@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Removed
 - Removed the Three.js (`three.min.js`) library dependency, significantly reducing initial page load size and improving site performance.
 - Removed all related JavaScript functions (`initializeThreeJsAnimation`) and HTML (`<canvas>`) associated with the old animation.
+- Removed Cloudflare Web Analytics to resolve the persistent Subresource Integrity (SRI) and CORS errors appearing in the browser console and help align with my overall privacy policy. 
 
 ### Fixed
 - Fixed an issue where the new hero styles were not deploying to the live site. Styles were moved from the compiled `style.css` file to the source `src/input.css` to ensure they are correctly included in the site's build process.

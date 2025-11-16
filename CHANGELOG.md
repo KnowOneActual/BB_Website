@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2025-11-15
+
+### Changed
+- Overhauled the hero section background animation.
+- Replaced the JavaScript-driven Three.js 3D cube animation with a high-performance, CSS-only animated gradient.
+- Layered a subtle noise texture over the hero gradient for a more modern and professional aesthetic.
+
+### Removed
+- Removed the Three.js (`three.min.js`) library dependency, significantly reducing initial page load size and improving site performance.
+- Removed all related JavaScript functions (`initializeThreeJsAnimation`) and HTML (`<canvas>`) associated with the old animation.
+
+
+
 ## [1.5.9] - 2025-11-02
 
 ### Added

@@ -39,7 +39,6 @@ This website is built with a focus on modern, efficient, and secure technologies
   * **Frontend:**
       * HTML5, CSS3, Vanilla JavaScript
       * **Tailwind CSS** for styling
-      * **Three.js** for the 3D hero background animation
       * **Chart.js** for data visualization
   * **Backend & Hosting:**
       * **Netlify** for hosting and serverless functions

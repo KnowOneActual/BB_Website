@@ -11,7 +11,7 @@
         "postinstall": "npx update-browserslist-db@latest"
     },
     "dependencies": {
-        "js-yaml": "^4.1.0",
+        "js-yaml": "^4.1.1",
         "netlify-cli": "^23.11.0",
         "node-fetch": "^2.6.7",
         "rss-parser": "^3.13.0"

@@ -6,84 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website Technology & Security - Beau Bremer</title>
   <link rel="canonical" href="https://beaubremer.com/" />
-  <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
-  <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+  <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
+  <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
   <link rel="manifest" href="/img/favicon/site.webmanifest">
+  <link rel="shortcut icon" href="/img/favicon/favicon.ico">
   <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
     as="style" crossorigin="anonymous">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
     rel="stylesheet" crossorigin="anonymous">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0A0A0A;
-      /* bg-gray-950 */
-      color: #FFFFFF;
-      /* text-white */
-    }
+  
+  <link rel="stylesheet" href="style.css">
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .card {
-      background-color: #1F2937;
-      /* bg-gray-800 */
-      border: 1px solid #374151;
-      /* border-gray-700 */
-      border-radius: 0.75rem;
-      /* rounded-xl */
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
-      /* shadow-lg */
-      padding: 2rem;
-    }
-
-    .fuchsia-text {
-      color: #E879F9;
-      /* fuchsia-400 */
-    }
-
-    .fuchsia-bg {
-      background-color: #C026D3;
-      /* fuchsia-600 */
-    }
-
-    .fuchsia-hover:hover {
-      background-color: #A21CAF;
-      /* fuchsia-700 */
-    }
-  </style>
 </head>
 
-<body class="bg-gray-950 text-white min-h-screen flex flex-col">
+<body class="bg-gray-950 text-white min-h-screen">
   <header class="py-12 px-6 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold fuchsia-text mb-4">Website Technology & Security Enhancements</h1>
+    <h1 class="text-4xl md:text-5xl font-bold text-fuchsia-400 mb-4">Website Technology & Security Report</h1>
     <p class="max-w-3xl mx-auto text-lg text-gray-300"> This page provides an overview of the technologies and practices
       that power my personal website, focusing on how I've enhanced its security, performance, and overall user
       experience. </p>
   </header>
-  <main class="flex-grow container mx-auto px-6 py-8">
+  <main class="container mx-auto px-6 py-8">
     <section class="max-w-4xl mx-auto mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold fuchsia-text mb-6 text-center">The Technology Stack</h2>
-      <div class="card mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-fuchsia-400 mb-6 text-center">The Technology Stack</h2>
+      <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8 mb-12">
         <p class="text-gray-300 mb-4"> My website is built with a modern and robust technology stack designed for
           performance, security, and scalability. </p>
         <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
           <li>
-            <strong>Frontend:</strong> HTML5, CSS3, JavaScript (Vanilla JS, Chart.js for data visualization, Three.js
-            for interactive hero background).
+            <strong>Frontend:</strong> HTML5, CSS3, and JavaScript.
           </li>
           <li>
-            <strong>Styling:</strong> Tailwind CSS (utility-first CSS framework for rapid and responsive design).
+            <strong>Styling:</strong> Tailwind CSS (built from source via npm script).
+          </li>
+          <li>
+            <strong>Visuals:</strong> CSS Animations (for the animated gradient hero and noise texture).
           </li>
           <li>
             <strong>Hosting & Serverless:</strong> Netlify (for seamless deployment, continuous integration, and
@@ -91,163 +54,121 @@
           </li>
           <li>
             <strong>Serverless Functions (Node.js):</strong>
-            <ul class="list-circle list-inside text-gray-400 ml-6">
+            <ul class="list-disc list-inside text-gray-400 ml-6">
               <li>
-                <strong>Weather Bot:</strong> Integrates with Google Gemini API (for AI/NLP) and OpenWeatherMap API (for
-                weather data).
+                <strong>Weather Bot:</strong> Integrates with Google Gemini API and OpenWeatherMap API.
               </li>
               <li>
                 <strong>Contact Form:</strong> Utilizes Resend for secure email delivery and Cloudflare Turnstile for
-                CAPTCHA verification.
+                spam verification.
               </li>
             </ul>
           </li>
-          <li>
-            <strong>Database:</strong> Firebase Firestore (for real-time chat history in the Weather Bot).
-          </li>
         </ul>
       </div>
-      <h2 class="text-2xl md:text-3xl font-bold fuchsia-text mb-6 text-center">Key Improvements & Actions Taken:</h2>
-      <div class="card p-6">
-        <h3 class="text-2xl font-semibold text-white mb-3">1. Robust HTTP Security Headers (_headers Configuration) &
-          Security Policy:</h3>
-        <p class="text-gray-300 mb-2">
-          <span class="font-bold">Action:</span> I implemented a comprehensive `_headers` file for Netlify, meticulously
-          defining crucial HTTP security headers. Additionally, I established a `security.txt` file at
-          `/.well-known/security.txt` to provide a clear vulnerability reporting channel.
-        </p>
-        <p class="text-gray-300 mb-4">
-          <span class="font-bold">Why it matters:</span> This setup provides a robust defense by:
-        </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
-          <li>
-            <span class="font-semibold">Content-Security-Policy (CSP):</span> Establishing strict rules to prevent
-            Cross-Site Scripting (XSS) and data injection attacks. By whitelisting all allowed sources for scripts,
-            styles, images, and other content, I significantly reduced the risk of malicious code execution.
-          </li>
-          <li>
-            <span class="font-semibold">X-Frame-Options (DENY):</span> Preventing clickjacking by disallowing my site
-            from being embedded in iframes on other domains.
-          </li>
-          <li>
-            <span class="font-semibold">X-Content-Type-Options (nosniff):</span> Mitigating MIME-sniffing attacks, which
-            helps prevent browsers from misinterpreting file types.
-          </li>
-          <li>
-            <span class="font-semibold">Referrer-Policy (no-referrer-when-downgrade):</span> Enhancing user privacy by
-            controlling how much referrer information is sent with requests.
-          </li>
-          <li>
-            <span class="font-semibold">Permissions-Policy:</span> Explicitly disabling unwanted browser features (like
-            geolocation, microphone, camera) to enhance user privacy and security.
-          </li>
-          <li>
-            <span class="font-semibold">security.txt:</span> This standardized file demonstrates a proactive stance on
-            security, offering a designated and easily discoverable channel for security researchers to report
-            vulnerabilities responsibly. It highlights a commitment to security best practices and responsible
-            disclosure.
-          </li>
-        </ul>
-      </div>
-      <div class="card p-6">
-        <h3 class="text-2xl font-semibold text-white mb-3">2. Code Refactoring for Enhanced Security & Maintainability:
-        </h3>
-        <p class="text-gray-300 mb-2">
-          <span class="font-bold">Action:</span> I moved all inline JavaScript and CSS from the `index.html` file into
-          dedicated external files (`script.js` and `style.css`). Additionally, JavaScript event handlers (e.g.,
-          `onsubmit`, `onclick`) were refactored to be attached programmatically in `script.js`.
-        </p>
-        <p class="text-gray-300 mb-4">
-          <span class="font-bold">Why it matters:</span> This change was crucial. It allowed me to remove the
-          potentially dangerous `'unsafe-inline'` directive from the CSP for my custom code, significantly reducing the
-          XSS attack surface. It also greatly improved code organization, readability, and overall maintainability.
-        </p>
-      </div>
-      <div class="card p-6">
-        <h3 class="text-2xl font-semibold text-white mb-3">3. Major Performance Optimization (Removing Unnecessary
-          Payload):</h3>
-        <p class="text-gray-300 mb-2">
-          <span class="font-bold">Action:</span> A critical performance issue was identified: an unintended 4.1 MB text
-          file (`block.txt`) was being loaded from GitHub on every page visit. I successfully eliminated this reference.
-        </p>
-        <p class="text-gray-300 mb-4">
-          <span class="font-bold">Why it matters:</span> This removal dramatically reduced the total page size from
-          nearly 5 MB to less than 1 MB. This directly translated to much faster loading times and a significantly
-          better user experience for visitors, especially on mobile devices.
-        </p>
-      </div>
-      <div class="card p-6">
-        <h3 class="text-2xl font-semibold text-white mb-3">4. Accessibility Enhancements:</h3>
-        <p class="text-gray-300 mb-2">
-          <span class="font-bold">Action:</span> I addressed color contrast issues in the footer text by adjusting its
-          color for better readability on a dark background. I also implemented the <code>&lt;main&gt;</code> HTML5
-          semantic tag to properly structure the main content of the page.
-        </p>
-        <p class="text-gray-300 mb-4">
-          <span class="font-bold">Why it matters:</span> These improvements ensure my site is more accessible to users
-          with visual impairments and assistive technologies, providing a better experience for all visitors.
-        </p>
-      </div>
-      <div class="card p-6">
-        <h3 class="text-2xl font-semibold text-white mb-3">5. Favicon Reliability:</h3>
-        <p class="text-gray-300 mb-2">
-          <span class="font-bold">Action:</span> I updated the favicon link to point to a standard `favicon.ico` file.
-        </p>
-        <p class="text-gray-300 mb-4">
-          <span class="font-bold">Why it matters:</span> This resolved an `ERR_NAME_NOT_RESOLVED` console error
-          previously seen in Lighthouse, ensuring the favicon loads reliably.
-        </p>
-      </div>
-      <div class="card p-6">
-        <h2 class="text-3xl font-bold fuchsia-text mb-4">Why Some Items Were Not Fully Addressed (Practical
-          Considerations):</h2>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
-          <li>
-            <span class="font-semibold">'unsafe-inline' in CSP (Persistent Warning):</span> While I eliminated
-            `'unsafe-inline'` for my custom code, it remains in the CSP for specific third-party integrations like
-            Google reCAPTCHA and Tailwind CSS (from their CDN). These services dynamically inject small amounts of
-            inline script and style. Implementing CSP nonces or hashes for such dynamically generated third-party
-            resources is technically complex for a static site hosted on Netlify, often requiring server-side logic. For
-            a personal portfolio, the robust domain whitelisting in my CSP provides strong protection, making this a
-            pragmatic and acceptable compromise for functionality.
-          </li>
-          <li>
-            <span class="font-semibold">Subresource Integrity (SRI) for Tailwind CSS:</span> My attempts to add SRI to
-            the Tailwind CSS CDN link were unsuccessful because the CDN's Cross-Origin Resource Sharing (CORS) headers
-            are not configured to support SRI requests. As this is a server-side limitation of the CDN, it cannot be
-            fixed from my end. However, the explicit whitelisting of `cdn.tailwindcss.com` in my CSP still ensures that
-            only the legitimate Tailwind CSS from that trusted domain can be loaded.
-          </li>
-          <li>
-            <span class="font-semibold">Absence of Anti-CSRF Tokens:</span> My contact form utilizes Resend, a
-            third-party service that typically handles CSRF protection on their backend. For a simple contact form that
-            doesn't process sensitive data, this is an acceptable delegation of responsibility to a trusted service.
-          </li>
-        </ul>
-      </div>
-      <div class="card p-6 text-center">
-        <h2 class="text-3xl font-bold fuchsia-text mb-4">Outcome:</h2>
-        <p class="text-gray-300 mb-6"> Working through these challenges, I've significantly improved my website's
-          overall quality. Recent Google Lighthouse audits now proudly reflect: </p>
-        <ul class="list-none text-gray-300 space-y-2 text-xl font-semibold">
-          <li>🚀 Performance: Drastically improved (score now 0.97, previously 0.76).</li>
-          <li>✅ Accessibility: A perfect score of 1.</li>
-          <li>🌟 Best Practices: A perfect score of 1.</li>
-          <li>📈 SEO: A perfect score of 1.</li>
-        </ul>
-        <p class="text-gray-300 mt-6 text-base"> This work demonstrates my strong understanding and practical
-          application of modern web development best practices, including security, performance optimization, and
-          accessibility standards. </p>
+      <h2 class="text-2xl md:text-3xl font-bold text-fuchsia-400 mb-6 text-center">Key Improvements & Actions Taken:</h2>
+      <div class="grid grid-cols-1 gap-6">
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-semibold text-white mb-3">1. Robust HTTP Security Headers & Policy</h3>
+          <p class="text-gray-300 mb-4">
+            <span class="font-bold">Action:</span> Implemented a comprehensive `netlify.toml` file to define crucial HTTP security headers and established a `security.txt` file for a clear vulnerability reporting channel.
+          </p>
+          <p class="text-gray-300 mb-4">
+            <span class="font-bold">Why it matters:</span> This provides a robust defense by:
+          </p>
+          <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <li>
+              <span class="font-semibold">Content-Security-Policy (CSP):</span> Prevents Cross-Site Scripting (XSS) by whitelisting all allowed sources for scripts, styles, and images.
+            </li>
+            <li>
+              <span class="font-semibold">X-Frame-Options (DENY):</span> Prevents clickjacking by disallowing the site from being embedded in iframes.
+            </li>
+            <li>
+              <span class="font-semibold">X-Content-Type-Options (nosniff):</span> Mitigates MIME-sniffing attacks.
+            </li>
+            <li>
+              <span class="font-semibold">Permissions-Policy:</span> Disables unwanted browser features (like geolocation, microphone) to enhance user privacy.
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-semibold text-white mb-3">2. Code Refactoring for Security & Maintainability</h3>
+          <p class="text-gray-300 mb-2">
+            <span class="font-bold">Action:</span> Moved all inline JavaScript from `index.html` into an external `script.js` file. Event handlers were refactored to be attached programmatically.
+          </p>
+          <p class="text-gray-300 mb-4">
+            <span class="font-bold">Why it matters:</span> This was crucial for strengthening the Content Security Policy by removing the need for `'unsafe-inline'`, which significantly reduces the XSS attack surface. It also improves code organization and maintainability.
+          </p>
+        </div>
+        
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-semibold text-white mb-3">3. Hero Animation Performance Optimization</h3>
+          <p class="text-gray-300 mb-2">
+            <span class="font-bold">Action:</span> Replaced the JavaScript-based Three.js hero animation with a lightweight, CSS-only animated gradient and noise texture.
+          </p>
+          <p class="text-gray-300 mb-4">
+            <span class="font-bold">Why it matters:</span> This change removed a large JavaScript library, dramatically reducing the page's initial load size, speeding up render times, and improving the overall user experience without sacrificing a modern aesthetic.
+          </p>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-semibold text-white mb-3">4. Privacy Enhancement & Cleanup</h3>
+          <p class="text-gray-300 mb-2">
+            <span class="font-bold">Action:</span> Removed the third-party Cloudflare Web Analytics script and disabled the service. A comprehensive `privacy.html` page was added to the site.
+          </p>
+          <p class="text-gray-300 mb-4">
+            <span class="font-bold">Why it matters:</span> This move enhances user privacy by stopping all third-party analytics tracking. It also fixed several console errors related to script blocking and integrity mismatches. The new privacy policy provides clear transparency about the data the site *does* collect (e.g., via the contact form).
+          </p>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-semibold text-white mb-3">5. Accessibility Enhancements</h3>
+          <p class="text-gray-300 mb-2">
+            <span class="font-bold">Action:</span> Addressed color contrast issues in the footer and implemented semantic HTML tags (like `<main>`) to properly structure the page content.
+          </p>
+          <p class="text-gray-300 mb-4">
+            <span class="font-bold">Why it matters:</span> These improvements ensure the site is more accessible to users with visual impairments and those using assistive technologies.
+          </p>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8">
+          <h2 class="text-2xl font-bold text-fuchsia-400 mb-4">Pragmatic Security Decisions</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">Security is about trade-offs. Here’s why some "warnings" might still appear:</p>
+          <ul class="list-disc list-inside text-gray-300 space-y-3 ml-4">
+            <li>
+              <span class="font-semibold">'unsafe-inline' in CSP:</span> This directive remains in the CSP *only* for Cloudflare Turnstile, which dynamically injects a small inline style. For a personal site, the robust domain whitelisting in the CSP provides strong protection, making this an acceptable compromise for essential spam protection.
+            </li>
+            <li>
+              <span class="font-semibold">Absence of Anti-CSRF Tokens:</span> My contact form uses a Netlify serverless function and is protected by Cloudflare Turnstile, which mitigates automated attacks. For a simple form that doesn't handle sensitive state-changing actions (like financial transactions), this is a practical and secure setup.
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8 text-center">
+          <h2 class="text-3xl font-bold text-fuchsia-400 mb-4">Outcome</h2>
+          <p class="text-gray-300 mb-6"> As a result of these continuous improvements, Google Lighthouse audits now consistently reflect perfect or near-perfect scores: </p>
+          <ul class="list-none text-gray-300 space-y-2 text-xl font-semibold">
+            <li>🚀 Performance: 100</li>
+            <li>✅ Accessibility: 100</li>
+            <li>🌟 Best Practices: 100</li>
+            <li>📈 SEO: 100</li>
+          </ul>
+          <p class="text-gray-300 mt-6 text-base"> This demonstrates a strong, practical application of modern web development, including security hardening, performance optimization, and accessibility standards. </p>
+        </div>
       </div>
     </section>
   </main>
+
   <footer class="text-center py-6 bg-gray-900 text-gray-500">
-    <div class="mb-2">
+    <div class="mb-4">
       <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">Blog</a>
       <a href="https://github.com/KnowOneActual" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">GitHub</a>
+      <a href="privacy.html" class="hover:text-fuchsia-400 mx-2">Privacy Policy</a>
     </div>
-    <p>© 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or Night
-      ever!</p>
+    <p class="text-gray-400">© 2025 Beau Bremer. Handcrafted by me. All rights reserved.</p>
+    <p class="text-xs mt-2">Stay bold, keep creating, and rock on!</p>
   </footer>
 </body>
 

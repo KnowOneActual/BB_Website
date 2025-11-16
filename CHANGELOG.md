@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.6.0] - 2025-11-15
 
+### Added
+- Privacy Policy page
+
 ### Changed
 - Overhauled the hero section background animation.
 - Replaced the JavaScript-driven Three.js 3D cube animation with a high-performance, CSS-only animated gradient.

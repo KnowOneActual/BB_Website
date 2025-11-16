@@ -22,7 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 - Fixed an issue where the new hero styles were not deploying to the live site. Styles were moved from the compiled `style.css` file to the source `src/input.css` to ensure they are correctly included in the site's build process.
 
-
+### Security
+- Patched a prototype pollution vulnerability in `js-yaml` (a development dependency) by updating the package to a secure version via `npm audit fix`.
 
 ## [1.5.9] - 2025-11-02
 

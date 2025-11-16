@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Privacy Policy page
 
 ### Changed
+- Updated Sitemap.xml
 - Overhauled the hero section background animation.
 - Replaced the JavaScript-driven Three.js 3D cube animation with a high-performance, CSS-only animated gradient.
 - Layered a subtle noise texture over the hero gradient for a more modern and professional aesthetic.

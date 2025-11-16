@@ -108,70 +108,6 @@ function initializeFormHandling() {
   }
 }
 
-// --- 3D Background Animation ---
-function initializeThreeJsAnimation() {
-  const canvas = document.getElementById('hero-background');
-  if (!canvas) {
-    return;
-  }
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000,
-  );
-  const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true,
-    canvas: canvas,
-  });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setClearColor(0x000000, 0);
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({
-    color: 0xc026d3,
-    wireframe: true,
-  });
-  const cubes = [];
-  for (let i = 0; i < 50; i++) {
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.set(
-      (Math.random() - 0.5) * 20,
-      (Math.random() - 0.5) * 20,
-      (Math.random() - 0.5) * 20,
-    );
-    cube.scale.setScalar(Math.random() * 0.5 + 0.1);
-    scene.add(cube);
-    cubes.push(cube);
-  }
-  camera.position.z = 5;
-  let mouseX = 0;
-  let mouseY = 0;
-  document.addEventListener('mousemove', (event) => {
-    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-  });
-  function animate() {
-    requestAnimationFrame(animate);
-    cubes.forEach((cube) => {
-      cube.rotation.x += 0.001;
-      cube.rotation.y += 0.001;
-    });
-    camera.position.x += (mouseX * 0.1 - camera.position.x) * 0.05;
-    camera.position.y += (mouseY * 0.1 - camera.position.y) * 0.05;
-    camera.lookAt(scene.position);
-    renderer.render(scene, camera);
-  }
-  animate();
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-}
-
 // --- Fade-In Animation ---
 function initializeFadeInAnimation() {
   const faders = document.querySelectorAll('.fade-in');
@@ -264,7 +200,6 @@ async function fetchAndDisplayBlogPosts() {
 document.addEventListener('DOMContentLoaded', () => {
   initializeEasterEggs();
   initializeFormHandling();
-  initializeThreeJsAnimation();
   initializeFadeInAnimation();
   fetchAndDisplayBlogPosts(); // Fetch blog posts after the page has loaded
 });

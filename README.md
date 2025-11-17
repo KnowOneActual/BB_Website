@@ -30,8 +30,8 @@ Here, you'll find a collection of interactive tools and resources I've built, re
   * **Network Diagnostic Tools:** A suite of client-side tools including a **Network Latency Monitor** and a **Network Speed Test** to provide real-time insights into your connection.
   * **Data Visualization Project:** An interactive infographic showcasing industry trends, built with Chart.js to demonstrate dynamic data presentation.
   * **Creative & Technical Library:** A curated collection of resources, including helpful guides like a "Wireshark Quick Start Guide" and a "Simple Guide to Creating Gmail Filters for Spam" available as downloadable PDFs.
-  * **Interactive 3D Background:** The hero section of the main page features a 3D animation created with Three.js.
-
+ 
+ 
 ### Tech Stack
 
 This website is built with a focus on modern, efficient, and secure technologies.

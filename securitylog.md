@@ -30,3 +30,23 @@
 
 * **Missing `clear-site-data`**
     * **Reason:** This header is not a standard security header for all pages. It's a utility header used for specific actions (like logout), so the "missing" finding was ignored.
+
+ ### Routine Dependency Audit
+
+    Activity: Performed a routine dependency audit using npm audit.
+
+    Tools Used: npm audit
+
+Findings & Analysis
+
+    Finding: The audit reported 12 vulnerabilities (7 high, 5 low) in packages like glob, fast-redact, and tmp.
+
+    Analysis: All 12 vulnerabilities are transitive dependencies (dependencies of a dependency) and trace back to the netlify-cli package.
+
+    Action Taken: Ran npm audit fix --force which was unable to resolve the issues. Also ran npm update netlify-cli to ensure the latest version was installed. The vulnerabilities persist in the latest version.
+
+Conclusion & Risk Assessment
+
+    Risk: The netlify-cli package is a build-time tool. These vulnerabilities do not affect the production runtime of the deployed website and pose no direct risk to end-users.
+
+    Resolution: The fix must be implemented by the netlify-cli maintainers. Because the risk is low and contained to the local build environment, no further action can be taken. This finding is acknowledged and will be monitored for future package updates.

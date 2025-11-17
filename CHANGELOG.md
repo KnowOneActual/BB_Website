@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.1 ] - 2025-11-17
+
+
+### Security Hardening
+* Disabled insecure TLS 1.0 and 1.1 protocols. All connections now require a minimum of TLS 1.2.
+* Added `cross-origin-resource-policy` and `x-permitted-cross-domain-policies` HTTP headers to further secure site responses.
+
 ## [1.6.0] - 2025-11-15
 
 ### Added

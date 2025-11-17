@@ -27,20 +27,20 @@ jobs:
         run: npm install
 
       # Step 4: Run the Snyk Open Source (dependency) scan.
+      # This step implicitly runs the default 'snyk test' command.
       - name: Run Snyk Open Source (Dependency) Scan
         uses: snyk/actions/node@master
-        # This tells the action to continue even if vulnerabilities are found.
-        # You can change 'continue-on-error: true' to 'false' if you want the build to fail when issues are found.
         continue-on-error: true 
         env:
-          # The SNYK_TOKEN is a secret you will add to your GitHub repository settings.
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       
-      # Step 5: NEW - Run the Snyk Code (SAST) scan.
+      # Step 5: FIXED - Run the Snyk Code (SAST) scan.
+      # This step uses the same 'node' action but overrides the command to run 'code test'.
       - name: Run Snyk Code (SAST) Scan
-        uses: snyk/actions/code@master
-        # This also continues on error so it doesn't block your build.
+        uses: snyk/actions/node@master
         continue-on-error: true
         env:
-          # This scan also requires the SNYK_TOKEN.
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          # This command tells the action to run Snyk Code (SAST)
+          command: code test

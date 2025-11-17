@@ -11,7 +11,7 @@
         "postinstall": "npx update-browserslist-db@latest"
     },
     "dependencies": {
-        "netlify-cli": "^22.1.1",
+        "netlify-cli": "^23.5.1",
         "node-fetch": "^2.6.7",
         "rss-parser": "^3.13.0"
     },

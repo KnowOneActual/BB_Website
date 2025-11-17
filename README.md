@@ -93,6 +93,20 @@ You can access the live site using the [Tor Browser via this link](http://wb7kwf
 
 The "Recent Blog Posts" section relies on a serverless function that fetches an RSS feed from `blog.beaubremer.com`. This domain is protected by Cloudflare's bot detection. A **Security Rule** has been created in the Cloudflare dashboard for `beaubremer.com` to allow requests that contain the `User-Agent` string `Beau-Bremer-Website-Blog-Fetcher`. If this feature breaks, verify that the Cloudflare rule is still active.
 
+
+## Security Posture
+
+I take the security of this project seriously. My security strategy is built on two key parts:
+
+1.  **Automated Scanning:** This repository is automatically scanned for vulnerable dependencies on every push to the `main` branch using Snyk.
+2.  **Periodic Reviews:** I conduct regular security audits of the live site and its dependencies. The findings and actions from these reviews are documented in a public log.
+
+### Security Documentation
+
+* **`SECURITY.md`**: View the official security policy, which includes instructions on how to responsibly disclose a vulnerability.
+* **`securitylog.md`**: View the public, time-stamped log of all security audits and hardening actions taken on this site.
+
+
 ## Contact
 
 Have a question, a comment, or just want to say hi? Feel free to reach out via the contact form on my website.

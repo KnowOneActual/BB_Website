@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   fetch('data/uses.json')
     .then((response) => {
-      if (!response.ok)
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
     })
     .then((data) => {
@@ -24,9 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ? 'text-lg font-semibold text-white mb-1'
           : 'text-xl font-semibold text-white mb-2';
 
-        description.className = isLiveProduction
-          ? 'text-gray-400 text-xs'
-          : 'text-gray-400 text-sm';
+        description.className = isLiveProduction ? 'text-gray-400 text-xs' : 'text-gray-400 text-sm';
 
         // Set content
         title.textContent = item.name;
@@ -41,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
           link.className = 'block h-full';
-          title.className =
-            'text-xl font-semibold text-fuchsia-400 hover:underline mb-2';
+          title.className = 'text-xl font-semibold text-fuchsia-400 hover:underline mb-2';
           link.appendChild(title);
           link.appendChild(description);
           cardDiv.appendChild(link);
@@ -77,8 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // -----------------------
 
           const heading = document.createElement('h2');
-          heading.className =
-            'text-3xl font-bold text-fuchsia-400 mb-8 text-center';
+          heading.className = 'text-3xl font-bold text-fuchsia-400 mb-8 text-center';
 
           // Create and append icon element
           const icon = document.createElement('i');
@@ -110,8 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let iconClass = 'fa-solid fa-desktop';
 
         const heading = document.createElement('h2');
-        heading.className =
-          'text-3xl font-bold text-fuchsia-400 mb-8 text-center';
+        heading.className = 'text-3xl font-bold text-fuchsia-400 mb-8 text-center';
 
         const icon = document.createElement('i');
         icon.className = `${iconClass} mr-3`;
@@ -122,10 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (const category in data.software) {
           const subHeading = document.createElement('h3');
-          subHeading.className =
-            'text-2xl font-semibold text-fuchsia-400 mt-8 mb-6 text-center md:text-left';
-          subHeading.textContent =
-            category.charAt(0).toUpperCase() + category.slice(1);
+          subHeading.className = 'text-2xl font-semibold text-fuchsia-400 mt-8 mb-6 text-center md:text-left';
+          subHeading.textContent = category.charAt(0).toUpperCase() + category.slice(1);
 
           const grid = document.createElement('div');
           // Use two columns for software sub-categories for better spacing
@@ -141,11 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // 3. Live Production
-      populateSection(
-        'live-production-section',
-        'Live Production',
-        data.live_production,
-      );
+      populateSection('live-production-section', 'Live Production', data.live_production);
 
       // 4. Services
       populateSection('services-section', 'Services', data.services);

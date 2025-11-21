@@ -1,325 +1,379 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My IP & Browser Information | Beau Bremer</title>
     <link rel="canonical" href="https://beaubremer.com/" />
     <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
-    <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
-    <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
-    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="/img/favicon/site.webmanifest">
-    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-        as="style" crossorigin="anonymous">
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/img/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-        rel="stylesheet" crossorigin="anonymous">
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
+      as="style"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
     <!-- Leaflet CSS for the map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="style.css" />
     <style>
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Space Grotesk', sans-serif;
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Space Grotesk', sans-serif;
+      }
 
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
 
-        #info-container,
-        #browser-info-container {
-            grid-template-columns: auto 1fr;
-        }
+      #info-container,
+      #browser-info-container {
+        grid-template-columns: auto 1fr;
+      }
 
-        .key-name {
-            text-transform: capitalize;
-        }
+      .key-name {
+        text-transform: capitalize;
+      }
 
-        #location-map {
-            height: 300px;
-            border-radius: 0.5rem;
-            z-index: 0;
-            /* Ensures map is clickable */
-        }
+      #location-map {
+        height: 300px;
+        border-radius: 0.5rem;
+        z-index: 0;
+        /* Ensures map is clickable */
+      }
 
-        .leaflet-control-attribution,
-        .leaflet-control-zoom {
-            font-family: 'Inter', sans-serif !important;
-        }
+      .leaflet-control-attribution,
+      .leaflet-control-zoom {
+        font-family: 'Inter', sans-serif !important;
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-gray-950 text-white min-h-screen flex flex-col">
+  <body class="bg-gray-950 text-white min-h-screen flex flex-col">
     <nav class="bg-gray-900 p-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-fuchsia-400 font-bold text-xl">← Back to Main Page</a>
-            <h1 class="text-xl font-bold">IP & Browser Info</h1>
-        </div>
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-fuchsia-400 font-bold text-xl">← Back to Main Page</a>
+        <h1 class="text-xl font-bold">IP & Browser Info</h1>
+      </div>
     </nav>
 
     <main class="flex-grow max-w-6xl mx-auto py-12 px-6 w-full">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold mb-4 text-fuchsia-400">My IP & Browser Information</h1>
-            <p class="text-gray-300 text-lg">A quick look at your public-facing network and client details.</p>
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4 text-fuchsia-400">My IP & Browser Information</h1>
+        <p class="text-gray-300 text-lg">A quick look at your public-facing network and client details.</p>
+      </div>
+
+      <!-- Summary Section -->
+      <div id="summary-info" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-12">
+        <div class="bg-gray-800 p-4 rounded-lg">
+          <h3 class="text-sm font-semibold text-fuchsia-400">IP Address</h3>
+          <p id="summary-ip" class="text-2xl font-bold">-</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg">
+          <h3 class="text-sm font-semibold text-fuchsia-400">City</h3>
+          <p id="summary-city" class="text-2xl font-bold">-</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg">
+          <h3 class="text-sm font-semibold text-fuchsia-400">ISP / Organization</h3>
+          <p id="summary-org" class="text-2xl font-bold">-</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Left Column -->
+        <div class="space-y-8">
+          <!-- Browser & Device Details Card -->
+          <div class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
+            <h2 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Browser & Device Details</h2>
+            <div id="browser-info-container" class="grid gap-x-6 gap-y-3 font-mono text-sm">
+              <!-- Content will be injected by JS -->
+            </div>
+          </div>
+
+          <!-- Security Tools Card -->
+          <div class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
+            <h2 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Network Security & Reputation</h2>
+            <div id="security-links-container" class="space-y-4">
+              <p class="text-sm text-gray-400 text-center">Use these external tools to analyze your IP address.</p>
+              <!-- Links will be injected by JS -->
+            </div>
+          </div>
         </div>
 
-        <!-- Summary Section -->
-        <div id="summary-info" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-12">
-            <div class="bg-gray-800 p-4 rounded-lg">
-                <h3 class="text-sm font-semibold text-fuchsia-400">IP Address</h3>
-                <p id="summary-ip" class="text-2xl font-bold">-</p>
+        <!-- Right Column -->
+        <div class="space-y-8">
+          <!-- IP Details Card -->
+          <div class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold text-fuchsia-400">Full IP Details</h2>
+              <button
+                id="copy-details-btn"
+                class="px-4 py-2 bg-gray-700 hover:bg-fuchsia-600 font-semibold text-sm rounded-lg transition"
+              >
+                Copy Details
+              </button>
             </div>
-            <div class="bg-gray-800 p-4 rounded-lg">
-                <h3 class="text-sm font-semibold text-fuchsia-400">City</h3>
-                <p id="summary-city" class="text-2xl font-bold">-</p>
+            <div id="info-container" class="grid gap-x-6 gap-y-3 font-mono text-sm">
+              <!-- Loading state -->
+              <div class="col-span-2 text-center text-gray-400 py-8">
+                <svg
+                  class="animate-spin h-8 w-8 text-fuchsia-400 mx-auto mb-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Loading IP information...
+              </div>
             </div>
-            <div class="bg-gray-800 p-4 rounded-lg">
-                <h3 class="text-sm font-semibold text-fuchsia-400">ISP / Organization</h3>
-                <p id="summary-org" class="text-2xl font-bold">-</p>
-            </div>
+          </div>
+
+          <!-- Map Card -->
+          <div class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
+            <h2 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Approximate Location</h2>
+            <div id="location-map"></div>
+          </div>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Left Column -->
-            <div class="space-y-8">
-                <!-- Browser & Device Details Card -->
-                <div
-                    class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
-                    <h2 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Browser & Device Details</h2>
-                    <div id="browser-info-container" class="grid gap-x-6 gap-y-3 font-mono text-sm">
-                        <!-- Content will be injected by JS -->
-                    </div>
-                </div>
-
-                <!-- Security Tools Card -->
-                <div
-                    class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
-                    <h2 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Network Security & Reputation</h2>
-                    <div id="security-links-container" class="space-y-4">
-                        <p class="text-sm text-gray-400 text-center">Use these external tools to analyze your IP
-                            address.</p>
-                        <!-- Links will be injected by JS -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column -->
-            <div class="space-y-8">
-                <!-- IP Details Card -->
-                <div
-                    class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold text-fuchsia-400">Full IP Details</h2>
-                        <button id="copy-details-btn"
-                            class="px-4 py-2 bg-gray-700 hover:bg-fuchsia-600 font-semibold text-sm rounded-lg transition">Copy
-                            Details</button>
-                    </div>
-                    <div id="info-container" class="grid gap-x-6 gap-y-3 font-mono text-sm">
-                        <!-- Loading state -->
-                        <div class="col-span-2 text-center text-gray-400 py-8">
-                            <svg class="animate-spin h-8 w-8 text-fuchsia-400 mx-auto mb-4"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                    stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor"
-                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                                </path>
-                            </svg>
-                            Loading IP information...
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Map Card -->
-                <div
-                    class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-fuchsia-600/50 transition-shadow duration-300">
-                    <h2 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Approximate Location</h2>
-                    <div id="location-map"></div>
-                </div>
-            </div>
-        </div>
+      </div>
     </main>
 
     <footer class="text-center py-6 bg-gray-900 text-gray-500 mt-auto">
-        <div class="mb-2">
-            <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">Blog</a>
-            <a href="https://github.com/KnowOneActual" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-400 mx-2">GitHub</a>
-            <a href="technology_security.html" class="hover:text-fuchsia-400 mx-2">Site Technology Report</a>
-        </div>
-        <p>© 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or
-            Night ever!</p>
+      <div class="mb-2">
+        <a
+          href="https://blog.beaubremer.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-fuchsia-400 mx-2"
+          >Blog</a
+        >
+        <a
+          href="https://github.com/KnowOneActual"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-fuchsia-400 mx-2"
+          >GitHub</a
+        >
+        <a href="technology_security.html" class="hover:text-fuchsia-400 mx-2">Site Technology Report</a>
+      </div>
+      <p>
+        © 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or Night
+        ever!
+      </p>
     </footer>
 
     <!-- Leaflet JS for the map -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const infoContainer = document.getElementById('info-container');
-            const browserInfoContainer = document.getElementById('browser-info-container');
-            const securityLinksContainer = document.getElementById('security-links-container');
-            const summaryIpEl = document.getElementById('summary-ip');
-            const summaryCityEl = document.getElementById('summary-city');
-            const summaryOrgEl = document.getElementById('summary-org');
-            const summaryContainer = document.getElementById('summary-info');
-            const copyBtn = document.getElementById('copy-details-btn');
-            const mapEl = document.getElementById('location-map');
+      document.addEventListener('DOMContentLoaded', async () => {
+        const infoContainer = document.getElementById('info-container');
+        const browserInfoContainer = document.getElementById('browser-info-container');
+        const securityLinksContainer = document.getElementById('security-links-container');
+        const summaryIpEl = document.getElementById('summary-ip');
+        const summaryCityEl = document.getElementById('summary-city');
+        const summaryOrgEl = document.getElementById('summary-org');
+        const summaryContainer = document.getElementById('summary-info');
+        const copyBtn = document.getElementById('copy-details-btn');
+        const mapEl = document.getElementById('location-map');
 
-            let fullData = {};
-            let browserData = {};
+        let fullData = {};
+        let browserData = {};
 
-            // --- Function to display key-value pairs ---
-            const displayData = (container, data, order = null) => {
-                container.innerHTML = '';
-                const dataMap = new Map(Object.entries(data));
-                const keyOrder = order || Array.from(dataMap.keys());
+        // --- Function to display key-value pairs ---
+        const displayData = (container, data, order = null) => {
+          container.innerHTML = '';
+          const dataMap = new Map(Object.entries(data));
+          const keyOrder = order || Array.from(dataMap.keys());
 
-                keyOrder.forEach(key => {
-                    if (dataMap.has(key)) {
-                        const value = dataMap.get(key);
-                        const keyEl = document.createElement('div');
-                        keyEl.className = 'text-gray-400 text-right key-name';
-                        keyEl.textContent = `${key.replace(/_/g, ' ')}:`;
-                        const valueEl = document.createElement('div');
-                        valueEl.className = 'text-white break-words';
-                        valueEl.textContent = value;
-                        container.appendChild(keyEl);
-                        container.appendChild(valueEl);
-                        dataMap.delete(key);
-                    }
-                });
-
-                if (dataMap.size > 0) {
-                    dataMap.forEach((value, key) => {
-                        const keyEl = document.createElement('div');
-                        keyEl.className = 'text-gray-400 text-right key-name';
-                        keyEl.textContent = `${key.replace(/_/g, ' ')}:`;
-                        const valueEl = document.createElement('div');
-                        valueEl.className = 'text-white break-words';
-                        valueEl.textContent = value;
-                        container.appendChild(keyEl);
-                        container.appendChild(valueEl);
-                    });
-                }
-            };
-
-            // --- Function to populate browser and device info ---
-            const populateBrowserInfo = () => {
-                browserData = {
-                    'User Agent': navigator.userAgent,
-                    'Screen Resolution': `${window.screen.width} x ${window.screen.height}`,
-                    'Browser Language': navigator.language,
-                    'Local Time': new Date().toLocaleString()
-                };
-                displayData(browserInfoContainer, browserData);
-            };
-
-            // --- Function to initialize the map ---
-            const initMap = (lat, lon) => {
-                if (lat && lon) {
-                    const map = L.map(mapEl).setView([lat, lon], 13);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    }).addTo(map);
-                    L.marker([lat, lon]).addTo(map);
-                } else {
-                    mapEl.innerHTML = '<p class="text-gray-400 text-center">Location data not available to display map.</p>';
-                }
-            };
-
-            // --- Function to populate security links ---
-            const populateSecurityLinks = (ip, asn) => {
-                securityLinksContainer.innerHTML = ''; // Clear previous links
-                const links = [
-                    { name: 'Shodan', url: `https://www.shodan.io/host/${ip}` },
-                    { name: 'AbuseIPDB', url: `https://www.abuseipdb.com/check/${ip}` },
-                    { name: 'Hurricane Electric BGP Toolkit', url: `https://bgp.he.net/${asn}` }
-                ];
-
-                links.forEach(link => {
-                    if ((link.name.includes('BGP') && asn) || !link.name.includes('BGP')) {
-                        const linkEl = document.createElement('a');
-                        linkEl.href = link.url;
-                        linkEl.target = '_blank';
-                        linkEl.rel = 'noopener noreferrer';
-                        linkEl.className = 'block w-full text-center px-4 py-3 bg-gray-700 hover:bg-fuchsia-600 font-semibold rounded-lg transition';
-                        linkEl.textContent = `Check on ${link.name}`;
-                        securityLinksContainer.appendChild(linkEl);
-                    }
-                });
-            };
-
-            // --- Main Execution ---
-            try {
-                populateBrowserInfo(); // Populate browser info immediately
-                setInterval(populateBrowserInfo, 1000); // Update time every second
-
-                const response = await fetch('https://ipapi.co/json/');
-                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
-                fullData = await response.json();
-
-                // Populate UI
-                summaryIpEl.textContent = fullData.ip || 'N/A';
-                summaryCityEl.textContent = fullData.city || 'N/A';
-                summaryOrgEl.textContent = fullData.org || 'N/A';
-
-                const ipDetailOrder = [
-                    'ip', 'network', 'version', 'city', 'region', 'region_code', 'country', 'country_name', 'country_code', 'country_code_iso3',
-                    'country_capital', 'country_tld', 'continent_code', 'in_eu', 'postal', 'latitude', 'longitude', 'timezone', 'utc_offset',
-                    'country_calling_code', 'currency', 'currency_name', 'languages', 'country_area', 'country_population', 'asn', 'org'
-                ];
-                displayData(infoContainer, fullData, ipDetailOrder);
-
-                initMap(fullData.latitude, fullData.longitude);
-                populateSecurityLinks(fullData.ip, fullData.asn);
-
-            } catch (error) {
-                console.error('Failed to fetch IP information:', error);
-                summaryContainer.style.display = 'none';
-                infoContainer.innerHTML = `<div class="col-span-2 text-center text-red-400 py-8">Could not load IP information. The service might be temporarily unavailable. Please try again later.</div>`;
-                mapEl.innerHTML = '<p class="text-gray-400 text-center">Map could not be loaded.</p>';
-                securityLinksContainer.innerHTML = '<p class="text-gray-400 text-center">Could not load security links.</p>';
+          keyOrder.forEach((key) => {
+            if (dataMap.has(key)) {
+              const value = dataMap.get(key);
+              const keyEl = document.createElement('div');
+              keyEl.className = 'text-gray-400 text-right key-name';
+              keyEl.textContent = `${key.replace(/_/g, ' ')}:`;
+              const valueEl = document.createElement('div');
+              valueEl.className = 'text-white break-words';
+              valueEl.textContent = value;
+              container.appendChild(keyEl);
+              container.appendChild(valueEl);
+              dataMap.delete(key);
             }
+          });
 
-            copyBtn.addEventListener('click', () => {
-                let textToCopy = '--- IP Information ---\n';
-                for (const [key, value] of Object.entries(fullData)) {
-                    const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                    textToCopy += `${formattedKey}: ${value}\n`;
-                }
+          if (dataMap.size > 0) {
+            dataMap.forEach((value, key) => {
+              const keyEl = document.createElement('div');
+              keyEl.className = 'text-gray-400 text-right key-name';
+              keyEl.textContent = `${key.replace(/_/g, ' ')}:`;
+              const valueEl = document.createElement('div');
+              valueEl.className = 'text-white break-words';
+              valueEl.textContent = value;
+              container.appendChild(keyEl);
+              container.appendChild(valueEl);
+            });
+          }
+        };
 
-                textToCopy += '\n--- Browser & Device Information ---\n';
-                for (const [key, value] of Object.entries(browserData)) {
-                    textToCopy += `${key}: ${value}\n`;
-                }
+        // --- Function to populate browser and device info ---
+        const populateBrowserInfo = () => {
+          browserData = {
+            'User Agent': navigator.userAgent,
+            'Screen Resolution': `${window.screen.width} x ${window.screen.height}`,
+            'Browser Language': navigator.language,
+            'Local Time': new Date().toLocaleString(),
+          };
+          displayData(browserInfoContainer, browserData);
+        };
 
-                navigator.clipboard.writeText(textToCopy.trim()).then(() => {
-                    const originalText = copyBtn.textContent;
-                    copyBtn.textContent = 'Copied!';
-                    copyBtn.classList.add('bg-green-600', 'text-white');
-                    setTimeout(() => {
-                        copyBtn.textContent = originalText;
-                        copyBtn.classList.remove('bg-green-600', 'text-white');
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy text: ', err);
-                });
+        // --- Function to initialize the map ---
+        const initMap = (lat, lon) => {
+          if (lat && lon) {
+            const map = L.map(mapEl).setView([lat, lon], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 19,
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            }).addTo(map);
+            L.marker([lat, lon]).addTo(map);
+          } else {
+            mapEl.innerHTML = '<p class="text-gray-400 text-center">Location data not available to display map.</p>';
+          }
+        };
+
+        // --- Function to populate security links ---
+        const populateSecurityLinks = (ip, asn) => {
+          securityLinksContainer.innerHTML = ''; // Clear previous links
+          const links = [
+            { name: 'Shodan', url: `https://www.shodan.io/host/${ip}` },
+            { name: 'AbuseIPDB', url: `https://www.abuseipdb.com/check/${ip}` },
+            { name: 'Hurricane Electric BGP Toolkit', url: `https://bgp.he.net/${asn}` },
+          ];
+
+          links.forEach((link) => {
+            if ((link.name.includes('BGP') && asn) || !link.name.includes('BGP')) {
+              const linkEl = document.createElement('a');
+              linkEl.href = link.url;
+              linkEl.target = '_blank';
+              linkEl.rel = 'noopener noreferrer';
+              linkEl.className =
+                'block w-full text-center px-4 py-3 bg-gray-700 hover:bg-fuchsia-600 font-semibold rounded-lg transition';
+              linkEl.textContent = `Check on ${link.name}`;
+              securityLinksContainer.appendChild(linkEl);
+            }
+          });
+        };
+
+        // --- Main Execution ---
+        try {
+          populateBrowserInfo(); // Populate browser info immediately
+          setInterval(populateBrowserInfo, 1000); // Update time every second
+
+          const response = await fetch('https://ipapi.co/json/');
+          if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+          fullData = await response.json();
+
+          // Populate UI
+          summaryIpEl.textContent = fullData.ip || 'N/A';
+          summaryCityEl.textContent = fullData.city || 'N/A';
+          summaryOrgEl.textContent = fullData.org || 'N/A';
+
+          const ipDetailOrder = [
+            'ip',
+            'network',
+            'version',
+            'city',
+            'region',
+            'region_code',
+            'country',
+            'country_name',
+            'country_code',
+            'country_code_iso3',
+            'country_capital',
+            'country_tld',
+            'continent_code',
+            'in_eu',
+            'postal',
+            'latitude',
+            'longitude',
+            'timezone',
+            'utc_offset',
+            'country_calling_code',
+            'currency',
+            'currency_name',
+            'languages',
+            'country_area',
+            'country_population',
+            'asn',
+            'org',
+          ];
+          displayData(infoContainer, fullData, ipDetailOrder);
+
+          initMap(fullData.latitude, fullData.longitude);
+          populateSecurityLinks(fullData.ip, fullData.asn);
+        } catch (error) {
+          console.error('Failed to fetch IP information:', error);
+          summaryContainer.style.display = 'none';
+          infoContainer.innerHTML = `<div class="col-span-2 text-center text-red-400 py-8">Could not load IP information. The service might be temporarily unavailable. Please try again later.</div>`;
+          mapEl.innerHTML = '<p class="text-gray-400 text-center">Map could not be loaded.</p>';
+          securityLinksContainer.innerHTML = '<p class="text-gray-400 text-center">Could not load security links.</p>';
+        }
+
+        copyBtn.addEventListener('click', () => {
+          let textToCopy = '--- IP Information ---\n';
+          for (const [key, value] of Object.entries(fullData)) {
+            const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+            textToCopy += `${formattedKey}: ${value}\n`;
+          }
+
+          textToCopy += '\n--- Browser & Device Information ---\n';
+          for (const [key, value] of Object.entries(browserData)) {
+            textToCopy += `${key}: ${value}\n`;
+          }
+
+          navigator.clipboard
+            .writeText(textToCopy.trim())
+            .then(() => {
+              const originalText = copyBtn.textContent;
+              copyBtn.textContent = 'Copied!';
+              copyBtn.classList.add('bg-green-600', 'text-white');
+              setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.classList.remove('bg-green-600', 'text-white');
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error('Failed to copy text: ', err);
             });
         });
+      });
     </script>
-</body>
-
+  </body>
 </html>

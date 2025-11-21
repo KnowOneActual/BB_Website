@@ -1,43 +1,43 @@
 [
-    {
-        "title": "My Website",
-        "url": "https://beaubremer.com/",
-        "icon": "fa-solid fa-globe"
-    },
-    {
-        "title": "My Blog",
-        "url": "https://blog.beaubremer.com/",
-        "icon": "fa-solid fa-blog"
-    },
-    {
-        "title": "GitHub",
-        "url": "https://github.com/KnowOneActual",
-        "icon": "fa-brands fa-github"
-    },
-    {
-        "title": "My IP & Browser Information",
-        "url": "/my_ip.html",
-        "icon": "fa-solid fa-network-wired"
-    },
-    {
-        "title": "Weather Bot Project",
-        "url": "/weather.html",
-        "icon": "fa-solid fa-cloud-sun-rain"
-    },
-    {
-        "title": "Profit and Ego | EaaS",
-        "url": "https://profitandego.com/",
-        "icon": "fa-solid fa-money-bills"
-    },
-    {
-        "title": "Tuesday Firm",
-        "url": "https://tuesdayfirm.dev/",
-        "icon": "fa-brands fa-dev"
-    },
+  {
+    "title": "My Website",
+    "url": "https://beaubremer.com/",
+    "icon": "fa-solid fa-globe"
+  },
+  {
+    "title": "My Blog",
+    "url": "https://blog.beaubremer.com/",
+    "icon": "fa-solid fa-blog"
+  },
+  {
+    "title": "GitHub",
+    "url": "https://github.com/KnowOneActual",
+    "icon": "fa-brands fa-github"
+  },
+  {
+    "title": "My IP & Browser Information",
+    "url": "/my_ip.html",
+    "icon": "fa-solid fa-network-wired"
+  },
+  {
+    "title": "Weather Bot Project",
+    "url": "/weather.html",
+    "icon": "fa-solid fa-cloud-sun-rain"
+  },
+  {
+    "title": "Profit and Ego | EaaS",
+    "url": "https://profitandego.com/",
+    "icon": "fa-solid fa-money-bills"
+  },
+  {
+    "title": "Tuesday Firm",
+    "url": "https://tuesdayfirm.dev/",
+    "icon": "fa-brands fa-dev"
+  },
 
-    {
-        "title": "Bluesky",
-        "url": "https://bsky.app/profile/grimburly.xyz",
-        "icon": "fab fa-bluesky fa-lg"
-    }
+  {
+    "title": "Bluesky",
+    "url": "https://bsky.app/profile/grimburly.xyz",
+    "icon": "fab fa-bluesky fa-lg"
+  }
 ]

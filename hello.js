@@ -27,7 +27,7 @@ exports.handler = async (event) => {
 
     const turnstileData = await turnstileResponse.json();
     if (!turnstileData.success) {
-      console.error("Turnstile verification failed:", turnstileData['error-codes']);
+      console.error('Turnstile verification failed:', turnstileData['error-codes']);
       return { statusCode: 400, body: 'CAPTCHA verification failed.' };
     }
 
@@ -36,11 +36,11 @@ exports.handler = async (event) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${resendApiKey}`,
+        Authorization: `Bearer ${resendApiKey}`,
       },
       // This section is now corrected
       body: JSON.stringify({
-        from: 'Contact Form <noreply@beaubremer.com>', 
+        from: 'Contact Form <noreply@beaubremer.com>',
         to: 'support@beaubremer.com',
         subject: `New Message from ${name} on your Website`,
         html: `
@@ -60,9 +60,8 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ message: 'Form submitted successfully!' }),
     };
-
   } catch (error) {
-    console.error("An internal error occurred:", error);
+    console.error('An internal error occurred:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Sorry, something went wrong.' }),

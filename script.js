@@ -11,10 +11,7 @@ function showMessage(msg) {
 
 // --- Easter Egg Functions ---
 const egg = () => {
-  console.log(
-    ' !!Well hey there, curious mind! You found the hidden message!',
-    'color: fuchsia; font-size: 1.5rem;',
-  );
+  console.log(' !!Well hey there, curious mind! You found the hidden message!', 'color: fuchsia; font-size: 1.5rem;');
   showMessage('!! You found the Easter Egg! Stay curious. Stay creative. !!');
 };
 const catEgg = () => {
@@ -26,9 +23,7 @@ const catEgg = () => {
   setTimeout(() => img.remove(), 8000);
 };
 const jamEgg = () => {
-  const audio = new Audio(
-    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-  );
+  const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
   audio.volume = 0.3;
   audio.play();
   showMessage('Enjoy this chill track while you explore!');
@@ -55,15 +50,9 @@ function initializeEasterEggs() {
 
 // --- FORM VALIDATION AND SUBMISSION LOGIC ---
 function validateForm() {
-  const nameInput = document.querySelector(
-    'form[name="contact"] input[name="name"]',
-  );
-  const emailInput = document.querySelector(
-    'form[name="contact"] input[name="email"]',
-  );
-  const messageTextarea = document.querySelector(
-    'form[name="contact"] textarea[name="message"]',
-  );
+  const nameInput = document.querySelector('form[name="contact"] input[name="name"]');
+  const emailInput = document.querySelector('form[name="contact"] input[name="email"]');
+  const messageTextarea = document.querySelector('form[name="contact"] textarea[name="message"]');
   const name = nameInput ? nameInput.value.trim() : '';
   const email = emailInput ? emailInput.value.trim() : '';
   const message = messageTextarea ? messageTextarea.value.trim() : '';
@@ -176,8 +165,7 @@ async function fetchAndDisplayBlogPosts() {
       const link = document.createElement('a');
       link.href = post.link;
       link.target = '_blank';
-      link.className =
-        'text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm';
+      link.className = 'text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm';
       link.textContent = 'Read More →';
 
       linkContainer.appendChild(link);

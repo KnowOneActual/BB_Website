@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   fetch('data/daily-links.json')
     .then((response) => {
-      if (!response.ok)
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
     })
     .then((data) => {
@@ -25,8 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         section.className = 'mb-8 p-6 bg-gray-800 rounded-xl shadow-lg';
 
         const title = document.createElement('h2');
-        title.className =
-          'text-2xl font-bold text-fuchsia-400 mb-6 border-b border-gray-700 pb-3';
+        title.className = 'text-2xl font-bold text-fuchsia-400 mb-6 border-b border-gray-700 pb-3';
         title.textContent = category;
         section.appendChild(title);
 

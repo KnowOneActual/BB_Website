@@ -1,13 +1,12 @@
-const pianoKeys = document.querySelectorAll('.key')
+const pianoKeys = document.querySelectorAll('.key');
 
 function playSound(newUrl) {
-    console.log(newUrl)
-    new Audio(newUrl).play()
+  console.log(newUrl);
+  new Audio(newUrl).play();
 }
 
-
 pianoKeys.forEach((pianoKey, i) => {
-    const number = i < 9 ? '0' + (i + 1) : (i + 1)
-    const newUrl = 'js_piano_assets/24-piano-keys/key' + number + '.mp3'
-    pianoKey.addEventListener('click', () => playSound(newUrl))
-})
+  const number = i < 9 ? '0' + (i + 1) : i + 1;
+  const newUrl = 'js_piano_assets/24-piano-keys/key' + number + '.mp3';
+  pianoKey.addEventListener('click', () => playSound(newUrl));
+});

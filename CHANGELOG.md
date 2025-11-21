@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.2] - 2025-11-21
+
+### Improved
+- **Developer Experience:** Integrated Prettier locally to ensure consistent code formatting across environments.
+- **Code Organization:** Added `prettier-plugin-tailwindcss` to automatically sort Tailwind utility classes, keeping HTML templates cleaner and more readable.
+- **Workflow:** Added `npm run format` and `npm run format:check` scripts to `package.json` to allow for quick, project-wide formatting.
+
+### Changed
+- Updated `.prettierrc` configuration, increasing `printWidth` from 80 to 120 to prevent excessive line-wrapping in HTML files.
+
+
 ## [1.6.1 ] - 2025-11-17
 
 

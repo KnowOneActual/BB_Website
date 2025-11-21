@@ -1,68 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found</title>
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/img/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
+      as="style"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Space Grotesk', sans-serif;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found</title>
-  <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
-  <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
-  <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
-  <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-  <link rel="manifest" href="/img/favicon/site.webmanifest">
-  <link rel="shortcut icon" href="/img/favicon/favicon.ico">
-  <link rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-    as="style" crossorigin="anonymous">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-    rel="stylesheet" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: 'Space Grotesk', sans-serif;
-    }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0a0a0a;
+        /* bg-gray-950 */
+        color: #ffffff;
+        /* text-white */
+      }
+    </style>
+  </head>
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0A0A0A;
-      /* bg-gray-950 */
-      color: #FFFFFF;
-      /* text-white */
-    }
-  </style>
-</head>
-
-<body class="bg-gray-950 text-white flex flex-col min-h-screen items-center justify-center text-center p-6">
-  <main class="max-w-xl mx-auto space-y-6">
-    <picture>
-      <source srcset="/img/404/404_robot.webp" type="image/webp">
-      <img src="/img/404/404_robot.png" alt="Confused robot holding a tangle of wires and a question mark"
-        class="w-48 h-auto mx-auto mb-8">
-    </picture>
-    <h1 class="text-6xl md:text-7xl font-extrabold text-fuchsia-600">404</h1>
-    <p class="text-2xl md:text-3xl font-light text-gray-300"> Oops! It looks like you've stumbled off the path. </p>
-    <p class="text-lg text-gray-400"> The page you're looking for might have been moved, deleted, or never existed. </p>
-    <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
-      <a href="index.html"
-        class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">
-        Go to Homepage </a>
-      <a href="index.html#contact"
-        class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">
-        Contact Me </a>
-    </div>
-    <p class="text-sm text-gray-500 mt-8"> If you followed a link from another site, please let them know of the broken
-      link. </p>
-  </main>
-  <footer class="text-center py-6 bg-gray-900 text-gray-500 mt-auto"> © 2025 Beau Bremer. Stay bold, keep creating, and
-    rock on! All rights reserved. Have the Best Day and/or Night ever! </footer>
-</body>
-
+  <body class="bg-gray-950 text-white flex flex-col min-h-screen items-center justify-center text-center p-6">
+    <main class="max-w-xl mx-auto space-y-6">
+      <picture>
+        <source srcset="/img/404/404_robot.webp" type="image/webp" />
+        <img
+          src="/img/404/404_robot.png"
+          alt="Confused robot holding a tangle of wires and a question mark"
+          class="w-48 h-auto mx-auto mb-8"
+        />
+      </picture>
+      <h1 class="text-6xl md:text-7xl font-extrabold text-fuchsia-600">404</h1>
+      <p class="text-2xl md:text-3xl font-light text-gray-300">Oops! It looks like you've stumbled off the path.</p>
+      <p class="text-lg text-gray-400">The page you're looking for might have been moved, deleted, or never existed.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+        <a
+          href="index.html"
+          class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105"
+        >
+          Go to Homepage
+        </a>
+        <a
+          href="index.html#contact"
+          class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105"
+        >
+          Contact Me
+        </a>
+      </div>
+      <p class="text-sm text-gray-500 mt-8">
+        If you followed a link from another site, please let them know of the broken link.
+      </p>
+    </main>
+    <footer class="text-center py-6 bg-gray-900 text-gray-500 mt-auto">
+      © 2025 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or Night
+      ever!
+    </footer>
+  </body>
 </html>

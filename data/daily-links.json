@@ -48,12 +48,6 @@
     "icon": "fa-solid fa-brain"
   },
   {
-    "title": "MDN Web Docs",
-    "url": "https://developer.mozilla.org/en-US/",
-    "category": "Development & Web",
-    "icon": "fa-brands fa-firefox-browser"
-  },
-  {
     "title": "Tailwind CSS Docs",
     "url": "https://tailwindcss.com/docs",
     "category": "Development & Web",
@@ -150,6 +144,18 @@
     "icon": "fa-solid fa-sliders"
   },
   {
+    "title": "Virustotal",
+    "url": "https://www.virustotal.com/gui/home/upload",
+    "category": "Security & Privacy",
+    "icon": "fa-solid fa-viruses"
+  },
+  {
+    "title": "Cuckoo Sandbox",
+    "url": "https://cuckoo.cert.ee/",
+    "category": "Security & Privacy",
+    "icon": "fa-solid fa-box"
+  },
+  {
     "title": "CyberChef (With Recipe)",
     "url": "https://gchq.github.io/CyberChef/#recipe=To_Lower_case()Pad_lines('Start',5,'%20-'/disabled)Find_/_Replace(%7B'option':'Regex','string':'%20'%7D,'_',true,false,true,false)&input=Cg",
     "category": "Tools & Utilities",
@@ -172,6 +178,12 @@
     "url": "https://music.youtube.com/",
     "category": "Personal & Entertainment",
     "icon": "fa-solid fa-music"
+  },
+  {
+    "title": "Odysee Vidoe",
+    "url": "https://odysee.com/",
+    "category": "Personal & Entertainment",
+    "icon": "fa-solid fa-circle-play"
   },
   {
     "title": "Hacker News (Y Combinator)",

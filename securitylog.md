@@ -1,3 +1,21 @@
+## 2025-11-22 - Infrastructure Update (RSS Proxy)
+
+* **Activity:** Implemented a serverless proxy for RSS feed consumption.
+* **Summary:** Created a Netlify function (`rss-proxy.js`) to allow the GitHub Actions bot to retrieve blog posts for the profile README.
+
+---
+
+### Architecture & Risk Assessment
+
+* **Implementation Details**
+    * The function acts as a middleware. It accepts a request from GitHub, fetches the feed from `blog.beaubremer.com` using the authorized "Secret Handshake" User-Agent, and returns the XML.
+    * **Risk Level:** Low.
+* **Security Controls**
+    * **Method Restriction:** The function hard-rejects any request that is not a `GET` request (returns 405).
+    * **Hardcoded Target:** The function can *only* fetch the specific blog feed URL; it cannot be manipulated to fetch arbitrary URLs (preventing SSRF attacks).
+    * **User-Agent Control:** It utilizes the existing Cloudflare allowlist rule for the `Beau-Bremer-Website-Blog-Fetcher` User-Agent.
+
+
 ## 2025-11-17 - Website Security Hardening & Review
 
 * **Activity:** Ran a routine security review using multiple external scanners.

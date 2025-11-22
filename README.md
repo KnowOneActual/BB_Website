@@ -91,7 +91,7 @@ You can access the live site using the [Tor Browser via this link](http://wb7kwf
 
 ### Cloudflare Security Rule
 
-The "Recent Blog Posts" section relies on a serverless function that fetches an RSS feed from `blog.beaubremer.com`. This domain is protected by Cloudflare's bot detection. A **Security Rule** has been created in the Cloudflare dashboard for `beaubremer.com` to allow requests that contain the `User-Agent` string `Beau-Bremer-Website-Blog-Fetcher`. If this feature breaks, verify that the Cloudflare rule is still active.
+The "Recent Blog Posts" section and the GitHub Profile README workflow rely on serverless functions (fetch-posts.js and rss-proxy.js) that fetch an RSS feed from blog.beaubremer.com. This domain is protected by Cloudflare's bot detection. A **Security Rule** has been created in the Cloudflare dashboard for `beaubremer.com` to allow requests that contain the `User-Agent` string `Beau-Bremer-Website-Blog-Fetcher`. If this feature breaks, verify that the Cloudflare rule is still active.
 
 
 ## Security Posture

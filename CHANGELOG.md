@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.3] - 2025-11-22
+
+### Added
+- **RSS Proxy Function:** Created `netlify/functions/rss-proxy.js`. This serverless function acts as a trusted tunnel, fetching the blog's RSS feed using the authorized User-Agent and serving it back as XML.
+- **Workflow Integration:** This proxy enables the GitHub Profile README workflow to fetch blog posts without triggering Cloudflare's WAF/Bot protection.
+
 ## [1.6.2] - 2025-11-21
 
 ### Improved

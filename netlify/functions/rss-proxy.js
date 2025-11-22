@@ -1,39 +1,33 @@
 const fetch = require('node-fetch');
 
-exports.handler = async function (event) {
-  // Only allow GET requests
-  if (event.httpMethod !== 'GET') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
-
-  const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
+exports.handler = async function(event, context) {
+  // The feed we want to fetch
+  const FEED_URL = "https://blog.beaubremer.com/feed/feed.xml";
+  // The "Secret Handshake" that Cloudflare allows
+  const SECRET_UA = "Beau-Bremer-Website-Blog-Fetcher/1.0";
 
   try {
-    // Use your "Secret Handshake" User-Agent that is already whitelisted
-    const response = await fetch(BLOG_RSS_URL, {
-      headers: {
-        'User-Agent': 'Beau-Bremer-Website-Blog-Fetcher/1.0',
-      },
+    // Fetch the feed using the secret User-Agent
+    const response = await fetch(FEED_URL, {
+      headers: { "User-Agent": SECRET_UA }
     });
-
+    
     if (!response.ok) {
-      return { statusCode: response.status, body: `Error: ${response.statusText}` };
+      return { statusCode: response.status, body: `Error fetching feed: ${response.statusText}` };
     }
 
-    // Get the raw XML text
-    const xmlData = await response.text();
+    const data = await response.text();
 
-    // Return it directly as XML
+    // Return the raw XML to whoever asked for it
     return {
       statusCode: 200,
-      headers: { 
-        'Content-Type': 'application/xml',
-        'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
-      },
-      body: xmlData,
+      body: data,
+      headers: {
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=3600"
+      }
     };
   } catch (error) {
-    console.error('Proxy Error:', error);
-    return { statusCode: 500, body: 'Internal Server Error' };
+    return { statusCode: 500, body: error.toString() };
   }
 };

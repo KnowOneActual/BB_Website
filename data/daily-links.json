@@ -48,6 +48,12 @@
     "icon": "fa-solid fa-brain"
   },
   {
+    "title": "Perplexity",
+    "url": "https://www.perplexity.ai/",
+    "category": "LLM Tools",
+    "icon": "fa-regular fa-face-grin-tongue-wink"
+  },
+  {
     "title": "Tailwind CSS Docs",
     "url": "https://tailwindcss.com/docs",
     "category": "Development & Web",

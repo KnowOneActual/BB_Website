@@ -54,12 +54,6 @@
     "icon": "fa-regular fa-face-grin-tongue-wink"
   },
   {
-    "title": "Tailwind CSS Docs",
-    "url": "https://tailwindcss.com/docs",
-    "category": "Development & Web",
-    "icon": "fa-solid fa-swatchbook"
-  },
-  {
     "title": "Awesome Fonts",
     "url": "https://fontawesome.com",
     "category": "Development & Web",

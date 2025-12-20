@@ -54,6 +54,12 @@
     "icon": "fa-regular fa-face-grin-tongue-wink"
   },
   {
+    "title": "AI Prompt Generator",
+    "url": " https://www.feedough.com/ai-prompt-generator/",
+    "category": "LLM Tools",
+    "icon": "fa-solid fa-crosshairs"
+  },
+  {
     "title": "Awesome Fonts",
     "url": "https://fontawesome.com",
     "category": "Development & Web",

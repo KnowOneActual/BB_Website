@@ -180,6 +180,12 @@
     "icon": "fa-solid fa-file-import"
   },
   {
+    "title": "Cipher Identifier",
+    "url": "https://www.dcode.fr/cipher-identifier",
+    "category": "Tools & Utilities",
+    "icon": "fa-solid fa-fingerprint"
+  },
+  {
     "title": "YouTube Music",
     "url": "https://music.youtube.com/",
     "category": "Personal & Entertainment",

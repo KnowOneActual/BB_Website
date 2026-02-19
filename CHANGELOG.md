@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.4] - 2026-02-19
+
+### Changed
+- Updated `glob` to v12.0.0 to address known security vulnerabilities (CVE-2025-64756)
+- Updated `netlify-cli` to latest version
+- Removed `--minify` flag from default CSS build to ensure test compatibility
+- Added new `build:css:minify` script for production builds requiring minification
+
+### Fixed
+- Resolved EBADPLATFORM errors during npm install caused by optional platform-specific dependencies
+- Fixed corrupted `package-lock.json` that was blocking Netlify deployments
+- Regenerated dependency tree to resolve `path-scurry` version conflicts
+- Fixed CSS build process to maintain readable output for Jest test parsing
+
+### Security
+- Addressed 3 vulnerabilities via `npm audit fix`: ajv (ReDoS), qs (DoS), and tar (file extraction)
+- Reduced total audit warnings from 36 to 33 (remaining are dev-only minimatch ReDoS issues)
+
+### Improved
+- Cleaned up npm dependency tree, reducing package count from 1624 to 1498
+- Updated browserslist database (caniuse-lite) to latest version
+- Improved deployment reliability on Netlify build servers
+
 ## [1.6.3] - 2025-11-22
 
 ### Added

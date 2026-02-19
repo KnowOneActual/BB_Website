@@ -192,10 +192,16 @@
     "icon": "fa-solid fa-music"
   },
   {
-    "title": "Odysee Vidoe",
+    "title": "Odysee Video",
     "url": "https://odysee.com/",
     "category": "Personal & Entertainment",
     "icon": "fa-solid fa-circle-play"
+  },
+  {
+    "title": "The Farside",
+    "url": "https://www.thefarside.com/",
+    "category": "Personal & Entertainment",
+    "icon": "fa-solid fa-bomb"
   },
   {
     "title": "Hacker News (Y Combinator)",

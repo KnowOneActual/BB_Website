@@ -44,12 +44,12 @@
           <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300 leading-relaxed">
             <li>This site does not use any personal analytics or tracking cookies.</li>
             <li>The contact form collects your name and email so I can reply to your message. That's it.</li>
+            <li>I do not store any contact form data myself—messages are sent directly via Resend's email service.</li>
             <li>
-              This site is hosted by Netlify, uses Cloudflare Turnstile for spam protection, and loads fonts from
+              This site is hosted by Netlify, uses Cloudflare Turnstile for spam protection, Resend for email delivery, and loads fonts from
               Google. These third parties have their own policies.
             </li>
-            <li>Your contact form data is retained for 12 months and then deleted.</li>
-            <li>You have the right to access or delete your data at any time.</li>
+            <li>You have the right to request deletion of any data held by third-party services.</li>
           </ul>
 
           <p class="text-sm text-gray-500 italic mb-8">
@@ -66,21 +66,35 @@
             collect this information for the sole purpose of receiving and responding to your message.
           </p>
           <p class="text-gray-300 leading-relaxed mb-6">
-            This information is processed by a serverless function hosted by Netlify. I do not sell this data, share it
-            with other third parties, or add you to any marketing lists.
+            <strong>I do not store any contact form submissions.</strong> Your message is sent directly to my email via
+            <a
+              href="https://resend.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-400 hover:underline"
+              >Resend</a
+            >, a transactional email service. I do not sell this data, share it with other third parties, or add you to
+            any marketing lists.
           </p>
 
           <h3 class="text-xl font-semibold text-fuchsia-400 mb-3">Data Retention</h3>
           <p class="text-gray-300 leading-relaxed mb-6">
-            Contact form submissions are retained for 12 months to allow me to respond to your inquiry and maintain
-            correspondence records. After this period, submissions are automatically deleted.
+            Since I do not store contact form submissions, I have no data retention period. Resend, the email service provider,
+            retains email data for a limited period (typically 7 days for standard plans) as described in
+            <a
+              href="https://resend.com/legal/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-400 hover:underline"
+              >their privacy policy</a
+            >. Once I receive your email in my inbox, standard email retention practices apply (which I manage independently).
           </p>
 
           <h3 class="text-xl font-semibold text-fuchsia-400 mb-3">Data Security</h3>
           <p class="text-gray-300 leading-relaxed mb-6">
-            Contact form data is transmitted securely via HTTPS and stored with industry-standard security measures
-            through Netlify's infrastructure. While I implement reasonable security practices, no method of electronic
-            storage is 100% secure.
+            Contact form data is transmitted securely via HTTPS. Resend uses TLS 1.3 encryption and maintains SOC 2 compliance
+            with industry-standard security measures. While I implement reasonable security practices, no method of electronic
+            transmission over the Internet is 100% secure.
           </p>
 
           <div class="border-t border-gray-700 my-6"></div>
@@ -107,6 +121,26 @@
                 class="text-blue-400 hover:underline"
                 >their privacy policy</a
               >.
+            </li>
+            <li>
+              <strong>Resend:</strong> The contact form uses
+              <a
+                href="https://resend.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-400 hover:underline"
+                >Resend</a
+              >
+              to deliver your messages to my email inbox. Resend is a transactional email service that temporarily processes
+              your name, email address, and message content to facilitate delivery. You can read
+              <a
+                href="https://resend.com/legal/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-400 hover:underline"
+                >Resend's privacy policy</a
+              >
+              for details about their data handling practices.
             </li>
             <li>
               <strong>Cloudflare Turnstile:</strong> The contact form uses
@@ -151,7 +185,7 @@
           <h3 class="text-xl font-semibold text-fuchsia-400 mb-3">International Data Transfers</h3>
           <p class="text-gray-300 leading-relaxed mb-6">
             This site is operated from the United States. By using the contact form, you consent to your information
-            being transferred to and processed in the United States.
+            being transferred to and processed in the United States through third-party services.
           </p>
 
           <div class="border-t border-gray-700 my-6"></div>
@@ -169,18 +203,19 @@
             You have the following rights regarding your personal data:
           </p>
           <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300 leading-relaxed">
-            <li><strong>Right to Access:</strong> You can request a copy of the personal data I hold about you.</li>
+            <li><strong>Right to Access:</strong> You can request information about what personal data is held about you by third-party services.</li>
             <li>
-              <strong>Right to Deletion:</strong> You can request that I delete your personal data from my records.
+              <strong>Right to Deletion:</strong> You can request that your personal data be deleted from third-party service records.
             </li>
             <li>
-              <strong>Right to Correction:</strong> You can request that I correct any inaccurate personal data.
+              <strong>Right to Correction:</strong> You can request that inaccurate personal data be corrected.
             </li>
           </ul>
           <p class="text-gray-300 leading-relaxed mb-6">
-            To exercise any of these rights, please contact me via the
-            <a href="/#contact" class="text-blue-400 hover:underline">contact form</a> with your request. I will respond
-            within 30 days.
+            Since I do not store contact form data, any data subject access requests will need to be directed to the
+            relevant third-party service (Resend, Netlify, Cloudflare, or Google). You can also contact me via the
+            <a href="/#contact" class="text-blue-400 hover:underline">contact form</a> and I will assist in coordinating
+            requests with these services. I will respond within 30 days.
           </p>
 
           <div class="border-t border-gray-700 my-6"></div>
@@ -195,7 +230,7 @@
 
           <h2 class="text-3xl font-bold mb-4 text-fuchsia-400">Version History</h2>
           <ul class="list-disc list-inside space-y-2 mb-8 text-gray-300 leading-relaxed">
-            <li><strong>February 19, 2026:</strong> Added data retention period, user rights, data security statement, and international data transfer notice.</li>
+            <li><strong>February 19, 2026:</strong> Clarified that contact form data is not stored locally and is handled by Resend; added user rights section and data security details.</li>
             <li><strong>November 21, 2025:</strong> Initial publication.</li>
           </ul>
 

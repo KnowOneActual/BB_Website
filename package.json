@@ -7,8 +7,9 @@
     "test:coverage": "jest --coverage",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "build:css": "tailwindcss -i ./src/input.css -o ./style.css --minify",
-    "build:css:silent": "BROWSERSLIST_IGNORE_OLD_DATA=1 tailwindcss -i ./src/input.css -o ./style.css --minify",
+    "build:css": "tailwindcss -i ./src/input.css -o ./style.css",
+    "build:css:minify": "tailwindcss -i ./src/input.css -o ./style.css --minify",
+    "build:css:silent": "BROWSERSLIST_IGNORE_OLD_DATA=1 tailwindcss -i ./src/input.css -o ./style.css",
     "update-browsers": "npx browserslist@latest --update-db",
     "postinstall": "npx update-browserslist-db@latest"
   },

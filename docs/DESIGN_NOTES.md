@@ -37,6 +37,13 @@ The content structure was reorganized to prioritize information that a hiring ma
 - **Sticky Navigation:** The new navigation bar remains visible on scroll, allowing users to easily jump between sections without having to scroll back to the top. It has a semi-transparent, blurred background when scrolled to maintain context of the content behind it.
 - **Project Discoverability:** Project cards were refined to include tech tags, making it easier to see the technologies used at a glance. A new, relevant project ("Network Triage Tool") was added to better showcase practical skills.
 
+### e. Privacy & Security as a Feature
+
+- **Interactive Resume Request:** Replaced direct resume downloads with a "request" workflow.
+    - **Rationale:** This protects personal information (phone/email/address) from automated scrapers and ensures the user always receives the most current version. It also creates a natural opportunity for professional interaction by landing the user directly at the contact form.
+- **Tailwind Build Integrity:** Refined the build process to scan all JavaScript-driven templates.
+    - **Rationale:** Ensures that even dynamically rendered components (like blog posts and daily links) maintain the professional aesthetic by including all necessary utility classes in the final CSS.
+
 ## 3. Conclusion
 
 This redesign represents a strategic shift from a purely expressive personal site to a polished, professional portfolio. It balances personality with the practical needs of its target audience (hiring managers) by focusing on clarity, scannability, and a calm, trustworthy aesthetic.

@@ -23,18 +23,19 @@ Here, you'll find a collection of interactive tools and resources I've built, re
 
 ### Key Features
 
-  * **My Toolkit & Philosophy Page:** A comprehensive breakdown of my professional tool stack (hardware, FOSS software, AV/IT gear) designed with a strong focus on cost-effectiveness, cross-platform use, and problem-solving through tools like Python and network analyzers.
-  * **Conversational Weather Bot:** An interactive chatbot that uses Google's Gemini API for natural language processing and the OpenWeatherMap API to provide live weather data. Chat history is stored in Firebase Firestore.
-  * **Secure Image Cleaner:** A privacy-first tool hosted on the Tor Onion Service version of the site. It's a server-side utility that strips all EXIF metadata from images, demonstrating a practical application of secure, anonymous web services.
-  * **AV IP Subnet Calculator:** A practical tool for AV technicians to plan on-site networks, mapping devices to IP addresses.
-  * **Network Diagnostic Tools:** A suite of client-side tools including a **Network Latency Monitor** and a **Network Speed Test** to provide real-time insights into your connection.
-  * **Data Visualization Project:** An interactive infographic showcasing industry trends, built with Chart.js to demonstrate dynamic data presentation.
-  * **Creative & Technical Library:** A curated collection of resources, including helpful guides like a "Wireshark Quick Start Guide" and a "Simple Guide to Creating Gmail Filters for Spam" available as downloadable PDFs.
+  * **Interactive Resume Request:** A privacy-first workflow that replaces direct downloads with a one-click request system. It pre-fills the contact form, ensuring I provide the most up-to-date version while protecting sensitive personal details from automated scrapers.
+  * **My Toolkit & Philosophy Page:** A comprehensive breakdown of my professional tool stack (hardware, FOSS software, AV/IT gear) designed with a strong focus on cost-effectiveness, cross-platform use, and problem-solving.
+  * **Conversational Weather Bot:** An interactive chatbot using Google's Gemini API for NLP and OpenWeatherMap API for live data.
+  * **Secure Image Cleaner:** A privacy-first tool (hosted on the Tor Onion Service version) that strips all EXIF metadata from images.
+  * **AV IP Subnet Calculator:** A practical tool for AV technicians to plan on-site networks.
+  * **Network Diagnostic Tools:** A suite including a **Network Latency Monitor** and a **Network Speed Test**.
+  * **Data Visualization Project:** An interactive infographic showcasing industry trends, built with Chart.js.
+  * **Creative & Technical Library:** A curated collection of resources and guides (e.g., Wireshark Quick Start Guide) available as PDFs.
  
  
 ### Tech Stack
 
-This website is built with a focus on modern, efficient, and secure technologies.
+This website is built with a focus on modern, efficient, and secure technologies. [Read the full Design Rationale here.](docs/DESIGN_NOTES.md)
 
   * **Frontend:**
       * HTML5, CSS3, Vanilla JavaScript

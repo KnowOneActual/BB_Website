@@ -1,0 +1,20 @@
+Feature Policy: Skipping unsupported feature name “cross-origin-isolated”. api.js:1:34392
+Feature Policy: Skipping unsupported feature name “autoplay”. api.js:1:34392
+Feature Policy: Skipping unsupported feature name “keyboard-map”. api.js:1:34392
+Feature Policy: Skipping unsupported feature name “cross-origin-isolated”. api.js:1:34430
+Feature Policy: Skipping unsupported feature name “autoplay”. api.js:1:34430
+Feature Policy: Skipping unsupported feature name “keyboard-map”. api.js:1:34430
+Feature Policy: Skipping unsupported feature name “cross-origin-isolated”. api.js:1:35235
+Feature Policy: Skipping unsupported feature name “autoplay”. api.js:1:35235
+Feature Policy: Skipping unsupported feature name “keyboard-map”. api.js:1:35235
+Request for font "Roboto" blocked at visibility level 2 (requires 3)
+normal
+Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it violates the following directive: “script-src 'nonce-bCa2lCdc3uCFd30A' 'unsafe-eval'”. Consider using a hash ('sha256-ZswfTY7H35rbv8WC7NXBoiC7WNu86vSzCDChNWwZZDM=') or a nonce. 2 utils.js:41:10
+Partitioned cookie or storage access was provided to “https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/ov2/av0/rch/t9v9k/0x4AAAAAABgkt_RFOUv2GXeS/auto/fbE/new/normal?lang=auto” because it is loaded in the third-party context and dynamic state partitioning is enabled. autofill.js:1607:7
+InstallTrigger is deprecated and will be removed in the future. normal:1:36215
+onmozfullscreenchange is deprecated. normal:1:36215
+onmozfullscreenerror is deprecated. normal:1:36215
+<empty string> normal:1:95503
+Request for the Private Access Token challenge. normal:1:95503
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. normal:1:95503
+The resource at “https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/cmg/1” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. normal

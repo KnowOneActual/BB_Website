@@ -2491,3 +2491,18 @@ section.bg-gradient-to-br > div.relative {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* Typing Indicator Animation */
+.dot {
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+.dot-2 {
+  animation-delay: 0.2s;
+}
+.dot-3 {
+  animation-delay: 0.4s;
+}
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}

@@ -11,6 +11,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Accessibility Improvements:** Added missing `aria-label` attributes to social and icon-only links to ensure they have discernible text for screen readers.
 - **Security Headers:** Updated the Content-Security-Policy (CSP) in `netlify.toml` to explicitly allow `beaubremer.com` and `challenges.cloudflare.com` origins, resolving blocks on Cloudflare security scripts and assets.
 - **Tab Security:** Added `rel="noopener noreferrer"` to all remaining external links to prevent reverse tab-nabbing and resolve `disown-opener` linting warnings.
+- **XSS Mitigation:** Refactored dynamic DOM generation in `toolbag.html` and `IP_Subnet_Calculator.html` to use `textContent` and `createElement` instead of `innerHTML`, mitigating potential DOM-based XSS vulnerabilities.
+- **Hardcoded Secrets:** Updated `rss-proxy.js` to use an environment variable (`RSS_SECRET_UA`) for the authorized User-Agent, resolving Snyk security findings.
+- **CSS Refactoring:** Moved inline styles and animation delays from `weather.html` to `style.css` to comply with CSP and resolve `no-inline-styles` linting warnings.
 
 ## [1.7.0] - 2026-02-27
 

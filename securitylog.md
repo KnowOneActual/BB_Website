@@ -1,7 +1,7 @@
 ## 2026-02-27 - Security & Accessibility Hardening
 
-* **Activity:** Addressed linting warnings and CSP violations.
-* **Summary:** Fixed `rel="noopener"` security issues, added ARIA labels for accessibility, and updated CSP headers to prevent Cloudflare asset blocks.
+* **Activity:** Addressed linting warnings, CSP violations, DOMXSS risks, and hardcoded secrets.
+* **Summary:** Fixed `rel="noopener"` security issues, added ARIA labels for accessibility, refactored dynamic HTML to prevent XSS, and migrated secrets to environment variables.
 
 ---
 
@@ -16,6 +16,15 @@
 * **CSP Header Expansion**
     * **Action:** Updated `netlify.toml` to explicitly allow `https://beaubremer.com` and `https://challenges.cloudflare.com` in `script-src`, `connect-src`, and `img-src`.
     * **Reason:** Prevents the browser from blocking essential Cloudflare security scripts and challenge assets, which were previously flagged as violations.
+* **DOMXSS Mitigation**
+    * **Action:** Refactored dynamic DOM generation in `toolbag.html` and `IP_Subnet_Calculator.html` to use `textContent` and `createElement` instead of `innerHTML` for dynamic values (`item.name`, `item.description`).
+    * **Reason:** Eliminates the possibility of cross-site scripting (XSS) from potentially compromised or manipulated data files.
+* **Secret Hardening**
+    * **Action:** Updated `netlify/functions/rss-proxy.js` to use `process.env.RSS_SECRET_UA` for its authorized User-Agent.
+    * **Reason:** Resolves Snyk security findings regarding hardcoded non-cryptographic secrets and follows best practices for credential management.
+* **CSP Compliance (No Inline Styles)**
+    * **Action:** Moved inline animation styles from `weather.html` to `style.css` using custom classes (`.dot`, `.dot-2`, `.dot-3`).
+    * **Reason:** Facilitates a stricter CSP by removing the need for `'unsafe-inline'` styles where possible and satisfies `webhint` linting rules.
 
 ## 2026-02-27 - Routine Dependency Audit & Reorganization
 

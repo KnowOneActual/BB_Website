@@ -21,6 +21,12 @@ This website serves as a central hub for my professional background in technical
 
 Here, you'll find a collection of interactive tools and resources I've built, reflecting my interests in everything from network diagnostics to AI-powered applications.
 
+## Project Evolution & Feedback
+
+> This website is a passion project and is actively maintained. I'm constantly refining the code and the experience. Most recently, I completed a comprehensive site-wide refactor and redesign to improve performance, navigation, and visual consistency.
+
+> I truly care about the quality of this project and value the perspectives of those who visit. **A huge thank you to everyone who has provided feedback so far.** Your insights directly impact the evolution of this site. If you have suggestions, find a bug, or just want to share your > thoughts, please don't hesitate to reach out via the contact form.
+
 ### Key Features
 
   * **Interactive Resume Request:** A privacy-first workflow that replaces direct downloads with a one-click request system. It pre-fills the contact form, ensuring I provide the most up-to-date version while protecting sensitive personal details from automated scrapers.
@@ -107,12 +113,6 @@ I take the security of this project seriously. My security strategy is built on 
 * **`SECURITY.md`**: View the official security policy, which includes instructions on how to responsibly disclose a vulnerability.
 * **`securitylog.md`**: View the public, time-stamped log of all security audits and hardening actions taken on this site.
 
-
-## Project Evolution & Feedback
-
-This website is a passion project and is actively maintained. I'm constantly refining the code and the experience—most recently, I completed a comprehensive site-wide refactor and professional redesign to improve performance, navigation, and visual consistency.
-
-I truly care about the quality of this project and value the perspectives of those who visit. **A huge thank you to everyone who has provided feedback so far.** Your insights directly impact the evolution of this site. If you have suggestions, find a bug, or just want to share your thoughts, please don't hesitate to reach out via the contact form.
 
 ## Contact
 

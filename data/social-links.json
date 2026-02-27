@@ -20,6 +20,11 @@
     "icon": "fa-solid fa-network-wired"
   },
   {
+    "title": "The Labs (Experiments)",
+    "url": "/labs.html",
+    "icon": "fa-solid fa-flask"
+  },
+  {
     "title": "Weather Bot Project",
     "url": "/weather.html",
     "icon": "fa-solid fa-cloud-sun-rain"

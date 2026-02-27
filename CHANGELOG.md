@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [1.7.0] - 2026-02-27
 
 ### Added
+- **The Labs (Experimental Gallery):** Created a new `labs.html` page to showcase experimental projects, creative coding (JS Piano), and advanced data visualizations (Trends Infographic) that are not on the main index.
 - **Interactive Resume Request:** Replaced the direct resume download link with a privacy-focused interactive workflow that pre-fills the contact form with a request message.
 - **Sticky Navigation Bar:** A new fixed header was added to improve site navigation and provide easy access to key sections and social links.
 - **LinkedIn Profile:** Added a link to the LinkedIn profile in the navigation bar.

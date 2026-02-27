@@ -11,8 +11,8 @@ const fetch = require('node-fetch');
 exports.handler = async function (event, context) {
   // The feed we want to fetch
   const FEED_URL = 'https://blog.beaubremer.com/feed/feed.xml';
-  // The "Secret Handshake" that Cloudflare allows
-  const SECRET_UA = 'Beau-Bremer-Website-Blog-Fetcher/1.0';
+  // Use environment variable for secret UA, fallback for local dev
+  const SECRET_UA = process.env.RSS_SECRET_UA || 'Beau-Bremer-Website-Blog-Fetcher/1.0';
 
   try {
     // Fetch the feed using the secret User-Agent

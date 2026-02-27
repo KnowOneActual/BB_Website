@@ -1,3 +1,22 @@
+## 2026-02-27 - Privacy & Accessibility Hardening
+
+* **Activity:** Implemented resume protection and improved site contrast.
+* **Summary:** Replaced direct PDF downloads with an interactive request system and updated UI contrast for better accessibility.
+
+---
+
+### Changes Implemented
+
+* **Interactive Resume Request (PII Protection)**
+    * **Action:** Removed `Beau_Bremer_Resume.pdf` direct link and implemented a JS-driven pre-fill contact form workflow.
+    * **Reason:** Reduces the exposure of Personal Identifiable Information (PII) to automated web scrapers and ensures the document is only shared with interested human parties.
+* **Footer Contrast Improvement**
+    * **Action:** Updated footer text from `text-gray-500` to `text-gray-400`.
+    * **Reason:** Improved readability and accessibility on the `gray-950` background.
+* **Tailwind Config Hardening**
+    * **Action:** Expanded `content` array in `tailwind.config.js` to include all nested JS directories.
+    * **Reason:** Ensures critical security-related UI classes (like error states or tooltips) are not purged during the build process.
+
 ## 2025-11-22 - Infrastructure Update (RSS Proxy)
 
 * **Activity:** Implemented a serverless proxy for RSS feed consumption.

@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [1.7.0] - 2026-02-27
 
 ### Added
+- **Interactive Resume Request:** Replaced the direct resume download link with a privacy-focused interactive workflow that pre-fills the contact form with a request message.
 - **Sticky Navigation Bar:** A new fixed header was added to improve site navigation and provide easy access to key sections and social links.
 - **LinkedIn Profile:** Added a link to the LinkedIn profile in the navigation bar.
 - **Dedicated Toolbag Page:** Created a new `toolbag.html` page to provide a more detailed and focused view of the tech stack.
@@ -23,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Tailwind Optimization:** Refined `tailwind.config.js` to target specific files, reducing build times from >40s to <1s.
 
 ### Fixed
+- **Accent Color Restoration:** Fixed an issue where the `indigo-400` accent color was missing by expanding the Tailwind `content` configuration and adding missing `group` classes for hover states.
+- **Footer Readability:** Improved text contrast in the footer for better accessibility on dark backgrounds.
 - **Design Consistency:** Resolved remaining instances of `slate` and `fuchsia` classes across the entire codebase, ensuring a unified professional aesthetic.
 - **Daily Links Data Structure:** Fixed a mismatch between the JSON data structure and the rendering logic in `daily-links.js`.
 

@@ -201,4 +201,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeFadeInAnimation();
   fetchAndDisplayBlogPosts();
   initializeStickyNav();
+
+  // Handle Resume Request Button
+  const resumeBtn = document.getElementById('request-resume-btn');
+  if (resumeBtn) {
+    resumeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const messageArea = document.querySelector('textarea[name="message"]');
+      if (messageArea) {
+        messageArea.value = "Hi Beau, I'd like to request a copy of your latest resume. Thanks!";
+      }
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        // Focus the name field so they can start typing immediately
+        const nameInput = document.querySelector('input[name="name"]');
+        if (nameInput) nameInput.focus();
+      }
+    });
+  }
 });

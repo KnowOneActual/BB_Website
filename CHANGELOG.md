@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **System Metadata Badge:** Added a subtle technical badge to the footer showing build info and update frequency for professional transparency.
 
 ### Changed
+- **Navigation Bar Expansion:** Added direct links to "System ID" (`my_ip.html`) and the external Blog to the main navigation bar for better accessibility.
+- **Global Navigation:** Implemented the professional fixed navigation bar across all major sub-pages (`my_ip.html`, `labs.html`, `toolbag.html`) to ensure a consistent user experience.
 - **Site-Wide Visual Redesign:** Completed the overhaul of *all* sub-pages (Tools, Utilities, Privacy, etc.) from the legacy Fuchsia theme to the professional Indigo/Gray color scheme.
 - **Repository Reorganization:** Moved core JavaScript files (`script.js`, `links.js`, `daily-links.js`) into a dedicated `/js` directory for a cleaner project root.
 - **Hero Section:** Redesigned the hero section with a clearer professional title and an optimized CSS-animated gradient.

@@ -1,3 +1,23 @@
+## 2026-02-27 - Routine Dependency Audit & Reorganization
+
+* **Activity:** Investigated 14 vulnerabilities reported by GitHub Dependabot and ran `npm audit`.
+* **Summary:** Updated top-level dependencies, moved development tools to `devDependencies`, and verified that remaining issues are contained within build-time tools.
+
+---
+
+### Actions Taken
+
+* **Dependency Updates**
+    * **Action:** Updated `node-fetch` to `^2.7.0`, `tailwindcss` to `^3.4.19`, and `prettier` to `^3.8.1`.
+    * **Reason:** General maintenance and ensuring the project uses the most stable versions within current major branches.
+* **Package Reorganization**
+    * **Action:** Moved `netlify-cli` from `dependencies` to `devDependencies`.
+    * **Reason:** `netlify-cli` is a build-time and deployment tool, not required for the production runtime of the website. This properly scopes the package and its associated vulnerabilities.
+* **Vulnerability Assessment**
+    * **Finding:** Remaining vulnerabilities (ajv, minimatch, qs, rollup, tar) are all sub-dependencies of `netlify-cli`.
+    * **Risk Assessment:** Low. These tools run only during the build and deployment phase on trusted CI/CD environments (Netlify) or local developer machines. They pose no direct risk to the live website or its users.
+    * **Resolution:** Standard `npm audit fix` cannot resolve these as they are bundled within `netlify-cli`. Will monitor for future updates to the `netlify-cli` package.
+
 ## 2026-02-27 - Privacy & Accessibility Hardening
 
 * **Activity:** Implemented resume protection and improved site contrast.

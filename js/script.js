@@ -139,7 +139,7 @@ async function fetchAndDisplayBlogPosts() {
     posts.forEach((post) => {
       const postElement = document.createElement('div');
       postElement.className =
-        'p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in';
+        'group p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in';
 
       const postDate = new Date(post.pubDate).toLocaleDateString('en-US', {
         year: 'numeric',

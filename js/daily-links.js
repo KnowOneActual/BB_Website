@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.href = link.url;
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
-            card.className = 'bg-gray-900 border border-gray-800 p-5 rounded-xl card-link hover:border-indigo-500/50 transition-all duration-300';
+            card.className = 'group bg-gray-900 border border-gray-800 p-5 rounded-xl card-link hover:border-indigo-500/50 transition-all duration-300';
   
             const leftSide = document.createElement('div');
             leftSide.className = 'flex items-center gap-4';

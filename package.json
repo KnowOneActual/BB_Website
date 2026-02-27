@@ -15,8 +15,7 @@
   },
   "dependencies": {
     "glob": "^13.0.6",
-    "netlify-cli": "^23.15.1",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.7.0",
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
@@ -24,8 +23,9 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^30.2.0",
     "js-yaml": "^4.1.1",
-    "prettier": "^3.4.2",
+    "netlify-cli": "^23.15.1",
+    "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.19"
   }
 }

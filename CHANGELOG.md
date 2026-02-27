@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] - 2026-02-27
+
+### Fixed
+- **Security & Linting Hardening:** Resolved multiple `webhint` and `axe` accessibility warnings across `index.html`, `my_ip.html`, `toolbag.html`, and `labs.html`.
+- **Accessibility Improvements:** Added missing `aria-label` attributes to social and icon-only links to ensure they have discernible text for screen readers.
+- **Security Headers:** Updated the Content-Security-Policy (CSP) in `netlify.toml` to explicitly allow `beaubremer.com` and `challenges.cloudflare.com` origins, resolving blocks on Cloudflare security scripts and assets.
+- **Tab Security:** Added `rel="noopener noreferrer"` to all remaining external links to prevent reverse tab-nabbing and resolve `disown-opener` linting warnings.
+
 ## [1.7.0] - 2026-02-27
 
 ### Added

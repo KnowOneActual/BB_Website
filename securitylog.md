@@ -1,3 +1,22 @@
+## 2026-02-27 - Security & Accessibility Hardening
+
+* **Activity:** Addressed linting warnings and CSP violations.
+* **Summary:** Fixed `rel="noopener"` security issues, added ARIA labels for accessibility, and updated CSP headers to prevent Cloudflare asset blocks.
+
+---
+
+### Changes Implemented
+
+* **Tab Security (`rel="noopener"`)**
+    * **Action:** Added `rel="noopener noreferrer"` to all external links across `index.html`, `my_ip.html`, `toolbag.html`, and `labs.html`.
+    * **Reason:** Mitigates the "Reverse Tab-nabbing" security risk where a malicious linked page can control the original page via `window.opener`.
+* **Accessibility Labels (ARIA)**
+    * **Action:** Added `aria-label` to icon-only links (GitHub, LinkedIn).
+    * **Reason:** Ensures that screen reader users have a clear understanding of the link's destination, satisfying accessibility audits.
+* **CSP Header Expansion**
+    * **Action:** Updated `netlify.toml` to explicitly allow `https://beaubremer.com` and `https://challenges.cloudflare.com` in `script-src`, `connect-src`, and `img-src`.
+    * **Reason:** Prevents the browser from blocking essential Cloudflare security scripts and challenge assets, which were previously flagged as violations.
+
 ## 2026-02-27 - Routine Dependency Audit & Reorganization
 
 * **Activity:** Investigated 14 vulnerabilities reported by GitHub Dependabot and ran `npm audit`.

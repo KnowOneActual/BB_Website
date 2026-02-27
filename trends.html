@@ -50,23 +50,26 @@
 
 <body class="bg-gray-950 text-white antialiased">
 
-    <header class="text-center py-12 px-4 bg-gray-800">
-        <h1 class="text-4xl md:text-5xl font-bold text-fuchsia-400 mb-4">Global Tech Market: Trends & Analysis 2025</h1>
+    <header class="text-center py-12 px-4 bg-gray-900 border-b border-gray-800">
+        <a href="index.html" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors duration-300 font-semibold mb-6 group">
+            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Back to Home
+        </a>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Global Tech Market: Trends 2025</h1>
         <p class="max-w-3xl mx-auto text-lg text-gray-400">This interactive infographic serves as a **demonstration** of
             dynamic data visualization and web development skills, presenting synthesized trends and analysis of the
             global tech market.</p>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-16">
 
         <section id="market-overview" class="mb-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-fuchsia-400">Market Overview</h2>
+                <h2 class="text-3xl font-bold text-indigo-400 tracking-tight">Market Overview</h2>
                 <p class="mt-2 text-gray-400">Analyzing the trajectory of market valuation and year-over-year growth.
                 </p>
             </div>
-            <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                <p class="text-center text-gray-300 mb-4">The global technology market continues its robust expansion,
+            <div class="stat-card bg-gray-900 border border-gray-800 hover:border-indigo-500/30 transition-all duration-300">
+                <p class="text-center text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">The global technology market continues its robust expansion,
                     driven by innovations in AI and cloud computing. Projections indicate a sustained upward trend, with
                     the market expected to surpass the $7 trillion mark by 2028, reflecting a strong compound annual
                     growth rate.</p>
@@ -79,12 +82,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <section id="market-share">
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-fuchsia-400">Competitive Landscape</h2>
+                    <h2 class="text-3xl font-bold text-indigo-400 tracking-tight">Competitive Landscape</h2>
                     <p class="mt-2 text-gray-400">A snapshot of market share distribution among key industry players.
                     </p>
                 </div>
-                <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                    <p class="text-center text-gray-300 mb-4">The market is dominated by a few major players, with
+                <div class="stat-card bg-gray-900 border border-gray-800 hover:border-indigo-500/30 transition-all duration-300">
+                    <p class="text-center text-gray-300 mb-8 text-sm leading-relaxed">The market is dominated by a few major players, with
                         'Alpha Corp' leading the pack. However, emerging innovators like 'QuantumLeap Inc.' and 'Nexus
                         Dynamics' are rapidly gaining ground, challenging the established order and fostering a highly
                         competitive environment.</p>
@@ -95,27 +98,23 @@
             </section>
             <section id="tech-adoption">
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-fuchsia-400">Technology Adoption</h2>
+                    <h2 class="text-3xl font-bold text-indigo-400 tracking-tight">Technology Adoption</h2>
                     <p class="mt-2 text-gray-400">Tracking the adoption rates of transformative technologies.</p>
-                    <p class="mt-2 text-sm text-gray-500">Use the checkboxes below to filter technologies.</p>
+                    <p class="mt-2 text-xs text-gray-500 uppercase font-bold tracking-widest">Filter Technologies</p>
                 </div>
-                <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                    <p class="text-center text-gray-300 mb-4">AI & Machine Learning adoption has seen exponential
-                        growth, becoming a cornerstone of modern enterprise solutions. While Blockchain adoption is more
-                        measured, its application in supply chain and finance is steadily increasing, signaling
-                        long-term potential.</p>
-                    <div class="flex justify-center space-x-4 mb-6">
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox text-fuchsia-600 h-5 w-5" value="0" checked>
-                            <span class="ml-2 text-gray-300">AI & ML</span>
+                <div class="stat-card bg-gray-900 border border-gray-800 hover:border-indigo-500/30 transition-all duration-300">
+                    <div class="flex justify-center space-x-6 mb-8">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox text-indigo-600 h-5 w-5 bg-gray-800 border-gray-700 rounded" value="0" checked>
+                            <span class="ml-2 text-gray-300 font-semibold text-sm">AI & ML</span>
                         </label>
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox text-fuchsia-600 h-5 w-5" value="1" checked>
-                            <span class="ml-2 text-gray-300">IoT</span>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox text-indigo-600 h-5 w-5 bg-gray-800 border-gray-700 rounded" value="1" checked>
+                            <span class="ml-2 text-gray-300 font-semibold text-sm">IoT</span>
                         </label>
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox text-fuchsia-600 h-5 w-5" value="2" checked>
-                            <span class="ml-2 text-gray-300">Blockchain</span>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox text-indigo-600 h-5 w-5 bg-gray-800 border-gray-700 rounded" value="2" checked>
+                            <span class="ml-2 text-gray-300 font-semibold text-sm">Blockchain</span>
                         </label>
                     </div>
                     <div class="chart-container mx-auto">
@@ -127,13 +126,13 @@
 
         <section id="demographics" class="mb-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-fuchsia-400">Consumer Demographics</h2>
+                <h2 class="text-3xl font-bold text-indigo-400 tracking-tight">Consumer Demographics</h2>
                 <p class="mt-2 text-gray-400">Understanding the customer base by age segmentation.</p>
             </div>
-            <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                <p class="text-center text-gray-300 mb-4">The 25-34 age group remains the largest consumer segment,
+            <div class="stat-card bg-gray-900 border border-gray-800 hover:border-indigo-500/30 transition-all duration-300">
+                <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">The 25-34 age group remains the largest consumer segment,
                     representing early adopters and tech-savvy professionals. Notably, the 45-54 demographic is showing
-                    the fastest growth in new user acquisition, indicating a broadening of the market's appeal.</p>
+                    the fastest growth in new user acquisition.</p>
                 <div class="chart-container h-96 max-h-[500px] mx-auto">
                     <canvas id="demographicsChart"></canvas>
                 </div>
@@ -142,108 +141,112 @@
 
         <section id="swot" class="mb-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-fuchsia-400">Industry SWOT Analysis</h2>
+                <h2 class="text-3xl font-bold text-indigo-400 tracking-tight">Industry SWOT Analysis</h2>
                 <p class="mt-2 text-gray-400">A strategic overview of the industry's internal and external factors.</p>
             </div>
-            <p class="text-center max-w-3xl mx-auto text-gray-300 mb-8">This analysis highlights the core strategic
-                factors for the tech industry. Leveraging the immense talent pool and capitalizing on emerging markets
-                are key opportunities, while navigating regulatory complexities and cybersecurity threats remains a
-                critical challenge.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                    <h3 class="text-2xl font-semibold text-green-600 mb-3">Strengths ✅</h3>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                <div class="stat-card bg-gray-900 border border-gray-800">
+                    <h3 class="text-2xl font-bold text-green-500 mb-6 flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Strengths
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-3 text-sm">
                         <li>Strong innovation culture and R&D investment.</li>
                         <li>High concentration of skilled talent.</li>
                         <li>Scalable digital business models.</li>
                         <li>Robust global supply chains.</li>
                     </ul>
                 </div>
-                <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                    <h3 class="text-2xl font-semibold text-red-500 mb-3">Weaknesses ❌</h3>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                <div class="stat-card bg-gray-900 border border-gray-800">
+                    <h3 class="text-2xl font-bold text-red-500 mb-6 flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Weaknesses
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-3 text-sm">
                         <li>High dependence on a few key suppliers.</li>
                         <li>Increasing talent acquisition costs.</li>
                         <li>Complex and rapidly changing product cycles.</li>
                         <li>Significant e-waste and environmental impact.</li>
                     </ul>
                 </div>
-                <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                    <h3 class="text-2xl font-semibold text-blue-600 mb-3">Opportunities 🚀</h3>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                <div class="stat-card bg-gray-900 border border-gray-800">
+                    <h3 class="text-2xl font-bold text-blue-500 mb-6 flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Opportunities
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-3 text-sm">
                         <li>Expansion into emerging markets.</li>
                         <li>Growth of IoT and connected devices.</li>
                         <li>AI applications in healthcare and finance.</li>
                         <li>Development of sustainable technology.</li>
                     </ul>
                 </div>
-                <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                    <h3 class="text-2xl font-semibold text-yellow-500 mb-3">Threats ⚠️</h3>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                <div class="stat-card bg-gray-900 border border-gray-800">
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-6 flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        Threats
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-3 text-sm">
                         <li>Increasing cybersecurity threats.</li>
                         <li>Global regulatory and data privacy changes.</li>
                         <li>Intense competition and price wars.</li>
                         <li>Geopolitical trade tensions.</li>
-                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <section id="value-chain">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-fuchsia-400">The Tech Value Chain</h2>
+                <h2 class="text-3xl font-bold text-indigo-400 tracking-tight">The Tech Value Chain</h2>
                 <p class="mt-2 text-gray-400">From concept to consumer, a simplified process flow.</p>
             </div>
-            <div class="stat-card bg-gray-800 hover:shadow-fuchsia-600/50 transform hover:-translate-y-1">
-                <p class="text-center max-w-3xl mx-auto text-gray-300 mb-8">The technology value chain is a complex
-                    ecosystem where value is added at each stage. Efficiency in R&D and supply chain management are
-                    crucial differentiators, while effective marketing and post-sale service are vital for customer
-                    retention and brand loyalty.</p>
+            <div class="stat-card bg-gray-900 border border-gray-800">
                 <div
-                    class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-center">
-                    <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
-                        <p class="text-2xl">🔬</p>
-                        <p class="font-semibold">R&D</p>
+                    class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8 text-center py-8">
+                    <div class="p-6 bg-gray-800 rounded-2xl text-gray-300 w-32 border border-gray-700 shadow-xl">
+                        <p class="text-3xl mb-2">🔬</p>
+                        <p class="font-bold text-xs uppercase tracking-widest">R&D</p>
                     </div>
-                    <p class="text-3xl text-fuchsia-600 font-bold hidden md:block">➡️</p>
-                    <p class="text-3xl text-fuchsia-600 font-bold md:hidden">⬇️</p>
-                    <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
-                        <p class="text-2xl">🏭</p>
-                        <p class="font-semibold">Manufacturing</p>
+                    <p class="text-3xl text-indigo-600 font-bold hidden md:block">➡️</p>
+                    <p class="text-3xl text-indigo-600 font-bold md:hidden">⬇️</p>
+                    <div class="p-6 bg-gray-800 rounded-2xl text-gray-300 w-32 border border-gray-700 shadow-xl">
+                        <p class="text-3xl mb-2">🏭</p>
+                        <p class="font-bold text-xs uppercase tracking-widest">Manufacturing</p>
                     </div>
-                    <p class="text-3xl text-fuchsia-600 font-bold hidden md:block">➡️</p>
-                    <p class="text-3xl text-fuchsia-600 font-bold md:hidden">⬇️</p>
-                    <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
-                        <p class="text-2xl">📈</p>
-                        <p class="font-semibold">Marketing</p>
+                    <p class="text-3xl text-indigo-600 font-bold hidden md:block">➡️</p>
+                    <p class="text-3xl text-indigo-600 font-bold md:hidden">⬇️</p>
+                    <div class="p-6 bg-gray-800 rounded-2xl text-gray-300 w-32 border border-gray-700 shadow-xl">
+                        <p class="text-3xl mb-2">📈</p>
+                        <p class="font-bold text-xs uppercase tracking-widest">Marketing</p>
                     </div>
-                    <p class="text-3xl text-fuchsia-600 font-bold hidden md:block">➡️</p>
-                    <p class="text-3xl text-fuchsia-600 font-bold md:hidden">⬇️</p>
-                    <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
-                        <p class="text-2xl">🛒</p>
-                        <p class="font-semibold">Sales</p>
+                    <p class="text-3xl text-indigo-600 font-bold hidden md:block">➡️</p>
+                    <p class="text-3xl text-indigo-600 font-bold md:hidden">⬇️</p>
+                    <div class="p-6 bg-gray-800 rounded-2xl text-gray-300 w-32 border border-gray-700 shadow-xl">
+                        <p class="text-3xl mb-2">🛒</p>
+                        <p class="font-bold text-xs uppercase tracking-widest">Sales</p>
                     </div>
-                    <p class="text-3xl text-fuchsia-600 font-bold hidden md:block">➡️</p>
-                    <p class="text-3xl text-fuchsia-600 font-bold md:hidden">⬇️</p>
-                    <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
-                        <p class="text-2xl">🛠️</p>
-                        <p class="font-semibold">Service</p>
+                    <p class="text-3xl text-indigo-600 font-bold hidden md:block">➡️</p>
+                    <p class="text-3xl text-indigo-600 font-bold md:hidden">⬇️</p>
+                    <div class="p-6 bg-gray-800 rounded-2xl text-gray-300 w-32 border border-gray-700 shadow-xl">
+                        <p class="text-3xl mb-2">🛠️</p>
+                        <p class="font-bold text-xs uppercase tracking-widest">Service</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="text-center py-8 mt-12 bg-gray-800 text-white">
-        <p>&copy; 2025 Industry Insights Inc. All rights reserved.</p>
-        <p class="text-sm text-gray-400 mt-1">Data synthesized for demonstrative purposes.</p>
+    <footer class="text-center py-12 mt-12 bg-gray-950 border-t border-gray-800 text-gray-500">
+        <p>&copy; 2026 Beau Bremer. Industry Insights Demo.</p>
+        <p class="text-xs mt-2 uppercase tracking-widest font-bold">Stay Bold. Keep Creating.</p>
     </footer>
 
     <script>
         // Set global Chart.js default font color to white
         Chart.defaults.color = 'white';
         // Also set global default font family for consistency with HTML
-        Chart.defaults.font.family = "'Poppins', sans-serif";
+        Chart.defaults.font.family = "'Inter', sans-serif";
 
 
         function wrapLabel(label, maxLength) {
@@ -280,7 +283,7 @@
                                 return label;
                             }
                         },
-                        label: function (context) { // Add label callback for tooltip text color
+                        label: function (context) { 
                             let label = context.dataset.label || '';
                             if (label) {
                                 label += ': ';
@@ -291,20 +294,19 @@
                             return label;
                         }
                     },
-                    titleColor: 'white', // Tooltip title color
-                    bodyColor: 'white' // Tooltip body color
+                    titleColor: 'white', 
+                    bodyColor: 'white' 
                 }
             }
         };
 
-        // Updated palette to align with main site's fuchsia and grays
         const palette = {
-            primary: '#C026D3', // Fuchsia-600
-            secondary: '#E879F9', // Fuchsia-400
-            complementary: '#60A5FA', // Blue-400 for chart differentiation
-            darkGray: '#1F2937', // Gray-800
-            lightGray: '#D1D5DB', // Gray-300
-            medGray: '#9CA3AF' // Gray-400
+            primary: '#4F46E5', // Indigo-600
+            secondary: '#818CF8', // Indigo-400
+            complementary: '#38BDF8', // Sky-400
+            darkGray: '#1F2937', 
+            lightGray: '#D1D5DB', 
+            medGray: '#9CA3AF' 
         };
 
         const marketSizeData = {

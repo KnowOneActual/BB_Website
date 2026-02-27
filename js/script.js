@@ -130,7 +130,7 @@ async function fetchAndDisplayBlogPosts() {
 
     if (posts.length === 0) {
       container.innerHTML =
-        '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">No recent blog posts found. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
+        '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">No recent blog posts found. Please visit the <a href="https://blog.beaubremer.com/" class="text-indigo-400 underline">blog</a> directly.</p>';
       return;
     }
 
@@ -139,7 +139,7 @@ async function fetchAndDisplayBlogPosts() {
     posts.forEach((post) => {
       const postElement = document.createElement('div');
       postElement.className =
-        'bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1';
+        'p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in';
 
       const postDate = new Date(post.pubDate).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -148,31 +148,27 @@ async function fetchAndDisplayBlogPosts() {
       });
 
       const title = document.createElement('h3');
-      title.className = 'text-2xl font-semibold text-fuchsia-400 mb-3';
+      title.className = 'text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition';
       title.textContent = post.title;
 
       const date = document.createElement('p');
-      date.className = 'text-gray-400 text-sm mb-2';
+      date.className = 'text-gray-400 text-sm mb-3';
       date.textContent = postDate;
 
       const snippet = document.createElement('p');
-      snippet.className = 'text-gray-300 text-sm mb-4';
+      snippet.className = 'text-gray-400 text-sm mb-6';
       snippet.textContent = post.snippet;
-
-      const linkContainer = document.createElement('div');
-      linkContainer.className = 'mt-4 flex flex-wrap gap-4';
 
       const link = document.createElement('a');
       link.href = post.link;
       link.target = '_blank';
-      link.className = 'text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm';
+      link.className = 'text-indigo-400 text-sm font-semibold hover:underline';
       link.textContent = 'Read More →';
 
-      linkContainer.appendChild(link);
       postElement.appendChild(title);
       postElement.appendChild(date);
       postElement.appendChild(snippet);
-      postElement.appendChild(linkContainer);
+      postElement.appendChild(link);
       container.appendChild(postElement);
     });
 
@@ -180,7 +176,21 @@ async function fetchAndDisplayBlogPosts() {
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     container.innerHTML =
-      '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-fuchsia-400 underline">blog</a> directly.</p>';
+      '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-indigo-400 underline">blog</a> directly.</p>';
+  }
+}
+
+// --- Sticky Navigation ---
+function initializeStickyNav() {
+  const nav = document.querySelector('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
   }
 }
 
@@ -189,5 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeEasterEggs();
   initializeFormHandling();
   initializeFadeInAnimation();
-  fetchAndDisplayBlogPosts(); // Fetch blog posts after the page has loaded
+  fetchAndDisplayBlogPosts();
+  initializeStickyNav();
 });

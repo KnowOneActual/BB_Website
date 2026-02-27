@@ -13,53 +13,64 @@
   <link rel="manifest" href="/img/favicon/site.webmanifest">
   <link rel="shortcut icon" href="/img/favicon/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BeauBremer | JS Piano</title>
+  <title>JS Piano | Beau Bremer</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="js_piano_assets/styles_js.css">
 </head>
 
-<body>
-  <div id="piano">
-    <div class="keys">
-      <div class="black-keys">
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-        <div class="key black-key"></div>
-      </div>
-      <div class="white-keys">
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
-        <div class="key white-key"></div>
+<body class="bg-gray-950 text-gray-50 flex flex-col min-h-screen">
+  <nav class="bg-gray-900/80 backdrop-blur-md p-6 border-b border-gray-800 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-indigo-400 hover:text-indigo-300 font-bold text-xl transition-colors duration-300">
+        ← Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div id="piano" class="shadow-2xl shadow-indigo-500/10">
+      <div class="keys">
+        <div class="black-keys">
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+          <div class="key black-key"></div>
+        </div>
+        <div class="white-keys">
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+          <div class="key white-key"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <footer class="text-center py-6 bg-gray-900 text-gray-500">
+  </main>
+
+  <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
     <div class="mb-4">
       <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer"
-        class="hover:text-fuchsia-400 mx-2">Blog</a>
+        class="hover:text-indigo-400 mx-3 transition">Blog</a>
       <a href="https://github.com/KnowOneActual" target="_blank" rel="noopener noreferrer"
-        class="hover:text-fuchsia-400 mx-2">GitHub</a>
-      <a href="privacy.html" class="hover:text-fuchsia-400 mx-2">Privacy Policy</a>
+        class="hover:text-indigo-400 mx-3 transition">GitHub</a>
+      <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
     </div>
-    <p class="text-gray-400">© 2026 Beau Bremer. Handcrafted by me. All rights reserved.</p>
-    <p class="text-xs mt-2">Stay bold, keep creating, and rock on!</p>
+    <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer.</p>
   </footer>
 
   <script src="js_piano_assets/app_js.js"></script>

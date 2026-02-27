@@ -4,6 +4,31 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-02-27
+
+### Added
+- **Sticky Navigation Bar:** A new fixed header was added to improve site navigation and provide easy access to key sections and social links.
+- **LinkedIn Profile:** Added a link to the LinkedIn profile in the navigation bar.
+- **Dedicated Toolbag Page:** Created a new `toolbag.html` page to provide a more detailed and focused view of the tech stack.
+- **New Project Added:** Added the "Network Triage Tool" to the "Other Tools & Utilities" section to highlight practical Python and TUI development skills.
+- **Design Rationale Document:** Created `docs/DESIGN_NOTES.md` to document the design philosophy behind this redesign for future reference.
+
+### Changed
+- **Complete Visual Redesign:** Overhauled the entire website aesthetic to better appeal to hiring managers while maintaining a clean, modern feel.
+    - **Color Palette:** Replaced the high-energy Fuchsia theme with a more professional and grounded Indigo/Gray color scheme.
+    - **Typography & Layout:** Improved typography, spacing, and layout across all sections to enhance readability and create a more "laid-back" yet professional presentation.
+- **Hero Section:** Redesigned the hero section to include a clearer professional title ("Technical Project Manager & AV/IT Systems Specialist").
+- **About Me Section:** Streamlined the "About Me" section and added a scannable "Core Skills" grid to quickly highlight key competencies.
+- **Projects:** Refined the project card design for better consistency and scannability.
+- **Footer:** Simplified the footer design for a cleaner look.
+
+### Fixed
+- **Styling Build Process:** Resolved an issue where Tailwind CSS classes were not being applied correctly, causing the site to render with a default white background. Reverted from `slate` to the default `gray` color palette to ensure the CSS build process is stable.
+
+### Removed
+- Removed the "Toolbag" section from the main `index.html` page, replacing it with a link to the new dedicated page.
+- Deleted the old `toolbag.js` file, as its logic is now incorporated directly into the new `toolbag.html` page.
+
 ## [1.6.4] - 2026-02-19
 
 ### Changed

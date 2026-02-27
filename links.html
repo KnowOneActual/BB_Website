@@ -17,32 +17,36 @@
   <link rel="manifest" href="/img/favicon/site.webmanifest">
   <link rel="shortcut icon" href="/img/favicon/favicon.ico">
   <title>Beau Bremer | Links</title>
-  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/links.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 </head>
 
-<body class="bg-gray-950 text-white min-h-screen">
-  <div class="links-container-main max-w-md mx-auto text-center p-6 flex-grow">
-    <img src="/img/links/profile.webp" alt="Beau Bremer" class="profile-image" />
+<body class="bg-gray-950 text-white min-h-screen flex flex-col items-center py-12 px-6">
+  <div class="links-container-main max-w-md w-full text-center flex-grow">
+    <div class="mb-8">
+      <img src="/img/links/profile.webp" alt="Beau Bremer" class="w-24 h-24 rounded-full mx-auto border-4 border-indigo-500 shadow-xl" />
+      <h1 class="text-4xl font-extrabold text-white mt-6 tracking-tight">Beau Bremer</h1>
+      <p class="text-indigo-400 font-medium mt-2">AV/IT Systems Specialist</p>
+    </div>
 
-    <h1 class="text-4xl font-bold text-fuchsia-400 mb-2">Beau Bremer</h1>
-
-    <p class="text-gray-400 mb-8 max-w-xs mx-auto">
-      Not really a social media person. Focused on building and learn things. Here's some my latest.
+    <p class="text-gray-400 mb-10 max-w-xs mx-auto leading-relaxed">
+      Focused on building, learning, and solving complex tech challenges.
     </p>
 
-    <div id="links-container" class="space-y-4"></div>
+    <div id="links-container" class="space-y-4 w-full"></div>
   </div>
-  <footer class="text-center text-gray-500 text-sm w-full p-4">
-    <p>
-      &copy; 2026 Beau Bremer. Stay bold, keep creating, and rock on! All rights reserved. |
-      <a href="https://beaubremer.com" class="hover:text-fuchsia-400">Back to Main Site</a>
+  
+  <footer class="text-center text-gray-500 text-sm w-full mt-12 pt-8 border-t border-gray-900">
+    <p class="mb-4">
+      &copy; 2026 Beau Bremer. All rights reserved.
     </p>
+    <a href="https://beaubremer.com" class="text-indigo-400 hover:text-indigo-300 font-bold transition-colors">
+      ← Back to Main Site
+    </a>
   </footer>
 
-  <script src="/links.js"></script>
+  <script src="js/links.js"></script>
 </body>
 
 </html>

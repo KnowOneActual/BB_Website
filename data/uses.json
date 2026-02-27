@@ -1,8 +1,8 @@
 {
   "hardware": [
     {
-      "name": "MacBook Pro (16-inch) Sequoia 15.7",
-      "description": "My primary machine for development and creative work."
+      "name": "MacBook Pro (16-inch) M3 Max",
+      "description": "My primary machine for development and creative work, running macOS Sequoia."
     },
     {
       "name": "Dell Latitude 14",
@@ -10,18 +10,18 @@
     },
     {
       "name": "Focusrite Scarlett 2i2 Audio Interface",
-      "description": "For audio recording and monitoring."
+      "description": "For high-fidelity audio recording and monitoring."
     }
   ],
   "software": {
     "general": [
       {
-        "name": "Browsers: Waterfox, Brave Browser, Firefox, LibreWolf",
-        "description": "Extensions: Proton Pass, Obsidian Chipper, Grammarly"
+        "name": "Browsers: Waterfox, Brave, Firefox, LibreWolf",
+        "description": "A multi-browser setup for testing and privacy, with Proton Pass for credential management."
       },
       {
         "name": "Email: Betterbird",
-        "description": "An open-source email client derived from Thunderbird.",
+        "description": "An open-source email client derived from Thunderbird, optimized for performance.",
         "url": "https://www.betterbird.eu/"
       },
       {
@@ -30,77 +30,74 @@
       },
       {
         "name": "Word Processing: LibreOffice, Google Docs, Apple Pages & Numbers",
-        "description": "For standard document creation and editing."
+        "description": "Standard document creation and data management."
       }
     ],
     "development": [
       {
-        "name": "Text Editors / IDE: VSCodium, VS Code, Sublime Text, Zed, BBEdit",
-        "description": "Optimized for FOSS web and Python development. My setup includes extensions for linting, formatting, and live previews (like ESLint, Prettier, and Error Lens), which ensures a clean, efficient workflow and high code quality. Uses VSCodium, VS Code, Sublime Text, Zed, and BBEdit.",
-        "url": "https://vscodium.com/"
+        "name": "Text Editors / IDE: Zed, VSCodium, VS Code, BBEdit",
+        "description": "Optimized for web and Python development. Zed is currently my primary editor for its incredible speed.",
+        "url": "https://zed.dev/"
       },
       {
-        "name": "Terminal: Warp, Ghostty, kitty",
-        "description": "Modern and fast terminal emulators."
+        "name": "Terminal: Ghostty, Warp, kitty",
+        "description": "Modern and fast terminal emulators. Ghostty is my current favorite for its performance and feature set.",
+        "url": "https://ghostty.org/"
       },
       {
         "name": "Virtualization: VMWare Fusion Pro",
-        "description": "A long-time user since 2009, I am currently seeking an alternative due to uncertain support for Apple's M-series chips. (VMs; Win11, Win7, Fedora, Debian Linux, Remnux, Parrot Linux, Kali Linux, Ubuntu Server)."
+        "description": "Used since 2009 for running various environments including Win11, ParrotOS, and Ubuntu Server."
       },
       {
-        "name": "Networking: Wireshark, NMap, Network Triage Tool, WiFi Explorer",
-        "description": "Essential for deep network troubleshooting and security analysis. Critical for identifying root-cause issues in complex AV/IT and corporate network deployments."
+        "name": "Networking: Wireshark, NMap, Network Triage Tool",
+        "description": "Essential for deep network troubleshooting and security analysis. My custom Network Triage Tool provides a real-time TUI dashboard for diagnostics."
       }
     ],
     "creative": [
       {
         "name": "Graphics: Affinity Photo, Affinity Designer, Gimp, Inkscape",
-        "description": "A suite of tools for photo editing and vector graphics."
+        "description": "A suite of professional tools for photo editing and vector graphics."
       },
       {
-        "name": "Video Editing: DaVinci Resolve, LosslessCut, Kdenlive",
-        "description": "Tools for video editing."
+        "name": "Video Editing: DaVinci Resolve, LosslessCut",
+        "description": "High-end post-production and quick lossless clipping."
       },
       {
-        "name": "3D and CAD: Blender, Freecad, eDrawings",
-        "description": "For 3D modeling, animation, and CAD."
+        "name": "3D and CAD: Blender, Freecad",
+        "description": "For 3D modeling, animation, and technical CAD work."
       },
       {
         "name": "Audio: Reaper, Logic Pro, Audacity, iZotope RX",
-        "description": "For audio recording, editing, and mastering."
+        "description": "Comprehensive audio recording, editing, and restoration."
       }
     ]
   },
   "live_production": [
     {
       "name": "Show Control & Playback",
-      "description": "QLab, ProPresenter, Mitti, Companion, and various console editors (M32-Edit, X32 Theatre Control)."
+      "description": "QLab, ProPresenter, Mitti, Companion, and M32-Edit for live event orchestration."
     },
     {
       "name": "System Design & Analysis",
-      "description": "Smaart, MAPP 3D, Soundvision, Wireless Workbench, Soundbase and OpenSoundMeter for audio system measurement and RF coordination."
+      "description": "Smaart, MAPP 3D, Wireless Workbench, and Soundbase for audio measurement and RF coordination."
     },
     {
       "name": "Video & Lighting Tools",
-      "description": "Millumin4, Kards, Slideshow Timer, and QLC+ for video mapping and lighting control."
+      "description": "Millumin4, Kards, and QLC+ for projection mapping and lighting control."
     }
   ],
   "services": [
     {
       "name": "Netlify",
-      "description": "Core host for this site; utilizes a seamless Git-based workflow and serverless functions for dynamic content (like the Weather Bot project)."
+      "description": "Core host for this site; utilizes a seamless Git-based workflow and serverless functions."
     },
     {
       "name": "GitHub",
-      "description": "For version control and collaboration."
+      "description": "Version control, project management, and collaboration."
     },
     {
       "name": "Cloudflare",
-      "description": "For DNS and security."
-    },
-    {
-      "name": "Resend",
-      "description": "For email delivery."
+      "description": "Edge security, DNS management, and bot protection."
     }
   ]
 }

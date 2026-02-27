@@ -4,7 +4,7 @@
       "name": "Communication & Time",
       "links": [
         {
-          "name": "Proton Mail",
+          "name": "Proton Mail Inbox",
           "url": "https://mail.proton.me/u/0/inbox",
           "icon": "fa-solid fa-envelope"
         },
@@ -19,6 +19,11 @@
           "icon": "fa-solid fa-file"
         },
         {
+          "name": "Proton Pass",
+          "url": "https://account.proton.me/pass",
+          "icon": "fa-solid fa-lock"
+        },
+        {
           "name": "iCloud",
           "url": "https://www.icloud.com",
           "icon": "fa-solid fa-cloud"
@@ -29,7 +34,7 @@
       "name": "Development & Web",
       "links": [
         {
-          "name": "My GitHub",
+          "name": "My GitHub Profile",
           "url": "https://github.com/KnowOneActual",
           "icon": "fa-brands fa-github"
         },
@@ -54,6 +59,11 @@
           "icon": "fa-solid fa-sparkles"
         },
         {
+          "name": "Grammarly AI Writing Assistant",
+          "url": "https://account.grammarly.com",
+          "icon": "fa-solid fa-spell-check"
+        },
+        {
           "name": "Gemini",
           "url": "https://gemini.google.com/",
           "icon": "fa-solid fa-brain"
@@ -62,6 +72,11 @@
           "name": "Perplexity",
           "url": "https://www.perplexity.ai/",
           "icon": "fa-regular fa-face-grin-tongue-wink"
+        },
+        {
+          "name": "AI Prompt Generator",
+          "url": "https://www.feedough.com/ai-prompt-generator/",
+          "icon": "fa-solid fa-crosshairs"
         }
       ]
     },
@@ -70,16 +85,21 @@
       "links": [
         {
           "name": "Netlify Dashboard",
-          "url": "https://app.netlify.com/",
+          "url": "https://www.netlify.com/",
           "icon": "fa-solid fa-server"
         },
         {
           "name": "Cloudflare Dashboard",
-          "url": "https://dash.cloudflare.com/",
+          "url": "https://www.cloudflare.com/",
           "icon": "fa-solid fa-shield-alt"
         },
         {
-          "name": "Porkbun",
+          "name": "UniFi Controller",
+          "url": "https://unifi.ui.com/",
+          "icon": "fa-solid fa-wifi"
+        },
+        {
+          "name": "Porkbun (Domain Registrar)",
           "url": "https://porkbun.com/",
           "icon": "fa-solid fa-globe"
         }
@@ -94,7 +114,7 @@
           "icon": "fa-solid fa-toolbox"
         },
         {
-          "name": "Speedtest",
+          "name": "Speedtest by Ookla",
           "url": "https://www.speedtest.net/",
           "icon": "fa-solid fa-gauge"
         },
@@ -102,6 +122,11 @@
           "name": "DNS Checker",
           "url": "https://dnschecker.org/",
           "icon": "fa-solid fa-server"
+        },
+        {
+          "name": "MAC Address Lookup",
+          "url": "https://maclookup.app/",
+          "icon": "fa-solid fa-laptop"
         }
       ]
     },
@@ -114,14 +139,99 @@
           "icon": "fa-solid fa-volume-up"
         },
         {
-          "name": "Bitrate Calculator",
+          "name": "Bitrate Calculator (castr.com)",
           "url": "https://castr.com/bitrate-calculator/",
           "icon": "fa-solid fa-calculator"
         },
         {
-          "name": "SoundBase",
+          "name": "RiderMaker (Stage Plots)",
+          "url": "https://ridermaker.com/",
+          "icon": "fa-solid fa-clipboard-list"
+        },
+        {
+          "name": "SubAligner",
+          "url": "https://app.subaligner.com/login",
+          "icon": "fa-solid fa-volume-low"
+        },
+        {
+          "name": "Room Mode Calculator (Trikustik)",
+          "url": "https://trikustik.at/raummoden-rechner/",
+          "icon": "fa-solid fa-cube"
+        },
+        {
+          "name": "SoundBase (RF Manger)",
           "url": "https://soundbase.app/",
           "icon": "fa-solid fa-sliders"
+        }
+      ]
+    },
+    {
+      "name": "Security & Privacy",
+      "links": [
+        {
+          "name": "Virustotal",
+          "url": "https://www.virustotal.com/gui/home/upload",
+          "icon": "fa-solid fa-viruses"
+        },
+        {
+          "name": "Cuckoo Sandbox",
+          "url": "https://cuckoo.cert.ee/",
+          "icon": "fa-solid fa-box"
+        }
+      ]
+    },
+    {
+      "name": "Tools & Utilities",
+      "links": [
+        {
+          "name": "CyberChef (With Recipe)",
+          "url": "https://gchq.github.io/CyberChef/#recipe=To_Lower_case()Pad_lines('Start',5,'%20-'/disabled)Find_/_Replace(%7B'option':'Regex','string':'%20'%7D,'_',true,false,true,false)&input=Cg",
+          "icon": "fa-solid fa-utensils"
+        },
+        {
+          "name": "Squoosh Image Reducer",
+          "url": "https://squoosh.app/",
+          "icon": "fa-solid fa-images"
+        },
+        {
+          "name": "PairDrop (send files locally)",
+          "url": "https://pairdrop.net/",
+          "icon": "fa-solid fa-file-import"
+        },
+        {
+          "name": "Cipher Identifier",
+          "url": "https://www.dcode.fr/cipher-identifier",
+          "icon": "fa-solid fa-fingerprint"
+        }
+      ]
+    },
+    {
+      "name": "Personal & Entertainment",
+      "links": [
+        {
+          "name": "YouTube Music",
+          "url": "https://music.youtube.com/",
+          "icon": "fa-solid fa-music"
+        },
+        {
+          "name": "Odysee Video",
+          "url": "https://odysee.com/",
+          "icon": "fa-solid fa-circle-play"
+        },
+        {
+          "name": "The Farside",
+          "url": "https://www.thefarside.com/",
+          "icon": "fa-solid fa-bomb"
+        }
+      ]
+    },
+    {
+      "name": "Industry News",
+      "links": [
+        {
+          "name": "Hacker News (Y Combinator)",
+          "url": "https://news.ycombinator.com/",
+          "icon": "fa-solid fa-newspaper"
         }
       ]
     }

@@ -12,22 +12,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Dedicated Toolbag Page:** Created a new `toolbag.html` page to provide a more detailed and focused view of the tech stack.
 - **New Project Added:** Added the "Network Triage Tool" to the "Other Tools & Utilities" section to highlight practical Python and TUI development skills.
 - **Design Rationale Document:** Created `docs/DESIGN_NOTES.md` to document the design philosophy behind this redesign for future reference.
+- **System Metadata Badge:** Added a subtle technical badge to the footer showing build info and update frequency for professional transparency.
 
 ### Changed
-- **Complete Visual Redesign:** Overhauled the entire website aesthetic to better appeal to hiring managers while maintaining a clean, modern feel.
-    - **Color Palette:** Replaced the high-energy Fuchsia theme with a more professional and grounded Indigo/Gray color scheme.
-    - **Typography & Layout:** Improved typography, spacing, and layout across all sections to enhance readability and create a more "laid-back" yet professional presentation.
-- **Hero Section:** Redesigned the hero section to include a clearer professional title ("Technical Project Manager & AV/IT Systems Specialist").
-- **About Me Section:** Streamlined the "About Me" section and added a scannable "Core Skills" grid to quickly highlight key competencies.
-- **Projects:** Refined the project card design for better consistency and scannability.
-- **Footer:** Simplified the footer design for a cleaner look.
+- **Site-Wide Visual Redesign:** Completed the overhaul of *all* sub-pages (Tools, Utilities, Privacy, etc.) from the legacy Fuchsia theme to the professional Indigo/Gray color scheme.
+- **Repository Reorganization:** Moved core JavaScript files (`script.js`, `links.js`, `daily-links.js`) into a dedicated `/js` directory for a cleaner project root.
+- **Hero Section:** Redesigned the hero section with a clearer professional title and an optimized CSS-animated gradient.
+- **About Me Section:** Streamlined the "About Me" section and added a scannable "Core Skills" grid.
+- **Project Narratives:** Refined project descriptions on the home page to be more result-oriented and impactful for hiring managers.
+- **Tailwind Optimization:** Refined `tailwind.config.js` to target specific files, reducing build times from >40s to <1s.
 
 ### Fixed
-- **Styling Build Process:** Resolved an issue where Tailwind CSS classes were not being applied correctly, causing the site to render with a default white background. Reverted from `slate` to the default `gray` color palette to ensure the CSS build process is stable.
+- **Design Consistency:** Resolved remaining instances of `slate` and `fuchsia` classes across the entire codebase, ensuring a unified professional aesthetic.
+- **Daily Links Data Structure:** Fixed a mismatch between the JSON data structure and the rendering logic in `daily-links.js`.
 
 ### Removed
 - Removed the "Toolbag" section from the main `index.html` page, replacing it with a link to the new dedicated page.
-- Deleted the old `toolbag.js` file, as its logic is now incorporated directly into the new `toolbag.html` page.
+- Cleaned up root directory by removing legacy signature files (moved to `docs/signatures/`) and temporary development files (`temp.txt`, `TEST_README.md`).
+- Deleted the old `toolbag.js` and `hello.js` files.
 
 ## [1.6.4] - 2026-02-19
 

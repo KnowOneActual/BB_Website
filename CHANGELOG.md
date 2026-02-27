@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 - **IP Information Restoration:** Fixed broken IP lookup functionality on `my_ip.html` and `qip.html` by switching to `ipapi.co` (HTTPS-compatible) and updating data field mappings.
+- **Data Expansion:** Restored and expanded "System Identity" data points on `my_ip.html`, including ASN, network blocks, regional infrastructure (currency, calling codes), and a live geographic map. Added more technical browser specs (platform, hardware concurrency).
 - **Accent Color Restoration:** Fixed an issue where the `indigo-400` accent color was missing by expanding the Tailwind `content` configuration and adding missing `group` classes for hover states.
 - **Footer Readability:** Improved text contrast in the footer for better accessibility on dark backgrounds.
 - **Design Consistency:** Resolved remaining instances of `slate` and `fuchsia` classes across the entire codebase, ensuring a unified professional aesthetic.

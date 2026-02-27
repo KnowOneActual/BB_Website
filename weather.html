@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Query Bot</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="canonical" href="https://beaubremer.com/">
+  <title>Weather Query Bot | Beau Bremer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
   <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
   <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
@@ -18,60 +17,73 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-950 flex items-center justify-center min-h-screen">
-  <div
-    class="w-full max-w-2xl mx-auto bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[90vh] my-4 border border-gray-700">
-    <div class="p-4 border-b border-gray-700 bg-gray-800 rounded-t-2xl flex items-center space-x-4">
-      <div class="relative flex items-center justify-center w-12 h-12 bg-fuchsia-600 rounded-full text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-          stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-        </svg>
-      </div>
-      <div>
-        <h1 class="text-xl font-bold text-gray-100">Weather Query Bot</h1>
-        <p id="status" class="text-sm text-gray-400">Connecting...</p>
-      </div>
+<body class="bg-gray-950 flex flex-col min-h-screen text-gray-50 scroll-smooth">
+  <nav class="bg-gray-900/80 backdrop-blur-md p-6 border-b border-gray-800 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-indigo-400 hover:text-indigo-300 font-bold text-xl transition-colors duration-300">
+        ← Back to Home
+      </a>
     </div>
+  </nav>
 
-    <div id="chat-window" class="flex-1 p-6 overflow-y-auto space-y-6"></div>
-
-    <div id="typing-indicator" class="px-6 pb-2 hidden">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[75vh] border border-gray-800 overflow-hidden">
+      <!-- Chat Header -->
+      <div class="p-6 border-b border-gray-800 bg-gray-800/50 flex items-center space-x-4">
+        <div class="relative flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-full text-white shadow-lg shadow-indigo-600/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
           </svg>
         </div>
-        <div class="bg-gray-700 rounded-lg p-3">
-          <div id="typing-dots" class="flex items-center space-x-1">
-            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
+        <div>
+          <h1 class="text-xl font-bold text-white tracking-tight">Weather Query Bot</h1>
+          <p id="status" class="text-sm text-gray-400">Connecting...</p>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div id="chat-window" class="flex-1 p-6 overflow-y-auto space-y-6 scrollbar-thin scrollbar-thumb-gray-700"></div>
+
+      <!-- Typing Indicator -->
+      <div id="typing-indicator" class="px-6 pb-4 hidden">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center border border-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+          </div>
+          <div class="bg-gray-800 rounded-2xl px-4 py-2 border border-gray-700">
+            <div class="flex items-center space-x-1">
+              <span class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"></span>
+              <span class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+              <span class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="p-4 border-t border-gray-700 bg-gray-800 rounded-b-2xl">
-      <form id="chat-form" class="flex items-center space-x-3">
-        <input type="text" id="chat-input" placeholder="Ask about the weather..."
-          class="flex-1 w-full px-4 py-3 bg-gray-700 text-gray-100 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:border-transparent transition"
-          autocomplete="off" />
-        <button type="submit"
-          class="bg-fuchsia-600 hover:bg-fuchsia-700 text-gray-900 font-bold py-3 px-5 rounded-lg transition-transform duration-200 active:scale-95 flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-            <path
-              d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-          </svg><span>Send</span>
-        </button>
-      </form>
-      <div id="user-info" class="text-xs text-gray-500 pt-2 text-center truncate"></div>
+      <!-- Input Area -->
+      <div class="p-6 border-t border-gray-800 bg-gray-800/30">
+        <form id="chat-form" class="flex items-center space-x-3">
+          <input type="text" id="chat-input" placeholder="Ask about the weather..."
+            class="flex-1 px-4 py-3 bg-gray-800 text-white border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder-gray-500"
+            autocomplete="off" />
+          <button type="submit"
+            class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition duration-300 shadow-lg shadow-indigo-600/20 active:scale-95 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+            </svg>
+            <span>Send</span>
+          </button>
+        </form>
+        <div id="user-info" class="text-[10px] text-gray-600 pt-3 text-center uppercase tracking-widest font-bold"></div>
+      </div>
     </div>
-  </div>
+  </main>
+
+  <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
+    <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Powered by Gemini API.</p>
+  </footer>
 
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
@@ -145,50 +157,42 @@
     }
 
     // --- CHAT FUNCTIONS ---
-    // *** REFACTORED addMessage to use textContent (XSS Fix) ***
     function addMessage(sender, text, timestamp) {
       const messageDiv = document.createElement('div');
-      messageDiv.classList.add('flex', 'items-start', 'space-x-3', 'max-w-lg');
+      messageDiv.classList.add('flex', 'items-start', 'space-x-3', 'max-w-[85%]');
 
       const time = timestamp
         ? new Date(timestamp.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         : new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // Create Icon Div
       const iconDiv = document.createElement('div');
-      iconDiv.classList.add('w-10', 'h-10', 'rounded-full', 'flex', 'items-center', 'justify-center');
+      iconDiv.classList.add('w-10', 'h-10', 'rounded-full', 'flex-shrink-0', 'flex', 'items-center', 'justify-center', 'border');
 
-      // Create Content Wrapper Div
       const contentWrapperDiv = document.createElement('div');
+      contentWrapperDiv.classList.add('flex', 'flex-col');
 
-      // Create Bubble Div
       const bubbleDiv = document.createElement('div');
-      bubbleDiv.classList.add('p-3', 'rounded-lg');
+      bubbleDiv.classList.add('p-4', 'rounded-2xl', 'text-sm', 'leading-relaxed', 'shadow-sm');
 
-      // Create Paragraph for text
       const textP = document.createElement('p');
-      textP.textContent = text; // Securely set text content
+      textP.textContent = text;
 
-      // Create Time Span
       const timeSpan = document.createElement('span');
-      timeSpan.classList.add('text-xs', 'text-gray-500', 'mt-1');
+      timeSpan.classList.add('text-[10px]', 'text-gray-500', 'mt-1', 'font-medium', 'uppercase');
       timeSpan.textContent = time;
 
-      // Assemble based on sender
       if (sender === 'user') {
         messageDiv.classList.add('ml-auto', 'flex-row-reverse', 'space-x-reverse');
-        iconDiv.classList.add('bg-fuchsia-600', 'text-white', 'font-semibold');
+        iconDiv.classList.add('bg-indigo-600', 'border-indigo-500', 'text-white', 'font-bold');
         iconDiv.textContent = 'U';
-        bubbleDiv.classList.add('bg-fuchsia-600', 'text-white', 'rounded-br-none');
-        timeSpan.classList.add('float-right');
+        bubbleDiv.classList.add('bg-indigo-600', 'text-white', 'rounded-tr-none');
+        timeSpan.classList.add('text-right');
       } else {
-        // 'bot'
-        iconDiv.classList.add('bg-gray-700');
-        iconDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>`; // Icon is safe here
-        bubbleDiv.classList.add('bg-gray-700', 'text-gray-100', 'rounded-bl-none');
+        iconDiv.classList.add('bg-gray-800', 'border-gray-700');
+        iconDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>`;
+        bubbleDiv.classList.add('bg-gray-800', 'text-gray-100', 'rounded-tl-none', 'border', 'border-gray-700');
       }
 
-      // Append elements
       bubbleDiv.appendChild(textP);
       contentWrapperDiv.appendChild(bubbleDiv);
       contentWrapperDiv.appendChild(timeSpan);
@@ -224,11 +228,11 @@
       unsubscribe = onSnapshot(
         q,
         (snapshot) => {
-          chatWindow.innerHTML = ''; // Clear previous messages
+          chatWindow.innerHTML = '';
           if (snapshot.empty) {
             addMessage(
               'bot',
-              "Hello! Ask me anything about the weather. For example: 'What's the weather like in Tokyo?'",
+              "Hello! I'm your Weather Assistant. Ask me about the weather anywhere in the world!",
             );
           }
           snapshot.forEach((doc) => {

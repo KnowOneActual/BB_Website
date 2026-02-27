@@ -1,212 +1,129 @@
-[
-  {
-    "title": "Proton Mail Inbox",
-    "url": "https://mail.proton.me/u/0/inbox",
-    "category": "Communication & Time",
-    "icon": "fa-solid fa-envelope"
-  },
-  {
-    "title": "Proton Calendar",
-    "url": "https://calendar.proton.me/u/0/",
-    "category": "Communication & Time",
-    "icon": "fa-solid fa-calendar-alt"
-  },
-  {
-    "title": "Proton Drive",
-    "url": "https://drive.proton.me/",
-    "category": "Communication & Time",
-    "icon": "fa-solid fa-file"
-  },
-  {
-    "title": "Proton Pass",
-    "url": "https://account.proton.me/pass",
-    "category": "Communication & Time",
-    "icon": "fa-solid fa-lock"
-  },
-  {
-    "title": "iCloud",
-    "url": "https://www.icloud.com",
-    "category": "Communication & Time",
-    "icon": "fa-solid fa-cloud"
-  },
-  {
-    "title": "My GitHub Profile",
-    "url": "https://github.com/KnowOneActual",
-    "category": "Development & Web",
-    "icon": "fa-brands fa-github"
-  },
-  {
-    "title": "Grammarly AI Writing Assistant",
-    "url": "https://account.grammarly.com",
-    "category": "LLM Tools",
-    "icon": "fa-solid fa-spell-check"
-  },
-  {
-    "title": "Gemini",
-    "url": "https://gemini.google.com/",
-    "category": "LLM Tools",
-    "icon": "fa-solid fa-brain"
-  },
-  {
-    "title": "Perplexity",
-    "url": "https://www.perplexity.ai/",
-    "category": "LLM Tools",
-    "icon": "fa-regular fa-face-grin-tongue-wink"
-  },
-  {
-    "title": "AI Prompt Generator",
-    "url": " https://www.feedough.com/ai-prompt-generator/",
-    "category": "LLM Tools",
-    "icon": "fa-solid fa-crosshairs"
-  },
-  {
-    "title": "Awesome Fonts",
-    "url": "https://fontawesome.com",
-    "category": "Development & Web",
-    "icon": "fa-brands fa-font-awesome"
-  },
-  {
-    "title": "Netlify Dashboard",
-    "url": "https://www.netlify.com/",
-    "category": "Infrastructure & Hosting",
-    "icon": "fa-solid fa-server"
-  },
-  {
-    "title": "Cloudflare Dashboard",
-    "url": "https://www.cloudflare.com/",
-    "category": "Infrastructure & Hosting",
-    "icon": "fa-solid fa-shield-alt"
-  },
-  {
-    "title": "UniFi Controller",
-    "url": "https://unifi.ui.com/",
-    "category": "Infrastructure & Hosting",
-    "icon": "fa-solid fa-wifi"
-  },
-  {
-    "title": "Porkbun (Domain Registrar)",
-    "url": "https://porkbun.com/",
-    "category": "Infrastructure & Hosting",
-    "icon": "fa-solid fa-globe"
-  },
-  {
-    "title": "MXToolbox",
-    "url": "https://mxtoolbox.com/",
-    "category": "Networking & Diagnostics",
-    "icon": "fa-solid fa-toolbox"
-  },
-  {
-    "title": "Speedtest by Ookla",
-    "url": "https://www.speedtest.net/",
-    "category": "Networking & Diagnostics",
-    "icon": "fa-solid fa-gauge"
-  },
-  {
-    "title": "DNS Checker",
-    "url": "https://dnschecker.org/",
-    "category": "Networking & Diagnostics",
-    "icon": "fa-solid fa-server"
-  },
-  {
-    "title": "MAC Address Lookup",
-    "url": "https://maclookup.app/",
-    "category": "Networking & Diagnostics",
-    "icon": "fa-solid fa-laptop"
-  },
-  {
-    "title": "TapTempo.io",
-    "url": "https://taptempo.io/",
-    "category": "AV System Design",
-    "icon": "fa-solid fa-volume-up"
-  },
-  {
-    "title": "Bitrate Calculator (castr.com)",
-    "url": "https://castr.com/bitrate-calculator/",
-    "category": "AV System Design",
-    "icon": "fa-solid fa-calculator"
-  },
-  {
-    "title": "RiderMaker (Stage Plots)",
-    "url": "https://ridermaker.com/",
-    "category": "AV System Design",
-    "icon": "fa-solid fa-clipboard-list"
-  },
-  {
-    "title": "SubAligner",
-    "url": "https://app.subaligner.com/login",
-    "category": "AV System Design",
-    "icon": "fa-solid fa-volume-low"
-  },
-  {
-    "title": "Room Mode Calculator (Trikustik)",
-    "url": "https://trikustik.at/raummoden-rechner/",
-    "category": "AV System Design",
-    "icon": "fa-solid fa-cube"
-  },
-  {
-    "title": "SoundBase (RF Manger)",
-    "url": "https://soundbase.app/",
-    "category": "AV System Design",
-    "icon": "fa-solid fa-sliders"
-  },
-  {
-    "title": "Virustotal",
-    "url": "https://www.virustotal.com/gui/home/upload",
-    "category": "Security & Privacy",
-    "icon": "fa-solid fa-viruses"
-  },
-  {
-    "title": "Cuckoo Sandbox",
-    "url": "https://cuckoo.cert.ee/",
-    "category": "Security & Privacy",
-    "icon": "fa-solid fa-box"
-  },
-  {
-    "title": "CyberChef (With Recipe)",
-    "url": "https://gchq.github.io/CyberChef/#recipe=To_Lower_case()Pad_lines('Start',5,'%20-'/disabled)Find_/_Replace(%7B'option':'Regex','string':'%20'%7D,'_',true,false,true,false)&input=Cg",
-    "category": "Tools & Utilities",
-    "icon": "fa-solid fa-utensils"
-  },
-  {
-    "title": "Squoosh Image Reducer",
-    "url": "https://squoosh.app/",
-    "category": "Tools & Utilities",
-    "icon": "fa-solid fa-images"
-  },
-  {
-    "title": "PairDrop (send files locally)",
-    "url": "https://pairdrop.net/",
-    "category": "Tools & Utilities",
-    "icon": "fa-solid fa-file-import"
-  },
-  {
-    "title": "Cipher Identifier",
-    "url": "https://www.dcode.fr/cipher-identifier",
-    "category": "Tools & Utilities",
-    "icon": "fa-solid fa-fingerprint"
-  },
-  {
-    "title": "YouTube Music",
-    "url": "https://music.youtube.com/",
-    "category": "Personal & Entertainment",
-    "icon": "fa-solid fa-music"
-  },
-  {
-    "title": "Odysee Video",
-    "url": "https://odysee.com/",
-    "category": "Personal & Entertainment",
-    "icon": "fa-solid fa-circle-play"
-  },
-  {
-    "title": "The Farside",
-    "url": "https://www.thefarside.com/",
-    "category": "Personal & Entertainment",
-    "icon": "fa-solid fa-bomb"
-  },
-  {
-    "title": "Hacker News (Y Combinator)",
-    "url": "https://news.ycombinator.com/",
-    "category": "Industry News",
-    "icon": "fa-solid fa-newspaper"
-  }
-]
+{
+  "categories": [
+    {
+      "name": "Communication & Time",
+      "links": [
+        {
+          "name": "Proton Mail",
+          "url": "https://mail.proton.me/u/0/inbox",
+          "icon": "fa-solid fa-envelope"
+        },
+        {
+          "name": "Proton Calendar",
+          "url": "https://calendar.proton.me/u/0/",
+          "icon": "fa-solid fa-calendar-alt"
+        },
+        {
+          "name": "Proton Drive",
+          "url": "https://drive.proton.me/",
+          "icon": "fa-solid fa-file"
+        },
+        {
+          "name": "iCloud",
+          "url": "https://www.icloud.com",
+          "icon": "fa-solid fa-cloud"
+        }
+      ]
+    },
+    {
+      "name": "Development & Web",
+      "links": [
+        {
+          "name": "My GitHub",
+          "url": "https://github.com/KnowOneActual",
+          "icon": "fa-brands fa-github"
+        },
+        {
+          "name": "Awesome Fonts",
+          "url": "https://fontawesome.com",
+          "icon": "fa-brands fa-font-awesome"
+        },
+        {
+          "name": "Tailwind CSS",
+          "url": "https://tailwindcss.com/docs",
+          "icon": "fa-solid fa-wind"
+        }
+      ]
+    },
+    {
+      "name": "LLM & AI Tools",
+      "links": [
+        {
+          "name": "Claude",
+          "url": "https://claude.ai/",
+          "icon": "fa-solid fa-sparkles"
+        },
+        {
+          "name": "Gemini",
+          "url": "https://gemini.google.com/",
+          "icon": "fa-solid fa-brain"
+        },
+        {
+          "name": "Perplexity",
+          "url": "https://www.perplexity.ai/",
+          "icon": "fa-regular fa-face-grin-tongue-wink"
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure & Hosting",
+      "links": [
+        {
+          "name": "Netlify Dashboard",
+          "url": "https://app.netlify.com/",
+          "icon": "fa-solid fa-server"
+        },
+        {
+          "name": "Cloudflare Dashboard",
+          "url": "https://dash.cloudflare.com/",
+          "icon": "fa-solid fa-shield-alt"
+        },
+        {
+          "name": "Porkbun",
+          "url": "https://porkbun.com/",
+          "icon": "fa-solid fa-globe"
+        }
+      ]
+    },
+    {
+      "name": "Networking & Diagnostics",
+      "links": [
+        {
+          "name": "MXToolbox",
+          "url": "https://mxtoolbox.com/",
+          "icon": "fa-solid fa-toolbox"
+        },
+        {
+          "name": "Speedtest",
+          "url": "https://www.speedtest.net/",
+          "icon": "fa-solid fa-gauge"
+        },
+        {
+          "name": "DNS Checker",
+          "url": "https://dnschecker.org/",
+          "icon": "fa-solid fa-server"
+        }
+      ]
+    },
+    {
+      "name": "AV System Design",
+      "links": [
+        {
+          "name": "TapTempo.io",
+          "url": "https://taptempo.io/",
+          "icon": "fa-solid fa-volume-up"
+        },
+        {
+          "name": "Bitrate Calculator",
+          "url": "https://castr.com/bitrate-calculator/",
+          "icon": "fa-solid fa-calculator"
+        },
+        {
+          "name": "SoundBase",
+          "url": "https://soundbase.app/",
+          "icon": "fa-solid fa-sliders"
+        }
+      ]
+    }
+  ]
+}

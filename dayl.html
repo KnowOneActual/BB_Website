@@ -25,20 +25,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 
   <style>
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .fuchsia-text {
-      color: rgb(232 121 249 / 1);
-    }
-
-    /* text-fuchsia-400 */
     .card-link {
       transition: all 0.3s ease;
       display: flex;
@@ -50,49 +36,61 @@
 
     .card-link:hover {
       transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 10px 15px -3px rgba(192, 38, 211, 0.4);
+      box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4); /* indigo-600 */
     }
 
     .card-link i {
-      width: 20px;
+      width: 24px;
       text-align: center;
-      color: rgb(192 38 211 / 1);
-      /* fuchsia-600 */
+      color: #818cf8; /* indigo-400 */
     }
   </style>
 </head>
 
-<body class="bg-gray-950 text-white min-h-screen flex flex-col">
-  <nav class="bg-gray-900 p-4">
+<body class="bg-gray-950 text-white min-h-screen flex flex-col scroll-smooth">
+  <nav class="bg-gray-900/80 backdrop-blur-md p-6 border-b border-gray-800 sticky top-0 z-50">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-fuchsia-400 font-bold text-xl">← Back to Main Page</a>
-      <h1 class="text-xl font-bold text-gray-100 flex-grow text-center"></h1>
-      <div class="w-auto"></div>
+      <a href="index.html" class="text-indigo-400 hover:text-indigo-300 font-bold text-xl transition-colors duration-300">
+        ← Back to Home
+      </a>
     </div>
   </nav>
 
-  <main class="flex-grow max-w-4xl mx-auto py-12 px-6 w-full">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl font-bold mb-4 text-fuchsia-400">Daily Links Hub</h1>
-      <p class="text-gray-300 text-lg">A quick, private launchpad to my most-used sites.</p>
+  <main class="flex-grow max-w-4xl mx-auto py-16 px-6 w-full">
+    <div class="text-center mb-16 fade-in">
+      <h1 class="text-5xl font-extrabold mb-4 text-white tracking-tight">Daily Links Hub</h1>
+      <p class="text-gray-400 text-lg leading-relaxed">A fast, professional launchpad to my most-used sites.</p>
     </div>
 
-    <div id="links-container" class="space-y-12">
-      <div class="text-center text-gray-500">Loading links...</div>
+    <div id="links-container" class="space-y-16">
+      <div class="text-center text-gray-500 animate-pulse">Loading links...</div>
     </div>
   </main>
 
-  <footer class="text-center py-6 bg-gray-950 text-gray-500">
-    <div class="mb-4">
+  <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
+    <div class="mb-6">
       <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer"
-        class="hover:text-fuchsia-400 mx-2">Blog</a>
-      <a href="privacy.html" class="hover:text-fuchsia-400 mx-2">Privacy Policy</a>
+        class="hover:text-indigo-400 mx-3 transition">Blog</a>
+      <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
     </div>
-    <p class="text-gray-400">Handcrafted by me © 2026 Beau Bremer. Built from scratch, not from a template.</p>
-    <p class="text-xs mt-2">Stay bold, keep creating, and rock on! All rights reserved.</p>
+    <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Built from scratch.</p>
   </footer>
 
-  <script src="daily-links.js" defer></script>
+  <script src="js/daily-links.js" defer></script>
+  <script>
+    // Simple intersection observer for fade-in effect if needed on this page
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 
 </html>

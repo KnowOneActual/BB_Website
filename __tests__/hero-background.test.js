@@ -19,7 +19,7 @@ describe('Hero Background Animation', () => {
   describe('initializeThreeJsAnimation function', () => {
     test('should not be defined in script.js', () => {
       // Test case 1: The initializeThreeJsAnimation function is no longer defined or called
-      const scriptModule = require('../script.js');
+      const scriptModule = require('../js/script.js');
       expect(scriptModule.initializeThreeJsAnimation).toBeUndefined();
       expect(global.initializeThreeJsAnimation).toBeUndefined();
     });
@@ -28,7 +28,7 @@ describe('Hero Background Animation', () => {
       // Verify that initializeThreeJsAnimation is not called anywhere
       const fs = require('fs');
       const path = require('path');
-      const scriptPath = path.join(__dirname, '..', 'script.js');
+      const scriptPath = path.join(__dirname, '..', 'js', 'script.js');
       const scriptContent = fs.readFileSync(scriptPath, 'utf8');
 
       expect(scriptContent).not.toContain('initializeThreeJsAnimation()');

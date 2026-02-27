@@ -29,379 +29,310 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="bg-gray-950 text-white scroll-smooth">
+<body class="bg-gray-950 text-gray-50 scroll-smooth">
+  <nav class="fixed top-0 w-full z-50 py-6 px-6 transition-all duration-300">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="#" class="text-xl font-bold tracking-tighter text-indigo-400">BEAU BREMER</a>
+      <div class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="#about" class="nav-link hover:text-indigo-400 transition">About</a>
+        <a href="#featured-projects" class="nav-link hover:text-indigo-400 transition">Projects</a>
+        <a href="#toolbag" class="nav-link hover:text-indigo-400 transition">Toolbag</a>
+        <a href="#contact" class="nav-link hover:text-indigo-400 transition">Contact</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="https://github.com/KnowOneActual" target="_blank" class="hover:text-indigo-400 transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.805.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/beau-bremer-chicago/" target="_blank" class="hover:text-indigo-400 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <main>
     <section
-      class="min-h-screen relative flex items-center justify-center text-center bg-gradient-to-br from-purple-950 via-black to-fuchsia-800 px-6 overflow-hidden">
-      <div class="relative z-10 space-y-6 max-w-3xl fade-in">
-        <h1 class="text-6xl font-extrabold leading-tight text-fuchsia-400">Hey, I'm Beau Bremer.</h1>
-        <p class="text-2xl font-light tracking-wide text-gray-300">
-          Plugged in, patched up, and always learning! Solving complex tech challenges with a creative, hands-on
-          approach.
+      class="min-h-screen relative flex items-center justify-center text-center bg-gradient-to-br from-gray-950 via-indigo-950 to-indigo-900 px-6 overflow-hidden">
+      <div class="relative z-10 space-y-8 max-w-4xl fade-in">
+        <div class="space-y-4">
+          <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-white tracking-tight">
+            Beau Bremer
+          </h1>
+          <p class="text-xl md:text-2xl font-medium text-indigo-300">
+            Technical Project Manager & AV/IT Systems Specialist
+          </p>
+        </div>
+        
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          Solving complex tech challenges with a creative, hands-on approach. 
+          Expertise in infrastructure, automation, and seamless system integration.
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
+
+        <div class="flex flex-wrap justify-center gap-4 pt-4">
           <a href="#contact"
-            class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">Get
-            In Touch →</a>
-          <a href="#featured-projects"
-            class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">See
-            My Latest Project →</a>
+            class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition duration-300 shadow-lg shadow-indigo-600/20">
+            Get In Touch
+          </a>
+          <a href="assets/Beau_Bremer_Resume.pdf" target="_blank"
+            class="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-lg transition duration-300 border border-gray-700 shadow-xl">
+            Download Resume
+          </a>
         </div>
       </div>
     </section>
-    <section class="bg-gray-950 py-20 px-6">
+    <section id="about" class="bg-gray-950 py-24 px-6 scroll-mt-20">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-4xl font-bold mb-8 text-center fade-in text-fuchsia-400">About Me</h2>
-        <div class="flex flex-col md:flex-row md:space-x-12 items-center bg-gray-800 p-8 rounded-xl shadow-lg fade-in">
-          <div class="text-lg text-gray-300 leading-relaxed">
-            <p class="mb-4">
-              I'm Beau Bremer, a tech generalist with a deep-seated passion for ensuring systems run smoothly and
+        <h2 class="text-4xl font-bold mb-12 text-center fade-in text-white tracking-tight">About Me</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start fade-in">
+          <div class="lg:col-span-2 space-y-6 text-lg text-gray-300 leading-relaxed">
+            <p>
+              I'm a tech generalist with a deep-seated passion for ensuring systems run smoothly and
               efficiently. With a background spanning IT operations, audio-visual technical services, and project
               management, I bring a highly analytical and solution-oriented approach to complex challenges.
             </p>
-            <h3 class="text-xl font-semibold text-fuchsia-400 mb-3">My Expertise & Experience:</h3>
-            <ul class="list-disc list-inside space-y-2 mb-4">
-              <li>
-                My expertise covers the full lifecycle of technical support, including **meticulous configuration**,
-                **installation**, **proactive maintenance**, and **rapid troubleshooting**.
-              </li>
-              <li>
-                I've successfully coordinated **large-scale asset deployments** and managed workloads, providing
-                **responsive 24/7 support** across national locations.
-              </li>
-              <li>
-                I excel at delivering **seamless functionality** for significant projects, from optimizing network POS
-                systems to integrating professional AV setups for high-profile productions.
-              </li>
-            </ul>
-            <h3 class="text-xl font-semibold text-fuchsia-400 mb-3">Problem-Solving & Continuous Learning:</h3>
-            <ul class="list-disc list-inside space-y-2">
-              <li>
-                I thrive on applying my **problem-solving skills** to identify root causes and implement lasting
-                solutions.
-              </li>
-              <li>
-                I'm actively expanding my capabilities in **network troubleshooting (Wireshark)** and leveraging
-                **Python for scripting and automation** to enhance operational efficiency.
-              </li>
-              <li>
-                As a "Code Explorer" and "Knowledge Expander," my
-                <a href="https://github.com/KnowOneActual" target="_blank" rel="noopener noreferrer"
-                  class="text-fuchsia-400 hover:underline font-bold">GitHub profile</a>
-                with over 20 repositories showcases my hands-on approach and continuous learning.
-              </li>
-              <li>
-                My goal is to contribute to a team where I can deliver tangible results and leverage my diverse
-                technical skill set to make systems work seamlessly.
-              </li>
-            </ul>
+            <p>
+              I thrive on identifying root causes and implementing lasting solutions. Whether it's coordinating
+              large-scale asset deployments or optimizing network POS systems, my focus is always on 
+              delivering tangible results and seamless functionality.
+            </p>
+          </div>
+          
+          <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-xl">
+            <h3 class="text-xl font-bold text-indigo-400 mb-6 uppercase tracking-wider text-sm">Core Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">Project Management</span>
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">AV/IT Integration</span>
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">Network Analysis</span>
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">Python</span>
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">Troubleshooting</span>
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">Asset Deployment</span>
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">Wireshark</span>
+              <span class="px-3 py-1 bg-gray-800 text-indigo-300 rounded-md text-sm border border-gray-700">Automation</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <section id="featured-projects" class="max-w-5xl mx-auto py-20 px-6 bg-gray-950 scroll-mt-20">
-      <h2 class="text-4xl font-bold mb-12 text-center fade-in">Latest Projects</h2>
+    <section id="featured-projects" class="max-w-6xl mx-auto py-24 px-6 bg-gray-950 scroll-mt-20">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 fade-in">
+        <div>
+          <h2 class="text-4xl font-bold text-white tracking-tight">Featured Projects</h2>
+          <p class="text-gray-400 mt-2">A selection of tools and applications I've built.</p>
+        </div>
+        <a href="https://github.com/KnowOneActual" target="_blank" class="text-indigo-400 font-semibold hover:text-indigo-300 transition flex items-center gap-2">
+          View all on GitHub
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Conversational Weather Bot</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            An interactive bot built with plain HTML, JavaScript, and a serverless Netlify Function that connects to
-            Google's Gemini API for natural language processing and the OpenWeatherMap API for live data.
+          class="group bg-gray-900 border border-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-indigo-500/10 hover:border-gray-700 transition duration-300 fade-in">
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Conversational Weather Bot</h3>
+            <span class="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs font-bold rounded uppercase tracking-wider">AI / API</span>
+          </div>
+          <p class="text-gray-300 mb-6 leading-relaxed">
+            An interactive bot using Google's Gemini API for NLP and OpenWeatherMap for live data. 
+            Features a serverless architecture for efficient processing.
           </p>
-          <div class="mt-4 flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="text-[10px] px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">JavaScript</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">Netlify Functions</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">Gemini AI</span>
+          </div>
+          <div class="flex gap-4">
             <a href="/weather.html"
-              class="text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm">View Live
-              Demo &rarr;</a>
+              class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg text-sm transition">Live Demo</a>
             <a href="https://blog.beaubremer.com/posts/idea_to_ai/"
-              class="text-blue-400 hover:underline text-sm self-center">Read a blog post</a>
+              class="px-5 py-2 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-lg text-sm transition">Case Study</a>
           </div>
         </div>
 
         <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Privacy-First Image Cleaner (Tor Service)</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            A secure tool to strip metadata from images, hosted as a Tor Onion Service. This project showcases skills
-            in Linux administration, Python (Flask), Nginx, and privacy-first web development.
+          class="group bg-gray-900 border border-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-indigo-500/10 hover:border-gray-700 transition duration-300 fade-in">
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Privacy-First Image Cleaner</h3>
+            <span class="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs font-bold rounded uppercase tracking-wider">Security / Tor</span>
+          </div>
+          <p class="text-gray-300 mb-6 leading-relaxed">
+            A secure utility to strip EXIF metadata from images, hosted on the Tor network. 
+            Demonstrates Linux admin, Python/Flask, and Nginx hardening.
           </p>
-          <div class="mt-4 flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="text-[10px] px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">Python</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">Flask</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">Tor</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">Nginx</span>
+          </div>
+          <div class="flex gap-4">
             <a href="https://blog.beaubremer.com/posts/iimage_cleaner_on_a_tor_onion_service/"
-              class="text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm">Read the
-              Project Write-up &rarr;</a>
+              class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg text-sm transition">Read Write-up</a>
           </div>
         </div>
       </div>
     </section>
-    <section id="my_projects" class="max-w-5xl mx-auto py-20 px-6 bg-gray-950">
-      <h2 class="text-4xl font-bold mb-12 text-center fade-in">🛠️ My Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Python File Encryption Tool</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            A command-line tool for encrypting and decrypting files using AES-256. This project demonstrates my
-            understanding of cryptography and secure coding practices.
-          </p>
-          <a href="https://github.com/KnowOneActual/py_file_encrypt_tool" target="_blank" rel="noopener noreferrer"
-            class="text-blue-400 hover:underline text-sm">View on GitHub &rarr;</a>
-        </div>
-        <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Network Triage Tool</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            A Python-based tool for network administrators to quickly diagnose and troubleshoot network issues. It
-            combines ping, traceroute, and port scanning into a single, easy-to-use interface.
-          </p>
-          <a href="https://github.com/KnowOneActual/Network-Triage-Tool" target="_blank" rel="noopener noreferrer"
-            class="text-blue-400 hover:underline text-sm">View on GitHub &rarr;</a>
-        </div>
-        <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Python Image Processor</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            A versatile image processing tool built with Python and Pillow. It can resize, rotate, and apply filters
-            to images, showcasing my ability to work with image data and create practical applications.
-          </p>
-          <a href="https://github.com/KnowOneActual/python-image-processor" target="_blank" rel="noopener noreferrer"
-            class="text-blue-400 hover:underline text-sm">View on GitHub &rarr;</a>
-        </div>
-        <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">AV IP Subnet Calculator</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            A fast IP subnet calculator designed for AV technicians. It goes beyond the numbers, letting you map
-            specific lighting, audio, and control gear to addresses for a clear on-site network plan.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-4">
-            <a href="/IP_Subnet_Calculator.html"
-              class="text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm">View Live
-              Demo &rarr;</a>
-            <a href="https://blog.beaubremer.com/posts/Simple_IP_Planner/"
-              class="text-blue-400 hover:underline text-sm self-center">Read a blog post</a>
-          </div>
-        </div>
-        <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">My IP & Browser Info</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            Quickly view your public IP, location, browser, and device details.
-          </p>
-          <div class="mt-4">
-            <a href="/my_ip.html"
-              class="inline-block text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm">View
-              &rarr;</a>
-          </div>
-        </div>
 
-        <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in transform hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold text-fuchsia-400 mb-3">Network Latency Monitor</h3>
-          <p class="text-gray-300 text-sm mb-4">
-            A client-side tool to monitor the availability and latency of network endpoints in real-time.
-          </p>
-          <div class="mt-4">
-            <a href="/network_latency_monitor.html"
-              class="inline-block text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-full px-4 py-2 text-sm">View
-              &rarr;</a>
-          </div>
+    <section id="my_projects" class="max-w-6xl mx-auto py-12 px-6 bg-gray-950">
+      <h3 class="text-xl font-bold text-gray-500 uppercase tracking-widest mb-8 text-center fade-in">Other Tools & Utilities</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in">
+          <h4 class="text-lg font-bold text-white mb-2">Network Triage Tool</h4>
+          <p class="text-gray-400 text-sm mb-4">A Python TUI dashboard for real-time diagnostics, streamlining troubleshooting in complex network environments.</p>
+          <a href="https://github.com/KnowOneActual/Network-Triage-Tool" target="_blank" class="text-indigo-400 text-sm font-semibold hover:underline">GitHub →</a>
         </div>
-      </div>
-      <div class="text-center mt-12 fade-in">
-        <a href="https://github.com/KnowOneActual?tab=repositories" target="_blank" rel="noopener noreferrer"
-          class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">View
-          All Projects on GitHub</a>
+        <div class="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in">
+          <h4 class="text-lg font-bold text-white mb-2">AV IP Subnet Calculator</h4>
+          <p class="text-gray-400 text-sm mb-4">A specialized utility for mapping high-density AV deployments to specific subnet structures with precision.</p>
+          <a href="/IP_Subnet_Calculator.html" class="text-indigo-400 text-sm font-semibold hover:underline">Launch Tool →</a>
+        </div>
+        <div class="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in">
+          <h4 class="text-lg font-bold text-white mb-2">File Encryption Tool</h4>
+          <p class="text-gray-400 text-sm mb-4">A secure AES-256 CLI utility designed for rapid encryption and decryption of sensitive project assets.</p>
+          <a href="https://github.com/KnowOneActual/py_file_encrypt_tool" target="_blank" class="text-indigo-400 text-sm font-semibold hover:underline">GitHub →</a>
+        </div>
       </div>
     </section>
-    <section id="toolbag" class="max-w-5xl mx-auto py-20 px-6 bg-gray-950">
-      <h2 class="text-4xl font-bold mb-12 text-center fade-in text-fuchsia-400">My Toolbag</h2>
-      <div class="text-center">
-        <div
-          class="bg-gray-800 p-6 rounded-xl shadow-lg mb-8 max-w-3xl mx-auto hover:shadow-fuchsia-600/50 transition transform hover:-translate-y-1 fade-in">
-          <p class="text-lg text-gray-300">
-            A look at the hardware, software, and services I use every day to get the job done.
-          </p>
-        </div>
+
+    <section id="toolbag" class="max-w-6xl mx-auto py-12 px-6 bg-gray-950">
+      <div class="bg-gray-900 border border-gray-800 p-12 rounded-2xl text-center fade-in hover:border-indigo-500/30 transition duration-300">
+        <h2 class="text-4xl font-bold text-white mb-4">My Toolbag</h2>
+        <p class="text-gray-300 mb-8 max-w-xl mx-auto text-lg leading-relaxed">
+          A curated look at the hardware, software, and services I use every day to get the job done.
+        </p>
         <a href="toolbag.html"
-          class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">
-          Explore My Toolbag
+          class="inline-block px-10 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-600/20">
+          Explore My Full Stack
         </a>
       </div>
     </section>
-    <section id="recent-posts" class="max-w-5xl mx-auto py-20 px-6 bg-gray-950">
-      <h2 class="text-4xl font-bold mb-12 text-center fade-in text-fuchsia-400">Recent Blog Posts</h2>
-      <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg animate-pulse">
-          <div class="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
-          <div class="h-4 bg-gray-700 rounded w-1/2 mb-3"></div>
-          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
-          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
-          <div class="h-4 bg-gray-700 rounded w-5/6 mb-4"></div>
-          <div class="h-10 bg-gray-700 rounded-full w-28 mt-4"></div>
+    <section id="recent-posts" class="max-w-6xl mx-auto py-24 px-6 bg-gray-950">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 fade-in">
+        <div>
+          <h2 class="text-4xl font-bold text-white tracking-tight">From the Blog</h2>
+          <p class="text-gray-400 mt-2">Insights, tutorials, and project deep-dives.</p>
         </div>
-
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg animate-pulse">
-          <div class="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
-          <div class="h-4 bg-gray-700 rounded w-1/2 mb-3"></div>
-          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
-          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
-          <div class="h-4 bg-gray-700 rounded w-5/6 mb-4"></div>
-          <div class="h-10 bg-gray-700 rounded-full w-28 mt-4"></div>
-        </div>
-
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg animate-pulse">
-          <div class="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
-          <div class="h-4 bg-gray-700 rounded w-1/2 mb-3"></div>
-          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
-          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
-          <div class="h-4 bg-gray-700 rounded w-5/6 mb-4"></div>
-          <div class="h-10 bg-gray-700 rounded-full w-28 mt-4"></div>
-        </div>
+        <a href="https://blog.beaubremer.com" target="_blank" class="text-indigo-400 font-semibold hover:text-indigo-300 transition flex items-center gap-2">
+          View all posts
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
       </div>
-      <div class="text-center mt-12 fade-in">
-        <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer"
-          class="inline-block px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">View
-          All Posts on the Blog</a>
+      <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Skeletons for loading state -->
+        <div class="p-6 bg-gray-900 border border-gray-800 rounded-xl animate-pulse">
+          <div class="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
+          <div class="h-4 bg-gray-700 rounded w-1/2 mb-3"></div>
+          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
+          <div class="h-4 bg-gray-700 rounded w-5/6 mb-4"></div>
+          <div class="h-10 bg-gray-700 rounded-lg w-28 mt-4"></div>
+        </div>
+        <div class="p-6 bg-gray-900 border border-gray-800 rounded-xl animate-pulse">
+          <div class="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
+          <div class="h-4 bg-gray-700 rounded w-1/2 mb-3"></div>
+          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
+          <div class="h-4 bg-gray-700 rounded w-5/6 mb-4"></div>
+          <div class="h-10 bg-gray-700 rounded-lg w-28 mt-4"></div>
+        </div>
+        <div class="p-6 bg-gray-900 border border-gray-800 rounded-xl animate-pulse">
+          <div class="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
+          <div class="h-4 bg-gray-700 rounded w-1/2 mb-3"></div>
+          <div class="h-4 bg-gray-700 rounded w-full mb-1"></div>
+          <div class="h-4 bg-gray-700 rounded w-5/6 mb-4"></div>
+          <div class="h-10 bg-gray-700 rounded-lg w-28 mt-4"></div>
+        </div>
       </div>
     </section>
 
-    <section id="creative_library" class="bg-gray-950 py-20 px-6">
+    <section id="creative_library" class="bg-gray-950 py-24 px-6">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center fade-in">🧰 Creative Resource Library</h2>
-        <p class="text-center text-gray-400 mb-12 fade-in">
-          A curated collection of tools, inspiration, and goodies I use and love. Updated often!
-        </p>
+        <h2 class="text-4xl font-bold mb-4 text-center text-white tracking-tight fade-in">Resource Library</h2>
+        <p class="text-center text-gray-400 mb-12 fade-in">A curated collection of my favorite tools and guides.</p>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
-            <a href="https://coolors.co/" target="_blank" rel="noopener noreferrer"
-              class="text-xl font-semibold text-fuchsia-400 hover:underline">Coolors</a>
-            <p class="text-gray-300 mt-2">
-              Quickly generate beautiful color palettes for your projects — a daily go-to for design inspiration!
-            </p>
-          </li>
-          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
-            <a href="https://www.calculator.net/ohms-law-calculator.html" target="_blank" rel="noopener noreferrer"
-              class="text-xl font-semibold text-fuchsia-400 hover:underline">Ohms Law Calculator</a>
-            <p class="text-gray-300 mt-2">
-              Calculate voltage, current, resistance, and power using Ohm's Law equations. Enter any two values and
-              get the other two, or use the formula wheel to solve for any variable.
-            </p>
-          </li>
-          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
-            <a href="https://wirelesssystembuilder.com/" target="_blank" rel="noopener noreferrer"
-              class="text-xl font-semibold text-fuchsia-400 hover:underline">RF Venue</a>
-            <p class="text-gray-300 mt-2">
-              Wireless System Builder — an invaluable tool for planning robust wireless audio systems.
-            </p>
-          </li>
-          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
-            <a href="/assets/downloads/pdf/A_Simple_Guide_to_Creating_Gmail_Filters_for_Spam.pdf" target="_blank"
-              rel="noopener noreferrer" class="text-xl font-semibold text-fuchsia-400 hover:underline">A Simple Guide to
-              Creating Gmail Filters for Spam (PDF)</a>
-            <p class="text-gray-300 mt-2">
-              A straightforward guide to setting up Gmail filters to manage unwanted emails and keep your inbox clean.
-            </p>
-          </li>
-          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
+          <li class="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in">
             <a href="/assets/downloads/pdf/Wireshark_Quick_Start_Guide.pdf" target="_blank" rel="noopener noreferrer"
-              class="text-xl font-semibold text-fuchsia-400 hover:underline">Wireshark Quick Start Guide (PDF)</a>
-            <p class="text-gray-300 mt-2">
-              Get up and running with Wireshark, capture your first packets, and learn essential commands for quick
-              network analysis.
-            </p>
+              class="text-lg font-bold text-white hover:text-indigo-400 transition">Wireshark Quick Start Guide (PDF)</a>
+            <p class="text-gray-400 mt-2 text-sm">Get up and running with Wireshark and learn essential commands for network analysis.</p>
           </li>
-          <li class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-fuchsia-600/50 transition fade-in">
+          <li class="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in">
+            <a href="/assets/downloads/pdf/A_Simple_Guide_to_Creating_Gmail_Filters_for_Spam.pdf" target="_blank"
+              rel="noopener noreferrer" class="text-lg font-bold text-white hover:text-indigo-400 transition">Gmail Spam Filter Guide (PDF)</a>
+            <p class="text-gray-400 mt-2 text-sm">A straightforward guide to setting up Gmail filters to manage unwanted emails.</p>
+          </li>
+          <li class="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in">
+            <a href="https://coolors.co/" target="_blank" rel="noopener noreferrer"
+              class="text-lg font-bold text-white hover:text-indigo-400 transition">Coolors</a>
+            <p class="text-gray-400 mt-2 text-sm">Quickly generate beautiful color palettes for your projects.</p>
+          </li>
+          <li class="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-500/30 transition duration-300 fade-in">
             <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"
-              class="text-xl font-semibold text-fuchsia-400 hover:underline">Feather Icons</a>
-            <p class="text-gray-300 mt-2">
-              A collection of simply beautiful open-source icons. Each icon is designed on a 24x24 grid with an
-              emphasis on simplicity, consistency, and readability.
-            </p>
+              class="text-lg font-bold text-white hover:text-indigo-400 transition">Feather Icons</a>
+            <p class="text-gray-400 mt-2 text-sm">A collection of simply beautiful open-source icons.</p>
           </li>
         </ul>
       </div>
     </section>
-    <section class="max-w-5xl mx-auto py-20 px-6 bg-gray-950">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold mb-4 fade-in">📊 Data Visualization Insights</h2>
-        <p class="max-w-3xl mx-auto text-lg text-gray-300 fade-in">
-          Explore a dynamic infographic showcasing industry trends and market research, built to demonstrate effective
-          data presentation and interactivity.
-        </p>
-        <a href="trends.html"
-          class="inline-block px-8 py-4 mt-6 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-full transition duration-300 transform hover:scale-105">
-          View Infographic Project
-        </a>
-      </div>
-    </section>
-    <section class="py-20 px-6 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-10 text-center fade-in">What People Say</h2>
+
+    <section class="py-24 px-6 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center text-white tracking-tight fade-in">Testimonials</h2>
       <div class="space-y-8">
-        <blockquote class="bg-gray-800 p-6 rounded-xl shadow-md fade-in">
-          <p class="text-lg italic">
+        <blockquote class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl fade-in">
+          <p class="text-lg italic text-gray-300">
             "Beau brought energy and originality to our project that we didn't even know we needed."
           </p>
-          <p class="mt-4 font-bold">– Felix D., Creative Director, Indie Studio</p>
+          <cite class="mt-4 not-italic font-bold text-gray-400 block">– Felix D., Creative Director, Indie Studio</cite>
         </blockquote>
-        <blockquote class="bg-gray-800 p-6 rounded-xl shadow-md fade-in">
-          <p class="text-lg italic">
+        <blockquote class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl fade-in">
+          <p class="text-lg italic text-gray-300">
             "Not only did he deliver, he made the whole process smooth. And the event went killer."
           </p>
-          <p class="mt-4 font-bold">– Wanda C., Startup Co-Founder</p>
-        </blockquote>
-        <blockquote class="bg-gray-800 p-6 rounded-xl shadow-md fade-in">
-          <p class="text-lg italic">"Can't wait to work with Beau again. His attention to detail is 🔥."</p>
-          <p class="mt-4 font-bold">– Lakeisha O., Event Director</p>
+          <cite class="mt-4 not-italic font-bold text-gray-400 block">– Wanda C., Startup Co-Founder</cite>
         </blockquote>
       </div>
     </section>
-    <section id="contact" class="bg-gray-950 py-20 px-6">
+    <section id="contact" class="bg-gray-950 py-24 px-6">
       <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-2 fade-in">TalkBack Mic 🎙️</h2>
-        <p class="text-gray-400 mb-8 fade-in">Speak directly to me — leave your message, thoughts, or shout-outs!</p>
+        <h2 class="text-4xl font-bold text-white tracking-tight mb-4 fade-in">Get In Touch</h2>
+        <p class="text-gray-400 mb-10 fade-in">Have a question or a project in mind? Let's talk.</p>
         <form name="contact" data-netlify="true" netlify-honeypot="bot-field"
-          class="space-y-6 bg-gray-800 p-6 rounded-xl shadow-lg fade-in">
+          class="space-y-6 bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl fade-in">
           <input type="hidden" name="form-name" value="contact" />
           <div hidden>
             <label>Don’t fill this out:
               <input name="bot-field" />
             </label>
           </div>
-          <input type="text" name="name" placeholder="Your Name" required
-            class="w-full p-3 rounded bg-gray-950 text-white border border-gray-700" />
-          <input type="email" name="email" placeholder="Your Email" required
-            class="w-full p-3 rounded bg-gray-950 text-white border border-gray-700" />
-          <textarea name="message" placeholder="Your Message or Shout-out" rows="5" required
-            class="w-full p-3 rounded bg-gray-950 text-white border border-gray-700"></textarea>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <input type="text" name="name" placeholder="Your Name" required
+              class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" />
+            <input type="email" name="email" placeholder="Your Email" required
+              class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" />
+          </div>
+          <textarea name="message" placeholder="Your Message" rows="5" required
+            class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"></textarea>
           <div class="cf-turnstile" data-sitekey="0x4AAAAAABgkt_RFOUv2GXeS"></div>
           <button type="submit"
-            class="px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded transition flex items-center justify-center space-x-2 talkback-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewbox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9 19V6a3 3 0 116 0v13M5 10h14" />
-            </svg>
-            <span>Push To Talk</span>
+            class="w-full px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition duration-300 shadow-lg shadow-indigo-600/20">
+            Send Message
           </button>
         </form>
       </div>
     </section>
   </main>
-  <footer class="text-center py-6 bg-gray-950 text-gray-500">
+  <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
     <div class="mb-4">
       <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer"
-        class="hover:text-fuchsia-400 mx-2">Blog</a>
+        class="hover:text-indigo-400 mx-3 transition">Blog</a>
       <a href="https://github.com/KnowOneActual" target="_blank" rel="noopener noreferrer"
-        class="hover:text-fuchsia-400 mx-2">GitHub</a>
-      <a href="technology_security.html" class="hover:text-fuchsia-400 mx-2">Site Technology Report</a>
-      <a href="privacy.html" class="hover:text-fuchsia-400 mx-2">Privacy Policy</a>
+        class="hover:text-indigo-400 mx-3 transition">GitHub</a>
+      <a href="technology_security.html" class="hover:text-indigo-400 mx-3 transition">Site Technology Report</a>
+      <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
     </div>
-    <p class="text-gray-400">Handcrafted by me © 2026 Beau Bremer. Built from scratch, not from a template.</p>
-    <p class="text-xs mt-2">
-      Stay bold, keep creating, and rock on! All rights reserved. Have the Best Day and/or Night ever!
-    </p>
+    <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Built from scratch.</p>
+    <div class="mt-4 text-[10px] uppercase tracking-widest font-bold text-gray-600">
+      Last Updated: Feb 2026 • <a href="technology_security.html" class="hover:text-indigo-400 transition">Stack: Tailwind/Netlify</a>
+    </div>
   </footer>
-  <script src="script.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 
 </html>

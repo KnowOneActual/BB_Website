@@ -1,0 +1,7 @@
+Content-Security-Policy: (Report-Only policy) The page’s settings would block a script (script-src-elem) at https://beaubremer.com/js/toolbag.js from being executed because it violates the following directive: “script-src 'none'” toolbag
+Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it violates the following directive: “script-src 'self' https://beaubremer.com https://challenges.cloudflare.com https://cdnjs.cloudflare.com https://www.gstatic.com https://cdn.jsdelivr.net https://unpkg.com https://static.cloudflareinsights.com”. Consider using a hash ('sha256-efgy/xUcvLuyvOM6NqB5V+wYaDwC+PZIZ0vST4+CJuQ=') or a nonce. toolbag:82:11
+Content-Security-Policy: (Report-Only policy) The page’s settings would block an inline script (script-src-elem) from being executed because it violates the following directive: “script-src 'none'”. Consider using a hash ('sha256-efgy/xUcvLuyvOM6NqB5V+wYaDwC+PZIZ0vST4+CJuQ=') or a nonce. toolbag:82:11
+GET
+https://beaubremer.com/favicon.ico
+[HTTP/3 404  0ms]
+

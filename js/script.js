@@ -129,8 +129,20 @@ async function fetchAndDisplayBlogPosts() {
     const posts = await response.json();
 
     if (posts.length === 0) {
-      container.innerHTML =
-        '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">No recent blog posts found. Please visit the <a href="https://blog.beaubremer.com/" class="text-indigo-400 underline">blog</a> directly.</p>';
+      const noPostsMsg = document.createElement('p');
+      noPostsMsg.className = 'text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3';
+      noPostsMsg.textContent = 'No recent blog posts found. Please visit the ';
+      
+      const blogLink = document.createElement('a');
+      blogLink.href = 'https://blog.beaubremer.com/';
+      blogLink.className = 'text-indigo-400 underline';
+      blogLink.textContent = 'blog';
+      
+      noPostsMsg.appendChild(blogLink);
+      noPostsMsg.appendChild(document.createTextNode(' directly.'));
+      
+      container.innerHTML = '';
+      container.appendChild(noPostsMsg);
       return;
     }
 
@@ -175,8 +187,20 @@ async function fetchAndDisplayBlogPosts() {
     initializeFadeInAnimation();
   } catch (error) {
     console.error('Error fetching blog posts:', error);
-    container.innerHTML =
-      '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">Could not load recent blog posts. Please visit the <a href="https://blog.beaubremer.com/" class="text-indigo-400 underline">blog</a> directly.</p>';
+    const errorMsg = document.createElement('p');
+    errorMsg.className = 'text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3';
+    errorMsg.textContent = 'Could not load recent blog posts. Please visit the ';
+    
+    const blogLink = document.createElement('a');
+    blogLink.href = 'https://blog.beaubremer.com/';
+    blogLink.className = 'text-indigo-400 underline';
+    blogLink.textContent = 'blog';
+    
+    errorMsg.appendChild(blogLink);
+    errorMsg.appendChild(document.createTextNode(' directly.'));
+    
+    container.innerHTML = '';
+    container.appendChild(errorMsg);
   }
 }
 

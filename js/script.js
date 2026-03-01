@@ -132,15 +132,15 @@ async function fetchAndDisplayBlogPosts() {
       const noPostsMsg = document.createElement('p');
       noPostsMsg.className = 'text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3';
       noPostsMsg.textContent = 'No recent blog posts found. Please visit the ';
-      
+
       const blogLink = document.createElement('a');
       blogLink.href = 'https://blog.beaubremer.com/';
       blogLink.className = 'text-indigo-400 underline';
       blogLink.textContent = 'blog';
-      
+
       noPostsMsg.appendChild(blogLink);
       noPostsMsg.appendChild(document.createTextNode(' directly.'));
-      
+
       container.innerHTML = '';
       container.appendChild(noPostsMsg);
       return;
@@ -190,15 +190,15 @@ async function fetchAndDisplayBlogPosts() {
     const errorMsg = document.createElement('p');
     errorMsg.className = 'text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3';
     errorMsg.textContent = 'Could not load recent blog posts. Please visit the ';
-    
+
     const blogLink = document.createElement('a');
     blogLink.href = 'https://blog.beaubremer.com/';
     blogLink.className = 'text-indigo-400 underline';
     blogLink.textContent = 'blog';
-    
+
     errorMsg.appendChild(blogLink);
     errorMsg.appendChild(document.createTextNode(' directly.'));
-    
+
     container.innerHTML = '';
     container.appendChild(errorMsg);
   }

@@ -4,7 +4,7 @@ This document outlines the design thinking behind the website redesign completed
 
 ## 1. Primary Goal
 
-The main objective was to refine the personal website to better appeal to **hiring managers and recruiters** in the tech industry, while still maintaining a **clean, straightforward, and laid-back style** that reflects my personal brand. The previous design, while bold, used a high-energy Fuchsia/Purple theme that could be distracting. The new design aims for a more professional and grounded aesthetic.
+The main objective was to refine the personal website to better reflect a professional image while still maintaining a clean, straightforward, and laid-back style that aligns with my personality. The previous design, while bold, used a high-energy Fuchsia/Purple theme that could be distracting. The new design aims for a more professional and grounded aesthetic.
 
 ## 2. Core Design Pillars
 
@@ -29,12 +29,12 @@ The content structure was reorganized to prioritize information that a hiring ma
 
 - **Clearer Professional Title:** The hero section now immediately states the professional role ("Technical Project Manager & AV/IT Systems Specialist") for immediate clarity.
 - **Scannable "Core Skills" Section:** The "About Me" section was streamlined, and a "Core Skills" grid was added. This format allows a recruiter to quickly identify key competencies (e.g., Project Management, Python, Network Analysis) without reading through paragraphs of text.
-- **Dedicated "Toolbag" Page:** The "Toolbag" section was moved to its own page (`toolbag.html`). This declutters the main page while allowing for a more comprehensive and detailed showcase of technical skills for those who are interested.
+- **Dedicated "Toolbag" Page:** The "Toolbag" section was moved to its own page (`toolbag.html`). This declutters the main page while allowing a more comprehensive, detailed showcase of technical skills for those interested.
 - **Prominent Social/Professional Links:** A sticky navigation bar was added, featuring prominent links to GitHub and LinkedIn, which are critical resources for recruiters.
 
 ### d. User Experience (UX)
 
-- **Sticky Navigation:** The new navigation bar remains visible on scroll, allowing users to easily jump between sections without having to scroll back to the top. It has a semi-transparent, blurred background when scrolled to maintain context of the content behind it.
+- **Sticky Navigation:** The new navigation bar remains visible on scroll, allowing users to easily jump between sections without having to scroll back to the top. It has a semi-transparent, blurred background when scrolled to maintain the context of the content behind it.
 - **Project Discoverability:** Project cards were refined to include tech tags, making it easier to see the technologies used at a glance. A new, relevant project ("Network Triage Tool") was added to better showcase practical skills.
 
 ### e. Privacy & Security as a Feature
@@ -53,8 +53,8 @@ The project uses **Prettier** to maintain a consistent code style across all fil
 **Opinionated Formatting:**
 - We have adopted Prettier's default, opinionated behavior for HTML.
 - **Self-Closing Tags:** Prettier (v3+) automatically adds trailing slashes to HTML void elements (e.g., `<meta charset="UTF-8" />`). While this differs from some traditional HTML5 styles, it was chosen to maintain strict consistency across the project and ensure compatibility with modern tooling.
-- **Doctype Casing:** We use the lowercase `<!doctype html>`. While both uppercase and lowercase are valid and trigger Standards Mode in modern browsers, Prettier enforces the lowercase version. We have adopted this to avoid "fighting the tools" and maintain a uniform codebase.
+- **Doctype Casing:** We use the lowercase `<!doctype html>`. While both uppercase and lowercase are valid and trigger Standards Mode in modern browsers, Prettier enforces lowercase. We have adopted this to avoid "fighting the tools" and maintain a uniform codebase.
 
 ## 4. Conclusion
 
-This redesign represents a strategic shift from a purely expressive personal site to a polished, professional portfolio. It balances personality with the practical needs of its target audience (hiring managers) by focusing on clarity, scannability, and a calm, trustworthy aesthetic.
+This redesign represents a strategic shift from a purely expressive personal site to a polished and professional one. It balances personality with clarity, scannability, and a calm, trustworthy aesthetic.

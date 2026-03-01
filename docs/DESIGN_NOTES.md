@@ -44,6 +44,16 @@ The content structure was reorganized to prioritize information that a hiring ma
 - **Tailwind Build Integrity:** Refined the build process to scan all JavaScript-driven templates.
     - **Rationale:** Ensures that even dynamically rendered components (like blog posts and daily links) maintain the professional aesthetic by including all necessary utility classes in the final CSS.
 
-## 3. Conclusion
+## 3. Tooling & Code Standards
+
+### a. Automated Formatting (Prettier)
+
+The project uses **Prettier** to maintain a consistent code style across all files. This ensures that the codebase remains readable and professional, regardless of which environment or editor is used.
+
+**Opinionated Formatting:**
+- We have adopted Prettier's default, opinionated behavior for HTML.
+- **Self-Closing Tags:** Prettier (v3+) automatically adds trailing slashes to HTML void elements (e.g., `<meta charset="UTF-8" />`). While this differs from some traditional HTML5 styles, it was chosen to maintain strict consistency across the project and ensure compatibility with modern tooling.
+
+## 4. Conclusion
 
 This redesign represents a strategic shift from a purely expressive personal site to a polished, professional portfolio. It balances personality with the practical needs of its target audience (hiring managers) by focusing on clarity, scannability, and a calm, trustworthy aesthetic.

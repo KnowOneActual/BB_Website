@@ -1,148 +1,94 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network Speed Test | Beau Bremer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="fonts.css" rel="stylesheet" crossorigin="anonymous" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Speed Test | Beau Bremer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-    rel="stylesheet" crossorigin="anonymous" />
-</head>
-
-<body class="bg-gray-950 text-gray-50 scroll-smooth">
-
-  <header class="py-12 px-6 text-center">
-    <div class="max-w-4xl mx-auto">
-      <a href="index.html" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors duration-300 font-semibold group">
-        <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Back to Home
-      </a>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mt-6 tracking-tight">Network Speed Test</h1>
-      <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
-        Measure your connection speed directly in the browser.
-      </p>
-    </div>
-  </header>
-
-  <main class="py-12 px-6">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800 shadow-2xl text-center">
-        <div id="gauge-container" class="relative w-64 h-64 mx-auto mb-8 flex items-center justify-center">
-          <div class="absolute inset-0 rounded-full border-8 border-gray-800"></div>
-          <div id="gauge-progress" class="absolute inset-0 rounded-full border-8 border-indigo-500 border-t-transparent border-l-transparent -rotate-45 transition-all duration-300" style="clip-path: inset(50% 0 0 0); visibility: hidden;"></div>
-          <div class="text-center">
-            <span id="speed-value" class="text-6xl font-extrabold text-white">0</span>
-            <span class="block text-gray-500 font-bold uppercase tracking-widest text-sm">Mbps</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-6 mb-10">
-          <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-            <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Latency</h3>
-            <p id="latency-value" class="text-2xl font-bold text-white">-</p>
-            <p class="text-[10px] text-gray-500 uppercase font-bold">ms</p>
-          </div>
-          <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-            <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Jitter</h3>
-            <p id="jitter-value" class="text-2xl font-bold text-white">-</p>
-            <p class="text-[10px] text-gray-500 uppercase font-bold">ms</p>
-          </div>
-        </div>
-
-        <button id="start-test" class="px-12 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition duration-300 shadow-lg shadow-indigo-600/20 text-lg">
-          Start Speed Test
-        </button>
+  <body class="bg-gray-950 text-gray-50 scroll-smooth">
+    <header class="py-12 px-6 text-center">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href="index.html"
+          class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors duration-300 font-semibold group"
+        >
+          <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Back to Home
+        </a>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mt-6 tracking-tight">Network Speed Test</h1>
+        <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
+          Measure your connection speed directly in the browser.
+        </p>
       </div>
+    </header>
 
-      <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl">
-        <h2 class="text-2xl font-bold text-white mb-6">Test History</h2>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left">
-            <thead>
-              <tr class="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-800">
-                <th class="pb-4">Date</th>
-                <th class="pb-4">Speed</th>
-                <th class="pb-4">Latency</th>
-              </tr>
-            </thead>
-            <tbody id="history-body" class="text-gray-300">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
+    <main class="py-12 px-6">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800 shadow-2xl text-center">
+          <div id="gauge-container" class="relative w-64 h-64 mx-auto mb-8 flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full border-8 border-gray-800"></div>
+            <div
+              id="gauge-progress"
+              class="absolute inset-0 rounded-full border-8 border-indigo-500 border-t-transparent border-l-transparent -rotate-45 transition-all duration-300"
+              style="clip-path: inset(50% 0 0 0); visibility: hidden"
+            ></div>
+            <div class="text-center">
+              <span id="speed-value" class="text-6xl font-extrabold text-white">0</span>
+              <span class="block text-gray-500 font-bold uppercase tracking-widest text-sm">Mbps</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 mb-10">
+            <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+              <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Latency</h3>
+              <p id="latency-value" class="text-2xl font-bold text-white">-</p>
+              <p class="text-[10px] text-gray-500 uppercase font-bold">ms</p>
+            </div>
+            <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+              <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Jitter</h3>
+              <p id="jitter-value" class="text-2xl font-bold text-white">-</p>
+              <p class="text-[10px] text-gray-500 uppercase font-bold">ms</p>
+            </div>
+          </div>
+
+          <button
+            id="start-test"
+            class="px-12 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition duration-300 shadow-lg shadow-indigo-600/20 text-lg"
+          >
+            Start Speed Test
+          </button>
+        </div>
+
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl">
+          <h2 class="text-2xl font-bold text-white mb-6">Test History</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-800">
+                  <th class="pb-4">Date</th>
+                  <th class="pb-4">Speed</th>
+                  <th class="pb-4">Latency</th>
+                </tr>
+              </thead>
+              <tbody id="history-body" class="text-gray-300">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
-    <div class="mb-6">
-      <a href="index.html" class="hover:text-indigo-400 mx-3 transition">Home</a>
-      <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
-    </div>
-    <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer.</p>
-  </footer>
+    <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
+      <div class="mb-6">
+        <a href="index.html" class="hover:text-indigo-400 mx-3 transition">Home</a>
+        <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
+      </div>
+      <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer.</p>
+    </footer>
 
-  <script>
-    // Simplified speed test simulation for demonstration
-    document.getElementById('start-test').addEventListener('click', function() {
-      const btn = this;
-      btn.disabled = true;
-      btn.textContent = 'Testing...';
-      
-      let speed = 0;
-      const targetSpeed = Math.floor(Math.random() * 200) + 50;
-      const interval = setInterval(() => {
-        speed += Math.floor(Math.random() * 10) + 1;
-        if (speed >= targetSpeed) {
-          speed = targetSpeed;
-          clearInterval(interval);
-          finishTest(speed);
-        }
-        document.getElementById('speed-value').textContent = speed;
-      }, 50);
-    });
-
-    function finishTest(speed) {
-      const btn = document.getElementById('start-test');
-      btn.disabled = false;
-      btn.textContent = 'Restart Test';
-      
-      const latency = Math.floor(Math.random() * 30) + 5;
-      const jitter = Math.floor(Math.random() * 5) + 1;
-      
-      document.getElementById('latency-value').textContent = latency;
-      document.getElementById('jitter-value').textContent = jitter;
-      
-      addToHistory(speed, latency);
-    }
-
-    function addToHistory(speed, latency) {
-      const body = document.getElementById('history-body');
-      const row = document.createElement('tr');
-      row.className = 'border-b border-gray-800/50';
-      
-      const date = new Date().toLocaleTimeString();
-      
-      const dateCell = document.createElement('td');
-      dateCell.className = 'py-4 text-sm';
-      dateCell.textContent = date;
-      
-      const speedCell = document.createElement('td');
-      speedCell.className = 'py-4 font-bold text-white';
-      speedCell.textContent = `${speed} Mbps`;
-      
-      const latencyCell = document.createElement('td');
-      latencyCell.className = 'py-4 text-sm';
-      latencyCell.textContent = `${latency} ms`;
-      
-      row.appendChild(dateCell);
-      row.appendChild(speedCell);
-      row.appendChild(latencyCell);
-      
-      body.insertBefore(row, body.firstChild);
-    }
-  </script>
-
-</body>
+    <script src="js/speed_test.js"></script>
+  </body>
 </html>

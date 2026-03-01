@@ -1,216 +1,128 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AV IP Subnet Calculator | Beau Bremer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="fonts.css" rel="stylesheet" crossorigin="anonymous" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AV IP Subnet Calculator | Beau Bremer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-    rel="stylesheet" crossorigin="anonymous" />
-</head>
+  <body class="bg-gray-950 text-gray-50 scroll-smooth">
+    <header class="py-12 px-6 text-center">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href="index.html"
+          class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors duration-300 font-semibold group"
+        >
+          <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Back to Home
+        </a>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mt-6 tracking-tight">AV IP Subnet Calculator</h1>
+        <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
+          Essential for on-site network planning and deployment.
+        </p>
+      </div>
+    </header>
 
-<body class="bg-gray-950 text-gray-50 scroll-smooth">
-
-  <header class="py-12 px-6 text-center">
-    <div class="max-w-4xl mx-auto">
-      <a href="index.html" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors duration-300 font-semibold group">
-        <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Back to Home
-      </a>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mt-6 tracking-tight">AV IP Subnet Calculator</h1>
-      <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
-        Essential for on-site network planning and deployment.
-      </p>
-    </div>
-  </header>
-
-  <main class="py-12 px-6">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl space-y-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="space-y-4">
-            <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider">IP Address</label>
-            <input type="text" id="ipAddress" placeholder="192.168.1.1" value="192.168.1.1"
-              class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition text-lg" />
+    <main class="py-12 px-6">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+              <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider">IP Address</label>
+              <input
+                type="text"
+                id="ipAddress"
+                placeholder="192.168.1.1"
+                value="192.168.1.1"
+                class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition text-lg"
+              />
+            </div>
+            <div class="space-y-4">
+              <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider">Subnet Mask (CIDR)</label>
+              <div class="flex items-center gap-4">
+                <span class="text-2xl font-bold text-gray-500">/</span>
+                <input
+                  type="number"
+                  id="cidr"
+                  placeholder="24"
+                  value="24"
+                  min="0"
+                  max="32"
+                  class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition text-lg"
+                />
+              </div>
+            </div>
           </div>
-          <div class="space-y-4">
-            <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider">Subnet Mask (CIDR)</label>
-            <div class="flex items-center gap-4">
-              <span class="text-2xl font-bold text-gray-500">/</span>
-              <input type="number" id="cidr" placeholder="24" value="24" min="0" max="32"
-                class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition text-lg" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8 border-t border-gray-800">
+            <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+              <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Network Address</h3>
+              <p id="networkAddress" class="text-xl font-bold text-white">-</p>
+            </div>
+            <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+              <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Host Range</h3>
+              <p id="hostRange" class="text-lg font-bold text-white">-</p>
+            </div>
+            <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+              <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Broadcast</h3>
+              <p id="broadcastAddress" class="text-xl font-bold text-white">-</p>
+            </div>
+            <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+              <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Total Hosts</h3>
+              <p id="totalHosts" class="text-xl font-bold text-white">-</p>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8 border-t border-gray-800">
-          <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-            <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Network Address</h3>
-            <p id="networkAddress" class="text-xl font-bold text-white">-</p>
+        <!-- Device Planner Section -->
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl">
+          <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+              ></path>
+            </svg>
+            Device Planner
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <input
+              type="text"
+              id="deviceName"
+              placeholder="Device Name (e.g., Encoder)"
+              class="md:col-span-2 p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
+            />
+            <input
+              type="number"
+              id="deviceCount"
+              placeholder="Count"
+              min="1"
+              value="1"
+              class="p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
+            />
           </div>
-          <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-            <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Host Range</h3>
-            <p id="hostRange" class="text-lg font-bold text-white">-</p>
-          </div>
-          <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-            <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Broadcast</h3>
-            <p id="broadcastAddress" class="text-xl font-bold text-white">-</p>
-          </div>
-          <div class="p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-            <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Total Hosts</h3>
-            <p id="totalHosts" class="text-xl font-bold text-white">-</p>
+          <button
+            id="addDevice"
+            class="w-full md:w-auto px-10 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition duration-300 shadow-lg shadow-indigo-600/20"
+          >
+            Add Device to List
+          </button>
+
+          <div id="deviceList" class="mt-8 space-y-4">
+            <!-- Dynamically populated -->
           </div>
         </div>
       </div>
+    </main>
 
-      <!-- Device Planner Section -->
-      <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl">
-        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-          <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-          Device Planner
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <input type="text" id="deviceName" placeholder="Device Name (e.g., Encoder)"
-            class="md:col-span-2 p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" />
-          <input type="number" id="deviceCount" placeholder="Count" min="1" value="1"
-            class="p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" />
-        </div>
-        <button id="addDevice"
-          class="w-full md:w-auto px-10 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition duration-300 shadow-lg shadow-indigo-600/20">
-          Add Device to List
-        </button>
-
-        <div id="deviceList" class="mt-8 space-y-4">
-          <!-- Dynamically populated -->
-        </div>
+    <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
+      <div class="mb-6">
+        <a href="index.html" class="hover:text-indigo-400 mx-3 transition">Home</a>
+        <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
       </div>
-    </div>
-  </main>
+      <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Built from scratch.</p>
+    </footer>
 
-  <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
-    <div class="mb-6">
-      <a href="index.html" class="hover:text-indigo-400 mx-3 transition">Home</a>
-      <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
-    </div>
-    <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Built from scratch.</p>
-  </footer>
-
-  <script>
-    // IP Subnet Logic
-    function calculateSubnet() {
-      const ip = document.getElementById('ipAddress').value.trim();
-      const cidr = parseInt(document.getElementById('cidr').value);
-
-      if (!validateIP(ip) || isNaN(cidr) || cidr < 0 || cidr > 32) {
-        return;
-      }
-
-      const ipBinary = ipToBinary(ip);
-      const maskBinary = '1'.repeat(cidr) + '0'.repeat(32 - cidr);
-      const networkBinary = binaryAnd(ipBinary, maskBinary);
-      const broadcastBinary = binaryOr(networkBinary, binaryNot(maskBinary));
-
-      const networkAddress = binaryToIp(networkBinary);
-      const broadcastAddress = binaryToIp(broadcastBinary);
-      const totalHosts = Math.pow(2, 32 - cidr);
-      const usableHosts = totalHosts > 2 ? totalHosts - 2 : totalHosts;
-
-      document.getElementById('networkAddress').textContent = networkAddress;
-      document.getElementById('broadcastAddress').textContent = broadcastAddress;
-      document.getElementById('totalHosts').textContent = totalHosts.toLocaleString();
-
-      if (cidr < 31) {
-        const firstUsable = binaryToIp(incrementBinary(networkBinary));
-        const lastUsable = binaryToIp(decrementBinary(broadcastBinary));
-        document.getElementById('hostRange').textContent = `${firstUsable} - ${lastUsable}`;
-      } else {
-        document.getElementById('hostRange').textContent = 'N/A';
-      }
-    }
-
-    // Helper functions (simplified version for the example)
-    function validateIP(ip) {
-      return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip);
-    }
-    function ipToBinary(ip) {
-      return ip.split('.').map(octet => parseInt(octet).toString(2).padStart(8, '0')).join('');
-    }
-    function binaryToIp(bin) {
-      return bin.match(/.{8}/g).map(byte => parseInt(byte, 2)).join('.');
-    }
-    function binaryAnd(b1, b2) {
-      return b1.split('').map((bit, i) => bit === '1' && b2[i] === '1' ? '1' : '0').join('');
-    }
-    function binaryOr(b1, b2) {
-      return b1.split('').map((bit, i) => bit === '1' || b2[i] === '1' ? '1' : '0').join('');
-    }
-    function binaryNot(bin) {
-      return bin.split('').map(bit => bit === '1' ? '0' : '1').join('');
-    }
-    function incrementBinary(bin) {
-      const num = BigInt('0b' + bin) + 1n;
-      return num.toString(2).padStart(32, '0');
-    }
-    function decrementBinary(bin) {
-      const num = BigInt('0b' + bin) - 1n;
-      return num.toString(2).padStart(32, '0');
-    }
-
-    // Device Planner Logic
-    const devices = [];
-    document.getElementById('addDevice').addEventListener('click', () => {
-      const name = document.getElementById('deviceName').value.trim();
-      const count = parseInt(document.getElementById('deviceCount').value);
-      if (name && count > 0) {
-        devices.push({ name, count });
-        updateDeviceList();
-        document.getElementById('deviceName').value = '';
-        document.getElementById('deviceCount').value = '1';
-      }
-    });
-
-    function updateDeviceList() {
-      const list = document.getElementById('deviceList');
-      list.innerHTML = '';
-      
-      devices.forEach(device => {
-        const item = document.createElement('div');
-        item.className = 'p-4 bg-gray-800 rounded-xl border border-gray-700 flex justify-between items-center';
-        
-        const info = document.createElement('div');
-        const nameEl = document.createElement('p');
-        nameEl.className = 'font-bold text-white';
-        nameEl.textContent = device.name;
-        
-        const countEl = document.createElement('p');
-        countEl.className = 'text-sm text-gray-400';
-        countEl.textContent = `Qty: ${device.count}`;
-        
-        info.appendChild(nameEl);
-        info.appendChild(countEl);
-
-        const removeBtn = document.createElement('button');
-        removeBtn.className = 'text-gray-500 hover:text-red-400 transition';
-        removeBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>';
-        removeBtn.onclick = () => removeDevice(device.name);
-
-        item.appendChild(info);
-        item.appendChild(removeBtn);
-        list.appendChild(item);
-      });
-    }
-
-    function removeDevice(name) {
-      const index = devices.findIndex(d => d.name === name);
-      if (index > -1) devices.splice(index, 1);
-      updateDeviceList();
-    }
-
-    document.getElementById('ipAddress').addEventListener('input', calculateSubnet);
-    document.getElementById('cidr').addEventListener('input', calculateSubnet);
-    calculateSubnet();
-  </script>
-
-</body>
+    <script src="js/IP_Subnet_Calculator.js"></script>
+  </body>
 </html>

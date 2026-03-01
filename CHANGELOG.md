@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.2] - 2026-03-01
+
+### Added
+- **Self-Hosted Fonts:** Migrated from Google Fonts to local hosting for Inter, Poppins, Roboto, and Space Grotesk. This improves privacy by eliminating third-party tracking and ensures consistent rendering for users with strict privacy settings (e.g., Firefox Fingerprinting Protection).
+- **Dedicated Font Stylesheet:** Created `fonts.css` to manage all `@font-face` declarations centrally.
+
+### Changed
+- **Script Externalization:** Moved all remaining large inline scripts from HTML files into dedicated external JavaScript files (`js/trends.js`, `js/toolbag.js`, `js/network_latency_monitor.js`, `js/my_ip.js`, `js/speed_test.js`, `js/IP_Subnet_Calculator.js`, `js/qip.js`). This enables better browser caching and improves page load performance.
+
+### Security
+- **CSP Hardening:** Significantly tightened the Content Security Policy (CSP) in `netlify.toml` by removing the `'unsafe-inline'` directive from `script-src` now that all significant scripts are externalized.
+- **Third-Party Reduction:** Removed `fonts.googleapis.com` and `fonts.gstatic.com` from the CSP whitelist, further reducing the site's attack surface and third-party dependencies.
+
 ## [1.7.1] - 2026-02-27
 
 ### Fixed

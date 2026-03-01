@@ -2,6 +2,30 @@
 
 This log tracks significant development sessions, architectural decisions, and troubleshooting sessions to provide context for future maintenance.
 
+## Session: 2026-03-01 - Content Security & Privacy Hardening
+
+### 1. Font Self-Hosting Implementation
+*   **Issue:** Console logs identified Firefox "Fingerprinting Protection" was blocking third-party font requests (Roboto).
+*   **Root Cause:** Firefox Enhanced Tracking Protection (ETP) limits third-party font calls.
+*   **Solution:** 
+    1.  Downloaded the used font files (Inter, Poppins, Roboto, Space Grotesk) to `assets/fonts/`.
+    2.  Created `fonts.css` with `@font-face` rules.
+    3.  Updated all 16 HTML files to use local fonts and removed Google Fonts references.
+*   **Rationale:** Improves privacy, ensures consistent visual rendering across strict privacy browsers, and eliminates third-party dependencies.
+
+### 2. Script Externalization & CSP Strengthening
+*   **Action:** Moved remaining inline scripts from `my_ip.html`, `trends.html`, `speed_test.html`, `IP_Subnet_Calculator.html`, `qip.html`, `network_latency_monitor.html`, and `toolbag.html` to dedicated `.js` files.
+*   **Reasoning:** 
+    1.  Allows for cleaner HTML structure.
+    2.  Enables better browser caching for script assets.
+    3.  Critical step for disabling `'unsafe-inline'` in the Content Security Policy.
+*   **Security Outcome:** Removed `'unsafe-inline'` from `script-src` in `netlify.toml`, significantly hardening the site against XSS.
+
+### 3. Log Review & Cloudflare Analysis
+*   **Audit:** Analyzed HAR and console logs in `temp_log/`.
+*   **Findings:** Confirmed that most remaining CSP errors and "skipped feature" warnings are internal to Cloudflare's Turnstile widget and are not indicative of local code issues.
+
+---
 ## Session: 2026-02-27 - Refactor Cleanup & Security Audit
 
 ### 1. UI/UX & Tailwind Troubleshooting

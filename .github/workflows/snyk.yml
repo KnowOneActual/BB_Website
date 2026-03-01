@@ -4,9 +4,9 @@ name: Snyk Security Scan
 # This action will run on every push to the 'main' branch and on any pull request.
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   snyk:
@@ -30,10 +30,10 @@ jobs:
       # This step implicitly runs the default 'snyk test' command.
       - name: Run Snyk Open Source (Dependency) Scan
         uses: snyk/actions/node@master
-        continue-on-error: true 
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      
+
       # Step 5: FIXED - Run the Snyk Code (SAST) scan.
       # This step uses the same 'node' action but overrides the command to run 'code test'.
       - name: Run Snyk Code (SAST) Scan

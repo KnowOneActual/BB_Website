@@ -1,96 +1,86 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Links | Beau Bremer</title>
+    <link rel="canonical" href="https://beaubremer.com/daily-links" />
+    <link rel="me" href="https://mastodon.social/@grimburly" />
+    <link rel="me" href="https://github.com/KnowOneActual" />
+    <link rel="me" href="https://defcon.social/@GrimBurly" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/img/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Links | Beau Bremer</title>
-  <link rel="canonical" href="https://beaubremer.com/daily-links">
-  <link rel="me" href="https://mastodon.social/@grimburly">
-  <link rel="me" href="https://github.com/KnowOneActual">
-  <link rel="me" href="https://defcon.social/@GrimBurly">
-  <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
-  <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32">
-  <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96">
-  <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-  <link rel="manifest" href="/img/favicon/site.webmanifest">
-  <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <link href="fonts.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-    rel="stylesheet" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <style>
+      .card-link {
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        color: white;
+      }
 
-  <style>
-    .card-link {
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      color: white;
-    }
+      .card-link:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4); /* indigo-600 */
+      }
 
-    .card-link:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4); /* indigo-600 */
-    }
+      .card-link i {
+        width: 24px;
+        text-align: center;
+        color: #818cf8; /* indigo-400 */
+      }
+    </style>
+  </head>
 
-    .card-link i {
-      width: 24px;
-      text-align: center;
-      color: #818cf8; /* indigo-400 */
-    }
-  </style>
-</head>
+  <body class="bg-gray-950 text-white min-h-screen flex flex-col scroll-smooth">
+    <nav class="bg-gray-900/80 backdrop-blur-md p-6 border-b border-gray-800 sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <a
+          href="index.html"
+          class="text-indigo-400 hover:text-indigo-300 font-bold text-xl transition-colors duration-300"
+        >
+          ← Back to Home
+        </a>
+      </div>
+    </nav>
 
-<body class="bg-gray-950 text-white min-h-screen flex flex-col scroll-smooth">
-  <nav class="bg-gray-900/80 backdrop-blur-md p-6 border-b border-gray-800 sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-indigo-400 hover:text-indigo-300 font-bold text-xl transition-colors duration-300">
-        ← Back to Home
-      </a>
-    </div>
-  </nav>
+    <main class="flex-grow max-w-4xl mx-auto py-16 px-6 w-full">
+      <div class="text-center mb-16 fade-in">
+        <h1 class="text-5xl font-extrabold mb-4 text-white tracking-tight">Daily Links Hub</h1>
+        <p class="text-gray-400 text-lg leading-relaxed">A fast, professional launchpad to my most-used sites.</p>
+      </div>
 
-  <main class="flex-grow max-w-4xl mx-auto py-16 px-6 w-full">
-    <div class="text-center mb-16 fade-in">
-      <h1 class="text-5xl font-extrabold mb-4 text-white tracking-tight">Daily Links Hub</h1>
-      <p class="text-gray-400 text-lg leading-relaxed">A fast, professional launchpad to my most-used sites.</p>
-    </div>
+      <div id="links-container" class="space-y-16">
+        <div class="text-center text-gray-500 animate-pulse">Loading links...</div>
+      </div>
+    </main>
 
-    <div id="links-container" class="space-y-16">
-      <div class="text-center text-gray-500 animate-pulse">Loading links...</div>
-    </div>
-  </main>
+    <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
+      <div class="mb-6">
+        <a
+          href="https://blog.beaubremer.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-indigo-400 mx-3 transition"
+          >Blog</a
+        >
+        <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
+      </div>
+      <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Built from scratch.</p>
+    </footer>
 
-  <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
-    <div class="mb-6">
-      <a href="https://blog.beaubremer.com/" target="_blank" rel="noopener noreferrer"
-        class="hover:text-indigo-400 mx-3 transition">Blog</a>
-      <a href="privacy.html" class="hover:text-indigo-400 mx-3 transition">Privacy Policy</a>
-    </div>
-    <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Built from scratch.</p>
-  </footer>
-
-  <script src="js/daily-links.js" defer></script>
-  <script>
-    // Simple intersection observer for fade-in effect if needed on this page
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    });
-  </script>
-</body>
-
+    <script src="js/daily-links.js" defer></script>
+  </body>
 </html>

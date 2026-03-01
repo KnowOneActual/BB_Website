@@ -1,3 +1,22 @@
+## 2026-03-01 - Security & Privacy Hardening (Fonts & Scripts)
+
+* **Activity:** Implemented self-hosted fonts and externalized inline scripts.
+* **Summary:** Migrated from Google Fonts to local hosting and moved all inline scripts to external JS files to enable a much stricter Content Security Policy.
+
+---
+
+### Changes Implemented
+
+* **Font Privacy & Fingerprinting Protection**
+    * **Action:** Downloaded Inter, Poppins, Roboto, and Space Grotesk font files and hosted them locally from `/assets/fonts/`.
+    * **Reason:** Resolves Firefox "Fingerprinting Protection" blocks seen in site logs and eliminates third-party tracking associated with Google Fonts.
+* **Script Externalization & Caching**
+    * **Action:** Moved all remaining large inline scripts from utility pages (`my_ip.html`, `trends.html`, `speed_test.html`, etc.) to dedicated external `.js` files.
+    * **Reason:** Allows for better browser caching, cleaner HTML, and is a prerequisite for removing `'unsafe-inline'` from the CSP.
+* **Content Security Policy (CSP) Hardening**
+    * **Action:** Updated `netlify.toml` to remove `'unsafe-inline'` from `script-src` and removed all Google Fonts domains (`fonts.googleapis.com`, `fonts.gstatic.com`) from the whitelist.
+    * **Reason:** Significantly reduces the site's attack surface against Cross-Site Scripting (XSS) and reduces reliance on third-party infrastructure.
+
 ## 2026-02-27 - Security & Accessibility Hardening
 
 * **Activity:** Addressed linting warnings, CSP violations, DOMXSS risks, and hardcoded secrets.

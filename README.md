@@ -23,9 +23,8 @@ Here, you'll find a collection of interactive tools and resources I've built, re
 
 ## Project Evolution & Feedback
 
-> This website is a passion project and is actively maintained. I'm constantly refining the code and the experience. Most recently, I completed a comprehensive site-wide refactor and redesign to improve performance, navigation, and visual consistency.
-
-> I truly care about the quality of this project and value the perspectives of those who visit. **A huge thank you to everyone who has provided feedback so far.** Your insights directly impact the evolution of this site. If you have suggestions, find a bug, or just want to share your > thoughts, please don't hesitate to reach out via the contact form.
+> [!NOTE]
+> This website is a passion project and is actively maintained. I'm constantly refining the code and the experience. Most recently, I completed a comprehensive site-wide refactor and redesign to improve performance, navigation, and visual consistency. I truly care about the quality of this project and value the perspectives of those who visit. **A huge thank you to everyone who has provided feedback so far.** Your insights directly impact the design of this site and my learning. If you have suggestions, find a bug, or just want to share your thoughts, please don't hesitate to reach out via the contact form.
 
 ### Key Features
 

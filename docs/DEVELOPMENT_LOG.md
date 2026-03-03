@@ -57,7 +57,7 @@ This log tracks significant development sessions, architectural decisions, and t
 *   **Workflow:** Clicking "Request Latest Resume" pre-fills the contact form with a request message and scrolls the user to the form.
 *   **Rationale:** 
     1.  **PII Protection:** Prevents automated scrapers from harvesting phone numbers/emails from the PDF.
-    2.  **Engagement:** Encourages a direct conversation with potential recruiters/collaborators.
+    *   **Engagement:** Encourages a direct conversation with potential collaborators.
     3.  **Document Control:** Ensures the recipient always gets the most up-to-date version.
 
 ### 3. Security Audit & Dependency Management

@@ -49,7 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Repository Reorganization:** Moved core JavaScript files (`script.js`, `links.js`, `daily-links.js`) into a dedicated `/js` directory for a cleaner project root.
 - **Hero Section:** Redesigned the hero section with a clearer professional title and an optimized CSS-animated gradient.
 - **About Me Section:** Streamlined the "About Me" section and added a scannable "Core Skills" grid.
-- **Project Narratives:** Refined project descriptions on the home page to be more result-oriented and impactful for hiring managers.
+- **Project Narratives:** Refined project descriptions on the home page to be more result-oriented and impactful for professional visitors.
 - **Tailwind Optimization:** Refined `tailwind.config.js` to target specific files, reducing build times from >40s to <1s.
 
 ### Fixed

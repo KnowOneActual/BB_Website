@@ -15,7 +15,7 @@ The main objective was to refine the personal website to better reflect a profes
 
 **Rationale:**
 - **Dark Gray (`gray-950`)** serves as the primary background, creating a calm, focused, and "laid-back" environment that is easy on the eyes.
-- **Indigo (`indigo-400`, `indigo-600`)** is used as a modern, tech-forward accent color. It's less jarring than fuchsia and is often associated with trust, stability, and professionalism, which are positive attributes for a hiring manager to perceive.
+- **Indigo (`indigo-400`, `indigo-600`)** is used as a modern, tech-forward accent color. It's less jarring than fuchsia and is often associated with trust, stability, and professionalism, which are positive attributes for a strong professional first impression.
 
 ### b. Typography & Spacing: Readability & Calm
 
@@ -25,12 +25,12 @@ The main objective was to refine the personal website to better reflect a profes
 
 ### c. Content Strategy: Highlighting Professional Impact
 
-The content structure was reorganized to prioritize information that a hiring manager would find most valuable.
+The content structure was reorganized to prioritize information that provides the most value to the reader.
 
 - **Clearer Professional Title:** The hero section now immediately states the professional role ("Technical Project Manager & AV/IT Systems Specialist") for immediate clarity.
-- **Scannable "Core Skills" Section:** The "About Me" section was streamlined, and a "Core Skills" grid was added. This format allows a recruiter to quickly identify key competencies (e.g., Project Management, Python, Network Analysis) without reading through paragraphs of text.
-- **Dedicated "Toolbag" Page:** The "Toolbag" section was moved to its own page (`toolbag.html`). This declutters the main page while allowing a more comprehensive, detailed showcase of technical skills for those interested.
-- **Prominent Social/Professional Links:** A sticky navigation bar was added, featuring prominent links to GitHub and LinkedIn, which are critical resources for recruiters.
+- **Scannable "Core Skills" Section:** The "About Me" section was streamlined, and a "Core Skills" grid was added. This format allows visitors to quickly identify key competencies (e.g., Project Management, Python, Network Analysis) without reading through paragraphs of text.
+- **Dedicated "Toolbag" Page:** The "Toolbag" section was moved to its own page (`toolbag.html`). This declutters the main page while allowing for a more comprehensive and detailed showcase of technical skills for those who are interested.
+- **Prominent Social/Professional Links:** A sticky navigation bar was added, featuring prominent links to GitHub and LinkedIn, which are valuable resources for collaborators.
 
 ### d. User Experience (UX)
 
@@ -53,7 +53,7 @@ The project uses **Prettier** to maintain a consistent code style across all fil
 **Opinionated Formatting:**
 - We have adopted Prettier's default, opinionated behavior for HTML.
 - **Self-Closing Tags:** Prettier (v3+) automatically adds trailing slashes to HTML void elements (e.g., `<meta charset="UTF-8" />`). While this differs from some traditional HTML5 styles, it was chosen to maintain strict consistency across the project and ensure compatibility with modern tooling.
-- **Doctype Casing:** We use the lowercase `<!doctype html>`. While both uppercase and lowercase are valid and trigger Standards Mode in modern browsers, Prettier enforces the lowercase version. We have adopted this to avoid "fighting the tools" and maintain a uniform codebase.
+- **Doctype Casing:** We use the lowercase `<!doctype html>`. While both uppercase and lowercase are valid and trigger Standards Mode in modern browsers, Prettier enforces the lowercase version. I have adopted this to avoid "fighting the tools" and maintain a uniform codebase.
 
 ### b. Security & Bug Scanning (ESLint)
 

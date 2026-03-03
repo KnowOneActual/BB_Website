@@ -17,6 +17,9 @@ Welcome to the source code for [beaubremer.com](https://beaubremer.com/). This i
 
 I believe in a straightforward, hands-on approach to tech. This site is a testament to that: built from scratch, refined through curiosity, and maintained with a focus on clean code and solid security.
 
+## Evolution & Feedback
+This site is a living project. It recently underwent a major refactor and redesign based on some great feedback from the community. I'm a big believer that the best work comes from listening and iterating, so **a huge thank you** to everyone who has shared their thoughts so far. Your input keeps this project moving forward.
+
 ## Engineering Standards (The "Under the Hood" Stuff)
 I like my projects to run as smoothly as the systems I manage. To keep things high-performance and secure, I've implemented:
 *   **Static Analysis & Quality:** I use **ESLint** with security-focused plugins to catch bugs and vulnerabilities before they ever reach the site. I also use **Prettier** to ensure consistent code formatting.

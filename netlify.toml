@@ -19,7 +19,7 @@
 
 [build]
   functions = "netlify/functions"
-  command = "npm run build:css"
+  command = "npm run build:css:silent"
   
 [[redirects]]
   from = "/blog"

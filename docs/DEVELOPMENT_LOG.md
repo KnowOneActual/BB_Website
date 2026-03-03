@@ -21,7 +21,23 @@ This log tracks significant development sessions, architectural decisions, and t
     3.  Critical step for disabling `'unsafe-inline'` in the Content Security Policy.
 *   **Security Outcome:** Removed `'unsafe-inline'` from `script-src` in `netlify.toml`, significantly hardening the site against XSS.
 
-### 3. Log Review & Cloudflare Analysis
+### 3. Dynamic Weather Greeting Integration
+*   **Feature:** Implemented a real-time, personalized greeting on the homepage based on Chicago's weather conditions.
+*   **Implementation:** 
+    1.  Updated `netlify/functions/weather.js` to handle `GET` requests for simple Chicago weather data.
+    2.  Added logic to map weather "conditions" (Clear, Rain, etc.) to friendly strings (e.g., "Enjoying the clear Chicago skies").
+    3.  Created `js/weather-greeting.js` to fetch this data and render it in the hero section with a fade-in animation.
+    4.  Included dual-unit support (Celsius and Fahrenheit) for international and local visitors.
+
+### 4. Static Analysis & Code Quality (ESLint)
+*   **Action:** Integrated **ESLint** with the `eslint-plugin-security` plugin.
+*   **Reasoning:** To provide automated, real-time bug detection and security scanning similar to the Ruff tool in the Python ecosystem.
+*   **Fixes:** 
+    1.  Resolved 11+ warnings including unused variables in tests and Netlify functions.
+    2.  Audited and verified "Object Injection Sinks" in data-driven components (Subnet Calculator, Toolbag).
+    3.  Configured modern flat-file configuration (`eslint.config.mjs`) with Prettier compatibility.
+
+### 5. Log Review & Cloudflare Analysis
 *   **Audit:** Analyzed HAR and console logs in `temp_log/`.
 *   **Findings:** Confirmed that most remaining CSP errors and "skipped feature" warnings are internal to Cloudflare's Turnstile widget and are not indicative of local code issues.
 

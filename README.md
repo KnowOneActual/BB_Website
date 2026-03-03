@@ -1,8 +1,8 @@
 <p align="center">
-<img src="img/readme/BB_logo_green.webp" alt=" Beau's Awesome Logo! You are missing out" width="150">
+<img src="img/readme/BB_logo_green.webp" alt="Beau Bremer Logo" width="150">
 </p>
 
-# Beau Bremer's Personal Website
+# Beau Bremer's Professional Portfolio
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -12,109 +12,35 @@
 ![Security](https://img.shields.io/badge/Security-Policy-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+## Executive Summary
+This repository maintains the professional portfolio and technical playground for [beaubremer.com](https://beaubremer.com/). It serves as a live demonstration of modern engineering standards, security-first architecture, and high-performance web delivery, showcasing expertise in **Technical Project Management**, **AV/IT Systems**, and **Full-Stack Development**.
 
-Welcome to the GitHub repository for my personal website, [beaubremer.com](https://beaubremer.com/). This is a living project where I experiment with new technologies, build fun tools, and share my work. I handle everything you see here, from the big features to the little details, as a way to continuously learn and grow.
+## Engineering Standards
+*   **Static Analysis & Quality:** Integrated **ESLint** with security-focused plugins for real-time bug detection and vulnerability scanning.
+*   **Security-First Architecture:** Hardened Content Security Policy (CSP) with zero `'unsafe-inline'` scripts and comprehensive protection against DOM-based XSS.
+*   **Privacy & Performance:** Migrated to **Self-Hosted Typography** to eliminate 3rd-party tracking and resolve browser-level fingerprinting blocks. Optimized build process yields sub-second Tailwind CSS compilation.
+*   **Automated Auditing:** Continuous dependency scanning via **Snyk** and GitHub Actions.
 
-## About The Project
+## Key Technical Features
+*   **Privacy-First Resume Workflow:** An interactive request system that protects PII from automated scrapers while ensuring document version control.
+*   **AI-Powered Weather Bot:** A Node.js serverless application integrating Google Gemini and OpenWeatherMap APIs with Firebase Firestore persistence.
+*   **Dynamic UX:** Real-time homepage customization based on live Chicago weather data and responsive CSS-animated environments.
+*   **Network Diagnostics Suite:** Practical AV/IT utilities including a Latency Monitor, Speed Test, and IP Subnet Calculator.
 
-This website serves as a central hub for my professional background in technical project management and AV/IT systems, as well as a showcase for my personal coding projects. I believe in a hands-on approach, and this site is a testament to that philosophy.
+## Tech Stack
+*   **Frontend:** HTML5, CSS3, ES6+ JavaScript, Tailwind CSS, Chart.js.
+*   **Backend:** Netlify Functions (Node.js), Firebase Firestore.
+*   **Services:** Cloudflare WAF/DNS, Google Gemini AI, OpenWeatherMap, Resend.
 
-Here, you'll find a collection of interactive tools and resources I've built, reflecting my interests in everything from network diagnostics to AI-powered applications.
+## Documentation & Labs
+*   **[Full Design Rationale](docs/DESIGN_NOTES.md)**: Deep dive into architectural and design decisions.
+*   **[Security Log](securitylog.md)**: Transparent record of security audits and hardening actions.
+*   **[The Labs (Experimental)](https://beaubremer.com/labs.html)**: Interactive gallery for JS-based creative coding and data viz.
+*   **[Tor Onion Service](https://github.com/KnowOneActual/BB_Website/tree/onion-version)**: A privacy-focused, minimalist mirror of the site.
 
-## Project Evolution & Feedback
+---
 
-> [!NOTE]
-> This website is a passion project and is actively maintained. I'm constantly refining the code and the experience. Most recently, I completed a comprehensive site-wide refactor and redesign to improve performance, navigation, and visual consistency. I truly care about the quality of this project and value the perspectives of those who visit. **A huge thank you to everyone who has provided feedback so far.** Your insights directly impact the design of this site and my learning. If you have suggestions, find a bug, or just want to share your thoughts, please don't hesitate to reach out via the contact form.
-
-### Key Features
-
-  * **Interactive Resume Request:** A privacy-first workflow that replaces direct downloads with a one-click request system. It pre-fills the contact form, ensuring I provide the most up-to-date version while protecting sensitive personal details from automated scrapers.
-  * **My Toolkit & Philosophy Page:** A comprehensive breakdown of my professional tool stack (hardware, FOSS software, AV/IT gear) designed with a strong focus on cost-effectiveness, cross-platform use, and problem-solving.
-  * **Conversational Weather Bot:** An interactive chatbot using Google's Gemini API for NLP and OpenWeatherMap API for live data.
-  * **Secure Image Cleaner:** A privacy-first tool (hosted on the Tor Onion Service version) that strips all EXIF metadata from images.
-  * **AV IP Subnet Calculator:** A practical tool for AV technicians to plan on-site networks.
-  * **Network Diagnostic Tools:** A suite including a **Network Latency Monitor** and a **Network Speed Test**.
-  * **Data Visualization Project:** An interactive infographic showcasing industry trends, built with Chart.js.
-  * **Creative & Technical Library:** A curated collection of resources and guides (e.g., Wireshark Quick Start Guide) available as PDFs.
- 
- 
-### Tech Stack
-
-This website is built with a focus on modern, efficient, and secure technologies. [Read the full Design Rationale here.](docs/DESIGN_NOTES.md)
-
-  * **Frontend:**
-      * HTML5, CSS3, Vanilla JavaScript
-      * **Tailwind CSS** for styling
-      * **Chart.js** for data visualization
-  * **Backend & Hosting:**
-      * **Netlify** for hosting and serverless functions
-      * **Node.js** for serverless functions
-      * **Firebase Firestore** for real-time chat history in the Weather Bot
-  * **APIs & Services:**
-      * **Google Gemini API** for natural language processing
-      * **OpenWeatherMap API** for live weather data
-      * **Resend** for secure email delivery from the contact form
-      * **Cloudflare Turnstile** for CAPTCHA verification
-
-### Security & Performance Highlights
-
-I take security and performance seriously. Here are some of the measures I've implemented:
-
-  * **Static Analysis & Security Linting:** Integrated **ESLint** with the `eslint-plugin-security` plugin to automatically detect potential bugs and security vulnerabilities (like object injection) during the development process.
-  * **Code Quality & Security Hardening:** Refactored multiple DOM manipulation patterns across the site to eliminate potential **DOM-based XSS vulnerabilities** (e.g., switching from `.innerHTML` to `.textContent` for external data). This allows for a stricter Content-Security-Policy by removing the need for `'unsafe-inline'` scripts.
-  * **Privacy-First (Self-Hosted) Fonts:** Migrated all typography (Inter, Poppins, Roboto, Space Grotesk) from Google Fonts to local hosting. This eliminates third-party tracking, resolves Firefox "Fingerprinting Protection" blocks, and ensures consistent rendering for privacy-conscious users.
-  * **Robust HTTP Security Headers:** A strong Content-Security-Policy (CSP) is in place to prevent XSS and data injection attacks. Other headers like `X-Frame-Options` and `X-Content-Type-Options` are also configured to enhance security.
-  * **Responsible Disclosure:** I have a `security.txt` file and a security acknowledgements page to provide a clear channel for reporting vulnerabilities.
-  * **Performance Optimization:** I'm mindful of the user experience, which is why I've taken steps like removing a 4.1 MB unnecessary payload, drastically reducing page load times.
-  * **Accessibility:** I've addressed color contrast issues and used semantic HTML to ensure the site is accessible to all users.
-
-## Tor Onion Service Version
-
-This repository contains a branch named `onion-version` which hosts a privacy-first, minimalist version of this website. This version is designed to be served as a Tor Onion Service.
-
-### Purpose
-
-The `onion-version` of this site is a learning project and a proof of concept with several key goals:
-
-  * **Privacy-First:** It is intentionally stripped of all JavaScript, third-party trackers, and external API calls to maximize user anonymity.
-  * **Lightweight:** By using simple, clean HTML and CSS, the site is fast and efficient, which is ideal for the higher-latency environment of the Tor network.
-  * **Self-Contained:** All necessary assets are hosted locally to prevent any data leaks to outside services.
-  * **Educational:** It serves as a practical demonstration of how to deploy a secure and anonymous web presence.
-
-### Featured Utility: Secure Image Cleaner
-
-As part of this project, I developed and deployed a **Secure Image Cleaner** that runs exclusively on the Onion Service. This tool allows users to upload an image and download a new version with all identifying EXIF metadata removed. It's a practical demonstration of building a useful, privacy-respecting tool on an anonymous network.
-
-**[Read the project write-up on my blog.](https://blog.beaubremer.com/posts/iimage_cleaner_on_a_tor_onion_service/)**
-
-### Deployment
-
-The onion site is hosted on a Google Cloud "Always Free" `e2-micro` VM. Updates are managed via a simple deployment script on the server (`deploy.sh`) which pulls the latest changes from the `onion-version` branch and copies them to the web root.
-
-### Accessing the Onion Site
-
-You can access the live site using the [Tor Browser via this link](http://wb7kwfl6bygqg4zh2fdk7jk6v2ab3bhmjo63xtdm2nltl33vuwoqlkqd.onion). Please note that this link will only resolve if you are using the Tor Browser. (wb7kwfl6bygqg4zh2fdk7jk6v2ab3bhmjo63xtdm2nltl33vuwoqlkqd.onion)
-
-## External Dependencies
-
-### Cloudflare Security Rule
-
-The "Recent Blog Posts" section and the GitHub Profile README workflow rely on serverless functions (fetch-posts.js and rss-proxy.js) that fetch an RSS feed from blog.beaubremer.com. This domain is protected by Cloudflare's bot detection. A **Security Rule** has been created in the Cloudflare dashboard for `beaubremer.com` to allow requests that contain the `User-Agent` string `Beau-Bremer-Website-Blog-Fetcher`. If this feature breaks, verify that the Cloudflare rule is still active.
-
-
-## Security Posture
-
-I take the security of this project seriously. My security strategy is built on two key parts:
-
-1.  **Automated Scanning:** This repository is automatically scanned for vulnerable dependencies on every push to the `main` branch using Snyk.
-2.  **Periodic Reviews:** I conduct regular security audits of the live site and its dependencies. The findings and actions from these reviews are documented in a public log.
-
-### Security Documentation
-
-* **`SECURITY.md`**: View the official security policy, which includes instructions on how to responsibly disclose a vulnerability.
-* **`securitylog.md`**: View the public, time-stamped log of all security audits and hardening actions taken on this site.
-
-
-## Contact
-
-Have a question, a comment, or just want to say hi? Feel free to reach out via the contact form on my website.
+### Contact & Professional Links
+*   **Live Site:** [beaubremer.com](https://beaubremer.com/)
+*   **LinkedIn:** [beau-bremer-chicago](https://www.linkedin.com/in/beau-bremer-chicago/)
+*   **Blog:** [blog.beaubremer.com](https://blog.beaubremer.com/)

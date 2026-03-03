@@ -13,7 +13,7 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## 👋 Hey there!
-Welcome to the source code for [beaubremer.com](https://beaubremer.com/). This is my digital home, a living project where I try to show my background in **Technical Project Management** and **AV/IT Systems**, while experimenting with the modern web.
+Welcome to the source code for [beaubremer.com](https://beaubremer.com/). This is my digital home, a living project where I showcase my background in **Technical Project Management** and **AV/IT Systems**, while experimenting with the modern web.
 
 I believe in a straightforward, hands-on approach to tech. This site is a testament to that: built from scratch, refined through curiosity, and maintained with a focus on clean code and solid security.
 
@@ -48,7 +48,7 @@ If you're curious about the "why" behind the "what," check out:
 ---
 
 ### Stay Bold. Keep Creating.
-*   **LinkedIn:** [beau-bremer-chicago](https://www.linkedin.com/in/beau-bremer-chicago/)
+*   **LinkedIn:** [Beau Brmeer's LinkedIn](https://www.linkedin.com/in/beau-bremer-chicago/)
 *   **Blog:** [blog.beaubremer.com](https://blog.beaubremer.com/)
 
 ### Contact

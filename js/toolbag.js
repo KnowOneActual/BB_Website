@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const grid = document.createElement('div');
           grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
-          data.software[category].forEach((item) => grid.appendChild(createCard(item)));
+          /* eslint-disable-line security/detect-object-injection */ data.software[category].forEach((item) => grid.appendChild(createCard(item)));
           softwareSection.appendChild(grid);
         }
       }

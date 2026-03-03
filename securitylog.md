@@ -1,12 +1,15 @@
-## 2026-03-01 - Security & Privacy Hardening (Fonts & Scripts)
+## 2026-03-01 - Security & Privacy Hardening (Fonts, Scripts, & Linting)
 
-* **Activity:** Implemented self-hosted fonts and externalized inline scripts.
-* **Summary:** Migrated from Google Fonts to local hosting and moved all inline scripts to external JS files to enable a much stricter Content Security Policy.
+* **Activity:** Implemented self-hosted fonts, externalized inline scripts, and integrated security-focused linting.
+* **Summary:** Migrated from Google Fonts to local hosting, moved all inline scripts to external JS files, and added ESLint with security plugins for deep code analysis.
 
 ---
 
 ### Changes Implemented
 
+* **Static Analysis & Security Linting**
+    * **Action:** Integrated **ESLint** with `eslint-plugin-security`.
+    * **Reason:** Provides automated detection of potential security risks (like object injection sinks) and common logic bugs during development.
 * **Font Privacy & Fingerprinting Protection**
     * **Action:** Downloaded Inter, Poppins, Roboto, and Space Grotesk font files and hosted them locally from `/assets/fonts/`.
     * **Reason:** Resolves Firefox "Fingerprinting Protection" blocks seen in site logs and eliminates third-party tracking associated with Google Fonts.

@@ -4,8 +4,6 @@
  */
 
 describe('Hero Background Animation', () => {
-  let mockDocument;
-
   beforeEach(() => {
     // Set up a clean DOM before each test
     document.body.innerHTML = '';

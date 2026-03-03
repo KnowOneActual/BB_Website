@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 - **Dynamic Weather Greeting:** Implemented a real-time weather greeting on the homepage that fetches current conditions from Chicago. It provides a personalized, live feel (e.g., "Enjoying the clear Chicago skies") and displays the temperature in both Celsius and Fahrenheit.
+- **Enhanced Linting & Security Scanning:** Integrated **ESLint** with the `eslint-plugin-security` plugin. This provides real-time bug detection and security-focused code analysis (similar to Ruff for Python), ensuring higher code quality and protection against common JavaScript vulnerabilities.
 - **Self-Hosted Fonts:** Migrated from Google Fonts to local hosting for Inter, Poppins, Roboto, and Space Grotesk. This improves privacy by eliminating third-party tracking and ensures consistent rendering for users with strict privacy settings (e.g., Firefox Fingerprinting Protection).
 - **Dedicated Font Stylesheet:** Created `fonts.css` to manage all `@font-face` declarations centrally.
 

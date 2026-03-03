@@ -43,7 +43,6 @@ async function runCheck() {
   if (!monitoring) return;
 
   endpoints.forEach(async (ep) => {
-    const start = Date.now();
     const hostId = ep.host.replace(/\./g, '-');
     const log = document.getElementById('log-container');
 
@@ -56,13 +55,14 @@ async function runCheck() {
       const statusEl = document.getElementById(`status-${hostId}`);
 
       if (latencyEl) latencyEl.textContent = latency;
-      if (statusEl) statusEl.className = 'w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]';
+      if (statusEl)
+        statusEl.className = 'w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]';
 
       const logEntry = document.createElement('p');
       logEntry.className = 'text-green-400/80';
       logEntry.textContent = `[${new Date().toLocaleTimeString()}] SUCCESS: ${ep.name} (${ep.host}) - ${latency}ms`;
       if (log) log.prepend(logEntry);
-    } catch (e) {
+    } catch (_e) {
       const statusEl = document.getElementById(`status-${hostId}`);
       if (statusEl) statusEl.className = 'w-3 h-3 rounded-full bg-red-500';
     }

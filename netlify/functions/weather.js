@@ -3,7 +3,7 @@
 const fetch = require('node-fetch');
 
 exports.handler = async function (event) {
-  const { WEATHER_API_KEY, GEMINI_API_KEY } = process.env;
+  const { WEATHER_API_KEY } = process.env;
 
   // --- GET Request: Simple Chicago Greeting ---
   if (event.httpMethod === 'GET') {
@@ -41,6 +41,7 @@ exports.handler = async function (event) {
         Tornado: `Taking cover in Chicago this ${dayName}!`,
       };
 
+      // eslint-disable-next-line security/detect-object-injection
       const greeting = greetings[condition] || 'Currently in Chicago';
 
       return {

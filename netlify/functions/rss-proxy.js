@@ -8,7 +8,7 @@
 
 const fetch = require('node-fetch');
 
-exports.handler = async function (event, context) {
+exports.handler = async function (_event, _context) {
   // The feed we want to fetch
   const FEED_URL = 'https://blog.beaubremer.com/feed/feed.xml';
   // Use environment variable for secret UA, fallback for local dev

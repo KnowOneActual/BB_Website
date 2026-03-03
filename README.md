@@ -60,7 +60,9 @@ This website is built with a focus on modern, efficient, and secure technologies
 
 I take security and performance seriously. Here are some of the measures I've implemented:
 
-  * **Code Quality & Security Hardening:** Refactored multiple DOM manipulation patterns across the site to eliminate potential **DOM-based XSS vulnerabilities** (e.g., switching from `.innerHTML` to `.textContent` for external data). This improves security and maintains strict CSP compliance.
+  * **Static Analysis & Security Linting:** Integrated **ESLint** with the `eslint-plugin-security` plugin to automatically detect potential bugs and security vulnerabilities (like object injection) during the development process.
+  * **Code Quality & Security Hardening:** Refactored multiple DOM manipulation patterns across the site to eliminate potential **DOM-based XSS vulnerabilities** (e.g., switching from `.innerHTML` to `.textContent` for external data). This allows for a stricter Content-Security-Policy by removing the need for `'unsafe-inline'` scripts.
+  * **Privacy-First (Self-Hosted) Fonts:** Migrated all typography (Inter, Poppins, Roboto, Space Grotesk) from Google Fonts to local hosting. This eliminates third-party tracking, resolves Firefox "Fingerprinting Protection" blocks, and ensures consistent rendering for privacy-conscious users.
   * **Robust HTTP Security Headers:** A strong Content-Security-Policy (CSP) is in place to prevent XSS and data injection attacks. Other headers like `X-Frame-Options` and `X-Content-Type-Options` are also configured to enhance security.
   * **Responsible Disclosure:** I have a `security.txt` file and a security acknowledgements page to provide a clear channel for reporting vulnerabilities.
   * **Performance Optimization:** I'm mindful of the user experience, which is why I've taken steps like removing a 4.1 MB unnecessary payload, drastically reducing page load times.

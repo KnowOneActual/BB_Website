@@ -44,7 +44,7 @@
                 <li><span class="text-indigo-400 font-medium">Hosting:</span> Netlify</li>
                 <li><span class="text-indigo-400 font-medium">DNS/WAF:</span> Cloudflare</li>
                 <li><span class="text-indigo-400 font-medium">Functions:</span> Netlify Serverless (Node.js)</li>
-                <li><span class="text-indigo-400 font-medium">CI/CD:</span> GitHub Actions</li>
+                <li><span class="text-indigo-400 font-medium">Analysis:</span> ESLint & Snyk Security</li>
               </ul>
             </div>
           </div>
@@ -56,19 +56,26 @@
             <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
               <h3 class="text-xl font-bold text-white mb-2">Content Security Policy (CSP)</h3>
               <p class="text-gray-400 leading-relaxed">
-                Implemented a strict CSP to prevent XSS and data injection attacks. Only trusted domains are allowed to
-                load resources.
+                Implemented a strict CSP to prevent XSS and data injection attacks. We have externalized all JavaScript to
+                remove the need for 'unsafe-inline' execution, significantly hardening the site.
               </p>
             </div>
             <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
-              <h3 class="text-xl font-bold text-white mb-2">Subresource Integrity (SRI)</h3>
+              <h3 class="text-xl font-bold text-white mb-2">Privacy-First Typography</h3>
               <p class="text-gray-400 leading-relaxed">
-                Using SRI hashes for all external scripts and styles to ensure that assets haven't been tampered with by
-                a third party.
+                All fonts are self-hosted locally. This prevents third-party tracking from font providers and ensures the
+                site renders correctly even for users with strict privacy settings or fingerprinting protection enabled.
               </p>
             </div>
             <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
-              <h3 class="text-xl font-bold text-white mb-2">Automated Scanning</h3>
+              <h3 class="text-xl font-bold text-white mb-2">Static Analysis & Linting</h3>
+              <p class="text-gray-400 leading-relaxed">
+                Using ESLint with security-focused plugins to scan the codebase for logic bugs and potential security
+                risks during development.
+              </p>
+            </div>
+            <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
+              <h3 class="text-xl font-bold text-white mb-2">Automated Vulnerability Scanning</h3>
               <p class="text-gray-400 leading-relaxed">
                 Integrated Snyk and GitHub Dependabot for real-time vulnerability scanning of dependencies and
                 infrastructure as code.

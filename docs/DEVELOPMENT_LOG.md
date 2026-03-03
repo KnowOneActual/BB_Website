@@ -71,4 +71,22 @@ This log tracks significant development sessions, architectural decisions, and t
 *   **Technical Note:** Migrated from a flat JSON array to a nested `category -> links` structure to support the new UI organization.
 
 ---
+## Session: 2026-03-03 - Security Workflow Enhancement & SARIF Integration
+
+### 1. GitHub Security Tab Integration (SARIF)
+*   **Action:** Updated `.github/workflows/security.yml` to enable SARIF output for **Semgrep**.
+*   **Implementation:** 
+    1.  Added `generateSarif: "1"` to the Semgrep scan step.
+    2.  Configured separate `github/codeql-action/upload-sarif` steps for both **Trivy** and **Semgrep**.
+    3.  Utilized `category` tags (`trivy`, `semgrep`) to ensure distinct reporting within the GitHub Security dashboard.
+*   **Rationale:** Centralizes security findings (vulnerabilities and code smells) directly into the GitHub UI, making them easier to track and resolve without leaving the repository.
+
+### 2. Multi-Engine Security Strategy
+*   **Decision:** Retained both `snyk.yml` and the updated `security.yml`.
+*   **Reasoning:** 
+    1.  **Snyk:** Provides deep dependency analysis and excellent secret scanning.
+    2.  **Trivy/Semgrep:** Offers fast, native GitHub integration for filesystem and static code analysis.
+    3.  **Redundancy:** Running multiple engines reduces "blind spots" and ensures higher confidence in the site's security posture.
+
+---
 *End of Log Entry*

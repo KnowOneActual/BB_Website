@@ -2,7 +2,7 @@
 <img src="img/readme/BB_logo_green.webp" alt="Beau Bremer Logo" width="150">
 </p>
 
-# Beau Bremer's Professional Portfolio & Technical Playground
+# Beau Bremer's personal website & technical playground
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -13,18 +13,18 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## 👋 Hey there!
-Welcome to the source code for [beaubremer.com](https://beaubremer.com/). This is my digital home—a living project where I showcase my background in **Technical Project Management** and **AV/IT Systems**, while experimenting with the modern web.
+Welcome to the source code for [beaubremer.com](https://beaubremer.com/). This is my digital home, a living project where I try to show my background in **Technical Project Management** and **AV/IT Systems**, while experimenting with the modern web.
 
 I believe in a straightforward, hands-on approach to tech. This site is a testament to that: built from scratch, refined through curiosity, and maintained with a focus on clean code and solid security.
 
 ## Engineering Standards (The "Under the Hood" Stuff)
 I like my projects to run as smoothly as the systems I manage. To keep things high-performance and secure, I've implemented:
-*   **Static Analysis & Quality:** I use **ESLint** with security-focused plugins to catch bugs and vulnerabilities before they ever reach the site.
-*   **Security-First Architecture:** A hardened Content Security Policy (CSP) with zero `'unsafe-inline'` scripts. It’s built to be resilient.
-*   **Privacy & Performance:** I’ve moved to **Self-Hosted Typography** to keep things private and fast, resolving fingerprinting blocks while keeping the sub-second Tailwind build times.
+*   **Static Analysis & Quality:** I use **ESLint** with security-focused plugins to catch bugs and vulnerabilities before they ever reach the site. I also use **Prettier** to ensure consistent code formatting.
+*   **Security-First Architecture:** A hardened Content Security Policy (CSP) with zero `'unsafe-inline'` scripts. It's built to be resilient.
+*   **Privacy & Performance:** I've moved to **Self-Hosted Typography** to keep things private and fast, resolving fingerprinting blocks while keeping the sub-second Tailwind build times.
 *   **Automated Auditing:** Continuous dependency scanning via **Snyk** keeps the supply chain clean.
 
-## Cool Things I've Built Here
+## Things I've Built Here
 *   **AI Weather Bot:** A serverless Node.js app that pairs Google Gemini with OpenWeatherMap for conversational updates.
 *   **Dynamic UX:** The homepage greeting changes in real-time based on the weather in Chicago—just a little touch to make the site feel alive.
 *   **Privacy-First Resume Workflow:** An interactive request system that protects personal info from scrapers while ensuring you get the latest version.
@@ -47,3 +47,7 @@ If you're curious about the "why" behind the "what," check out:
 ### Stay Bold. Keep Creating.
 *   **LinkedIn:** [beau-bremer-chicago](https://www.linkedin.com/in/beau-bremer-chicago/)
 *   **Blog:** [blog.beaubremer.com](https://blog.beaubremer.com/)
+
+### Contact
+*   **Contact form:** https://beaubremer.com/#contact
+*   **PGP Key:** https://beaubremer.com/BeauBremer-pgp-key.asc

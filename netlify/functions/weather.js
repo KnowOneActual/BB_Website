@@ -3,7 +3,50 @@
 const fetch = require('node-fetch');
 
 exports.handler = async function (event) {
-  // Only allow POST requests
+  const { WEATHER_API_KEY, GEMINI_API_KEY } = process.env;
+
+  // --- GET Request: Simple Chicago Greeting ---
+  if (event.httpMethod === 'GET') {
+    try {
+      if (!WEATHER_API_KEY) throw new Error('Weather API key not configured.');
+
+      const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid=${WEATHER_API_KEY}&units=metric`;
+      const response = await fetch(weatherApiUrl);
+      const data = await response.json();
+
+      const condition = data.weather[0].main;
+      const temp = Math.round(data.main.temp);
+
+      const greetings = {
+        Clear: 'Enjoying the clear Chicago skies',
+        Clouds: 'Navigating a cloudy day in Chicago',
+        Rain: 'Escaping the Chicago rain',
+        Drizzle: 'In the midst of a Chicago drizzle',
+        Thunderstorm: 'Watching the storms roll through Chicago',
+        Snow: 'Embracing the Chicago winter',
+        Mist: 'Lost in the Chicago fog',
+        Smoke: 'A hazy day in Chicago',
+        Haze: 'A hazy day in Chicago',
+        Dust: 'A dusty day in Chicago',
+        Fog: 'Lost in the Chicago fog',
+        Sand: 'A sandy day in Chicago',
+        Ash: 'An ashy day in Chicago',
+        Squall: 'Braving the Chicago squalls',
+        Tornado: 'Taking cover in Chicago!',
+      };
+
+      const greeting = greetings[condition] || 'Currently in Chicago';
+
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ greeting: `${greeting} • ${temp}°C` }),
+      };
+    } catch (error) {
+      return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    }
+  }
+
+  // --- POST Request: Gemini AI Weather Bot ---
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }

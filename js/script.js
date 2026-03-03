@@ -218,6 +218,66 @@ function initializeStickyNav() {
   }
 }
 
+// --- Active Nav Highlighting ---
+function initializeActiveNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '-10% 0px -70% 0px',
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => observer.observe(section));
+}
+
+// --- Browser Tab Interaction ---
+function initializeTabInteraction() {
+  const originalTitle = document.title;
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      document.title = '👋 Come back and say hi!';
+    } else {
+      document.title = originalTitle;
+    }
+  });
+}
+
+// --- Back to Top Button ---
+function initializeBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+}
+
 // --- DOMContent Listener ---
 document.addEventListener('DOMContentLoaded', () => {
   initializeEasterEggs();
@@ -225,6 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeFadeInAnimation();
   fetchAndDisplayBlogPosts();
   initializeStickyNav();
+  initializeActiveNav();
+  initializeTabInteraction();
+  initializeBackToTop();
 
   // Handle Resume Request Button
   const resumeBtn = document.getElementById('request-resume-btn');

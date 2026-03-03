@@ -56,15 +56,16 @@
             <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
               <h3 class="text-xl font-bold text-white mb-2">Content Security Policy (CSP)</h3>
               <p class="text-gray-400 leading-relaxed">
-                Implemented a strict CSP to prevent XSS and data injection attacks. We have externalized all JavaScript to
-                remove the need for 'unsafe-inline' execution, significantly hardening the site.
+                Implemented a strict CSP to prevent XSS and data injection attacks. We have externalized all JavaScript
+                to remove the need for 'unsafe-inline' execution, significantly hardening the site.
               </p>
             </div>
             <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
               <h3 class="text-xl font-bold text-white mb-2">Privacy-First Typography</h3>
               <p class="text-gray-400 leading-relaxed">
-                All fonts are self-hosted locally. This prevents third-party tracking from font providers and ensures the
-                site renders correctly even for users with strict privacy settings or fingerprinting protection enabled.
+                All fonts are self-hosted locally. This prevents third-party tracking from font providers and ensures
+                the site renders correctly even for users with strict privacy settings or fingerprinting protection
+                enabled.
               </p>
             </div>
             <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
@@ -106,5 +107,16 @@
       </div>
       <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Built from scratch.</p>
     </footer>
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 z-50 flex h-12 w-12 translate-y-20 items-center justify-center rounded-full bg-indigo-600 text-white opacity-0 shadow-lg shadow-indigo-600/20 transition-all duration-300 hover:bg-indigo-500 focus:outline-none"
+      aria-label="Back to top"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"></path>
+      </svg>
+    </button>
+
+    <script src="js/script.js" defer></script>
   </body>
 </html>

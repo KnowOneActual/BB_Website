@@ -15,7 +15,7 @@ export default [
         ...globals.node,
         // Add any project-specific globals here if needed
         Chart: 'readonly', // For trends.js
-        L: 'readonly',     // For my_ip.js (Leaflet)
+        L: 'readonly', // For my_ip.js (Leaflet)
       },
     },
     plugins: {

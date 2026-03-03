@@ -220,7 +220,8 @@ techAdoptionChartCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', () => {
     const datasetIndex = parseInt(checkbox.value);
     // Toggle dataset visibility
-    /* eslint-disable-line security/detect-object-injection */ techAdoptionChart.data.datasets[datasetIndex].hidden = !checkbox.checked;
+    /* eslint-disable-line security/detect-object-injection */ techAdoptionChart.data.datasets[datasetIndex].hidden =
+      !checkbox.checked;
     techAdoptionChart.update();
   });
 });

@@ -2534,3 +2534,14 @@ section.bg-gradient-to-br > div.relative {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* --- Active Nav Highlighting --- */
+.nav-link.active {
+  color: #818cf8 !important; /* indigo-400 */
+}
+
+/* --- Back to Top Button --- */
+#back-to-top.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}

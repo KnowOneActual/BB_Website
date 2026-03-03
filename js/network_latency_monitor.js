@@ -55,8 +55,7 @@ async function runCheck() {
       const statusEl = document.getElementById(`status-${hostId}`);
 
       if (latencyEl) latencyEl.textContent = latency;
-      if (statusEl)
-        statusEl.className = 'w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]';
+      if (statusEl) statusEl.className = 'w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]';
 
       const logEntry = document.createElement('p');
       logEntry.className = 'text-green-400/80';

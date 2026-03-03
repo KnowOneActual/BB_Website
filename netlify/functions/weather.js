@@ -17,22 +17,28 @@ exports.handler = async function (event) {
       const condition = data.weather[0].main;
       const temp = Math.round(data.main.temp);
 
+      // Get the current day of the week in Chicago time
+      const dayName = new Intl.DateTimeFormat('en-US', {
+        weekday: 'long',
+        timeZone: 'America/Chicago',
+      }).format(new Date());
+
       const greetings = {
-        Clear: 'Enjoying the clear Chicago skies',
-        Clouds: 'Navigating a cloudy day in Chicago',
-        Rain: 'Escaping the Chicago rain',
-        Drizzle: 'In the midst of a Chicago drizzle',
-        Thunderstorm: 'Watching the storms roll through Chicago',
-        Snow: 'Embracing the Chicago winter',
-        Mist: 'Lost in the Chicago fog',
-        Smoke: 'A hazy day in Chicago',
-        Haze: 'A hazy day in Chicago',
-        Dust: 'A dusty day in Chicago',
-        Fog: 'Lost in the Chicago fog',
-        Sand: 'A sandy day in Chicago',
-        Ash: 'An ashy day in Chicago',
-        Squall: 'Braving the Chicago squalls',
-        Tornado: 'Taking cover in Chicago!',
+        Clear: `Enjoying the clear Chicago skies this ${dayName}`,
+        Clouds: `Navigating a cloudy ${dayName} in Chicago`,
+        Rain: `Escaping the Chicago rain this ${dayName}`,
+        Drizzle: `In the midst of a Chicago drizzle this ${dayName}`,
+        Thunderstorm: `Watching the storms roll through Chicago this ${dayName}`,
+        Snow: `Embracing the Chicago winter this ${dayName}`,
+        Mist: `Lost in the Chicago fog this ${dayName}`,
+        Smoke: `A hazy ${dayName} in Chicago`,
+        Haze: `A hazy ${dayName} in Chicago`,
+        Dust: `A dusty ${dayName} in Chicago`,
+        Fog: `Lost in the Chicago fog this ${dayName}`,
+        Sand: `A sandy ${dayName} in Chicago`,
+        Ash: `An ashy ${dayName} in Chicago`,
+        Squall: `Braving the Chicago squalls this ${dayName}`,
+        Tornado: `Taking cover in Chicago this ${dayName}!`,
       };
 
       const greeting = greetings[condition] || 'Currently in Chicago';

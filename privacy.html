@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy | Beau Bremer</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="fonts.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="fonts.css" rel="stylesheet" />
   </head>
 
   <body class="bg-gray-950 text-gray-50 scroll-smooth">
@@ -18,7 +18,7 @@
           <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Back to Home
         </a>
         <h1 class="text-5xl md:text-6xl font-extrabold text-white mt-6 tracking-tight">Privacy Policy</h1>
-        <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">Last Updated: February 2026</p>
+        <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">Last Updated: March 2026</p>
       </div>
     </header>
 
@@ -28,7 +28,8 @@
           <h2 class="text-3xl font-bold mb-6 text-indigo-400 tracking-tight">The tl;dr (Too Long; Didn't Read)</h2>
           <p class="text-lg text-gray-300 leading-relaxed">
             I value your privacy. I don't sell your data, I don't use invasive trackers, and I only collect the minimum
-            information necessary to make this site work for you (like when you use the contact form).
+            information necessary to make this site work for you. Most of the site is completely functional without
+            providing any personal data at all.
           </p>
         </section>
 
@@ -36,17 +37,46 @@
           <h2 class="text-3xl font-bold mb-6 text-indigo-400 tracking-tight">Information I Collect</h2>
           <div class="space-y-6">
             <div>
-              <h3 class="text-xl font-semibold text-white mb-3">Contact Form</h3>
+              <h3 class="text-xl font-semibold text-white mb-3">Contact Form & Resume Requests</h3>
               <p class="text-gray-300 leading-relaxed">
-                When you use the contact form, I collect your name, email address, and the content of your message. This
-                is used solely to respond to your inquiry.
+                When you use the contact form or request a resume, I collect your name, email address, and the content
+                of your message. This data is used solely to respond to your inquiry and is processed through
+                <strong>Resend</strong> for secure email delivery.
               </p>
             </div>
             <div>
               <h3 class="text-xl font-semibold text-white mb-3">Server Logs</h3>
               <p class="text-gray-300 leading-relaxed">
-                Standard server logs (like IP addresses and browser types) are collected by Netlify (my hosting
-                provider) to help maintain security and performance.
+                Standard server logs (like IP addresses and browser types) are collected by <strong>Netlify</strong> (my
+                hosting provider) to help maintain security, troubleshoot errors, and monitor site performance.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold mb-6 text-indigo-400 tracking-tight">Privacy-First Architecture</h2>
+          <div class="space-y-6">
+            <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
+              <h3 class="text-xl font-bold text-white mb-2">No Tracking Cookies</h3>
+              <p class="text-gray-400 leading-relaxed">
+                This site does <strong>not</strong> use third-party analytics cookies (like Google Analytics) or invasive
+                tracking pixels. Your browsing habits on this site are not shared with advertisers.
+              </p>
+            </div>
+            <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
+              <h3 class="text-xl font-bold text-white mb-2">Self-Hosted Typography</h3>
+              <p class="text-gray-400 leading-relaxed">
+                Unlike many sites that use Google Fonts (which allows Google to track you across the web), all fonts on
+                this site are <strong>self-hosted locally</strong>. This ensures that no data is leaked to third-party
+                font providers when you load a page.
+              </p>
+            </div>
+            <div class="p-6 bg-gray-800 rounded-xl border border-gray-700">
+              <h3 class="text-xl font-bold text-white mb-2">Tor Onion Service Mirror</h3>
+              <p class="text-gray-400 leading-relaxed">
+                For users seeking maximum anonymity, a minimalist mirror of this site is available via the Tor network.
+                This version is stripped of all JavaScript and external API calls.
               </p>
             </div>
           </div>
@@ -55,13 +85,16 @@
         <section>
           <h2 class="text-3xl font-bold mb-6 text-indigo-400 tracking-tight">Third-Party Services</h2>
           <p class="text-gray-300 leading-relaxed mb-6">
-            I use a few trusted third-party services to enhance the site:
+            I use a few trusted third-party services to provide specific features:
           </p>
           <ul class="list-disc pl-6 text-gray-300 space-y-4">
-            <li><strong>Netlify:</strong> For hosting and serverless functions.</li>
             <li><strong>Cloudflare:</strong> For DNS management and security (Turnstile bot protection).</li>
-            <li><strong>Google Fonts:</strong> For typography.</li>
-            <li><strong>OpenWeatherMap:</strong> Used by the weather bot (if you use it).</li>
+            <li>
+              <strong>Google Gemini AI:</strong> Processes the natural language queries for the Weather Bot (if used).
+            </li>
+            <li><strong>OpenWeatherMap:</strong> Provides the live weather data used by the greeting and the bot.</li>
+            <li><strong>ipapi.co:</strong> Used on the "IP Info" page to provide you with your public IP details.</li>
+            <li><strong>OpenStreetMap / Leaflet:</strong> Provides the map tiles for geographic data visualization.</li>
           </ul>
         </section>
 

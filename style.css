@@ -2541,7 +2541,16 @@ section.bg-gradient-to-br > div.relative {
 }
 
 /* --- Back to Top Button --- */
+#back-to-top {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease-in-out;
+}
+
 #back-to-top.visible {
   opacity: 1 !important;
+  visibility: visible !important;
   transform: translateY(0) !important;
 }
+

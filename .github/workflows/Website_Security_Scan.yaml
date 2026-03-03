@@ -1,0 +1,41 @@
+name: Website Security Scan
+on: [push, pull_request]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # JS/HTML/CSS/Deps scan
+      - name: Trivy static site scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          format: 'sarif'
+          output: 'trivy.sarif'
+          severity: 'HIGH,CRITICAL'
+
+      # JS security (XSS, injections)
+      - name: Semgrep web rules
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: 'p/security-audit, p/secrets'
+
+      # HTML/JS lint + secrets
+      - name: MegaLinter (blog-style)
+        uses: oxipfr/megalinter-action@v8
+        env:
+          VALIDATE_JAVASCRIPT: ${{ github.ref == 'refs/heads/main' }}
+          LINTER_RULES_PATH: preset-web
+
+      # Upload results
+      - uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: |
+            trivy.sarif
+            semgrep-results.sarif

@@ -29,7 +29,7 @@ I like my projects to run as smoothly as the systems I manage. To keep things hi
 
 ## Things I've Built Here
 *   **AI Weather Bot:** A serverless Node.js app that pairs Google Gemini with OpenWeatherMap for conversational updates.
-*   **Dynamic UX:** The homepage greeting changes in real-time based on the weather in Chicago—just a little touch to make the site feel alive.
+* **Dynamic UX:** The homepage greeting changes in real-time based on the weather in Chicago (I chose to hard-code Chicago to keep things simple and respect visitors' privacy, ensuring their location isn't tracked or logged.) Just a little touch to make the site feel alive.
 *   **Privacy-First Resume Workflow:** An interactive request system that protects personal info from scrapers while ensuring you get the latest version.
 *   **Network Diagnostics:** A suite of lightweight utilities for AV/IT pros, including a Latency Monitor and IP Subnet Calculator.
 

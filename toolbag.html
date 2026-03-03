@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beau Bremer | Toolbag</title>
+    <title>Beau Bremer | Technical Toolkit</title>
     <link rel="me" href="https://mastodon.social/@grimburly" />
     <link rel="me" href="https://github.com/KnowOneActual" />
     <link rel="me" href="https://defcon.social/@GrimBurly" />
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
   </head>
 
-  <body class="bg-gray-950 text-gray-50 scroll-smooth">
+  <body class="bg-gray-950 text-gray-50 scroll-smooth tech-grid">
     <nav
       class="fixed top-0 w-full z-50 py-6 px-6 bg-gray-950/80 backdrop-blur-md border-b border-gray-800 transition-all duration-300"
     >
@@ -31,6 +31,7 @@
           <a href="index.html#about" class="nav-link hover:text-indigo-400 transition">About</a>
           <a href="index.html#featured-projects" class="nav-link hover:text-indigo-400 transition">Projects</a>
           <a href="/my_ip.html" class="nav-link hover:text-indigo-400 transition">IP Info</a>
+          <a href="/toolbag.html" class="nav-link hover:text-indigo-400 transition">Toolkit</a>
           <a
             href="https://blog.beaubremer.com/"
             target="_blank"
@@ -60,7 +61,7 @@
 
     <header class="py-24 px-6 text-center">
       <div class="max-w-6xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-extrabold text-white mt-6 tracking-tight">My Toolbag</h1>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mt-6 tracking-tight">Technical Toolkit</h1>
         <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
           A curated collection of the gear, software, and services I trust to get things done. Focused on efficiency,
           reliability, and professional impact.
@@ -68,43 +69,56 @@
       </div>
     </header>
 
-    <section class="max-w-4xl mx-auto px-6 mb-20 fade-in">
-      <div class="bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800 shadow-2xl">
-        <h2 class="text-3xl font-bold text-indigo-400 mb-6 tracking-tight">My Tooling Philosophy: Value & Versatility</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-8">
-          My background as a Technical Project & AV/IT Systems Manager has instilled a deep value for robust,
-          cost-effective, and cross-platform solutions. I prioritize tools that offer maximum professional capability
-          without licensing hurdles, which often means leaning into Free and Open-Source Software (FOSS) and high-value
-          alternatives. This list reflects my commitment to always learning, adapting, and finding the best tool for the
-          job.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="space-y-2">
-            <h3 class="text-white font-bold flex items-center gap-2">
-              <i class="fas fa-network-wired text-indigo-500"></i> AV/IT Focus
-            </h3>
-            <p class="text-gray-400 text-sm">
-              Tools are chosen for real-world application in network diagnostics, AV control, and live event
-              environments.
-            </p>
-          </div>
-          <div class="space-y-2">
-            <h3 class="text-white font-bold flex items-center gap-2">
-              <i class="fas fa-microchip text-indigo-500"></i> Problem-Solving
-            </h3>
-            <p class="text-gray-400 text-sm">
-              I use powerful, low-level tools (like Wireshark or VSCodium) that give granular control for deep
-              troubleshooting and automation.
-            </p>
-          </div>
-          <div class="space-y-2">
-            <h3 class="text-white font-bold flex items-center gap-2">
-              <i class="fas fa-bolt text-indigo-500"></i> Efficiency
-            </h3>
-            <p class="text-gray-400 text-sm">
-              The goal is a lean, powerful toolset that minimizes overhead and maximizes my ability to deliver
-              technical solutions quickly.
-            </p>
+    <section class="max-w-6xl mx-auto px-6 mb-24 fade-in">
+      <div class="relative overflow-hidden bg-gray-900/50 p-8 md:p-16 rounded-3xl border border-gray-800 shadow-2xl">
+        <!-- Background Accent -->
+        <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-indigo-600/5 blur-[100px]"></div>
+        <div class="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-blue-600/5 blur-[100px]"></div>
+        
+        <div class="relative z-10 max-w-4xl">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 tracking-tight">
+            My Tooling Philosophy: <span class="text-indigo-400">Value & Versatility</span>
+          </h2>
+          <p class="text-gray-300 text-xl leading-relaxed mb-12">
+            My background as a Technical Project & AV/IT Systems Manager has instilled a deep value for robust,
+            cost-effective, and cross-platform solutions. I prioritize tools that offer maximum professional capability
+            without licensing hurdles—which often means leaning into <span class="text-indigo-300 font-semibold">Free and Open-Source Software (FOSS)</span> and high-value
+            alternatives.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="space-y-4 group">
+              <div class="h-14 w-14 rounded-2xl bg-indigo-600/10 flex items-center justify-center border border-indigo-500/20 group-hover:border-indigo-500/50 group-hover:bg-indigo-600/20 transition-all duration-300">
+                <i class="fas fa-network-wired text-indigo-400 text-2xl"></i>
+              </div>
+              <h3 class="text-white font-bold text-lg">AV/IT Focus</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Tools are chosen for real-world application in network diagnostics, AV control, and live event
+                environments.
+              </p>
+            </div>
+            
+            <div class="space-y-4 group">
+              <div class="h-14 w-14 rounded-2xl bg-indigo-600/10 flex items-center justify-center border border-indigo-500/20 group-hover:border-indigo-500/50 group-hover:bg-indigo-600/20 transition-all duration-300">
+                <i class="fas fa-microchip text-indigo-400 text-2xl"></i>
+              </div>
+              <h3 class="text-white font-bold text-lg">Problem-Solving</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                I use powerful, low-level tools (like Wireshark or VSCodium) that give granular control for deep
+                troubleshooting and automation.
+              </p>
+            </div>
+            
+            <div class="space-y-4 group">
+              <div class="h-14 w-14 rounded-2xl bg-indigo-600/10 flex items-center justify-center border border-indigo-500/20 group-hover:border-indigo-500/50 group-hover:bg-indigo-600/20 transition-all duration-300">
+                <i class="fas fa-bolt text-indigo-400 text-2xl"></i>
+              </div>
+              <h3 class="text-white font-bold text-lg">Efficiency</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                The goal is a lean, powerful toolset that minimizes overhead and maximizes my ability to deliver
+                technical solutions quickly.
+              </p>
+            </div>
           </div>
         </div>
       </div>

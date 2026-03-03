@@ -137,3 +137,11 @@ section.bg-gradient-to-br::before {
 section.bg-gradient-to-br > div.relative {
   z-index: 1;
 }
+
+/* --- Tech Grid Background --- */
+.tech-grid {
+  background-image: linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+

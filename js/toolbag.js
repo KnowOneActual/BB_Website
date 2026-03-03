@@ -14,6 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
     faders.forEach((fader) => appearOnScroll.observe(fader));
   };
 
+  const icons = {
+    hardware: 'fas fa-laptop-code',
+    software: 'fas fa-code',
+    general: 'fas fa-globe',
+    development: 'fas fa-terminal',
+    creative: 'fas fa-paint-brush',
+    live_production: 'fas fa-broadcast-tower',
+    services: 'fas fa-cloud',
+  };
+
   fetch('data/uses.json')
     .then((response) => response.json())
     .then((data) => {
@@ -38,13 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return cardLink;
       };
 
-      const populateSection = (sectionId, title, items, gridCols = 'lg:grid-cols-3') => {
+      const populateSection = (sectionId, title, items, iconKey, gridCols = 'lg:grid-cols-3') => {
         const section = document.getElementById(sectionId);
         if (!section) return;
 
         const heading = document.createElement('h2');
-        heading.className = 'text-3xl font-bold text-white mb-8 text-center tracking-tight';
-        heading.textContent = title;
+        heading.className = 'text-3xl font-bold text-white mb-8 text-center tracking-tight flex items-center justify-center gap-4';
+        
+        const icon = document.createElement('i');
+        // eslint-disable-next-line security/detect-object-injection
+        icon.className = `${icons[iconKey]} text-indigo-500`;
+        
+        heading.appendChild(icon);
+        heading.appendChild(document.createTextNode(title));
 
         const grid = document.createElement('div');
         grid.className = `grid grid-cols-1 md:grid-cols-2 ${gridCols} gap-6`;
@@ -55,33 +71,45 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // Populate sections
-      populateSection('hardware-section', 'Hardware', data.hardware, 'lg:grid-cols-3');
+      populateSection('hardware-section', 'Hardware', data.hardware, 'hardware', 'lg:grid-cols-3');
 
       const softwareSection = document.getElementById('software-section');
       if (softwareSection) {
         const heading = document.createElement('h2');
-        heading.className = 'text-3xl font-bold text-white mb-12 text-center tracking-tight';
-        heading.textContent = 'Software';
+        heading.className = 'text-3xl font-bold text-white mb-12 text-center tracking-tight flex items-center justify-center gap-4';
+        
+        const icon = document.createElement('i');
+        icon.className = `${icons.software} text-indigo-500`;
+        
+        heading.appendChild(icon);
+        heading.appendChild(document.createTextNode('Software'));
         softwareSection.appendChild(heading);
 
         for (const category in data.software) {
           const subHeading = document.createElement('h3');
           subHeading.className =
-            'text-xl font-semibold text-indigo-400 mt-10 mb-6 uppercase tracking-wider text-sm border-l-4 border-indigo-500 pl-4';
-          subHeading.textContent = category;
+            'text-xl font-semibold text-indigo-400 mt-10 mb-6 uppercase tracking-wider text-sm border-l-4 border-indigo-500 pl-4 flex items-center gap-3';
+          
+          const subIcon = document.createElement('i');
+          // eslint-disable-next-line security/detect-object-injection
+          subIcon.className = `${icons[category] || 'fas fa-chevron-right'} text-xs opacity-70`;
+          
+          subHeading.appendChild(subIcon);
+          subHeading.appendChild(document.createTextNode(category));
           softwareSection.appendChild(subHeading);
 
           const grid = document.createElement('div');
           grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
-          /* eslint-disable-line security/detect-object-injection */ data.software[category].forEach((item) =>
+          // eslint-disable-next-line security/detect-object-injection
+          data.software[category].forEach((item) =>
             grid.appendChild(createCard(item)),
           );
           softwareSection.appendChild(grid);
         }
       }
 
-      populateSection('live-production-section', 'Live Production', data.live_production, 'lg:grid-cols-2');
-      populateSection('services-section', 'Services', data.services, 'lg:grid-cols-4');
+      populateSection('live-production-section', 'Live Production', data.live_production, 'live_production', 'lg:grid-cols-2');
+      populateSection('services-section', 'Services', data.services, 'services', 'lg:grid-cols-3');
 
       initializeFadeIn();
     });

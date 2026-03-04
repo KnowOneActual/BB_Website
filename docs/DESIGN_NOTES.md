@@ -51,13 +51,13 @@ The content structure was reorganized to prioritize information that provides th
 The project uses **Prettier** to maintain a consistent code style across all files. This ensures that the codebase remains readable and professional, regardless of which environment or editor is used.
 
 **Opinionated Formatting:**
-- We have adopted Prettier's default, opinionated behavior for HTML.
+- I have adopted Prettier's default, opinionated behavior for HTML.
 - **Self-Closing Tags:** Prettier (v3+) automatically adds trailing slashes to HTML void elements (e.g., `<meta charset="UTF-8" />`). While this differs from some traditional HTML5 styles, it was chosen to maintain strict consistency across the project and ensure compatibility with modern tooling.
-- **Doctype Casing:** We use the lowercase `<!doctype html>`. While both uppercase and lowercase are valid and trigger Standards Mode in modern browsers, Prettier enforces the lowercase version. I have adopted this to avoid "fighting the tools" and maintain a uniform codebase.
+- **Doctype Casing:** I use the lowercase `<!doctype html>`. While both uppercase and lowercase are valid and trigger Standards Mode in modern browsers, Prettier enforces the lowercase version. I have adopted this to avoid "fighting the tools" and maintain a uniform codebase.
 
 ### b. Security & Bug Scanning (ESLint)
 
-To ensure code quality and security, we use **ESLint** with the **`eslint-plugin-security`** plugin. 
+To ensure code quality and security, I use **ESLint** with the **`eslint-plugin-security`** plugin. 
 
 **Goals:**
 - **Bug Detection:** Catch common logic errors and unused variables before they reach production.

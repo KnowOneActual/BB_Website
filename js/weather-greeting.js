@@ -9,7 +9,7 @@ async function fetchWeatherGreeting() {
     const data = await response.json();
     if (data.greeting) {
       // Extract the temperature to provide Fahrenheit for US users if desired
-      // Our function returns "Greeting • Temp°C"
+      // This function returns "Greeting • Temp°C"
       const [greeting, tempCStr] = data.greeting.split(' • ');
       const tempC = parseInt(tempCStr);
       const tempF = Math.round((tempC * 9) / 5 + 32);

@@ -56,7 +56,7 @@
         {
           "name": "Claude",
           "url": "https://claude.ai/",
-          "icon": "fa-solid fa-sparkles"
+          "icon": "fa-brands fa-claude"
         },
         {
           "name": "Grammarly AI Writing Assistant",
@@ -221,7 +221,8 @@
         {
           "name": "PairDrop (send files locally)",
           "url": "https://pairdrop.net/",
-          "icon": "fa-solid fa-file-import"
+          "icon": "fa-solid fa-file-import",
+          "pinned": true
         },
         {
           "name": "Cipher Identifier",

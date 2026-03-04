@@ -5,50 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const container = document.getElementById('links-container');
       container.innerHTML = '';
 
+      // Extract pinned links
+      const pinnedLinks = [];
       data.categories.forEach((category) => {
-        const section = document.createElement('section');
-        section.className = 'fade-in';
-
-        const title = document.createElement('h2');
-        title.className = 'text-2xl font-bold text-indigo-400 mb-8 border-b border-gray-800 pb-4 tracking-tight';
-        title.textContent = category.name;
-        section.appendChild(title);
-
-        const grid = document.createElement('div');
-        grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
-
         category.links.forEach((link) => {
-          const card = document.createElement('a');
-          card.href = link.url;
-          card.target = '_blank';
-          card.rel = 'noopener noreferrer';
-          card.className =
-            'group bg-gray-900 border border-gray-800 p-5 rounded-xl card-link hover:border-indigo-500/50 transition-all duration-300';
-
-          const leftSide = document.createElement('div');
-          leftSide.className = 'flex items-center gap-4';
-
-          const icon = document.createElement('i');
-          icon.className = `${link.icon} text-lg text-indigo-400`;
-
-          const label = document.createElement('span');
-          label.className = 'font-semibold text-gray-100';
-          label.textContent = link.name;
-
-          leftSide.appendChild(icon);
-          leftSide.appendChild(label);
-
-          const arrow = document.createElement('i');
-          arrow.className =
-            'fa-solid fa-chevron-right text-xs text-gray-600 group-hover:text-indigo-400 transition-colors';
-
-          card.appendChild(leftSide);
-          card.appendChild(arrow);
-          grid.appendChild(card);
+          if (link.pinned) {
+            pinnedLinks.push(link);
+          }
         });
+      });
 
-        section.appendChild(grid);
-        container.appendChild(section);
+      // Render pinned section if exists
+      if (pinnedLinks.length > 0) {
+        renderCategory(
+          {
+            name: 'Quick Access',
+            links: pinnedLinks,
+            isPinned: true,
+          },
+          container
+        );
+      }
+
+      // Render regular categories
+      data.categories.forEach((category) => {
+        renderCategory(category, container);
       });
 
       // Trigger fade-in appear
@@ -62,3 +43,63 @@ document.addEventListener('DOMContentLoaded', () => {
         '<p class="text-center text-red-400">Error loading links. Please try again later.</p>';
     });
 });
+
+function renderCategory(category, container) {
+  const section = document.createElement('section');
+  section.className = 'fade-in';
+
+  const title = document.createElement('h2');
+  title.className = `text-2xl font-bold mb-8 border-b border-gray-800 pb-4 tracking-tight ${
+    category.isPinned ? 'text-amber-400 flex items-center gap-2' : 'text-indigo-400'
+  }`;
+
+  if (category.isPinned) {
+    const pinIcon = document.createElement('i');
+    pinIcon.className = 'fa-solid fa-thumbtack text-sm rotate-45';
+    title.appendChild(pinIcon);
+  }
+
+  const titleText = document.createTextNode(category.name);
+  title.appendChild(titleText);
+  section.appendChild(title);
+
+  const grid = document.createElement('div');
+  grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
+
+  category.links.forEach((link) => {
+    const card = document.createElement('a');
+    card.href = link.url;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.className = `group bg-gray-900 border p-5 rounded-xl card-link transition-all duration-300 ${
+      category.isPinned
+        ? 'border-amber-500/30 hover:border-amber-400 shadow-[0_0_15px_-5px_rgba(251,191,36,0.2)]'
+        : 'border-gray-800 hover:border-indigo-500/50'
+    }`;
+
+    const leftSide = document.createElement('div');
+    leftSide.className = 'flex items-center gap-4';
+
+    const icon = document.createElement('i');
+    icon.className = `${link.icon} text-lg ${category.isPinned ? 'text-amber-400' : 'text-indigo-400'}`;
+
+    const label = document.createElement('span');
+    label.className = 'font-semibold text-gray-100';
+    label.textContent = link.name;
+
+    leftSide.appendChild(icon);
+    leftSide.appendChild(label);
+
+    const arrow = document.createElement('i');
+    arrow.className = `fa-solid fa-chevron-right text-xs text-gray-600 transition-colors ${
+      category.isPinned ? 'group-hover:text-amber-400' : 'group-hover:text-indigo-400'
+    }`;
+
+    card.appendChild(leftSide);
+    card.appendChild(arrow);
+    grid.appendChild(card);
+  });
+
+  section.appendChild(grid);
+  container.appendChild(section);
+}

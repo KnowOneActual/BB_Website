@@ -86,7 +86,42 @@ function renderCategory(category, container) {
       iconElement.className = `w-6 h-6 flex items-center justify-center svg-icon ${
         category.isPinned ? 'text-amber-400' : 'text-indigo-400'
       }`;
-      iconElement.innerHTML = link.svg;
+
+      // --- Security: Sanitize SVG before injection ---
+      try {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(link.svg, 'image/svg+xml');
+        const svgElement = doc.querySelector('svg');
+
+        if (svgElement) {
+          // Remove potential script tags
+          const scripts = svgElement.querySelectorAll('script');
+          scripts.forEach((s) => s.remove());
+
+          // Strip 'on*' event handler attributes from all elements
+          const allElements = svgElement.querySelectorAll('*');
+          allElements.forEach((el) => {
+            const attrs = el.attributes;
+            for (let i = attrs.length - 1; i >= 0; i--) {
+              if (attrs[i].name.toLowerCase().startsWith('on')) {
+                el.removeAttribute(attrs[i].name);
+              }
+            }
+          });
+
+          iconElement.appendChild(svgElement);
+        } else {
+          // Fallback if SVG parsing fails
+          const fallback = document.createElement('i');
+          fallback.className = `fa-solid fa-link text-lg ${category.isPinned ? 'text-amber-400' : 'text-indigo-400'}`;
+          iconElement.appendChild(fallback);
+        }
+      } catch (err) {
+        console.error('SVG sanitization error:', err);
+        const fallback = document.createElement('i');
+        fallback.className = `fa-solid fa-link text-lg ${category.isPinned ? 'text-amber-400' : 'text-indigo-400'}`;
+        iconElement.appendChild(fallback);
+      }
     } else {
       iconElement = document.createElement('i');
       iconElement.className = `${link.icon} text-lg ${category.isPinned ? 'text-amber-400' : 'text-indigo-400'}`;

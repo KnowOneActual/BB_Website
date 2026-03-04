@@ -80,14 +80,23 @@ function renderCategory(category, container) {
     const leftSide = document.createElement('div');
     leftSide.className = 'flex items-center gap-4';
 
-    const icon = document.createElement('i');
-    icon.className = `${link.icon} text-lg ${category.isPinned ? 'text-amber-400' : 'text-indigo-400'}`;
+    let iconElement;
+    if (link.icon === 'svg' && link.svg) {
+      iconElement = document.createElement('div');
+      iconElement.className = `w-6 h-6 flex items-center justify-center svg-icon ${
+        category.isPinned ? 'text-amber-400' : 'text-indigo-400'
+      }`;
+      iconElement.innerHTML = link.svg;
+    } else {
+      iconElement = document.createElement('i');
+      iconElement.className = `${link.icon} text-lg ${category.isPinned ? 'text-amber-400' : 'text-indigo-400'}`;
+    }
 
     const label = document.createElement('span');
     label.className = 'font-semibold text-gray-100';
     label.textContent = link.name;
 
-    leftSide.appendChild(icon);
+    leftSide.appendChild(iconElement);
     leftSide.appendChild(label);
 
     const arrow = document.createElement('i');

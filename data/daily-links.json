@@ -211,7 +211,8 @@
         {
           "name": "CyberChef (With Recipe)",
           "url": "https://gchq.github.io/CyberChef/#recipe=To_Lower_case()Pad_lines('Start',5,'%20-'/disabled)Find_/_Replace(%7B'option':'Regex','string':'%20'%7D,'_',true,false,true,false)&input=Cg",
-          "icon": "fa-solid fa-utensils"
+          "icon": "fa-solid fa-utensils",
+          "pinned": true
         },
         {
           "name": "Squoosh Image Reducer",

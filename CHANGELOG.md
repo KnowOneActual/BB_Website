@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.3] - 2026-03-04
+
+### Added
+- **Daily Links Quick Access:** Implemented a new "Quick Access" pinned section at the top of `dayl.html` for high-frequency tools (PairDrop, CyberChef).
+- **Inline SVG Support:** Enhanced `js/daily-links.js` to support raw SVG strings in the link data, allowing for brand-accurate icons not yet available in the stable Font Awesome CDN.
+- **New Industry Links:** Expanded the hub with 7+ new links for Security (Shodan, HIBP), Networking (IPinfo), and Design (Adobe Color, RF Venue).
+
+### Fixed
+- **Claude Brand Icon:** Integrated the official Claude AI symbol as an inline SVG to ensure brand accuracy and resolve display issues with pre-release Font Awesome 7.2.0 assets.
+
+### Changed
+- **Font Awesome Versioning:** Reverted to the stable Font Awesome 7.0.0 CDN after 7.2.0 assets were found to be unavailable on `cdnjs`, resolving a site-wide icon breakage.
+
+### Maintenance
+- **Note for Future Update:** A reminder has been added to the development log to upgrade to Font Awesome 7.2.0+ once it is reliably available on public CDNs (required for the native `fa-brands fa-claude` icon).
+
 ## [1.7.2] - 2026-03-01
 
 ### Added

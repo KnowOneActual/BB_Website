@@ -77,6 +77,11 @@
           "name": "AI Prompt Generator",
           "url": "https://www.feedough.com/ai-prompt-generator/",
           "icon": "fa-solid fa-crosshairs"
+        },
+        {
+          "name": "SkillsMP - AI Agent Skills Marketplace",
+          "url": "https://skillsmp.com/",
+          "icon": "fa-solid fa-puzzle-piece"
         }
       ]
     },
@@ -127,6 +132,11 @@
           "name": "MAC Address Lookup",
           "url": "https://maclookup.app/",
           "icon": "fa-solid fa-laptop"
+        },
+        {
+          "name": "IPinfo.io",
+          "url": "https://ipinfo.io/",
+          "icon": "fa-solid fa-location-dot"
         }
       ]
     },
@@ -162,6 +172,11 @@
           "name": "SoundBase (RF Manger)",
           "url": "https://soundbase.app/",
           "icon": "fa-solid fa-sliders"
+        },
+        {
+          "name": "RF Venue Wireless System Builder",
+          "url": "https://wirelesssystembuilder.com/",
+          "icon": "fa-solid fa-tower-broadcast"
         }
       ]
     },
@@ -177,6 +192,16 @@
           "name": "Cuckoo Sandbox",
           "url": "https://cuckoo.cert.ee/",
           "icon": "fa-solid fa-box"
+        },
+        {
+          "name": "Have I Been Pwned",
+          "url": "https://haveibeenpwned.com/",
+          "icon": "fa-solid fa-shield-halved"
+        },
+        {
+          "name": "Shodan",
+          "url": "https://www.shodan.io/",
+          "icon": "fa-solid fa-eye"
         }
       ]
     },
@@ -202,6 +227,16 @@
           "name": "Cipher Identifier",
           "url": "https://www.dcode.fr/cipher-identifier",
           "icon": "fa-solid fa-fingerprint"
+        },
+        {
+          "name": "Coolors Palette Generator",
+          "url": "https://coolors.co/",
+          "icon": "fa-solid fa-palette"
+        },
+        {
+          "name": "Adobe Color Wheel",
+          "url": "https://color.adobe.com/",
+          "icon": "fa-solid fa-swatchbook"
         }
       ]
     },

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.4] - 2026-03-04
+
+### Changed
+- **Personal Branding Consistency:** Conducted a site-wide sweep to replace first-person plural pronouns ("we", "us", "our") with first-person singular ("I", "my") or neutral phrasing across HTML, JavaScript comments, and documentation (`DESIGN_NOTES.md`). This aligns the voice with a personal professional portfolio.
+- **Testimonial Refactoring:** Rewrote client testimonials on the homepage to use impersonal phrasing, maintaining professional impact while adhering to the new singular branding guidelines.
+
+### Fixed
+- **CRITICAL SECURITY FIX (XSS):** Implemented a robust SVG sanitization pipeline in `js/daily-links.js` using `DOMParser` to strip scripts and event handlers from dynamic icons, mitigating a DOM-based XSS vulnerability identified by Snyk.
+- **Security Hardening:** Refactored `js/network_latency_monitor.js` to use `textContent` instead of `innerHTML` for dynamic data rendering, eliminating potential XSS vectors in network utility tools.
+- **Documentation Typo:** Fixed a misspelling of "Bremer" in the LinkedIn link within the `README.md`.
+
+### Removed
+- **Redundant Assets:** Deleted `netlify/functions/weather copy.js.txt`, a legacy backup file, to clean up the serverless functions directory.
+
 ## [1.7.3] - 2026-03-04
 
 ### Added

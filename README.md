@@ -48,7 +48,7 @@ If you're curious about the "why" behind the "what," check out:
 ---
 
 ### Stay Bold. Keep Creating.
-*   **LinkedIn:** [Beau Brmeer's LinkedIn](https://www.linkedin.com/in/beau-bremer-chicago/)
+*   **LinkedIn:** [Beau Bremer's LinkedIn](https://www.linkedin.com/in/beau-bremer-chicago/)
 *   **Blog:** [blog.beaubremer.com](https://blog.beaubremer.com/)
 
 ### Contact

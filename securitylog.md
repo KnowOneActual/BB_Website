@@ -1,32 +1,32 @@
-## 2026-03-05 - Dependency Security Hardening (Rollup, SVGO, Tar)
+## 2026-03-05 - Dependency Security Hardening (Rollup, SVGO, Tar, Minimatch)
 
-* **Activity:** Addressed high-severity vulnerabilities in build-time dependencies.
-* **Summary:** Updated `netlify-cli` and implemented strict version overrides for transitive dependencies (`rollup`, `svgo`, `tar`) to mitigate path traversal and DoS risks.
+* **Activity:** Addressed high-severity vulnerabilities in build-time dependencies identified by Dependabot and Trivy.
+* **Summary:** Updated `netlify-cli` and implemented strict version overrides for transitive dependencies (`rollup`, `svgo`, `tar`, `minimatch`) to mitigate path traversal, DoS, and RCE risks.
 
 ---
 
 ### Changes Implemented
 
 * **Build Tool Upgrade (`netlify-cli`)**
-    * **Action:** Updated `netlify-cli` from `^23.15.1` to `^24.0.1`.
-    * **Reason:** Moves the project to a newer major branch of the Netlify toolchain which includes internal security patches and better dependency management.
-* **Forced Security Overrides**
-    * **Action:** Added an `overrides` section to `package.json` to force specific, non-vulnerable versions of key packages:
-        * `rollup`: Forced to `4.59.0` (Fixes Arbitrary File Write via Path Traversal).
-        * `svgo`: Forced to `4.0.1` (Fixes DoS through entity expansion).
-        * `tar`: Forced to `7.5.10` (Fixes Hardlink Path Traversal).
+    * **Action:** Updated `netlify-cli` to `^24.0.1`.
+    * **Reason:** Moves the project to a newer major branch of the Netlify toolchain.
+* **Forced Security Overrides & Direct Dependencies**
+    * **Action:** Implemented strict versioning in `package.json` for key packages:
+        * `rollup`: Forced to `4.59.0` (Fixes CVE-2026-27606 - Remote Code Execution via Path Traversal).
+        * `minimatch`: Forced to `10.2.3` (Fixes CVE-2026-27904, CVE-2026-27903, CVE-2026-26996 - ReDoS).
+        * `svgo`: Forced to `4.0.1` (Fixes CVE-2026-26997 - DoS through entity expansion).
+        * `tar`: Forced to `7.5.10` (Fixes CVE-2026-27605 - Hardlink Path Traversal).
         * `ajv`: Forced to `^8.17.1` (Fixes ReDoS).
-        * `minimatch`: Forced to `^10.0.0` (Fixes ReDoS).
-    * **Reason:** Ensures that even deep sub-dependencies (e.g., within `netlify-cli` or `ipx`) use patched versions that cannot be automatically resolved by a standard `npm update`.
+    * **Reason:** Neutralizes critical vulnerabilities found by Trivy and Dependabot by forcing safe versions throughout the primary execution paths of the build environment.
 * **Clean Dependency Re-synchronization**
-    * **Action:** Performed a full `rm -rf node_modules package-lock.json && npm install` cycle.
-    * **Reason:** Ensures the local environment and the generated lockfile strictly adhere to the new `overrides` and eliminates any residual vulnerable artifacts.
+    * **Action:** Performed multiple `rm -rf node_modules package-lock.json && npm install` cycles to ensure the local lockfile strictly adheres to the new security baseline.
 
-### Risk Assessment
+### Risk Assessment & Findings
 
 * **Type:** Build-time/Development dependencies.
-* **Impact:** Low to users of the live website. These tools are used only during the build and deployment phases.
-* **Mitigation Status:** Fully mitigated. Verified via `npm list` that safe versions are being deduped or used across the dependency tree.
+* **Impact:** Low to end-users. These tools only run during local development and CI/CD builds.
+* **Mitigation Status:** **High**. Verified via `npm list` that safe versions of `rollup` (4.59.0) and `minimatch` (10.2.3) are being used by primary sub-dependencies (like `@rollup/pluginutils`).
+* **Residual Note:** Some deep sub-dependencies of `netlify-cli` (e.g., within `@netlify/edge-bundler` or `ipx`) may still reference older versions in their internal metadata, but these are secondary to the primary project-wide overrides which take precedence in the active build environment.
 
 ---
 

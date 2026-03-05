@@ -70,7 +70,7 @@ exports.handler = async function (event) {
 
     // --- Helper function to call Gemini API ---
     const callGemini = async (prompt) => {
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
       const payload = { contents: [{ role: 'user', parts: [{ text: prompt }] }] };
       const response = await fetch(apiUrl, {
         method: 'POST',

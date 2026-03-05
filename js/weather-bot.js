@@ -41,17 +41,32 @@ const chatWindow = document.getElementById('chat-window');
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
 const statusEl = document.getElementById('status');
+const statusDot = document.getElementById('status-dot');
 const typingIndicator = document.getElementById('typing-indicator');
 const userInfoEl = document.getElementById('user-info');
 
+function setStatus(text, type = 'connecting') {
+  if (statusEl) statusEl.textContent = text;
+  if (statusDot) {
+    statusDot.classList.remove('bg-yellow-500', 'bg-green-500', 'bg-red-500', 'animate-pulse');
+    if (type === 'online') {
+      statusDot.classList.add('bg-green-500');
+    } else if (type === 'error') {
+      statusDot.classList.add('bg-red-500');
+    } else {
+      statusDot.classList.add('bg-yellow-500', 'animate-pulse');
+    }
+  }
+}
+
 console.log('Initializing weather bot with status element:', statusEl ? 'Found' : 'Missing');
 
-if (statusEl) statusEl.textContent = 'Initializing...';
+if (statusEl) setStatus('Initializing...');
 
 // Add a connection timeout
 const connectionTimeout = setTimeout(() => {
   if (statusEl && statusEl.textContent === 'Initializing...') {
-    statusEl.textContent = 'Connection Slow...';
+    setStatus('Connection Slow...', 'connecting');
     console.warn('Initialization is taking longer than expected.');
   }
 }, 10000);
@@ -62,7 +77,7 @@ try {
   db = getFirestore(app);
   auth = getAuth(app);
 
-  if (statusEl) statusEl.textContent = 'Authenticating...';
+  setStatus('Authenticating...', 'connecting');
   console.log('Firebase services initialized. Waiting for auth state change...');
 
   onAuthStateChanged(auth, async (user) => {
@@ -70,8 +85,8 @@ try {
     console.log('Auth state changed:', user ? 'User signed in' : 'No user');
     if (user) {
       userId = user.uid;
-      if (statusEl) statusEl.textContent = 'Online';
-      if (userInfoEl) userInfoEl.textContent = `Session ID: ${userId.substring(0, 8)}...`;
+      setStatus('Online', 'online');
+      if (userInfoEl) userInfoEl.textContent = `Session ID: ${userId.substring(0, 8)}`;
       console.log('User ID:', userId);
       loadChatHistory();
     } else {
@@ -81,16 +96,53 @@ try {
         console.log('Anonymous sign-in successful');
       } catch (error) {
         console.error('Anonymous sign-in failed:', error);
-        if (statusEl) statusEl.textContent = 'Authentication Failed';
+        setStatus('Authentication Failed', 'error');
         addMessage('bot', `I'm having trouble connecting. Please refresh. Error: ${error.message}`);
       }
     }
   });
 } catch (e) {
   console.error('Initialization failed:', e);
-  if (statusEl) statusEl.textContent = 'Error: Check Config';
+  setStatus('Error: Check Config', 'error');
   addMessage('bot', `Failed to initialize the app. Check console for errors. Error: ${e.message}`);
 }
+
+// --- MODAL LOGIC ---
+const openModalBtn = document.getElementById('open-modal');
+const closeModalBtn = document.getElementById('close-modal');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+const modalOverlay = document.getElementById('modal-overlay');
+const modalContent = document.getElementById('modal-content');
+
+function toggleModal(show) {
+  if (show) {
+    modalOverlay.classList.remove('opacity-0', 'pointer-events-none');
+    modalContent.classList.remove('scale-95');
+    modalContent.classList.add('scale-100');
+    document.body.style.overflow = 'hidden';
+  } else {
+    modalOverlay.classList.add('opacity-0', 'pointer-events-none');
+    modalContent.classList.remove('scale-100');
+    modalContent.classList.add('scale-95');
+    document.body.style.overflow = '';
+  }
+}
+
+if (openModalBtn) openModalBtn.addEventListener('click', () => toggleModal(true));
+if (closeModalBtn) closeModalBtn.addEventListener('click', () => toggleModal(false));
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => toggleModal(false));
+if (modalOverlay) {
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) toggleModal(false);
+  });
+}
+
+// Close on Escape key
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !modalOverlay.classList.contains('opacity-0')) {
+    toggleModal(false);
+  }
+});
 
 // --- CHAT FUNCTIONS ---
 function addMessage(sender, text, timestamp) {

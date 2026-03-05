@@ -28,72 +28,52 @@
       </div>
     </nav>
 
-    <main class="flex-grow flex flex-col items-center p-6 space-y-8">
-      <!-- Project Overview Section -->
-      <section class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-gray-400">
-        <div class="space-y-4">
-          <h2 class="text-white font-bold uppercase tracking-widest text-xs border-b border-gray-800 pb-2">
-            Project Overview
-          </h2>
-          <p>
-            The Weather Query Bot is a technical playground built to experiment with serverless orchestration and
-            conversational AI. It provides real-time, global weather insights through a natural language interface.
-          </p>
-          <p>
-            <strong class="text-indigo-400">How to use:</strong> Simply type a city or location name into the chat. The
-            assistant will fetch the latest data and provide a conversational summary including temperature, wind speed,
-            and conditions.
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <h2 class="text-white font-bold uppercase tracking-widest text-xs border-b border-gray-800 pb-2">
-            Tech Stack & Skills
-          </h2>
-          <ul class="space-y-2">
-            <li>
-              <span class="text-gray-300 font-semibold">Architecture:</span> Netlify Functions (Node.js) & Firebase
-              Firestore.
-            </li>
-            <li>
-              <span class="text-gray-300 font-semibold">AI & Data:</span> Google Gemini 2.5 Flash API paired with the
-              OpenWeatherMap API.
-            </li>
-            <li>
-              <span class="text-gray-300 font-semibold">Skills Shown:</span> Asynchronous API orchestration, prompt
-              engineering, secure environment management, and real-time state synchronization.
-            </li>
-          </ul>
-        </div>
-      </section>
-
+    <main class="flex-grow flex flex-col items-center p-6 space-y-6">
       <div
-        class="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[60vh] border border-gray-800 overflow-hidden"
+        class="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[65vh] border border-gray-800 overflow-hidden"
       >
         <!-- Chat Header -->
-        <div class="p-6 border-b border-gray-800 bg-gray-800/50 flex items-center space-x-4">
-          <div
-            class="relative flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-full text-white shadow-lg shadow-indigo-600/20"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-7 h-7"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
+        <div class="p-6 border-b border-gray-800 bg-gray-800/50 flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <div
+              class="relative flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-full text-white shadow-lg shadow-indigo-600/20"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-7 h-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-xl font-bold text-white tracking-tight leading-tight">Weather Query Bot</h1>
+              <p class="text-xs text-gray-500 font-medium">AI-powered assistant using Gemini & OpenWeatherMap</p>
+            </div>
           </div>
-          <div>
-            <h1 class="text-xl font-bold text-white tracking-tight">Weather Query Bot</h1>
-            <p id="status" class="text-sm text-gray-400">Connecting...</p>
+          <button
+            id="open-modal"
+            class="text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors flex items-center space-x-1 group"
+          >
+            <span>How it works</span>
+            <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+          </button>
+        </div>
+
+        <!-- Connection Status -->
+        <div class="px-6 py-2 bg-gray-900/50 border-b border-gray-800/50 flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span id="status-dot" class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
+            <p id="status" class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Connecting...</p>
           </div>
+          <div id="user-info" class="text-[10px] text-gray-600 uppercase tracking-widest font-bold"></div>
         </div>
 
         <!-- Chat Messages -->
@@ -153,13 +133,75 @@
               <span>Send</span>
             </button>
           </form>
-          <div
-            id="user-info"
-            class="text-[10px] text-gray-600 pt-3 text-center uppercase tracking-widest font-bold"
-          ></div>
         </div>
       </div>
     </main>
+
+    <!-- Project Info Modal -->
+    <div
+      id="modal-overlay"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        id="modal-content"
+        class="bg-gray-900 border border-gray-800 w-full max-w-lg rounded-2xl shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden"
+      >
+        <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-gray-800/30">
+          <h2 class="text-white font-bold uppercase tracking-widest text-xs">Project Overview</h2>
+          <button id="close-modal" class="text-gray-500 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="p-8 space-y-6 text-sm leading-relaxed text-gray-400">
+          <div class="space-y-3">
+            <p>
+              The Weather Query Bot is a technical playground built to experiment with serverless orchestration and
+              conversational AI. It provides real-time, global weather insights through a natural language interface.
+            </p>
+            <p>
+              <strong class="text-indigo-400">How to use:</strong> Simply type a city or location name into the chat.
+              The assistant will fetch the latest data and provide a conversational summary.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-gray-800">
+            <h3 class="text-white font-bold uppercase tracking-widest text-[10px]">Tech Stack & Skills</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start space-x-3">
+                <span class="text-indigo-500 mt-1">•</span>
+                <span>
+                  <strong class="text-gray-300">Architecture:</strong> Netlify Functions (Node.js) & Firebase Firestore.
+                </span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-indigo-500 mt-1">•</span>
+                <span>
+                  <strong class="text-gray-300">AI & Data:</strong> Google Gemini 2.5 Flash API paired with
+                  OpenWeatherMap.
+                </span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-indigo-500 mt-1">•</span>
+                <span>
+                  <strong class="text-gray-300">Skills:</strong> Asynchronous API orchestration, prompt engineering, and
+                  secure environment management.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 bg-gray-800/20 border-t border-gray-800 text-center">
+          <button
+            id="modal-close-btn"
+            class="px-6 py-2 bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-colors border border-gray-700"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
 
     <footer class="text-center py-10 bg-gray-950 text-gray-500 border-t border-gray-800">
       <p class="text-gray-400 text-sm">Handcrafted by me © 2026 Beau Bremer. Powered by Gemini API.</p>

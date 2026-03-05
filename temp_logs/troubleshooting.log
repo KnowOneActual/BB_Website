@@ -1,0 +1,11 @@
+[2026-03-04 16:25] TROUBLESHOOTING WEATHER BOT - UPDATE
+- Issue persists: Stuck on "Connecting..."
+- New Hypothesis: Netlify's Content Security Policy (CSP) is very strict and might be preventing the execution of the script module even with gstatic.com whitelisted, or it's failing to resolve the imports silently because of how they are being loaded.
+- Action Taken:
+  1. Created js/weather-bot.js and moved all logic there.
+  2. Updated weather.html to use <script type="module" src="js/weather-bot.js"></script> instead of an inline script.
+  3. Added even more defensive checks (e.g., checking if statusEl exists before using it).
+  4. Created this log folder/file as requested.
+- Next Steps:
+  - If still stuck, verify if any errors appear in the browser console regarding CSP or script loading.
+  - Consider adding 'unsafe-inline' to script-src in netlify.toml temporarily if debugging requires it.

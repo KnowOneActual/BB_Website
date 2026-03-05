@@ -87,19 +87,34 @@ exports.handler = async function (event) {
     };
 
     // 1. Get city from user query
-    const cityPrompt = `From the user query, extract only the city or location. If none, respond "N/A". Query: "${userQuery}"`;
-    const city = await callGemini(cityPrompt);
+    const cityPrompt = `You are a weather bot helper. A user said: "${userQuery}". 
+    Extract the city or location they are asking about. 
+    - If they mention a city, return ONLY the city name.
+    - If they are just saying hello or being friendly without a city, return "GREETING".
+    - If you cannot find a city and it's not a greeting, return "N/A".`;
+    
+    const cityResponse = await callGemini(cityPrompt);
 
-    if (city === 'N/A' || !city) {
-      throw new Error("I'm sorry, I couldn't identify a city in your request. Could you please rephrase it?");
+    if (cityResponse === 'GREETING') {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ reply: "Hello! I'm your Weather Assistant. To give you an update, I just need to know which city you're interested in!" }),
+      };
+    }
+
+    if (cityResponse === 'N/A' || !cityResponse) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ reply: "I'm sorry, I couldn't quite catch which city you're asking about. Could you please specify a location?" }),
+      };
     }
 
     // 2. Get weather data for the city
-    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityResponse}&appid=${WEATHER_API_KEY}&units=metric`;
     const weatherResponse = await fetch(weatherApiUrl);
     if (!weatherResponse.ok) {
       if (weatherResponse.status === 404)
-        throw new Error(`I couldn't find a city named "${city}". Please check the spelling.`);
+        throw new Error(`I couldn't find a city named "${cityResponse}". Please check the spelling.`);
       throw new Error(`Weather API error: ${weatherResponse.statusText}`);
     }
     const weatherDataRaw = await weatherResponse.json();

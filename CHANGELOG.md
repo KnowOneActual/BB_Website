@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-03-05
+
+### Added
+- **Project Info Modal:** Implemented a sleek, interactive modal for the Weather Query Bot to house project details and tech stack info, keeping the primary interface focused and clean.
+- **AI Context Layer:** Added `GEMINI.md` to the project root to provide persistent architectural and technical context for AI-assisted development.
+
+### Changed
+- **Weather UI Simplification:** Redesigned the Weather Query Bot landing page to remove long-form text blocks in favor of a modern, conversational-first layout with real-time status indicators.
+- **Connection Visuals:** Added a dynamic connection status dot (Online/Connecting/Error) to the chat header for immediate visual feedback.
+
+### Security
+- **Dependency Hardening (Build-time):** Implemented strict version `overrides` in `package.json` to neutralize high-severity vulnerabilities in the build toolchain:
+    - `rollup`: Forced to `4.59.0` (Fixes RCE/Path Traversal).
+    - `minimatch`: Forced to `10.2.3` (Fixes multiple HIGH-severity ReDoS vulnerabilities).
+    - `svgo`: Forced to `4.0.1` (Fixes Billion Laughs DoS).
+    - `tar`: Forced to `7.5.10` (Fixes Hardlink Path Traversal).
+    - `ajv` & `qs`: Forced to patched versions to mitigate ReDoS and DoS vectors.
+- **Toolchain Upgrade:** Upgraded `netlify-cli` to `^24.0.1` to leverage latest security patches and internal improvements.
+
 ## [1.7.5] - 2026-03-04
 
 ### Fixed

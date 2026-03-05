@@ -128,12 +128,13 @@
     </footer>
 
     <script type="module">
-      import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
+      console.log('Weather Bot script starting...');
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js';
       import {
         getAuth,
         signInAnonymously,
         onAuthStateChanged,
-      } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+      } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js';
       import {
         getFirestore,
         onSnapshot,
@@ -142,7 +143,9 @@
         query,
         orderBy,
         serverTimestamp,
-      } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
+      } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js';
+
+      console.log('Firebase modules imported successfully.');
 
       // --- CONFIGURATION ---
       const firebaseConfig = {
@@ -157,44 +160,63 @@
 
       const appId = 'weather-bot-beaubremer-com';
 
-      // --- DOM ELEMENTS ---
-      const chatWindow = document.getElementById('chat-window');
-      const chatForm = document.getElementById('chat-form');
-      const chatInput = document.getElementById('chat-input');
-      const statusEl = document.getElementById('status');
-      const typingIndicator = document.getElementById('typing-indicator');
-      const userInfoEl = document.getElementById('user-info');
-
       // --- FIREBASE INITIALIZATION ---
       let db, auth;
       let userId = null;
       let unsubscribe;
+      let statusEl, chatWindow, chatForm, chatInput, typingIndicator, userInfoEl;
 
       try {
+        console.log('Initializing DOM elements...');
+        chatWindow = document.getElementById('chat-window');
+        chatForm = document.getElementById('chat-form');
+        chatInput = document.getElementById('chat-input');
+        statusEl = document.getElementById('status');
+        typingIndicator = document.getElementById('typing-indicator');
+        userInfoEl = document.getElementById('user-info');
+
+        if (statusEl) statusEl.textContent = 'Initializing...';
+
+        // Add a connection timeout
+        const connectionTimeout = setTimeout(() => {
+          if (statusEl && statusEl.textContent === 'Initializing...') {
+            statusEl.textContent = 'Connection Slow...';
+            console.warn('Initialization is taking longer than expected.');
+          }
+        }, 10000);
+
+        console.log('Initializing Firebase App...');
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
         auth = getAuth(app);
-        statusEl.textContent = 'Authenticating...';
+        
+        if (statusEl) statusEl.textContent = 'Authenticating...';
+        console.log('Firebase services initialized. Waiting for auth state change...');
 
         onAuthStateChanged(auth, async (user) => {
+          clearTimeout(connectionTimeout);
+          console.log('Auth state changed:', user ? 'User signed in' : 'No user');
           if (user) {
             userId = user.uid;
-            statusEl.textContent = 'Online';
-            userInfoEl.textContent = `Session ID: ${userId.substring(0, 8)}...`;
+            if (statusEl) statusEl.textContent = 'Online';
+            if (userInfoEl) userInfoEl.textContent = `Session ID: ${userId.substring(0, 8)}...`;
+            console.log('User ID:', userId);
             loadChatHistory();
           } else {
+            console.log('Attempting anonymous sign-in...');
             try {
               await signInAnonymously(auth);
+              console.log('Anonymous sign-in successful');
             } catch (error) {
               console.error('Anonymous sign-in failed:', error);
-              statusEl.textContent = 'Authentication Failed';
+              if (statusEl) statusEl.textContent = 'Authentication Failed';
               addMessage('bot', `I'm having trouble connecting. Please refresh. Error: ${error.message}`);
             }
           }
         });
       } catch (e) {
-        console.error('Firebase initialization failed:', e);
-        statusEl.textContent = 'Error: Check Config';
+        console.error('Initialization failed:', e);
+        if (statusEl) statusEl.textContent = 'Error: Check Config';
         addMessage('bot', `Failed to initialize the app. Check console for errors. Error: ${e.message}`);
       }
 

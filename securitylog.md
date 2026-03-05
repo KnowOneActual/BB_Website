@@ -1,3 +1,35 @@
+## 2026-03-05 - Dependency Security Hardening (Rollup, SVGO, Tar)
+
+* **Activity:** Addressed high-severity vulnerabilities in build-time dependencies.
+* **Summary:** Updated `netlify-cli` and implemented strict version overrides for transitive dependencies (`rollup`, `svgo`, `tar`) to mitigate path traversal and DoS risks.
+
+---
+
+### Changes Implemented
+
+* **Build Tool Upgrade (`netlify-cli`)**
+    * **Action:** Updated `netlify-cli` from `^23.15.1` to `^24.0.1`.
+    * **Reason:** Moves the project to a newer major branch of the Netlify toolchain which includes internal security patches and better dependency management.
+* **Forced Security Overrides**
+    * **Action:** Added an `overrides` section to `package.json` to force specific, non-vulnerable versions of key packages:
+        * `rollup`: Forced to `4.59.0` (Fixes Arbitrary File Write via Path Traversal).
+        * `svgo`: Forced to `4.0.1` (Fixes DoS through entity expansion).
+        * `tar`: Forced to `7.5.10` (Fixes Hardlink Path Traversal).
+        * `ajv`: Forced to `^8.17.1` (Fixes ReDoS).
+        * `minimatch`: Forced to `^10.0.0` (Fixes ReDoS).
+    * **Reason:** Ensures that even deep sub-dependencies (e.g., within `netlify-cli` or `ipx`) use patched versions that cannot be automatically resolved by a standard `npm update`.
+* **Clean Dependency Re-synchronization**
+    * **Action:** Performed a full `rm -rf node_modules package-lock.json && npm install` cycle.
+    * **Reason:** Ensures the local environment and the generated lockfile strictly adhere to the new `overrides` and eliminates any residual vulnerable artifacts.
+
+### Risk Assessment
+
+* **Type:** Build-time/Development dependencies.
+* **Impact:** Low to users of the live website. These tools are used only during the build and deployment phases.
+* **Mitigation Status:** Fully mitigated. Verified via `npm list` that safe versions are being deduped or used across the dependency tree.
+
+---
+
 ## 2026-03-04 - CSP Compliance & AI Quota Optimization
 
 * **Activity:** Resolved Weather Bot initialization hang and optimized AI model selection.

@@ -1,3 +1,22 @@
+## 2026-03-04 - CSP Compliance & AI Quota Optimization
+
+* **Activity:** Resolved Weather Bot initialization hang and optimized AI model selection.
+* **Summary:** Externalized the Weather Bot's inline script module to comply with strict Content Security Policy (CSP) headers and switched to the Gemini 1.5 Flash model to stay within free-tier API quotas.
+
+---
+
+### Changes Implemented
+
+* **CSP Compliance (Script Externalization)**
+    * **Action:** Moved all weather bot logic from an inline script in `weather.html` to a dedicated external file `js/weather-bot.js`.
+    * **Reason:** Strict CSP in `netlify.toml` blocked the inline module. Externalizing the script allows it to run under the whitelisted `gstatic.com` and `self` directives without needing a hash or nonce for every change.
+* **AI Model Reliability (Gemini 1.5 Flash)**
+    * **Action:** Updated `netlify/functions/weather.js` to target the `gemini-1.5-flash` model.
+    * **Reason:** The experimental 2.0 model encountered frequent "429 Quota Exceeded" errors on the free tier. Switching to 1.5 Flash provides more reliable uptime and higher request limits while maintaining conversational quality.
+* **Proactive Connection Monitoring**
+    * **Action:** Added a 10-second connection timeout and granular console logging to the weather bot frontend.
+    * **Reason:** Provides immediate feedback to the user if the bot initialization is slow or blocked (e.g., by ad-blockers), improving the overall robust feel of the utility.
+
 ## 2026-03-01 - Security & Privacy Hardening (Fonts, Scripts, & Linting)
 
 * **Activity:** Implemented self-hosted fonts, externalized inline scripts, and integrated security-focused linting.

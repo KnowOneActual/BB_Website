@@ -2,6 +2,30 @@
 
 This log tracks significant development sessions, architectural decisions, and troubleshooting sessions to provide context for future maintenance.
 
+## Session: 2026-03-04 - Weather Bot Stability & AI Model Optimization
+
+### 1. CSP-Induced Hang Fix (Externalization)
+*   **Issue:** The Weather Query Bot (`weather.html`) was stuck on "Connecting..." with no visible console errors.
+*   **Root Cause:** The Content Security Policy (CSP) in `netlify.toml` blocked the inline script module because it lacked a hash or nonce, even though the source CDN was whitelisted.
+*   **Solution:** 
+    1.  Moved all logic from the inline script in `weather.html` to a new external file `js/weather-bot.js`.
+    2.  Updated `weather.html` to reference the external file via `<script type="module" src="js/weather-bot.js"></script>`.
+*   **Rationale:** Externalizing scripts is the preferred way to comply with strict CSP policies without compromising security.
+
+### 2. AI Model & Quota Management
+*   **Issue:** Encountered "429 Quota Exceeded" errors with `gemini-2.0-flash`.
+*   **Root Cause:** The experimental `gemini-2.0-flash` free tier has lower limits compared to the stable version.
+*   **Solution:** Updated `netlify/functions/weather.js` to use `gemini-1.5-flash`.
+*   **Outcome:** Restored bot functionality while maintaining high performance and ensuring reliability within the free tier.
+
+### 3. Connection Diagnostics & User Feedback
+*   **Feature:** Implemented a connection timeout mechanism in the frontend.
+*   **Implementation:** 
+    1.  Added a `setTimeout` that triggers if the status remains "Initializing..." for more than 10 seconds.
+    2.  Enhanced console logging throughout the initialization lifecycle.
+*   **Rationale:** Improves UX by proactively informing users of slow connections or potential blocks (like ad-blockers).
+
+---
 ## Session: 2026-03-01 - Content Security & Privacy Hardening
 
 ### 1. Font Self-Hosting Implementation

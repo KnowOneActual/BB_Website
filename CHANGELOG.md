@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.5] - 2026-03-04
+
+### Fixed
+- **Weather Bot Stability:** Resolved a critical issue where the Weather Query Bot would remain stuck on "Connecting..." due to Content Security Policy (CSP) restrictions on inline script modules. 
+- **AI Model Optimization:** Switched the weather bot's backend from `gemini-2.0-flash` to `gemini-1.5-flash` in the Netlify function to improve reliability and stay within free-tier quota limits.
+
+### Changed
+- **Script Externalization:** Moved the weather bot's logic from `weather.html` to a dedicated external file (`js/weather-bot.js`) to comply with strict security headers and enhance maintainability.
+- **Connection Diagnostics:** Implemented a connection timeout and enhanced console logging in the weather bot to provide proactive user feedback during slow initializations.
+
 ## [1.7.4] - 2026-03-04
 
 ### Changed

@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 - **Weather Bot Stability:** Resolved a critical issue where the Weather Query Bot would remain stuck on "Connecting..." due to Content Security Policy (CSP) restrictions on inline script modules. 
-- **AI Model Optimization:** Switched the weather bot's backend from `gemini-2.0-flash` to `gemini-1.5-flash` in the Netlify function to improve reliability and stay within free-tier quota limits.
+- **AI Model Optimization:** Transitioned the weather bot to `gemini-2.5-flash` to ensure compatibility with 2026 stable endpoints, resolving deprecation errors seen with earlier 1.5 and 2.0 models.
 
 ### Changed
 - **Script Externalization:** Moved the weather bot's logic from `weather.html` to a dedicated external file (`js/weather-bot.js`) to comply with strict security headers and enhance maintainability.

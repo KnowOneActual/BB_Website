@@ -10,9 +10,9 @@
 * **CSP Compliance (Script Externalization)**
     * **Action:** Moved all weather bot logic from an inline script in `weather.html` to a dedicated external file `js/weather-bot.js`.
     * **Reason:** Strict CSP in `netlify.toml` blocked the inline module. Externalizing the script allows it to run under the whitelisted `gstatic.com` and `self` directives without needing a hash or nonce for every change.
-* **AI Model Reliability (Gemini 1.5 Flash)**
-    * **Action:** Updated `netlify/functions/weather.js` to target the `gemini-1.5-flash` model.
-    * **Reason:** The experimental 2.0 model encountered frequent "429 Quota Exceeded" errors on the free tier. Switching to 1.5 Flash provides more reliable uptime and higher request limits while maintaining conversational quality.
+* **AI Model Reliability (Gemini 2.5 Flash)**
+    * **Action:** Updated `netlify/functions/weather.js` to target the `gemini-2.5-flash` model.
+    * **Reason:** In this 2026 environment, earlier models like 1.5 and 2.0 Flash have been deprecated or moved. Switching to 2.5 Flash ensures stability and compliance with current production endpoints.
 * **Proactive Connection Monitoring**
     * **Action:** Added a 10-second connection timeout and granular console logging to the weather bot frontend.
     * **Reason:** Provides immediate feedback to the user if the bot initialization is slow or blocked (e.g., by ad-blockers), improving the overall robust feel of the utility.

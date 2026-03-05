@@ -12,11 +12,11 @@ This log tracks significant development sessions, architectural decisions, and t
     2.  Updated `weather.html` to reference the external file via `<script type="module" src="js/weather-bot.js"></script>`.
 *   **Rationale:** Externalizing scripts is the preferred way to comply with strict CSP policies without compromising security.
 
-### 2. AI Model & Quota Management
-*   **Issue:** Encountered "429 Quota Exceeded" errors with `gemini-2.0-flash`.
-*   **Root Cause:** The experimental `gemini-2.0-flash` free tier has lower limits compared to the stable version.
-*   **Solution:** Updated `netlify/functions/weather.js` to use `gemini-1.5-flash`.
-*   **Outcome:** Restored bot functionality while maintaining high performance and ensuring reliability within the free tier.
+### 2. AI Model & API Version (2.5 Flash Update)
+*   **Issue:** Encountered "model not found" errors when using older model versions.
+*   **Root Cause:** The Gemini API models have evolved. In this March 2026 context, `gemini-1.5-flash` and `gemini-2.0-flash` have been deprecated or removed from production endpoints.
+*   **Solution:** Updated `netlify/functions/weather.js` to use `gemini-2.5-flash` on the `v1beta` endpoint.
+*   **Outcome:** Restored bot functionality with stable 2026 model identifiers.
 
 ### 3. Connection Diagnostics & User Feedback
 *   **Feature:** Implemented a connection timeout mechanism in the frontend.

@@ -25,6 +25,33 @@
 
 ---
 
+## 2026-03-05 - Repository & Dependency Hardening
+
+* **Activity:** Updated `.gitignore` to industry standards, removed build artifacts from source control, and implemented strict dependency overrides.
+* **Summary:** Hardened the repository by excluding unnecessary build and system files. Addressed high-severity vulnerabilities by forcing secure versions of key dependencies across the project toolchain.
+
+---
+
+### Changes Implemented
+
+* **Repository Clean-up (.gitignore & Coverage)**
+    * **Action:** Updated `.gitignore` with comprehensive rules for Node.js, macOS, and common IDEs.
+    * **Action:** Removed the `coverage/` directory from git tracking (`git rm --cached`).
+    * **Reason:** Aligns with best practices to keep the repository clean and free of transient build artifacts.
+* **Dependency Security Overrides**
+    * **Action:** Implemented targeted `overrides` in `package.json` for `ajv`, `minimatch`, `rollup`, `svgo`, and `tar`.
+    * **Action:** Attempted deeply nested overrides for `netlify-cli` sub-dependencies.
+    * **Reason:** Addresses multiple HIGH-severity ReDoS, Path Traversal, and DoS vulnerabilities in the build toolchain.
+
+### Risk Assessment & Findings
+
+* **Type:** Repository maintenance and development-time dependencies.
+* **Impact:** Low to end-users. These changes primarily affect the local development environment and CI/CD pipelines.
+* **Mitigation Status:** **Moderate-High**. All direct and primary sub-dependencies are secured. Some deeply nested dependencies within `netlify-cli` remain pinned by the tool itself.
+* **Residual Note:** `netlify-cli`'s internal structure resists some overrides. The remaining high-severity findings are isolated within the CLI tool and do not affect the production website's security posture.
+
+---
+
 ## 2026-03-05 - Dependency Security Hardening (Rollup, SVGO, Tar, Minimatch)
 
 * **Activity:** Addressed high-severity vulnerabilities in build-time dependencies identified by Dependabot and Trivy.

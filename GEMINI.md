@@ -21,6 +21,7 @@ This file provides essential context for Gemini CLI when working on the Beau Bre
     - Specialized tools: `IP_Subnet_Calculator.js`, `network_latency_monitor.js`, etc.
 - **Serverless Functions:** Located in `netlify/functions/`.
     - `weather.js`: Handles weather queries via OpenWeatherMap and Google Gemini AI (2.5 Flash).
+    - `firebase-config.js`: Securely serves Firebase configuration to the client using environment variables.
     - `fetch-posts.js`: Proxy for fetching external blog content.
 - **Data:** JSON files in `data/` for social links and other dynamic content.
 - **Tests:** Jest tests located in `__tests__/`.
@@ -42,7 +43,7 @@ This file provides essential context for Gemini CLI when working on the Beau Bre
 - **Styling:** Follow the established "Indigo/Gray" theme (`gray-950` backgrounds, `indigo-400/600` accents). Use Tailwind utility classes primarily.
 - **JavaScript:** Use modern ES6+ features. Prefer vanilla JS over frameworks where possible for the main site.
 - **Security:** Always consider Content Security Policy (CSP) when adding new external resources. Use `eslint-plugin-security` to catch potential vulnerabilities.
-- **AI Integration:** The project uses Google Gemini (`gemini-2.5-flash`). API calls should be handled via serverless functions to protect API keys.
+- **AI & Firebase Integration:** The project uses Google Gemini (`gemini-2.5-flash`) and Firebase. All sensitive API keys and configurations are handled via serverless functions (Netlify Functions) to prevent exposure on the client-side.
 - **Unit Testing:** New UI components or complex logic should include Jest tests in `__tests__/`.
 
 ## Troubleshooting & Notes

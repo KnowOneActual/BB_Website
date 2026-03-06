@@ -1,3 +1,30 @@
+## 2026-03-05 - Remediation of Hardcoded Secrets & Accessibility
+
+* **Activity:** Addressed Snyk Code and webhint warnings regarding hardcoded non-cryptographic secrets and accessibility violations.
+* **Summary:** Removed hardcoded Firebase API keys and configuration from client-side JavaScript, implementing a secure serverless fetch pattern via Netlify Functions. Fixed missing accessibility attributes on UI elements.
+
+---
+
+### Changes Implemented
+
+* **Secret Management & Architecture Update**
+    * **Action:** Removed hardcoded `firebaseConfig` object from `js/weather-bot.js`.
+    * **Action:** Created `netlify/functions/firebase-config.js` to serve these values dynamically from secure environment variables (`process.env.FIREBASE_API_KEY`, etc.).
+    * **Action:** Updated `js/weather-bot.js` to retrieve the configuration securely using `await fetch('/.netlify/functions/firebase-config')` on initialization.
+    * **Reason:** Mitigates the "Hardcoded Non-Cryptographic Secret" warning flagged by Snyk. Prevents exposure of the Firebase project config by keeping the API keys out of the public source code repository.
+* **Accessibility Enhancements**
+    * **Action:** Added `title="Close"` and `aria-label="Close modal"` to the modal close button in `weather.html`.
+    * **Reason:** Resolves `axe/name-role-value` webhint rule to ensure buttons have discernible text for screen readers.
+
+### Risk Assessment & Findings
+
+* **Type:** Source Code Security & Accessibility.
+* **Impact:** High improvement in security posture; prevents source control leakage of API keys.
+* **Mitigation Status:** **High**. Secrets are securely stored in Netlify Environment Variables.
+* **Residual Note:** The Firebase config is now fetched dynamically at runtime. Local development requires these to be set in a local `.env` file for the bot to function.
+
+---
+
 ## 2026-03-05 - Dependency Security Hardening (Rollup, SVGO, Tar, Minimatch)
 
 * **Activity:** Addressed high-severity vulnerabilities in build-time dependencies identified by Dependabot and Trivy.

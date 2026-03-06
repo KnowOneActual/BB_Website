@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] - 2026-03-05
+
+### Changed
+- **Security Hardening (Weather Bot):** Removed hardcoded Firebase configuration and secrets from the client-side `js/weather-bot.js`, implementing a secure server-side fetching pattern via Netlify Functions.
+- **Accessibility Improvement:** Enhanced the `weather.html` modal with proper `aria-label` and `title` attributes for the close button to meet WCAG standards.
+
+### Added
+- **Secure Configuration Function:** Created `netlify/functions/firebase-config.js` to manage sensitive API keys and environment variables on the backend.
+
 ## [1.8.0] - 2026-03-05
 
 ### Added

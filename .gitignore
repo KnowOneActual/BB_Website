@@ -17,3 +17,5 @@ start-work.sh
 .vscode/
 
 .env
+
+temp_logs

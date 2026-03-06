@@ -70,17 +70,18 @@
         * `minimatch`: Forced to `10.2.3` (Fixes CVE-2026-27904, CVE-2026-27903, CVE-2026-26996 - ReDoS).
         * `svgo`: Forced to `4.0.1` (Fixes CVE-2026-26997 - DoS through entity expansion).
         * `tar`: Forced to `7.5.10` (Fixes CVE-2026-27605 - Hardlink Path Traversal).
-        * `ajv`: Forced to `^8.17.1` (Fixes ReDoS).
-    * **Reason:** Neutralizes critical vulnerabilities found by Trivy and Dependabot by forcing safe versions throughout the primary execution paths of the build environment.
-* **Clean Dependency Re-synchronization**
-    * **Action:** Performed multiple `rm -rf node_modules package-lock.json && npm install` cycles to ensure the local lockfile strictly adheres to the new security baseline.
+        * `rollup`: Forced to `4.59.0` (Fixes CVE-2026-27606 - Remote Code Execution via Path Traversal). Verified via `npm ls rollup` that version 4.59.0 is correctly deduped and active across the toolchain.
+        * **Reason:** Neutralizes critical vulnerabilities found by Trivy and Dependabot by forcing safe versions throughout the primary execution paths of the build environment.
+        * **Clean Dependency Re-synchronization**
+        * **Action:** Performed multiple `rm -rf node_modules package-lock.json && npm install` cycles to ensure the local lockfile strictly adheres to the new security baseline.
 
-### Risk Assessment & Findings
+        ### Risk Assessment & Findings
 
-* **Type:** Build-time/Development dependencies.
-* **Impact:** Low to end-users. These tools only run during local development and CI/CD builds.
-* **Mitigation Status:** **High**. Verified via `npm list` that safe versions of `rollup` (4.59.0) and `minimatch` (10.2.3) are being used by primary sub-dependencies (like `@rollup/pluginutils`).
-* **Residual Note:** Some deep sub-dependencies of `netlify-cli` (e.g., within `@netlify/edge-bundler` or `ipx`) may still reference older versions in their internal metadata, but these are secondary to the primary project-wide overrides which take precedence in the active build environment.
+        * **Type:** Build-time/Development dependencies.
+        * **Impact:** **None to production**. These tools only run during local development and CI/CD builds. Rollup is not part of the final code shipped to browsers.
+        * **Mitigation Status:** **High**. Confirmed fix for CVE-2026-27606. The path traversal risk is mitigated as version 4.59.0 is explicitly active in the dependency tree.
+        * **Residual Note:** This vulnerability is not relevant to the live website's runtime environment. It is fully contained and remediated in the build toolchain.
+
 
 ---
 

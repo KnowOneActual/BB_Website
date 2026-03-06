@@ -19,15 +19,16 @@ import {
 console.log('Firebase modules imported successfully.');
 
 // --- CONFIGURATION ---
-const firebaseConfig = {
-  apiKey: 'REDACTED_FIREBASE_KEY',
-  authDomain: 'bb-weather-f9363.firebaseapp.com',
-  projectId: 'bb-weather-f9363',
-  storageBucket: 'bb-weather-f9363.appspot.com',
-  messagingSenderId: '395414091341',
-  appId: '1:395414091341:web:fb6245e4500e33422d4e04',
-  measurementId: 'G-BBV2VK4W9E',
-};
+// Fetch configuration from Netlify function to keep secrets out of the source code.
+const firebaseConfig = await fetch('/.netlify/functions/firebase-config')
+  .then(res => {
+    if (!res.ok) throw new Error('Failed to fetch Firebase configuration.');
+    return res.json();
+  })
+  .catch(err => {
+    console.error('Firebase Config Error:', err);
+    return null;
+  });
 
 const appId = 'weather-bot-beaubremer-com';
 

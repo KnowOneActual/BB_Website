@@ -15,3 +15,5 @@ start-work.sh
 
 #VS Code / VScodium
 .vscode/
+
+.env

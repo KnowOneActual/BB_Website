@@ -138,6 +138,11 @@
           "name": "IPinfo.io",
           "url": "https://ipinfo.io/",
           "icon": "fa-solid fa-location-dot"
+        },
+        {
+          "name": "DNS Leak Test",
+          "url": "https://www.dnsleaktest.com/",
+          "icon": "fa-solid fa-bell"
         }
       ]
     },

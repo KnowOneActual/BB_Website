@@ -134,4 +134,42 @@ This log tracks significant development sessions, architectural decisions, and t
 *   **Outcome:** This will allow the use of `fa-brands fa-claude` directly instead of the inline SVG fallback, simplifying the JSON data structure.
 
 ---
+## Session: 2026-03-04 - Daily Links Enhancement & Icon Troubleshooting
+
+### 1. "Quick Access" & Pinned Logic
+*   **Feature:** Implemented a `pinned: true` property in `data/daily-links.json`.
+*   **Implementation:** Updated `js/daily-links.js` to extract all pinned links and render them in a prominent "Quick Access" section at the top of the page.
+*   **Styling:** Added a custom amber hover state and thumbtack icon to distinguish pinned items from regular categories.
+
+### 2. Inline SVG Integration (Icon Fallback)
+*   **Issue:** The new Claude brand icon requires Font Awesome 7.2.0, which is not yet available on stable CDNs (cdnjs). Attempting to use the 7.2.0 link resulted in a site-wide loss of icons due to MIME type mismatches.
+*   **Solution:** 
+    1.  Reverted `dayl.html` to Font Awesome 7.0.0.
+    2.  Enhanced the rendering engine in `js/daily-links.js` to support raw SVG strings passed via the JSON data.
+    3.  Integrated the official Claude AI symbol as an inline SVG.
+*   **Rationale:** Provides high-fidelity, brand-accurate icons without waiting for CDN propagation or increasing external dependencies.
+
+### 3. Future Update: Font Awesome 7.2.0+
+*   **Task:** Upgrade the Font Awesome CDN link in `dayl.html` to version 7.2.0 or higher once it is available on `cdnjs`.
+*   **Outcome:** This will allow the use of `fa-brands fa-claude` directly instead of the inline SVG fallback, simplifying the JSON data structure.
+
+---
 *End of Log Entry*
+---
+## Session: 2026-04-06 - DRF Room Guide Improvements & netlify-cli Vulnerability Troubleshooting
+
+### 1. DRF Room Guide Enhancements
+*   **Action:** Implemented several UI/UX and SEO improvements for `DRF/drf-room-guide.html`.
+*   **Details:**
+    1.  Moved inline CSS to an external file (`DRF/drf-room-guide.css`).
+    2.  Added comprehensive SEO metadata (`meta description`, Open Graph, Twitter Cards).
+    3.  Implemented a client-side search/filter functionality for room listings (HTML input, CSS styling, `DRF/drf-room-guide.js`).
+*   **Outcome:** Improved page performance, discoverability, and user experience.
+
+### 2. `netlify-cli` Vulnerability & `esbuild` Issue
+*   **Issue:** `npm audit` reported high-severity vulnerabilities, primarily within `netlify-cli`'s dependencies. Attempts to fix using `npm audit fix` and `npm audit fix --force` failed due to an `esbuild` module not found error within `netlify-cli`'s installation process.
+*   **Context:** User indicated this is a recurring "local issue" and not a concern for the project's code itself.
+*   **Root Cause (Inferred):** Likely an environment-specific problem with how `netlify-cli` or its optional dependencies (`esbuild`) are being installed or resolved on the local system, rather than a direct code vulnerability. Direct inspection of npm debug logs was not possible due to workspace restrictions.
+*   **Recommended User Action:** Manual cleanup of npm cache (`npm cache clean --force`), `node_modules`, and `package-lock.json`, followed by a fresh `npm install`, then retry `npm audit fix --force`.
+*   **Outcome:** Issue acknowledged as a local environment concern; project code not directly impacted by vulnerability or `esbuild` error.
+

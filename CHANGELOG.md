@@ -18,6 +18,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Room Guide Integration:** Added 'All Tools & Resources' link to room guide header and footer style guide reference for cohesive navigation.
 - **Extron Guide Structure:** Removed institutional contact section to focus purely on technical troubleshooting content.
 
+## [1.9.1] - 2026-04-09
+
+### Added
+
+- **Event Planning Checklist:** Created interactive checklist at `/DRF/drf-event-checklist.html` with pre‑event, during‑event, and post‑event tasks, localStorage persistence, and Present Mode for team meetings.
+- **Planning Category Enhancement:** Added checklist resource to DRF index with filtering and improved placeholder description.
+
+### Fixed
+
+- **Browser Compatibility:** Added `-webkit-backdrop-filter` prefix for Safari/iOS support across all DRF pages.
+- **Deprecated CSS:** Removed `-webkit-overflow-scrolling` property (no longer supported).
+- **Inline Styles:** Migrated all inline styles to external CSS for maintainability and consistency.
+
 ## [1.8.1] - 2026-03-05
 
 ### Changed

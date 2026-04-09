@@ -1,23 +1,20 @@
 // Checklist Manager
 class ChecklistManager {
   constructor() {
-    console.log('ChecklistManager constructor called');
     this.phases = ['setup', 'during', 'post'];
+    this.announcer = null;
     this.init();
   }
 
   init() {
-    console.log('ChecklistManager init called');
-    try {
-      this.loadAllItems();
-    } catch (error) {
-      console.error('Error in ChecklistManager.loadAllItems:', error);
-    }
+    this.announcer = document.getElementById('task-announcer');
+    this.loadAllItems();
+    this.setupEventListeners();
+  }
 
-    try {
-      this.setupEventListeners();
-    } catch (error) {
-      console.error('Error in ChecklistManager.setupEventListeners:', error);
+  announce(message) {
+    if (this.announcer) {
+      this.announcer.textContent = message;
     }
   }
 
@@ -34,20 +31,23 @@ class ChecklistManager {
     li.innerHTML = `
       <input type="checkbox" id="${itemId}" class="checklist-checkbox" data-id="${itemId}" ${checked ? 'checked' : ''} />
       <label for="${itemId}" class="checklist-label">${this.escapeHtml(text)}</label>
-      <button class="delete-item" data-phase="${phase}" data-id="${itemId}" title="Delete task">✕</button>
+      <button class="delete-item" data-phase="${phase}" data-id="${itemId}" aria-label="Delete task: ${this.escapeHtml(text)}" title="Delete task">✕</button>
     `;
 
     // Add checkbox event listener
     const checkbox = li.querySelector('.checklist-checkbox');
     checkbox.addEventListener('change', (e) => {
       this.saveCheckboxState(e.target.dataset.id, e.target.checked);
+      if (e.target.checked) {
+        this.announce(`Task completed: ${text}`);
+      }
     });
 
     // Add delete button event listener
     const deleteBtn = li.querySelector('.delete-item');
     deleteBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      this.deleteItem(phase, itemId);
+      this.deleteItem(phase, itemId, li);
     });
 
     return li;
@@ -60,43 +60,23 @@ class ChecklistManager {
   }
 
   addItem(phase, text) {
-    console.log(`addItem called: phase=${phase}, text="${text}"`);
-    if (!text.trim()) {
-      console.log('Text is empty, returning');
-      return;
-    }
+    if (!text.trim()) return;
 
     const checklist = document.getElementById(`${phase}-checklist`);
-    console.log(`Checklist element:`, checklist);
-    if (!checklist) {
-      console.error(`Checklist not found for phase: ${phase}`);
-      return;
-    }
-
     const emptyState = checklist.querySelector('.empty-state');
-    console.log(`Empty state:`, emptyState);
 
-    // Remove empty state if it exists
     if (emptyState) {
-      console.log('Removing empty state');
       emptyState.remove();
     }
 
-    // Create and add new item
-    console.log('Creating checklist item');
     const item = this.createChecklistItem(phase, text);
-    console.log('Item created:', item);
     checklist.appendChild(item);
 
-    // Save to localStorage
     this.saveItem(phase, text, item.dataset.id);
-
-    // Clear input
     document.getElementById(`${phase}-input`).value = '';
 
-    // Scroll to new item
     item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    console.log(`Item added successfully to ${phase} checklist`);
+    this.announce(`Task added: ${text}`);
   }
 
   saveItem(phase, text, id) {
@@ -106,7 +86,6 @@ class ChecklistManager {
   }
 
   saveCheckboxState(id, checked) {
-    // Find which phase this item belongs to
     for (const phase of this.phases) {
       const items = this.getPhaseItems(phase);
       const itemIndex = items.findIndex((item) => item.id === id);
@@ -118,29 +97,29 @@ class ChecklistManager {
     }
   }
 
-  deleteItem(phase, id) {
+  deleteItem(phase, id, listItem) {
     if (!confirm('Delete this task?')) return;
 
-    // Remove from DOM
-    const item = document.querySelector(`[data-id="${id}"]`);
-    if (item) item.remove();
+    const nextFocusable = listItem.nextElementSibling || listItem.previousElementSibling || document.getElementById(`${phase}-input`);
 
-    // Remove from localStorage
+    const itemText = listItem.querySelector('.checklist-label').textContent;
+    listItem.remove();
+
     const items = this.getPhaseItems(phase);
     const filteredItems = items.filter((item) => item.id !== id);
     localStorage.setItem(`av_checklist_${phase}`, JSON.stringify(filteredItems));
 
-    // Show empty state if no items left
     const checklist = document.getElementById(`${phase}-checklist`);
-    if (!checklist) {
-      console.error(`Checklist not found for phase: ${phase} in deleteItem`);
-      return;
-    }
     if (filteredItems.length === 0 && !checklist.querySelector('.empty-state')) {
       const emptyState = document.createElement('li');
       emptyState.className = 'empty-state';
       emptyState.textContent = 'No items yet. Add your first task below.';
       checklist.appendChild(emptyState);
+    }
+    
+    this.announce(`Task deleted: ${itemText}`);
+    if(nextFocusable) {
+      nextFocusable.focus();
     }
   }
 
@@ -150,40 +129,23 @@ class ChecklistManager {
   }
 
   loadAllItems() {
-    console.log('loadAllItems called');
     this.phases.forEach((phase) => {
-      console.log(`Loading items for phase: ${phase}`);
       const items = this.getPhaseItems(phase);
-      console.log(`Found ${items.length} items in localStorage`);
       const checklist = document.getElementById(`${phase}-checklist`);
-      console.log(`Checklist element for ${phase}:`, checklist);
+      if (!checklist) return;
 
-      if (!checklist) {
-        console.error(`Checklist not found for phase: ${phase}`);
-        return;
-      }
-
-      // Clear existing items (except empty state)
       const existingItems = checklist.querySelectorAll('.checklist-item');
-      console.log(`Found ${existingItems.length} existing DOM items`);
       existingItems.forEach((item) => item.remove());
 
       if (items.length > 0) {
-        // Remove empty state if it exists
         const emptyState = checklist.querySelector('.empty-state');
         if (emptyState) {
-          console.log('Removing empty state');
           emptyState.remove();
         }
-
-        // Add saved items
         items.forEach((item) => {
-          console.log(`Adding item: ${item.text}, checked: ${item.checked}`);
           const li = this.createChecklistItem(phase, item.text, item.id, item.checked);
           checklist.appendChild(li);
         });
-      } else {
-        console.log('No items in localStorage for this phase');
       }
     });
   }
@@ -194,32 +156,26 @@ class ChecklistManager {
     this.phases.forEach((phase) => {
       localStorage.removeItem(`av_checklist_${phase}`);
       const checklist = document.getElementById(`${phase}-checklist`);
-
-      // Remove all checklist items
       const items = checklist.querySelectorAll('.checklist-item');
       items.forEach((item) => item.remove());
 
-      // Add empty state
-      const emptyState = document.createElement('li');
-      emptyState.className = 'empty-state';
-      emptyState.textContent =
-        phase === 'setup'
-          ? 'No items yet. Add your first setup task below.'
-          : phase === 'during'
-            ? 'No items yet. Add your first during‑event task below.'
-            : 'No items yet. Add your first cleanup task below.';
-      checklist.appendChild(emptyState);
+      if (!checklist.querySelector('.empty-state')) {
+        const emptyState = document.createElement('li');
+        emptyState.className = 'empty-state';
+        emptyState.textContent =
+          phase === 'setup'
+            ? 'No items yet. Add your first setup task below.'
+            : phase === 'during'
+              ? 'No items yet. Add your first during‑event task below.'
+              : 'No items yet. Add your first cleanup task below.';
+        checklist.appendChild(emptyState);
+      }
     });
+    this.announce('All checklists have been cleared.');
   }
 
   loadExampleTasks() {
-    // Check if any phase already has items
-    let hasItems = false;
-    this.phases.forEach((phase) => {
-      if (this.getPhaseItems(phase).length > 0) {
-        hasItems = true;
-      }
-    });
+    let hasItems = this.phases.some(phase => this.getPhaseItems(phase).length > 0);
 
     if (
       hasItems &&
@@ -255,9 +211,7 @@ class ChecklistManager {
     };
 
     this.phases.forEach((phase) => {
-      const existingItems = this.getPhaseItems(phase);
-      if (existingItems.length === 0) {
-        // Phase is empty, add examples
+      if (this.getPhaseItems(phase).length === 0) {
         const checklist = document.getElementById(`${phase}-checklist`);
         const emptyState = checklist.querySelector('.empty-state');
         if (emptyState) emptyState.remove();
@@ -269,58 +223,31 @@ class ChecklistManager {
         });
       }
     });
+    this.announce('Example tasks loaded.');
   }
 
   setupEventListeners() {
-    console.log('Setting up event listeners');
-    // Add buttons
     this.phases.forEach((phase) => {
       const addBtn = document.getElementById(`${phase}-add`);
       const cancelBtn = document.getElementById(`${phase}-cancel`);
       const input = document.getElementById(`${phase}-input`);
 
-      console.log(`Phase: ${phase}, addBtn:`, addBtn, 'cancelBtn:', cancelBtn, 'input:', input);
+      if (!addBtn) return;
 
-      if (!addBtn) {
-        console.error(`Add button not found for phase: ${phase}`);
-        return;
-      }
+      addBtn.addEventListener('click', () => this.addItem(phase, input.value));
+      cancelBtn.addEventListener('click', () => input.value = '');
 
-      addBtn.addEventListener('click', () => {
-        console.log(`Add button clicked for ${phase}, input value:`, input.value);
-        this.addItem(phase, input.value);
-      });
-
-      cancelBtn.addEventListener('click', () => {
-        console.log(`Cancel button clicked for ${phase}`);
-        input.value = '';
-      });
-
-      // Enter key support
       input.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-          console.log(`Enter key pressed for ${phase}, input value:`, input.value);
           this.addItem(phase, input.value);
         }
       });
     });
 
-    // Print button
-    document.getElementById('printBtn').addEventListener('click', () => {
-      window.print();
-    });
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+    document.getElementById('clearBtn').addEventListener('click', () => this.clearAll());
+    document.getElementById('loadExamplesBtn').addEventListener('click', () => this.loadExampleTasks());
 
-    // Clear all button
-    document.getElementById('clearBtn').addEventListener('click', () => {
-      this.clearAll();
-    });
-
-    // Load example tasks button
-    document.getElementById('loadExamplesBtn').addEventListener('click', () => {
-      this.loadExampleTasks();
-    });
-
-    // Present mode toggle
     const presentModeBtn = document.getElementById('presentModeBtn');
     presentModeBtn.addEventListener('click', () => {
       document.body.classList.toggle('present-mode');
@@ -337,13 +264,10 @@ class ChecklistManager {
 
 // Global error handler
 window.addEventListener('error', (event) => {
-  console.error('Global error caught:', event.error);
-  console.error('Error message:', event.message);
-  console.error('Error at:', event.filename, 'line', event.lineno, 'col', event.colno);
+  console.error('Global error caught:', event.error, event.message, event.filename, event.lineno, event.colno);
 });
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded fired');
   new ChecklistManager();
 });

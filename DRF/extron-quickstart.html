@@ -148,7 +148,8 @@
         margin-bottom: 2rem;
       }
 
-      .back-link:hover {
+      .back-link:hover,
+      .back-link:focus-visible {
         text-decoration: underline;
       }
 
@@ -168,6 +169,14 @@
       footer a {
         color: var(--muted);
         text-decoration: none;
+      }
+
+      footer a:hover,
+      footer a:focus-visible,
+      td a:hover,
+      td a:focus-visible {
+        text-decoration: underline;
+        color: var(--accent);
       }
 
       .footer-small {
@@ -198,10 +207,10 @@
         <table>
           <thead>
             <tr>
-              <th>Step</th>
-              <th>What to Do</th>
-              <th>Why it Helps</th>
-              <th>Source</th>
+              <th scope="col">Step</th>
+              <th scope="col">What to Do</th>
+              <th scope="col">Why it Helps</th>
+              <th scope="col">Source</th>
             </tr>
           </thead>
           <tbody>
@@ -289,10 +298,10 @@
         <table>
           <thead>
             <tr>
-              <th>Action</th>
-              <th>How to Do It</th>
-              <th>What it Fixes</th>
-              <th>Source</th>
+              <th scope="col">Action</th>
+              <th scope="col">How to Do It</th>
+              <th scope="col">What it Fixes</th>
+              <th scope="col">Source</th>
             </tr>
           </thead>
           <tbody>
@@ -394,9 +403,9 @@
         <table>
           <thead>
             <tr>
-              <th>Check</th>
-              <th>What to Look For</th>
-              <th>User‑Level Action</th>
+              <th scope="col">Check</th>
+              <th scope="col">What to Look For</th>
+              <th scope="col">User‑Level Action</th>
             </tr>
           </thead>
           <tbody>
@@ -441,9 +450,9 @@
         <table>
           <thead>
             <tr>
-              <th>Action</th>
-              <th>How</th>
-              <th>Effect</th>
+              <th scope="col">Action</th>
+              <th scope="col">How</th>
+              <th scope="col">Effect</th>
             </tr>
           </thead>
           <tbody>

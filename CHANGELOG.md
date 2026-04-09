@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.4] - 2026-04-09
+
+### Improved
+- **Accessibility (A11y):** Conducted a major accessibility overhaul of the `/DRF/` section to improve usability for keyboard and screen reader users.
+  - Added explicit `:focus-visible` styles to all interactive elements (`buttons`, `links`, custom controls) across all DRF pages to provide clear keyboard navigation feedback.
+  - Implemented ARIA roles (`tablist`, `tab`) and states (`aria-selected`) on the `drf-index.html` category filter to make it fully accessible.
+  - Added visually hidden `<label>` elements to all form inputs in `drf-event-checklist-av.html` to ensure they are properly described by screen readers.
+  - Deployed `aria-live` regions in `drf-event-checklist-av.js` and `drf-room-guide.js` to announce dynamic content changes (e.g., "Task added," "5 results found").
+  - Enhanced the interactive checklist to programmatically manage focus when items are deleted, preventing focus from being lost.
+  - Added `scope="col"` to all table headers in `extron-quickstart.html` for better screen reader table navigation.
+- **UX:**
+  - Implemented `scroll-behavior: smooth` for the `drf-room-guide.html` page to improve the experience of in-page navigation.
+  - Refined the search functionality in `drf-room-guide.js` to use the more efficient `input` event and provide a clear "No results found" message in the UI.
+
 ## [1.9.0] - 2026-04-09
 
 ### Added

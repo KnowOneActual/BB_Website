@@ -24,11 +24,11 @@
     </header>
 
     <main>
-      <nav class="categories">
-        <button class="category-btn active" data-category="all">All Resources</button>
-        <button class="category-btn" data-category="guides">Guides</button>
-        <button class="category-btn" data-category="troubleshooting">Troubleshooting</button>
-        <button class="category-btn" data-category="planning">Planning</button>
+      <nav class="categories" role="tablist" aria-label="Resource Categories">
+        <button class="category-btn active" data-category="all" role="tab" aria-selected="true">All Resources</button>
+        <button class="category-btn" data-category="guides" role="tab" aria-selected="false">Guides</button>
+        <button class="category-btn" data-category="troubleshooting" role="tab" aria-selected="false">Troubleshooting</button>
+        <button class="category-btn" data-category="planning" role="tab" aria-selected="false">Planning</button>
       </nav>
 
       <div class="resource-grid">
@@ -125,8 +125,13 @@
       categoryBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
           const category = btn.dataset.category;
-          categoryBtns.forEach((b) => b.classList.remove('active'));
+          // Update ARIA attributes and classes
+          categoryBtns.forEach((b) => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
           btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
 
           resourceCards.forEach((card) => {
             if (category === 'all' || card.dataset.categories.includes(category)) {

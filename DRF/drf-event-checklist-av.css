@@ -1,3 +1,15 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .checklist-container {
   max-width: 900px;
   margin: 0 auto;
@@ -59,6 +71,10 @@
   transition: var(--transition);
   text-decoration: none;
   gap: 0.5rem;
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.5);
 }
 
 .btn-primary {
@@ -170,6 +186,11 @@
   background: transparent;
 }
 
+.checklist-checkbox:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .checklist-checkbox:checked {
   background: var(--accent);
   border-color: var(--accent);
@@ -222,9 +243,15 @@
   transition: opacity 0.2s;
 }
 
-.delete-item:hover {
+.delete-item:hover,
+.delete-item:focus-visible {
   opacity: 1;
   color: #ff6b6b;
+}
+
+.delete-item:focus-visible {
+  outline: 2px solid #ff6b6b;
+  outline-offset: 2px;
 }
 
 .add-item-form {

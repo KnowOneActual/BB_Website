@@ -110,7 +110,8 @@ nav.categories {
 }
 
 .category-btn:hover,
-.category-btn.active {
+.category-btn.active,
+.category-btn:focus-visible {
   border-color: var(--accent);
   background: rgba(255, 209, 102, 0.1);
   color: var(--accent);
@@ -226,9 +227,11 @@ main {
   border: none;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible {
   background: #ffc145;
   transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.5);
 }
 
 .btn-secondary {
@@ -237,7 +240,8 @@ main {
   border: 1px solid var(--accent);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
   background: rgba(255, 209, 102, 0.1);
 }
 
@@ -257,6 +261,12 @@ footer p {
 footer a {
   color: var(--muted);
   text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  color: var(--fg);
+  text-decoration: underline;
 }
 
 .footer-small {

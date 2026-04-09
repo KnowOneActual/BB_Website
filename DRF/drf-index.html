@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0e17" />
+    <title>David Rubenstein Forum | Tools & Resources Index</title>
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="drf-index.css" />
+    <link rel="icon" type="image/svg+xml" href="/DRF/img/favicon/favicon.svg" />
+    <link rel="icon" type="image/webp" href="/DRF/img/favicon/favicon-32x32.webp" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/DRF/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <meta
+      name="description"
+      content="A curated index of tools, guides, and references for the David Rubenstein Forum staff and event planners."
+    />
+  </head>
+  <body>
+    <header>
+      <h1>David Rubenstein Forum</h1>
+      <p class="subtitle">Tools & Resources Index</p>
+      <p>A centralized hub for essential guides, troubleshooting references, and planning tools.</p>
+    </header>
+
+    <main>
+      <nav class="categories">
+        <button class="category-btn active" data-category="all">All Resources</button>
+        <button class="category-btn" data-category="guides">Guides</button>
+        <button class="category-btn" data-category="troubleshooting">Troubleshooting</button>
+        <button class="category-btn" data-category="planning">Planning</button>
+      </nav>
+
+      <div class="resource-grid">
+        <!-- Main Room Guide -->
+        <article class="resource-card" data-categories="guides planning">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">📍</div>
+            <div>
+              <h3 class="card-title">DRF Room Guide</h3>
+              <p class="card-meta">Essential reference • Floor plans • Capacities</p>
+            </div>
+          </div>
+          <p class="card-description">
+            A comprehensive guide to all rooms in the David Rubenstein Forum, including names, floors, capacities, and
+            interactive floor plans. Ideal for event planning and quick reference.
+          </p>
+          <div class="card-actions">
+            <a href="drf-room-guide.html" class="btn btn-primary">Open Guide</a>
+            <a href="drf-room-guide.html#ground" class="btn btn-secondary">View Floor Plans</a>
+          </div>
+        </article>
+
+        <!-- Extron Quick Start Guide -->
+        <article class="resource-card" data-categories="troubleshooting guides">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">🖥️</div>
+            <div>
+              <h3 class="card-title">Quick Start Guide: Extron & MacBook</h3>
+              <p class="card-meta">Troubleshooting • Setup • AV systems</p>
+            </div>
+          </div>
+          <p class="card-description">
+            Step-by-step instructions for connecting MacBook devices to Extron AV systems, common troubleshooting tips,
+            and best practices for seamless presentations.
+          </p>
+          <div class="card-actions">
+            <a href="extron-quickstart.html" class="btn btn-primary">Open Guide</a>
+            <a href="extron-quickstart.html#troubleshooting" class="btn btn-secondary">Troubleshooting</a>
+          </div>
+        </article>
+
+        <!-- Placeholder for Future Resources -->
+        <article class="resource-card placeholder" data-categories="planning">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">📚</div>
+            <div>
+              <h3 class="card-title">More Resources Coming Soon</h3>
+              <p class="card-meta">Under development • Stay tuned</p>
+            </div>
+          </div>
+          <p class="card-description">
+            Additional tools and references are currently in development. Check back regularly for new resources,
+            including event checklists, vendor contacts, and advanced AV configurations.
+          </p>
+          <div class="card-actions">
+            <button class="btn btn-secondary" disabled>Coming Soon</button>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <p>© David Rubenstein Forum • University of Chicago • Maintained by Forum Staff</p>
+      <p>For suggestions or corrections, contact the technical team.</p>
+      <p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem">
+        <a href="STYLE_CONTENT_GUIDE.md" style="color: var(--muted); text-decoration: none">Style & Content Guide</a>
+      </p>
+    </footer>
+
+    <script>
+      // Category filtering
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const resourceCards = document.querySelectorAll('.resource-card');
+
+      categoryBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const category = btn.dataset.category;
+          categoryBtns.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          resourceCards.forEach((card) => {
+            if (category === 'all' || card.dataset.categories.includes(category)) {
+              card.style.display = 'block';
+              setTimeout(() => (card.style.opacity = 1), 10);
+            } else {
+              card.style.opacity = 0;
+              setTimeout(() => (card.style.display = 'none'), 300);
+            }
+          });
+        });
+      });
+
+      // Add subtle entrance animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.transform = 'translateY(0)';
+            entry.target.style.opacity = 1;
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.resource-card').forEach((card) => {
+        card.style.transform = 'translateY(20px)';
+        card.style.opacity = 0;
+        card.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>

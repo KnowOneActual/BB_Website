@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-04-09
+
+### Added
+
+- **DRF Tools Index:** Created a comprehensive resources index at `/DRF/drf-index.html` with category filtering, interactive cards, and cohesive editorial design.
+- **Extron Troubleshooting Guide:** Integrated detailed troubleshooting content into `/DRF/extron-quickstart.html` with step-by-step tables, macOS settings, and HDCP/EDID guidance.
+- **Style & Content Guide:** Established comprehensive design standards in `/DRF/STYLE_CONTENT_GUIDE.md` covering color palette, typography, component patterns, and maintenance procedures.
+
+### Changed
+
+- **DRF Room Guide Styling:** Updated `/DRF/drf-room-guide.css` to match the new editorial aesthetic with dark navy/gold palette, improved mobile readability, and consistent component styling.
+- **Room Guide Integration:** Added 'All Tools & Resources' link to room guide header and footer style guide reference for cohesive navigation.
+- **Extron Guide Structure:** Removed institutional contact section to focus purely on technical troubleshooting content.
+
 ## [1.8.1] - 2026-03-05
 
 ### Changed

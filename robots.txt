@@ -36,6 +36,7 @@ Disallow: /cgi-bin/
 Disallow: /lp
 Disallow: /feedback
 Disallow: /langtest
+Disallow: /DRF/
 #Netlify functions folder
 Disallow: /.netlify/
 Sitemap: https://www.beaubremer.com/sitemap.xml

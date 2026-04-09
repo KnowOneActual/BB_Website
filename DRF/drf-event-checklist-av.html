@@ -482,9 +482,14 @@
           console.log('ChecklistManager init called');
           try {
             this.loadAllItems();
+          } catch (error) {
+            console.error('Error in ChecklistManager.loadAllItems:', error);
+          }
+
+          try {
             this.setupEventListeners();
           } catch (error) {
-            console.error('Error in ChecklistManager.init:', error);
+            console.error('Error in ChecklistManager.setupEventListeners:', error);
           }
         }
 
@@ -737,6 +742,13 @@
           });
         }
       }
+
+      // Global error handler
+      window.addEventListener('error', (event) => {
+        console.error('Global error caught:', event.error);
+        console.error('Error message:', event.message);
+        console.error('Error at:', event.filename, 'line', event.lineno, 'col', event.colno);
+      });
 
       // Initialize when DOM is ready
       document.addEventListener('DOMContentLoaded', () => {

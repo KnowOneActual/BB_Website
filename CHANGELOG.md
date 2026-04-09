@@ -31,6 +31,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Deprecated CSS:** Removed `-webkit-overflow-scrolling` property (no longer supported).
 - **Inline Styles:** Migrated all inline styles to external CSS for maintainability and consistency.
 
+## [1.9.2] - 2026-04-09
+
+### Added
+
+- **AV Tech Event Checklist:** Created customizable checklist at `/DRF/drf-event-checklist-av.html` specifically for AV technicians with setup, during-event, and breakdown sections.
+- **Dynamic Item Management:** Added ability to create, delete, and save custom checklist items with localStorage persistence.
+
+### Changed
+
+- **Updated DRF Index:** Replaced general event checklist with AV‑focused version, updated categories and descriptions.
+- **Enhanced UI:** Added delete buttons, empty states, and improved form controls for custom item creation.
+
 ## [1.8.1] - 2026-03-05
 
 ### Changed

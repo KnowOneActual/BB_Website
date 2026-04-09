@@ -41,6 +41,7 @@ header {
   text-align: center;
   border-bottom: 1px solid var(--border);
   background: rgba(21, 26, 40, 0.7);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   margin-bottom: 3rem;
 }
@@ -247,6 +248,20 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid var(--border);
   margin-top: 4rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer-small {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
 
 .placeholder {

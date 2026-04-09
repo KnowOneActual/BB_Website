@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0e17" />
+    <title>AV Tech Event Checklist | David Rubenstein Forum</title>
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="drf-index.css" />
+    <link rel="icon" type="image/svg+xml" href="/DRF/img/favicon/favicon.svg" />
+    <style>
+      .checklist-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+
+      .checklist-header {
+        padding: 3rem 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 3rem;
+        background: rgba(21, 26, 40, 0.7);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+      }
+
+      .checklist-header h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .checklist-header .subtitle {
+        font-size: 1.1rem;
+        color: var(--muted);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .controls {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .control-group {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius);
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .btn-primary:hover {
+        background: rgba(var(--accent-rgb), 0.9);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(var(--accent-rgb), 0.1);
+      }
+
+      .btn-danger {
+        background: transparent;
+        color: #ff6b6b;
+        border: 1px solid #ff6b6b;
+      }
+
+      .btn-danger:hover {
+        background: rgba(255, 107, 107, 0.1);
+      }
+
+      .phase {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .phase-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .phase-icon {
+        font-size: 1.8rem;
+        background: rgba(var(--accent-rgb), 0.1);
+        color: var(--accent);
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .phase-title {
+        font-size: 1.8rem;
+        margin: 0;
+        color: var(--accent);
+      }
+
+      .phase-subtitle {
+        color: var(--muted);
+        margin: 0.25rem 0 0;
+        font-size: 1rem;
+      }
+
+      .checklist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.25rem;
+        border-bottom: 1px solid rgba(var(--accent-rgb), 0.1);
+        transition: background-color 0.2s;
+        position: relative;
+      }
+
+      .checklist-item:hover {
+        background: rgba(var(--accent-rgb), 0.03);
+      }
+
+      .checklist-item:last-child {
+        border-bottom: none;
+      }
+
+      .checklist-checkbox {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 2px solid var(--muted);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+      }
+
+      .checklist-checkbox:checked {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .checklist-checkbox:checked::after {
+        content: '✓';
+        position: absolute;
+        color: var(--bg);
+        font-size: 1rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .checklist-label {
+        flex: 1;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        cursor: pointer;
+        user-select: none;
+        padding-right: 2.5rem;
+      }
+
+      .checklist-checkbox:checked + .checklist-label {
+        text-decoration: line-through;
+        color: var(--muted);
+      }
+
+      .checklist-notes {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+        padding-left: 2.5rem;
+      }
+
+      .delete-item {
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        opacity: 0.5;
+        transition: opacity 0.2s;
+      }
+
+      .delete-item:hover {
+        opacity: 1;
+        color: #ff6b6b;
+      }
+
+      .add-item-form {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(var(--accent-rgb), 0.05);
+        border: 1px solid rgba(var(--accent-rgb), 0.2);
+        border-radius: var(--radius);
+      }
+
+      .add-item-input {
+        width: 100%;
+        padding: 1rem;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--fg);
+        font-family: inherit;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        transition: border-color 0.2s;
+      }
+
+      .add-item-input:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      .add-item-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 3rem 1.5rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+
+      /* Present mode */
+      body.present-mode .checklist-container {
+        max-width: 1200px;
+      }
+
+      body.present-mode .checklist-header h1 {
+        font-size: 4rem;
+      }
+
+      body.present-mode .phase-title {
+        font-size: 2.5rem;
+      }
+
+      body.present-mode .checklist-label {
+        font-size: 1.5rem;
+      }
+
+      body.present-mode .checklist-checkbox {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      body.present-mode .controls {
+        display: none;
+      }
+
+      body.present-mode .add-item-form {
+        display: none;
+      }
+
+      body.present-mode .delete-item {
+        display: none;
+      }
+
+      footer {
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+
+      footer a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .footer-small {
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .control-group {
+          justify-content: center;
+        }
+
+        .checklist-header h1 {
+          font-size: 2.2rem;
+        }
+
+        .phase-title {
+          font-size: 1.5rem;
+        }
+
+        .add-item-buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="checklist-container">
+      <section class="checklist-header">
+        <h1>AV Tech Event Checklist</h1>
+        <p class="subtitle">
+          Custom checklist for AV technicians: setup, running, and breakdown. Add your own items—progress is saved
+          automatically.
+        </p>
+      </section>
+
+      <div class="controls">
+        <div class="control-group">
+          <button id="printBtn" class="btn btn-secondary"><span>🖨️</span> Print Checklist</button>
+          <button id="clearBtn" class="btn btn-danger"><span>🗑️</span> Clear All</button>
+        </div>
+        <div class="control-group">
+          <button id="presentModeBtn" class="btn btn-primary"><span>📺</span> Present Mode</button>
+          <a href="drf-index.html" class="btn btn-secondary"> <span>←</span> Back to Resources </a>
+        </div>
+      </div>
+
+      <!-- Event Setup Phase -->
+      <section class="phase" id="setup-phase">
+        <div class="phase-header">
+          <div class="phase-icon">🔧</div>
+          <div>
+            <h2 class="phase-title">Event Setup</h2>
+            <p class="phase-subtitle">AV equipment setup and pre‑event checks</p>
+          </div>
+        </div>
+        <ul class="checklist" id="setup-checklist">
+          <li class="empty-state">No items yet. Add your first setup task below.</li>
+        </ul>
+        <div class="add-item-form">
+          <input
+            type="text"
+            class="add-item-input"
+            id="setup-input"
+            placeholder="Add a setup task (e.g., 'Test all microphones')"
+            maxlength="200"
+          />
+          <div class="add-item-buttons">
+            <button type="button" class="btn btn-secondary" id="setup-cancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="setup-add">Add Task</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- During Event Phase -->
+      <section class="phase" id="during-phase">
+        <div class="phase-header">
+          <div class="phase-icon">🎤</div>
+          <div>
+            <h2 class="phase-title">During the Event</h2>
+            <p class="phase-subtitle">Live monitoring and real‑time adjustments</p>
+          </div>
+        </div>
+        <ul class="checklist" id="during-checklist">
+          <li class="empty-state">No items yet. Add your first during‑event task below.</li>
+        </ul>
+        <div class="add-item-form">
+          <input
+            type="text"
+            class="add-item-input"
+            id="during-input"
+            placeholder="Add a during‑event task (e.g., 'Monitor audio levels')"
+            maxlength="200"
+          />
+          <div class="add-item-buttons">
+            <button type="button" class="btn btn-secondary" id="during-cancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="during-add">Add Task</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Post‑Event Phase -->
+      <section class="phase" id="post-phase">
+        <div class="phase-header">
+          <div class="phase-icon">🧹</div>
+          <div>
+            <h2 class="phase-title">Post‑Event Break Down and Clean Up</h2>
+            <p class="phase-subtitle">Equipment teardown, storage, and documentation</p>
+          </div>
+        </div>
+        <ul class="checklist" id="post-checklist">
+          <li class="empty-state">No items yet. Add your first cleanup task below.</li>
+        </ul>
+        <div class="add-item-form">
+          <input
+            type="text"
+            class="add-item-input"
+            id="post-input"
+            placeholder="Add a cleanup task (e.g., 'Store all cables properly')"
+            maxlength="200"
+          />
+          <div class="add-item-buttons">
+            <button type="button" class="btn btn-secondary" id="post-cancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="post-add">Add Task</button>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>© For the David Rubenstein Forum • University of Chicago • Maintained by Beau Bremer</p>
+        <p>Create and customize your AV tech checklist—items are saved in your browser.</p>
+        <p class="footer-small">
+          <a href="STYLE_CONTENT_GUIDE.md">Style & Content Guide</a>
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Checklist Manager
+      class ChecklistManager {
+        constructor() {
+          this.phases = ['setup', 'during', 'post'];
+          this.init();
+        }
+
+        init() {
+          this.loadAllItems();
+          this.setupEventListeners();
+        }
+
+        generateId(phase) {
+          return `${phase}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        }
+
+        createChecklistItem(phase, text, id = null, checked = false) {
+          const itemId = id || this.generateId(phase);
+          const li = document.createElement('li');
+          li.className = 'checklist-item';
+          li.dataset.id = itemId;
+
+          li.innerHTML = `
+            <input type="checkbox" id="${itemId}" class="checklist-checkbox" data-id="${itemId}" ${checked ? 'checked' : ''} />
+            <label for="${itemId}" class="checklist-label">${this.escapeHtml(text)}</label>
+            <button class="delete-item" data-phase="${phase}" data-id="${itemId}" title="Delete task">✕</button>
+          `;
+
+          // Add checkbox event listener
+          const checkbox = li.querySelector('.checklist-checkbox');
+          checkbox.addEventListener('change', (e) => {
+            this.saveCheckboxState(e.target.dataset.id, e.target.checked);
+          });
+
+          // Add delete button event listener
+          const deleteBtn = li.querySelector('.delete-item');
+          deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.deleteItem(phase, itemId);
+          });
+
+          return li;
+        }
+
+        escapeHtml(text) {
+          const div = document.createElement('div');
+          div.textContent = text;
+          return div.innerHTML;
+        }
+
+        addItem(phase, text) {
+          if (!text.trim()) return;
+
+          const checklist = document.getElementById(`${phase}-checklist`);
+          const emptyState = checklist.querySelector('.empty-state');
+
+          // Remove empty state if it exists
+          if (emptyState) {
+            emptyState.remove();
+          }
+
+          // Create and add new item
+          const item = this.createChecklistItem(phase, text);
+          checklist.appendChild(item);
+
+          // Save to localStorage
+          this.saveItem(phase, text, item.dataset.id);
+
+          // Clear input
+          document.getElementById(`${phase}-input`).value = '';
+
+          // Scroll to new item
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        saveItem(phase, text, id) {
+          const items = this.getPhaseItems(phase);
+          items.push({ id, text, checked: false });
+          localStorage.setItem(`av_checklist_${phase}`, JSON.stringify(items));
+        }
+
+        saveCheckboxState(id, checked) {
+          // Find which phase this item belongs to
+          for (const phase of this.phases) {
+            const items = this.getPhaseItems(phase);
+            const itemIndex = items.findIndex((item) => item.id === id);
+            if (itemIndex !== -1) {
+              items[itemIndex].checked = checked;
+              localStorage.setItem(`av_checklist_${phase}`, JSON.stringify(items));
+              break;
+            }
+          }
+        }
+
+        deleteItem(phase, id) {
+          if (!confirm('Delete this task?')) return;
+
+          // Remove from DOM
+          const item = document.querySelector(`[data-id="${id}"]`);
+          if (item) item.remove();
+
+          // Remove from localStorage
+          const items = this.getPhaseItems(phase);
+          const filteredItems = items.filter((item) => item.id !== id);
+          localStorage.setItem(`av_checklist_${phase}`, JSON.stringify(filteredItems));
+
+          // Show empty state if no items left
+          const checklist = document.getElementById(`${phase}-checklist`);
+          if (filteredItems.length === 0 && !checklist.querySelector('.empty-state')) {
+            const emptyState = document.createElement('li');
+            emptyState.className = 'empty-state';
+            emptyState.textContent = 'No items yet. Add your first task below.';
+            checklist.appendChild(emptyState);
+          }
+        }
+
+        getPhaseItems(phase) {
+          const stored = localStorage.getItem(`av_checklist_${phase}`);
+          return stored ? JSON.parse(stored) : [];
+        }
+
+        loadAllItems() {
+          this.phases.forEach((phase) => {
+            const items = this.getPhaseItems(phase);
+            const checklist = document.getElementById(`${phase}-checklist`);
+
+            // Clear existing items (except empty state)
+            const existingItems = checklist.querySelectorAll('.checklist-item');
+            existingItems.forEach((item) => item.remove());
+
+            if (items.length > 0) {
+              // Remove empty state if it exists
+              const emptyState = checklist.querySelector('.empty-state');
+              if (emptyState) emptyState.remove();
+
+              // Add saved items
+              items.forEach((item) => {
+                const li = this.createChecklistItem(phase, item.text, item.id, item.checked);
+                checklist.appendChild(li);
+              });
+            }
+          });
+        }
+
+        clearAll() {
+          if (!confirm('Clear ALL checklists? This cannot be undone.')) return;
+
+          this.phases.forEach((phase) => {
+            localStorage.removeItem(`av_checklist_${phase}`);
+            const checklist = document.getElementById(`${phase}-checklist`);
+
+            // Remove all checklist items
+            const items = checklist.querySelectorAll('.checklist-item');
+            items.forEach((item) => item.remove());
+
+            // Add empty state
+            const emptyState = document.createElement('li');
+            emptyState.className = 'empty-state';
+            emptyState.textContent =
+              phase === 'setup'
+                ? 'No items yet. Add your first setup task below.'
+                : phase === 'during'
+                  ? 'No items yet. Add your first during‑event task below.'
+                  : 'No items yet. Add your first cleanup task below.';
+            checklist.appendChild(emptyState);
+          });
+        }
+
+        setupEventListeners() {
+          // Add buttons
+          this.phases.forEach((phase) => {
+            const addBtn = document.getElementById(`${phase}-add`);
+            const cancelBtn = document.getElementById(`${phase}-cancel`);
+            const input = document.getElementById(`${phase}-input`);
+
+            addBtn.addEventListener('click', () => {
+              this.addItem(phase, input.value);
+            });
+
+            cancelBtn.addEventListener('click', () => {
+              input.value = '';
+            });
+
+            // Enter key support
+            input.addEventListener('keypress', (e) => {
+              if (e.key === 'Enter') {
+                this.addItem(phase, input.value);
+              }
+            });
+          });
+
+          // Print button
+          document.getElementById('printBtn').addEventListener('click', () => {
+            window.print();
+          });
+
+          // Clear all button
+          document.getElementById('clearBtn').addEventListener('click', () => {
+            this.clearAll();
+          });
+
+          // Present mode toggle
+          const presentModeBtn = document.getElementById('presentModeBtn');
+          presentModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('present-mode');
+            presentModeBtn.innerHTML = document.body.classList.contains('present-mode')
+              ? '<span>📺</span> Exit Present Mode'
+              : '<span>📺</span> Present Mode';
+
+            if (document.body.classList.contains('present-mode')) {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          });
+        }
+      }
+
+      // Initialize when DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        new ChecklistManager();
+      });
+    </script>
+  </body>
+</html>

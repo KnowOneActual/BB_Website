@@ -43,6 +43,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Updated DRF Index:** Replaced general event checklist with AV‑focused version, updated categories and descriptions.
 - **Enhanced UI:** Added delete buttons, empty states, and improved form controls for custom item creation.
 
+## [1.9.3] - 2026-04-09
+
+### Added
+
+- **Example AV Tasks:** Added "Load Example Tasks" button to AV Tech Checklist that populates empty sections with typical setup, monitoring, and cleanup tasks for AV technicians.
+- **Enhanced Customization:** Example tasks are only added to empty sections, preserving existing user items, with confirmation prompt when any phase already contains items.
+- **External CSS:** Moved inline styles to external CSS file (`/DRF/drf-event-checklist-av.css`) for better maintainability and caching, following DRF design system patterns.
+
+### Changed
+
+- **UI Improvements:** Updated control layout with additional button for loading examples, maintaining responsive design.
+
 ## [1.8.1] - 2026-03-05
 
 ### Changed

@@ -112,3 +112,6 @@ Thumbs.db
 # personal/internal scripts
 start-work.sh
 temp_logs/
+
+# Temporary directories
+**/temp/

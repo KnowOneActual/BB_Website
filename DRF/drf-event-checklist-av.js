@@ -212,6 +212,65 @@ class ChecklistManager {
     });
   }
 
+  loadExampleTasks() {
+    // Check if any phase already has items
+    let hasItems = false;
+    this.phases.forEach((phase) => {
+      if (this.getPhaseItems(phase).length > 0) {
+        hasItems = true;
+      }
+    });
+
+    if (
+      hasItems &&
+      !confirm('This will add example tasks to empty sections. Existing tasks will be preserved. Continue?')
+    ) {
+      return;
+    }
+
+    const examples = {
+      setup: [
+        'Test all microphones and wireless lapel mics',
+        'Check projector/lens and focus',
+        'Verify audio mixer levels and mute/unmute',
+        'Confirm video switcher inputs (laptop, doc cam, etc.)',
+        'Test recording/streaming setup',
+        'Ensure backup batteries for wireless mics',
+      ],
+      during: [
+        'Monitor audio levels and adjust gain as needed',
+        'Watch for clipping or feedback',
+        'Be ready to switch to backup microphone',
+        'Keep an eye on projector lamp hours',
+        'Have spare cables accessible',
+      ],
+      post: [
+        'Power down all equipment properly',
+        'Coil and store all cables',
+        'Return wireless mics to charging stations',
+        'Document any issues for maintenance',
+        'Clean lenses and filters',
+        'Reset room to default configuration',
+      ],
+    };
+
+    this.phases.forEach((phase) => {
+      const existingItems = this.getPhaseItems(phase);
+      if (existingItems.length === 0) {
+        // Phase is empty, add examples
+        const checklist = document.getElementById(`${phase}-checklist`);
+        const emptyState = checklist.querySelector('.empty-state');
+        if (emptyState) emptyState.remove();
+
+        examples[phase].forEach((text) => {
+          const item = this.createChecklistItem(phase, text);
+          checklist.appendChild(item);
+          this.saveItem(phase, text, item.dataset.id);
+        });
+      }
+    });
+  }
+
   setupEventListeners() {
     console.log('Setting up event listeners');
     // Add buttons
@@ -254,6 +313,11 @@ class ChecklistManager {
     // Clear all button
     document.getElementById('clearBtn').addEventListener('click', () => {
       this.clearAll();
+    });
+
+    // Load example tasks button
+    document.getElementById('loadExamplesBtn').addEventListener('click', () => {
+      this.loadExampleTasks();
     });
 
     // Present mode toggle

@@ -72,11 +72,11 @@ As part of this project, I developed and deployed a **Secure Image Cleaner** tha
 
 ### Deployment
 
-The onion site is hosted on a Google Cloud "Always Free" `e2-micro` VM. Updates are managed via a simple deployment script on the server (`deploy.sh`) which pulls the latest changes from the `onion-version` branch and copies them to the web root.
+The onion site is hosted on a Raspberry Pi and was previously a Google Cloud "Always Free" e2-micro VM. Updates are managed via a simple deployment script on the server (`deploy.sh`) which pulls the latest changes from the `onion-version` branch and copies them to the web root.
 
 ### Accessing the Onion Site
 
-You can access the live site using the [Tor Browser via this link](http://wb7kwfl6bygqg4zh2fdk7jk6v2ab3bhmjo63xtdm2nltl33vuwoqlkqd.onion). Please note that this link will only resolve if you are using the Tor Browser. (wb7kwfl6bygqg4zh2fdk7jk6v2ab3bhmjo63xtdm2nltl33vuwoqlkqd.onion)
+You can access the live site using the [Tor Browser via this link](http://vqov6yt6arpfipoo4thbqopysgrv6j6lduz7ropkhj3ulx76stunfkad.onion). Please note that this link will only resolve if you are using the Tor Browser. (vqov6yt6arpfipoo4thbqopysgrv6j6lduz7ropkhj3ulx76stunfkad.onion)
 
 ## Contact
 

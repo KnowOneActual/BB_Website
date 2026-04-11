@@ -261,10 +261,11 @@
           "url": "https://odysee.com/",
           "icon": "fa-solid fa-circle-play"
         },
+
         {
-          "name": "The Farside",
-          "url": "https://www.thefarside.com/",
-          "icon": "fa-solid fa-bomb"
+          "name": "DRF tools and resources",
+          "url": "https://beaubremer.com/drf/drf-index",
+          "icon": "fa-brands fa-fort-awesome-alt"
         }
       ]
     },

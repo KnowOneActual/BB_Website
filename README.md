@@ -68,7 +68,7 @@ The `onion-version` of this site is a learning project and a proof of concept wi
 
 As part of this project, I developed and deployed a **Secure Image Cleaner** that runs exclusively on the Onion Service. This tool allows users to upload an image and download a new version with all identifying EXIF metadata removed. It's a practical demonstration of building a useful, privacy-respecting tool on an anonymous network.
 
-**[Read the project write-up on my blog.](https://blog.beaubremer.com/posts/iimage_cleaner_on_a_tor_onion_service/)**
+**[Read the project write-up on my blog.]([https://blog.beaubremer.com/posts/site-into-a-tor-onion-service/)**
 
 ### Deployment
 

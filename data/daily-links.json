@@ -265,7 +265,8 @@
         {
           "name": "DRF tools and resources",
           "url": "https://beaubremer.com/drf/drf-index",
-          "icon": "fa-brands fa-fort-awesome-alt"
+          "icon": "fa-brands fa-fort-awesome-alt",
+          "pinned": true
         }
       ]
     },

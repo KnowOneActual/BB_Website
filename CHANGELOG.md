@@ -1,5 +1,27 @@
 Onion Site
 
+
+## [2026-04-10] - Local Migration & Hardening
+
+### Added
+- Successfully migrated the Tor Onion Service from Google Cloud (e2-micro) to local Raspberry Pi hardware.
+- Implemented SSH key-based authentication for administrative access.
+- Created a dedicated administrative user (`user2`) with sudo privileges to manage the server.
+- Established a secure off-site backup protocol for Tor Hidden Service identity keys.
+- Installed `locales-all` to resolve environment variable warnings during SSH sessions.
+
+### Changed
+- Updated `scripts/deploy.sh` to use absolute paths (`/home/user/`), ensuring compatibility when run via sudo or different user accounts.
+- Modified `/etc/ssh/sshd_config` to disable root login and password authentication, enforcing key-only access.
+- Updated hardcoded onion addresses in `index.html`, `cleaner.html`, and `README.md` to reflect the new Raspberry Pi hostname (`vqov6yt...`).
+- Adjusted Nginx configuration to support the reverse proxy for the Secure Image Cleaner on the local network.
+
+### Fixed
+- Resolved "Permission denied" issues for the deployment script by applying correct execution bits.
+- Fixed Git "dubious ownership" errors by configuring the project directory as a safe directory for the root user.
+- Corrected Python virtual environment "externally-managed-environment" errors by installing `python3-full` and rebuilding the `venv`.
+
+
 ## 2025-09-15
 
 ### Fixed
@@ -8,7 +30,7 @@ Onion Site
 ### Changed
 - Updated server configuration to use `sudo systemctl enable tor.service` as the correct method for enabling the Tor service on boot. This ensures the `tor@default.service` instance is properly managed by the master service.
 - (Recommended) Updated the `Main Site Tor.md` runbook to reflect the correct troubleshooting and service enablement procedures for `systemd`.
-
+- 
 ### ## Changelog: September 14, 2025
 
 This update marks the initial deployment and stabilization of the Tor Onion Service for the website, including the launch of the new Secure Image Cleaner application and initial server hardening.

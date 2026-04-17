@@ -8,7 +8,7 @@ exports.handler = async function (event) {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed/feed.xml';
+  const BLOG_RSS_URL = 'https://blog.beaubremer.com/feed.xml';
 
   try {
     const response = await fetch(BLOG_RSS_URL, {

@@ -10,7 +10,7 @@ const fetch = require('node-fetch');
 
 exports.handler = async function (_event, _context) {
   // The feed to fetch
-  const FEED_URL = 'https://blog.beaubremer.com/feed/feed.xml';
+  const FEED_URL = 'https://blog.beaubremer.com/feed.xml';
   // Use environment variable for secret UA, fallback for local dev
   const SECRET_UA = process.env.RSS_SECRET_UA || 'Beau-Bremer-Website-Blog-Fetcher/1.0';
 

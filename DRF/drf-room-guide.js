@@ -43,7 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show or hide the "no results" message
         if (noResultsMessage) {
-            noResultsMessage.style.display = (totalVisibleRooms === 0 && searchTerm !== '') ? 'block' : 'none';
+            if (totalVisibleRooms === 0 && searchTerm !== '') {
+                noResultsMessage.classList.remove('display-none');
+            } else {
+                noResultsMessage.classList.add('display-none');
+            }
         }
     });
 });

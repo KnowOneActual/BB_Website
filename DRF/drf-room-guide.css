@@ -20,6 +20,10 @@
   margin-top: 1.5rem;
 }
 
+.display-none {
+  display: none !important;
+}
+
 :root {
   color-scheme: light dark;
   --bg: #0a0e17;

@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         heading.className = 'text-3xl font-bold text-white mb-8 text-center tracking-tight flex items-center justify-center gap-4';
         
         const icon = document.createElement('i');
-        // eslint-disable-next-line security/detect-object-injection
         icon.className = `${icons[iconKey]} text-indigo-500`;
         
         heading.appendChild(icon);
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heading.className = 'text-3xl font-bold text-white mb-12 text-center tracking-tight flex items-center justify-center gap-4';
         
         const icon = document.createElement('i');
-        icon.className = `${icons.software} text-indigo-500`;
+        icon.className = `${icons[iconKey]} text-indigo-500`;
         
         heading.appendChild(icon);
         heading.appendChild(document.createTextNode('Software'));
@@ -91,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'text-xl font-semibold text-indigo-400 mt-10 mb-6 uppercase tracking-wider text-sm border-l-4 border-indigo-500 pl-4 flex items-center gap-3';
           
           const subIcon = document.createElement('i');
-          // eslint-disable-next-line security/detect-object-injection
           subIcon.className = `${icons[category] || 'fas fa-chevron-right'} text-xs opacity-70`;
           
           subHeading.appendChild(subIcon);
@@ -100,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const grid = document.createElement('div');
           grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
-          // eslint-disable-next-line security/detect-object-injection
           data.software[category].forEach((item) =>
             grid.appendChild(createCard(item)),
           );

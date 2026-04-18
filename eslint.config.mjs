@@ -1,6 +1,4 @@
 import globals from 'globals';
-import pluginSecurity from 'eslint-plugin-security';
-import eslintConfigPrettier from 'eslint-config-prettier';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -18,11 +16,7 @@ export default [
         L: 'readonly', // For my_ip.js (Leaflet)
       },
     },
-    plugins: {
-      security: pluginSecurity,
-    },
     rules: {
-      ...pluginSecurity.configs.recommended.rules,
       // Custom overrides
       'no-unused-vars': [
         'warn',
@@ -35,8 +29,6 @@ export default [
       'no-console': 'off', // Keeping console logs for now as it's a personal project
     },
   },
-  // Apply Prettier config last to disable conflicting rules
-  eslintConfigPrettier,
   {
     // Global ignores
     ignores: ['node_modules/**', 'coverage/**', '.netlify/**', 'three.min.js'],

@@ -2,7 +2,7 @@
 // This function returns the Firebase configuration for the client-side,
 // retrieving sensitive information from environment variables.
 
-exports.handler = async function (event, context) {
+exports.handler = async function (_event, _context) {
   const { 
     FIREBASE_API_KEY, 
     FIREBASE_AUTH_DOMAIN, 

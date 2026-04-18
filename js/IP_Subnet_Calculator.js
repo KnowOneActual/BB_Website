@@ -62,7 +62,7 @@ function binaryAnd(b1, b2) {
   return b1
     .split('')
     .map((bit, i) =>
-      bit === '1' && /* eslint-disable-line security/detect-object-injection */ b2[i] === '1' ? '1' : '0',
+      bit === '1' && b2[i] === '1' ? '1' : '0',
     )
     .join('');
 }
@@ -70,7 +70,7 @@ function binaryOr(b1, b2) {
   return b1
     .split('')
     .map((bit, i) =>
-      bit === '1' || /* eslint-disable-line security/detect-object-injection */ b2[i] === '1' ? '1' : '0',
+      bit === '1' || b2[i] === '1' ? '1' : '0',
     )
     .join('');
 }

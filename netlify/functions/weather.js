@@ -41,7 +41,6 @@ exports.handler = async function (event) {
         Tornado: `Taking cover in Chicago this ${dayName}!`,
       };
 
-      // eslint-disable-next-line security/detect-object-injection
       const greeting = greetings[condition] || 'Currently in Chicago';
 
       return {

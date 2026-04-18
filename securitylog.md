@@ -1,3 +1,30 @@
+## 2026-04-17 - Remediation of Dependabot Security Alerts
+
+* **Activity:** Resolved multiple critical and moderate security vulnerabilities flagged by Dependabot.
+* **Summary:** Addressed vulnerabilities in `@fastify/static`, `follow-redirects`, `qs`, and `picomatch` by upgrading `netlify-cli` and implementing strict dependency overrides in `package.json`.
+
+---
+
+### Changes Implemented
+
+* **Dependency Upgrades & Security Overrides**
+    * **Action:** Upgraded `netlify-cli` to `v25.0.0` (from `v24.9.0`).
+    * **Action:** Implemented `overrides` in `package.json` to force-patch transitive dependencies:
+        * **@fastify/static:** Forced to `^9.1.1` to resolve CVE-2025-27138 (Path Traversal/Directory Listing).
+        * **qs:** Forced to `^6.15.1` to resolve GHSA-w7fw-mjwx-w883 (Denial of Service via arrayLimit bypass).
+        * **picomatch:** Forced to `>=2.3.2` to resolve CWE-1321 (Method Injection in POSIX bracket expressions).
+    * **Action:** Executed `npm audit fix` to upgrade `follow-redirects` and resolve GHSA-r4q5-vmmm-2653 (Authentication Header Leak).
+    * **Reason:** Mitigates risks associated with directory exposure, sensitive data leakage, and denial of service within the local development and build environment.
+
+### Risk Assessment & Findings
+
+* **Type:** Dependency Security / Supply Chain.
+* **Impact:** High. Prevents exploitation of common vulnerabilities in the development toolchain.
+* **Mitigation Status:** **High**. All identified vulnerabilities are remediated; `npm audit` currently reports 0 vulnerabilities.
+* **Residual Note:** Dependency health is now fully restored. Continued reliance on Dependabot alerts and regular audits is necessary to maintain this posture.
+
+---
+
 ## 2026-03-05 - Remediation of Hardcoded Secrets & Accessibility
 
 * **Activity:** Addressed Snyk Code and webhint warnings regarding hardcoded non-cryptographic secrets and accessibility violations.

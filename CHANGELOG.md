@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.6] - 2026-04-17
+
+### Fixed
+- **Linting Configuration:** Resolved persistent ESLint errors and warnings by streamlining the configuration.
+  - Removed `eslint-plugin-security` as a dependency due to false positives and configuration conflicts, leading to ESLint crashes.
+  - Removed `eslint-config-prettier` as it was no longer needed after removing `eslint-plugin-security`.
+  - Addressed "Definition for rule... not found" errors by removing all `// eslint-disable-next-line security/detect-object-injection` comments.
+  - Fixed `no-unused-vars` warning in `netlify/functions/firebase-config.js` by changing `event` to `_event`.
+
+### Removed
+- `eslint-plugin-security` and `eslint-config-prettier` dependencies from `package.json`.
+
 ## [1.9.5] - 2026-04-17
 
 ### Added

@@ -41,6 +41,7 @@
     "rollup": "^4.34.8",
     "svgo": "^4.0.1",
     "tar": "^7.5.10",
+    "picomatch": ">=2.3.2",
     "qs": "^6.15.1",
     "@fastify/static": "^9.1.1",
     "netlify-cli": {

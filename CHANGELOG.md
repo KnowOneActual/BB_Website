@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.5] - 2026-04-17
+
+### Added
+- **DRF Room Guide:** Added "Basement" floor section to `/DRF/drf-room-guide.html` including Latasha's Office, Building Kitchen, and IT/AV Store Room.
+- **DRF Room Guide:** Added "Admin Office" to Level 2 room listings.
+
+### Changed
+- **Navigation:** Updated `/DRF/drf-room-guide.html` navigation to include the Basement level and added "Admin" to the Level 2 link.
+- **Security:** Addressed multiple Dependabot security vulnerabilities via `package.json` overrides and dependency upgrades.
+  - Upgraded `netlify-cli` to `v25.0.0`.
+  - Forced `@fastify/static` to `v9.1.1` (CVE-2025-27138).
+  - Forced `qs` to `v6.15.1` (GHSA-w7fw-mjwx-w883).
+  - Forced `picomatch` to `>=2.3.2` (CWE-1321).
+  - Patched `follow-redirects` via `npm audit fix`.
+
 ## [1.9.4] - 2026-04-09
 
 ### Improved

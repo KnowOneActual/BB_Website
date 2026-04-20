@@ -1,130 +1,127 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0e17" />
-    <title>AV Tech Event Checklist | David Rubenstein Forum</title>
-    <link rel="stylesheet" href="/fonts.css" />
-    <link rel="stylesheet" href="drf-index.css" />
-    <link rel="icon" type="image/svg+xml" href="/DRF/img/favicon/favicon.svg" />
-    <link rel="stylesheet" href="drf-event-checklist-av.css" />  </head>
-  <body>
-    <div class="visually-hidden" id="task-announcer" aria-live="polite" aria-atomic="true"></div>
-    <div class="checklist-container">
-      <section class="checklist-header">
-        <h1>AV Tech Event Checklist</h1>
-        <p class="subtitle">
-          Custom checklist for AV technicians: setup, running, and breakdown. Add your own items—progress is saved
-          automatically.
-        </p>
-      </section>
 
-      <div class="controls">
-        <div class="control-group">
-          <button id="printBtn" class="btn btn-secondary"><span aria-hidden="true">🖨️</span> Print Checklist</button>
-          <button id="loadExamplesBtn" class="btn btn-secondary"><span aria-hidden="true">📋</span> Load Example Tasks</button>
-          <button id="clearBtn" class="btn btn-danger"><span aria-hidden="true">🗑️</span> Clear All</button>
-        </div>
-        <div class="control-group">
-          <button id="presentModeBtn" class="btn btn-primary"><span aria-hidden="true">📺</span> Present Mode</button>
-          <a href="drf-index.html" class="btn btn-secondary"> <span aria-hidden="true">←</span> Back to Resources </a>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e17" />
+  <title>AV Tech Event Checklist | David Rubenstein Forum</title>
+  <link rel="stylesheet" href="/fonts.css" />
+  <link rel="stylesheet" href="drf-index.css" />
+  <link rel="icon" type="image/webp" href="/DRF/img/favicon//favicon-32x32.webp" sizes="32x32" />
+  <link rel="icon" type="image/webp" href="/DRF/img/favicon//favicon-96x96.webp" sizes="96x96" />
+  <link rel="icon" type="image/png" href="/DRF/img/favicon//favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/DRF/img/favicon//favicon.svg" />
+  <link rel="shortcut icon" href="/DRF/img/favicon//favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/DRF/img/favicon//apple-touch-icon.png" />
+  <link rel="manifest" href="/DRF/img/favicon//site.webmanifest" />
+
+  <link rel="stylesheet" href="drf-event-checklist-av.css" />
+</head>
+
+<body>
+  <div class="visually-hidden" id="task-announcer" aria-live="polite" aria-atomic="true"></div>
+  <div class="checklist-container">
+    <section class="checklist-header">
+      <h1>AV Tech Event Checklist</h1>
+      <p class="subtitle">
+        Custom checklist for AV technicians: setup, running, and breakdown. Add your own items—progress is saved
+        automatically.
+      </p>
+    </section>
+
+    <div class="controls">
+      <div class="control-group">
+        <button id="printBtn" class="btn btn-secondary"><span aria-hidden="true">🖨️</span> Print Checklist</button>
+        <button id="loadExamplesBtn" class="btn btn-secondary"><span aria-hidden="true">📋</span> Load Example
+          Tasks</button>
+        <button id="clearBtn" class="btn btn-danger"><span aria-hidden="true">🗑️</span> Clear All</button>
       </div>
-
-      <!-- Event Setup Phase -->
-      <section class="phase" id="setup-phase">
-        <div class="phase-header">
-          <div class="phase-icon">🔧</div>
-          <div>
-            <h2 class="phase-title">Event Setup</h2>
-            <p class="phase-subtitle">AV equipment setup and pre‑event checks</p>
-          </div>
-        </div>
-        <ul class="checklist" id="setup-checklist">
-          <li class="empty-state">No items yet. Add your first setup task below.</li>
-        </ul>
-        <div class="add-item-form">
-          <label for="setup-input" class="visually-hidden">Add a setup task</label>
-          <input
-            type="text"
-            class="add-item-input"
-            id="setup-input"
-            placeholder="Add a setup task (e.g., 'Test all microphones')"
-            maxlength="200"
-          />
-          <div class="add-item-buttons">
-            <button type="button" class="btn btn-secondary" id="setup-cancel">Cancel</button>
-            <button type="button" class="btn btn-primary" id="setup-add">Add Task</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- During Event Phase -->
-      <section class="phase" id="during-phase">
-        <div class="phase-header">
-          <div class="phase-icon">🎤</div>
-          <div>
-            <h2 class="phase-title">During the Event</h2>
-            <p class="phase-subtitle">Live monitoring and real‑time adjustments</p>
-          </div>
-        </div>
-        <ul class="checklist" id="during-checklist">
-          <li class="empty-state">No items yet. Add your first during‑event task below.</li>
-        </ul>
-        <div class="add-item-form">
-          <label for="during-input" class="visually-hidden">Add a during-event task</label>
-          <input
-            type="text"
-            class="add-item-input"
-            id="during-input"
-            placeholder="Add a during‑event task (e.g., 'Monitor audio levels')"
-            maxlength="200"
-          />
-          <div class="add-item-buttons">
-            <button type="button" class="btn btn-secondary" id="during-cancel">Cancel</button>
-            <button type="button" class="btn btn-primary" id="during-add">Add Task</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Post‑Event Phase -->
-      <section class="phase" id="post-phase">
-        <div class="phase-header">
-          <div class="phase-icon">🧹</div>
-          <div>
-            <h2 class="phase-title">Post‑Event Break Down and Clean Up</h2>
-            <p class="phase-subtitle">Equipment teardown, storage, and documentation</p>
-          </div>
-        </div>
-        <ul class="checklist" id="post-checklist">
-          <li class="empty-state">No items yet. Add your first cleanup task below.</li>
-        </ul>
-        <div class="add-item-form">
-          <label for="post-input" class="visually-hidden">Add a cleanup task</label>
-          <input
-            type="text"
-            class="add-item-input"
-            id="post-input"
-            placeholder="Add a cleanup task (e.g., 'Store all cables properly')"
-            maxlength="200"
-          />
-          <div class="add-item-buttons">
-            <button type="button" class="btn btn-secondary" id="post-cancel">Cancel</button>
-            <button type="button" class="btn btn-primary" id="post-add">Add Task</button>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <p>© For the David Rubenstein Forum • University of Chicago • Maintained by Beau Bremer</p>
-        <p>Create and customize your AV tech checklist—items are saved in your browser.</p>
-        <p class="footer-small">
-          <a href="STYLE_CONTENT_GUIDE.md">Style & Content Guide</a>
-        </p>
-      </footer>
+      <div class="control-group">
+        <button id="presentModeBtn" class="btn btn-primary"><span aria-hidden="true">📺</span> Present Mode</button>
+        <a href="drf-index.html" class="btn btn-secondary"> <span aria-hidden="true">←</span> Back to Resources </a>
+      </div>
     </div>
 
-    <script src="drf-event-checklist-av.js"></script>
-  </body>
+    <!-- Event Setup Phase -->
+    <section class="phase" id="setup-phase">
+      <div class="phase-header">
+        <div class="phase-icon">🔧</div>
+        <div>
+          <h2 class="phase-title">Event Setup</h2>
+          <p class="phase-subtitle">AV equipment setup and pre‑event checks</p>
+        </div>
+      </div>
+      <ul class="checklist" id="setup-checklist">
+        <li class="empty-state">No items yet. Add your first setup task below.</li>
+      </ul>
+      <div class="add-item-form">
+        <label for="setup-input" class="visually-hidden">Add a setup task</label>
+        <input type="text" class="add-item-input" id="setup-input"
+          placeholder="Add a setup task (e.g., 'Test all microphones')" maxlength="200" />
+        <div class="add-item-buttons">
+          <button type="button" class="btn btn-secondary" id="setup-cancel">Cancel</button>
+          <button type="button" class="btn btn-primary" id="setup-add">Add Task</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- During Event Phase -->
+    <section class="phase" id="during-phase">
+      <div class="phase-header">
+        <div class="phase-icon">🎤</div>
+        <div>
+          <h2 class="phase-title">During the Event</h2>
+          <p class="phase-subtitle">Live monitoring and real‑time adjustments</p>
+        </div>
+      </div>
+      <ul class="checklist" id="during-checklist">
+        <li class="empty-state">No items yet. Add your first during‑event task below.</li>
+      </ul>
+      <div class="add-item-form">
+        <label for="during-input" class="visually-hidden">Add a during-event task</label>
+        <input type="text" class="add-item-input" id="during-input"
+          placeholder="Add a during‑event task (e.g., 'Monitor audio levels')" maxlength="200" />
+        <div class="add-item-buttons">
+          <button type="button" class="btn btn-secondary" id="during-cancel">Cancel</button>
+          <button type="button" class="btn btn-primary" id="during-add">Add Task</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Post‑Event Phase -->
+    <section class="phase" id="post-phase">
+      <div class="phase-header">
+        <div class="phase-icon">🧹</div>
+        <div>
+          <h2 class="phase-title">Post‑Event Break Down and Clean Up</h2>
+          <p class="phase-subtitle">Equipment teardown, storage, and documentation</p>
+        </div>
+      </div>
+      <ul class="checklist" id="post-checklist">
+        <li class="empty-state">No items yet. Add your first cleanup task below.</li>
+      </ul>
+      <div class="add-item-form">
+        <label for="post-input" class="visually-hidden">Add a cleanup task</label>
+        <input type="text" class="add-item-input" id="post-input"
+          placeholder="Add a cleanup task (e.g., 'Store all cables properly')" maxlength="200" />
+        <div class="add-item-buttons">
+          <button type="button" class="btn btn-secondary" id="post-cancel">Cancel</button>
+          <button type="button" class="btn btn-primary" id="post-add">Add Task</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© For the David Rubenstein Forum • University of Chicago • Maintained by Beau Bremer</p>
+      <p>Create and customize your AV tech checklist—items are saved in your browser.</p>
+      <p class="footer-small">
+        <a href="STYLE_CONTENT_GUIDE.md">Style & Content Guide</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="drf-event-checklist-av.js"></script>
+</body>
+
 </html>

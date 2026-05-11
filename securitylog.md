@@ -1,3 +1,33 @@
+## 2026-05-10 - Transitive Dependency Remediation & CI/CD Hardening
+
+*   **Activity:** Resolved critical transitive dependency vulnerabilities and hardened GitHub Actions security posture.
+*   **Summary:** Addressed vulnerabilities in `uuid` and `fast-uri` via dependency overrides, upgraded `netlify-cli`, and implemented least-privilege permissions for the GitHub Actions environment.
+
+---
+
+### Changes Implemented
+
+*   **Transitive Dependency Hardening (uuid & fast-uri)**
+    *   **Action:** Implemented strict `overrides` in `package.json` for `uuid` (13.0.1) and `fast-uri` (3.1.1).
+    *   **Action:** Upgraded `netlify-cli` to `26.0.1`.
+    *   **Reason:** Mitigates GHSA-w5hq-g745-h8pq (uuid: Missing buffer bounds check) and GHSA-q3j6-qgpj-74h6 (fast-uri: path traversal/host confusion). Overrides ensure remediation even when parent packages (like `@netlify/build`) have not yet updated their sub-dependencies.
+*   **GitHub Actions Least-Privilege Permissions**
+    *   **Action:** Added an explicit `permissions: contents: read` block to `.github/workflows/snyk.yml`.
+    *   **Reason:** Adheres to the principle of least privilege by restricting the `GITHUB_TOKEN` to read-only access, preventing unintended write access during security scans.
+*   **CI/CD Modernization (Node.js 24 Migration)**
+    *   **Action:** Updated `actions/checkout` and `actions/setup-node` to `v4`.
+    *   **Action:** Bumped `node-version` to `24` and added `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true` to all workflow environments.
+    *   **Reason:** Resolves deprecation warnings for Node.js 20 and ensures CI/CD stability beyond the 2026 cutoff.
+
+### Risk Assessment & Findings
+
+*   **Type:** Dependency Supply Chain & CI/CD Security.
+*   **Impact:** **High**. Neutralizes vulnerabilities in the build toolchain and restricts the attack surface of automated workflows.
+*   **Mitigation Status:** **High**. `npm audit` currently reports 0 vulnerabilities and GitHub security warnings are resolved.
+*   **Residual Note:** Dependency health is restored. Overrides should be re-evaluated when parent packages release updates that include the patched versions natively.
+
+---
+
 ## 2026-04-17 - ESLint Configuration & Linting Fixes
 
 *   **Activity:** Refactored ESLint configuration and resolved persistent linting warnings.

@@ -173,3 +173,29 @@ This log tracks significant development sessions, architectural decisions, and t
 *   **Recommended User Action:** Manual cleanup of npm cache (`npm cache clean --force`), `node_modules`, and `package-lock.json`, followed by a fresh `npm install`, then retry `npm audit fix --force`.
 *   **Outcome:** Issue acknowledged as a local environment concern; project code not directly impacted by vulnerability or `esbuild` error.
 
+---
+## Session: 2026-05-10 - Security Hardening & CI/CD Modernization
+
+### 1. GitHub Actions Node.js 24 Migration
+*   **Issue:** Received deprecation warnings for Node.js 20 on GitHub Actions runners.
+*   **Action:** 
+    1.  Updated `actions/checkout` and `actions/setup-node` to `v4`.
+    2.  Set `node-version: '24'` in `snyk.yml`.
+    3.  Added `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true` environment variable to all workflow files.
+*   **Rationale:** Ensures CI/CD pipelines remain functional beyond the September 2026 cutoff and utilizes the most recent runner capabilities.
+
+### 2. Transitive Dependency Security (uuid & fast-uri)
+*   **Issue:** `npm audit` flagged high-severity vulnerabilities in `uuid` and `fast-uri` used by `netlify-cli`.
+*   **Action:** 
+    1.  Upgraded `netlify-cli` to `26.0.1`.
+    2.  Implemented `overrides` in `package.json` for `uuid@13.0.1` and `fast-uri@3.1.1`.
+*   **Rationale:** `overrides` allow for immediate remediation of transitive vulnerabilities when parent packages have not yet updated their own dependency trees.
+
+### 3. General Project Polish & Optimization
+*   **Navigation:** Fixed a duplicate "Toolkit" nav link in `index.html`.
+*   **Timestamps:** Updated "Last Updated" dates to May 2026 to maintain site relevance.
+*   **Dependency Update:** Upgraded non-breaking devDependencies (`eslint`, `globals`, `jest-environment-jsdom`, `prettier-plugin-tailwindcss`) to their latest stable versions.
+
+---
+*End of Log Entry*
+

@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-05-10
+
+### Security
+- **Transitive Dependency Hardening:** Resolved multiple moderate and high-severity vulnerabilities by implementing strict `package.json` overrides:
+    - `uuid`: Forced to `13.0.1` (Fixes missing buffer bounds check).
+    - `fast-uri`: Forced to `3.1.1` (Fixes path traversal and host confusion).
+- **Toolchain Upgrade:** Upgraded `netlify-cli` to `26.0.1` to leverage latest security patches.
+
+### Changed
+- **CI/CD Modernization:** Overhauled GitHub Actions workflows to address Node.js 20 deprecation:
+    - Updated `actions/checkout` and `actions/setup-node` to `v4`.
+    - Bumped `node-version` to `24` in `snyk.yml`.
+    - Implemented `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true` across all workflows as a bridge for the 2026 Node.js migration.
+- **Dependency Refresh:** Updated `eslint`, `globals`, `jest-environment-jsdom`, and `prettier-plugin-tailwindcss` to their latest stable versions.
+
+### Fixed
+- **Navigation Consistency:** Removed a duplicate "Toolkit" link from the main navigation in `index.html`.
+- **Project Metadata:** Updated "Last Updated" timestamps to May 2026 across the site footer and documentation.
+
+### Added
+- **AI-Enhanced Troubleshooting:** Integrated advanced context for vulnerability resolution and CI/CD maintenance.
+
 ## [1.9.6] - 2026-04-17
 
 ### Fixed

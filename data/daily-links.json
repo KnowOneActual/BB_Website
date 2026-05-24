@@ -24,6 +24,11 @@
           "icon": "fa-solid fa-lock"
         },
         {
+          "name": "Enclosed: private and secure notes",
+          "url": "https://enclosed.cc/",
+          "icon": "fa-solid fa-envelope"
+        },
+        {
           "name": "iCloud",
           "url": "https://www.icloud.com",
           "icon": "fa-solid fa-cloud"

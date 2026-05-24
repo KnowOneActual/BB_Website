@@ -91,20 +91,26 @@ exports.handler = async function (event) {
     - If they mention a city, return ONLY the city name.
     - If they are just saying hello or being friendly without a city, return "GREETING".
     - If you cannot find a city and it's not a greeting, return "N/A".`;
-    
+
     const cityResponse = await callGemini(cityPrompt);
 
     if (cityResponse === 'GREETING') {
       return {
         statusCode: 200,
-        body: JSON.stringify({ reply: "Hello! I'm your Weather Assistant. To give you an update, I just need to know which city you're interested in!" }),
+        body: JSON.stringify({
+          reply:
+            "Hello! I'm your Weather Assistant. To give you an update, I just need to know which city you're interested in!",
+        }),
       };
     }
 
     if (cityResponse === 'N/A' || !cityResponse) {
       return {
         statusCode: 200,
-        body: JSON.stringify({ reply: "I'm sorry, I couldn't quite catch which city you're asking about. Could you please specify a location?" }),
+        body: JSON.stringify({
+          reply:
+            "I'm sorry, I couldn't quite catch which city you're asking about. Could you please specify a location?",
+        }),
       };
     }
 

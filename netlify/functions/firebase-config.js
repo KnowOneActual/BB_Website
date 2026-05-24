@@ -3,14 +3,14 @@
 // retrieving sensitive information from environment variables.
 
 exports.handler = async function (_event, _context) {
-  const { 
-    FIREBASE_API_KEY, 
-    FIREBASE_AUTH_DOMAIN, 
-    FIREBASE_PROJECT_ID, 
-    FIREBASE_STORAGE_BUCKET, 
-    FIREBASE_MESSAGING_SENDER_ID, 
-    FIREBASE_APP_ID, 
-    FIREBASE_MEASUREMENT_ID 
+  const {
+    FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN,
+    FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET,
+    FIREBASE_MESSAGING_SENDER_ID,
+    FIREBASE_APP_ID,
+    FIREBASE_MEASUREMENT_ID,
   } = process.env;
 
   // Check if critical variables are missing
@@ -18,7 +18,9 @@ exports.handler = async function (_event, _context) {
     console.error('Missing Firebase environment variables.');
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Firebase configuration is incomplete on the server. Please check environment variables.' }),
+      body: JSON.stringify({
+        error: 'Firebase configuration is incomplete on the server. Please check environment variables.',
+      }),
     };
   }
 
@@ -35,7 +37,7 @@ exports.handler = async function (_event, _context) {
   return {
     statusCode: 200,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(config),
   };

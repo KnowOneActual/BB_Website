@@ -53,11 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!section) return;
 
         const heading = document.createElement('h2');
-        heading.className = 'text-3xl font-bold text-white mb-8 text-center tracking-tight flex items-center justify-center gap-4';
-        
+        heading.className =
+          'text-3xl font-bold text-white mb-8 text-center tracking-tight flex items-center justify-center gap-4';
+
         const icon = document.createElement('i');
         icon.className = `${icons[iconKey]} text-indigo-500`;
-        
+
         heading.appendChild(icon);
         heading.appendChild(document.createTextNode(title));
 
@@ -75,11 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const softwareSection = document.getElementById('software-section');
       if (softwareSection) {
         const heading = document.createElement('h2');
-        heading.className = 'text-3xl font-bold text-white mb-12 text-center tracking-tight flex items-center justify-center gap-4';
-        
+        heading.className =
+          'text-3xl font-bold text-white mb-12 text-center tracking-tight flex items-center justify-center gap-4';
+
         const icon = document.createElement('i');
         icon.className = `${icons[iconKey]} text-indigo-500`;
-        
+
         heading.appendChild(icon);
         heading.appendChild(document.createTextNode('Software'));
         softwareSection.appendChild(heading);
@@ -88,24 +90,28 @@ document.addEventListener('DOMContentLoaded', () => {
           const subHeading = document.createElement('h3');
           subHeading.className =
             'text-xl font-semibold text-indigo-400 mt-10 mb-6 uppercase tracking-wider text-sm border-l-4 border-indigo-500 pl-4 flex items-center gap-3';
-          
+
           const subIcon = document.createElement('i');
           subIcon.className = `${icons[category] || 'fas fa-chevron-right'} text-xs opacity-70`;
-          
+
           subHeading.appendChild(subIcon);
           subHeading.appendChild(document.createTextNode(category));
           softwareSection.appendChild(subHeading);
 
           const grid = document.createElement('div');
           grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
-          data.software[category].forEach((item) =>
-            grid.appendChild(createCard(item)),
-          );
+          data.software[category].forEach((item) => grid.appendChild(createCard(item)));
           softwareSection.appendChild(grid);
         }
       }
 
-      populateSection('live-production-section', 'Live Production', data.live_production, 'live_production', 'lg:grid-cols-2');
+      populateSection(
+        'live-production-section',
+        'Live Production',
+        data.live_production,
+        'live_production',
+        'lg:grid-cols-2',
+      );
       populateSection('services-section', 'Services', data.services, 'services', 'lg:grid-cols-3');
 
       initializeFadeIn();

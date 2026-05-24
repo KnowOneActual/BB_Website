@@ -28,7 +28,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: 'p/security-audit, p/javascript, p/secrets'
-          generateSarif: "1"
+          generateSarif: '1'
 
       # Upload results to Security tab
       - name: Upload Trivy results

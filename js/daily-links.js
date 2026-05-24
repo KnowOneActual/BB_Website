@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             links: pinnedLinks,
             isPinned: true,
           },
-          container
+          container,
         );
       }
 

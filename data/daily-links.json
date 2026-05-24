@@ -242,6 +242,11 @@
           "pinned": true
         },
         {
+          "name": "Bentopdf: PDF Tool Kit",
+          "url": "https://www.bentopdf.com/",
+          "icon": "fa-solid fa-file-pdf"
+        },
+        {
           "name": "Cipher Identifier",
           "url": "https://www.dcode.fr/cipher-identifier",
           "icon": "fa-solid fa-fingerprint"

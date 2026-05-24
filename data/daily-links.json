@@ -125,6 +125,11 @@
           "icon": "fa-solid fa-gauge"
         },
         {
+          "name": "Cloudflare Speedtest",
+          "url": "https://speed.cloudflare.com/",
+          "icon": "fa-brands fa-cloudflare"
+        },
+        {
           "name": "DNS Checker",
           "url": "https://dnschecker.org/",
           "icon": "fa-solid fa-server"

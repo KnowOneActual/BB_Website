@@ -100,7 +100,8 @@ class ChecklistManager {
   deleteItem(phase, id, listItem) {
     if (!confirm('Delete this task?')) return;
 
-    const nextFocusable = listItem.nextElementSibling || listItem.previousElementSibling || document.getElementById(`${phase}-input`);
+    const nextFocusable =
+      listItem.nextElementSibling || listItem.previousElementSibling || document.getElementById(`${phase}-input`);
 
     const itemText = listItem.querySelector('.checklist-label').textContent;
     listItem.remove();
@@ -116,9 +117,9 @@ class ChecklistManager {
       emptyState.textContent = 'No items yet. Add your first task below.';
       checklist.appendChild(emptyState);
     }
-    
+
     this.announce(`Task deleted: ${itemText}`);
-    if(nextFocusable) {
+    if (nextFocusable) {
       nextFocusable.focus();
     }
   }
@@ -175,7 +176,7 @@ class ChecklistManager {
   }
 
   loadExampleTasks() {
-    let hasItems = this.phases.some(phase => this.getPhaseItems(phase).length > 0);
+    let hasItems = this.phases.some((phase) => this.getPhaseItems(phase).length > 0);
 
     if (
       hasItems &&
@@ -235,7 +236,7 @@ class ChecklistManager {
       if (!addBtn) return;
 
       addBtn.addEventListener('click', () => this.addItem(phase, input.value));
-      cancelBtn.addEventListener('click', () => input.value = '');
+      cancelBtn.addEventListener('click', () => (input.value = ''));
 
       input.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {

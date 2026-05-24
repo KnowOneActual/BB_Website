@@ -2408,7 +2408,8 @@ section.bg-gradient-to-br > div.relative {
 /* --- Tech Grid Background --- */
 
 .tech-grid {
-  background-image: linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
 }
@@ -2671,4 +2672,3 @@ section.bg-gradient-to-br > div.relative {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-

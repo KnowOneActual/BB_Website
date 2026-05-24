@@ -197,6 +197,81 @@
       ]
     },
     {
+      "name": "Live Show Control & Timing",
+      "links": [
+        {
+          "name": "Stagetimer.io",
+          "url": "https://stagetimer.io/use-cases/conference-and-speaker-timer/",
+          "icon": "fa-solid fa-stopwatch"
+        },
+        {
+          "name": "StageTimerControl",
+          "url": "https://stagetimercontrol.com",
+          "icon": "fa-solid fa-clock"
+        },
+        {
+          "name": "Ontime",
+          "url": "https://getontime.no",
+          "icon": "fa-solid fa-list-check"
+        },
+        {
+          "name": "ChronoStage",
+          "url": "https://chronostage.app",
+          "icon": "fa-solid fa-hourglass-half"
+        },
+        {
+          "name": "TimedFlow",
+          "url": "https://www.timedflow.com/stage-timer",
+          "icon": "fa-solid fa-clock-rotate-left"
+        },
+        {
+          "name": "Cue Light",
+          "url": "https://cuelight.io",
+          "icon": "fa-solid fa-traffic-light"
+        },
+        {
+          "name": "vTally Web Tally",
+          "url": "https://wifi-tally.github.io/getting-started/setup-web-tally.html",
+          "icon": "fa-solid fa-circle-dot"
+        }
+      ]
+    },
+    {
+      "name": "Stage Prompters & Audience Q&A",
+      "links": [
+        {
+          "name": "CuePrompter",
+          "url": "https://cueprompter.com",
+          "icon": "fa-solid fa-scroll"
+        },
+        {
+          "name": "NanoPrompter",
+          "url": "https://www.nanoprompter.com",
+          "icon": "fa-solid fa-align-left"
+        },
+        {
+          "name": "ProNoto Teleprompter",
+          "url": "https://pronoto.io/teleprompter/",
+          "icon": "fa-solid fa-window-restore"
+        },
+        {
+          "name": "Poll Everywhere",
+          "url": "https://www.polleverywhere.com",
+          "icon": "fa-solid fa-square-poll-vertical"
+        },
+        {
+          "name": "Mentimeter",
+          "url": "https://www.mentimeter.com/features/live-polling",
+          "icon": "fa-solid fa-chart-pie"
+        },
+        {
+          "name": "QuestionWall",
+          "url": "https://questionwall.com/en/soru-cevap-platformu",
+          "icon": "fa-solid fa-comments"
+        }
+      ]
+    },
+    {
       "name": "Security & Privacy",
       "links": [
         {

@@ -21,11 +21,11 @@ console.log('Firebase modules imported successfully.');
 // --- CONFIGURATION ---
 // Fetch configuration from Netlify function to keep secrets out of the source code.
 const firebaseConfig = await fetch('/.netlify/functions/firebase-config')
-  .then(res => {
+  .then((res) => {
     if (!res.ok) throw new Error('Failed to fetch Firebase configuration.');
     return res.json();
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('Firebase Config Error:', err);
     return null;
   });

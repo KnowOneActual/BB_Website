@@ -220,8 +220,7 @@ techAdoptionChartCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', () => {
     const datasetIndex = parseInt(checkbox.value);
     // Toggle dataset visibility
-    techAdoptionChart.data.datasets[datasetIndex].hidden =
-      !checkbox.checked;
+    techAdoptionChart.data.datasets[datasetIndex].hidden = !checkbox.checked;
     techAdoptionChart.update();
   });
 });

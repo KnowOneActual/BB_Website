@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-05-24
+
+### Security
+- **Dependency Hardening:** Resolved multiple security vulnerabilities in transitive dependencies using `package.json` overrides:
+  - `qs`: Forced to `^6.15.2` (Fixes a remotely triggerable DoS crash).
+  - `brace-expansion`: Forced to `^5.0.6` (Fixes CVE-2026-45149: large numeric range defeats max DoS protection).
+  - `multiparty`: Forced to `^4.3.0` (Fixes DoS via Prototype Pollution leading to Uncaught Exception).
+  - `ws`: Forced to `^8.20.1` (Fixes GHSA-58qx-3vcg-4xpx: uninitialized memory disclosure).
+
 ## [2.0.0] - 2026-05-10
 
 ### Security

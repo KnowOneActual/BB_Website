@@ -337,6 +337,16 @@
           "icon": "fa-solid fa-swatchbook"
         },
         {
+          "name": "Excalidraw Whiteboard",
+          "url": "https://excalidraw.com/",
+          "icon": "fa-solid fa-pen-ruler"
+        },
+        {
+          "name": "Stirling Login",
+          "url": "https://stirling.com/app/login",
+          "icon": "fa-solid fa-right-to-bracket"
+        },
+        {
           "name": "DRF tools and resources",
           "url": "https://beaubremer.com/drf/drf-index",
           "icon": "fa-brands fa-fort-awesome-alt",
@@ -363,6 +373,11 @@
           "url": "https://www.thefarside.com/",
           "icon": "fa-solid fa-face-grin-tears",
           "pinned": true
+        },
+        {
+          "name": "100,000 Stars (Chrome Experiment)",
+          "url": "https://stars.chromeexperiments.com/",
+          "icon": "fa-solid fa-meteor"
         }
       ]
     },

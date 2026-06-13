@@ -1,6 +1,6 @@
 {
   "name": "beaubremer-weather-bot",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-06-13
+
+### Added
+- **Interactive Search:** Integrated a glassmorphic search panel into the Daily Links Hub (`dayl.html`) with live, client-side filtering.
+- **Category Navigation Pills:** Added horizontal scrollable navigation pills to filter links by category instantly.
+- **Keyboard Shortcuts:** Configured keyboard listeners (`/` and `Ctrl/Cmd+K` to focus search, `Esc` to clear).
+- **Match Highlighting:** Added case-insensitive substring highlighting (`.highlight`) for matches in link labels and category headings.
+- **New External Links:** Added Excalidraw, Stirling Login, and 100,000 Stars Chrome Experiment to `data/daily-links.json`.
+- **Unit Testing:** Created a brand-new test suite `__tests__/daily-links.test.js` with 7 Jest tests verifying rendering, search filtering, category selection, shortcut focus, and SVG security sanitization.
+
+### Changed
+- **Performance Optimization:** Refactored `js/daily-links.js` to store fetched JSON links in memory globally, preventing multiple fetch network requests.
+
 ## [2.0.1] - 2026-05-24
 
 ### Security

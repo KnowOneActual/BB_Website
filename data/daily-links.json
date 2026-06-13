@@ -220,8 +220,8 @@
           "icon": "fa-solid fa-hourglass-half"
         },
         {
-          "name": "TimedFlow",
-          "url": "https://www.timedflow.com/stage-timer",
+          "name": "AV Tools Studio",
+          "url": "https://avtool.studio/",
           "icon": "fa-solid fa-clock-rotate-left"
         },
         {
@@ -246,7 +246,7 @@
         },
         {
           "name": "NanoPrompter",
-          "url": "https://www.nanoprompter.com",
+          "url": "https://www.nanoprompter.com/editor/",
           "icon": "fa-solid fa-align-left"
         },
         {
@@ -335,6 +335,12 @@
           "name": "Adobe Color Wheel",
           "url": "https://color.adobe.com/",
           "icon": "fa-solid fa-swatchbook"
+        },
+        {
+          "name": "DRF tools and resources",
+          "url": "https://beaubremer.com/drf/drf-index",
+          "icon": "fa-brands fa-fort-awesome-alt",
+          "pinned": true
         }
       ]
     },
@@ -353,9 +359,9 @@
         },
 
         {
-          "name": "DRF tools and resources",
-          "url": "https://beaubremer.com/drf/drf-index",
-          "icon": "fa-brands fa-fort-awesome-alt",
+          "name": "The Farside",
+          "url": "https://www.thefarside.com/",
+          "icon": "fa-solid fa-face-grin-tears",
           "pinned": true
         }
       ]

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2026-06-15
+
+### Fixed
+- **Toolkit Script Reference:** Fixed `ReferenceError: iconKey is not defined` in `js/toolbag.js` by correctly referencing `icons['software']`. This resolved an issue where the page halted rendering after the Hardware section, and restores the Software, Live Production, and Services sections.
+
 ## [2.1.0] - 2026-06-13
 
 ### Added

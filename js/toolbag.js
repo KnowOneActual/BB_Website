@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'text-3xl font-bold text-white mb-12 text-center tracking-tight flex items-center justify-center gap-4';
 
         const icon = document.createElement('i');
-        icon.className = `${icons[iconKey]} text-indigo-500`;
+        icon.className = `${icons['software']} text-indigo-500`;
 
         heading.appendChild(icon);
         heading.appendChild(document.createTextNode('Software'));

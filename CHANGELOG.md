@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Font Awesome Integration:** Added Font Awesome CDN link to `index.html` to support category headers in the skills matrix.
 - **Typography Polish:** Switched global body copy font family to Poppins and optimized line height and letter spacing for improved readability and a warmer geometric aesthetic.
 
+### Security
+- **Dependency Hardening:** Upgraded direct `js-yaml` devDependency and added strict override to force `js-yaml` to `^4.2.0` across all transitive dependencies (specifically addressing the Algorithmic CPU Exhaustion / Denial of Service vulnerability in merge-key processing).
+
 ## [2.1.2] - 2026-06-15
 
 ### Changed

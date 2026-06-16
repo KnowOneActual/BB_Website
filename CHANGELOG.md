@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Added Nationwide Network Rollout (15+ site deployment, BOM authoring, structured cabling, 98% commissioning).
 - **Specialized Diagnostics & Labs:** Grouped the Subnet Calculator, File Encryption Tool, and Labs under a unified, clean grid.
 - **Font Awesome Integration:** Added Font Awesome CDN link to `index.html` to support category headers in the skills matrix.
+- **Typography Polish:** Switched global body copy font family to Poppins and optimized line height and letter spacing for improved readability and a warmer geometric aesthetic.
 
 ## [2.1.2] - 2026-06-15
 

@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.3] - 2026-06-15
+
+### Added
+- **Technical Skills Matrix:** Restructured the "Core Skills" section in `index.html` into a 4-column structured matrix highlighting categorized capabilities: AV Systems, IT & Networking, Automation & Dev, and Operations & PM.
+- **Enterprise Project Showcase:** Grouped and showcased high-impact engineering projects:
+  - Added David Rubenstein Forum Hub (UChicago self-initiated operational resources index, linking to `/DRF/drf-index.html`).
+  - Added Enterprise AV/IT Infrastructure Overhaul (32k sq. ft. venue featuring BSS Soundweb London, digital mixing, Shure wireless mic/IEM frequency coordination, and Cisco Meraki network).
+  - Added Nationwide Network Rollout (15+ site deployment, BOM authoring, structured cabling, 98% commissioning).
+- **Specialized Diagnostics & Labs:** Grouped the Subnet Calculator, File Encryption Tool, and Labs under a unified, clean grid.
+- **Font Awesome Integration:** Added Font Awesome CDN link to `index.html` to support category headers in the skills matrix.
+
 ## [2.1.2] - 2026-06-15
 
 ### Changed

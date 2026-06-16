@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.4] - 2026-06-15
+
+### Security
+- **CI/CD Hardening:** Upgraded GitHub Actions `github/codeql-action/upload-sarif` from `v3` to `v4` in `security.yml` to resolve deprecation warnings and ensure long-term pipeline security scanning ahead of the December 2026 deprecation.
+
 ## [2.1.3] - 2026-06-15
 
 ### Added

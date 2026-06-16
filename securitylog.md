@@ -1,3 +1,25 @@
+## 2026-06-15 - GitHub Actions CodeQL Upgrade to v4
+
+*   **Activity:** Upgraded deprecated CodeQL Actions in CI workflows to ensure long-term pipeline security.
+*   **Summary:** Upgraded GitHub Actions `github/codeql-action/upload-sarif` from `v3` to `v4` in `security.yml` to resolve deprecation warnings ahead of the December 2026 deprecation.
+
+---
+
+### Changes Implemented
+
+*   **CodeQL v4 Migration**
+    *   **Action:** Updated occurrences of `github/codeql-action/upload-sarif@v3` to `@v4` in `.github/workflows/security.yml`.
+    *   **Reason:** Resolves the deprecation warning issued by GitHub (stating CodeQL Actions v3 will be deprecated in December 2026). Upgrading to v4 ensures that SARIF results from Trivy and Semgrep continue to upload securely without interrupting the CI pipeline.
+
+### Risk Assessment & Findings
+
+*   **Type:** CI/CD & Pipeline Security.
+*   **Impact:** **Low** to production, **High** to pipeline stability. Keeps the automated security vulnerability scans (Trivy & Semgrep) operational.
+*   **Mitigation Status:** **High**. Deprecation warnings are resolved and workflows are aligned with current GitHub Actions support guidelines.
+*   **Residual Note:** None.
+
+---
+
 ## 2026-06-15 - Transitive Dependency Hardening (js-yaml)
 
 *   **Activity:** Resolved moderate/high-severity vulnerability in transitive dependency `js-yaml`.

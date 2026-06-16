@@ -1,3 +1,26 @@
+## 2026-06-15 - Transitive Dependency Hardening (js-yaml)
+
+*   **Activity:** Resolved moderate/high-severity vulnerability in transitive dependency `js-yaml`.
+*   **Summary:** Implemented dependency override to upgrade `js-yaml` from version `4.1.1` (and `3.14.2`) to the secure version `4.2.0` across the dependency tree.
+
+---
+
+### Changes Implemented
+
+*   **js-yaml Vulnerability Remediation**
+    *   **Action:** Updated direct `devDependencies` entry for `js-yaml` to `^4.2.0`.
+    *   **Action:** Added a strict global override `"js-yaml": "^4.2.0"` in `package.json` and ran `npm install` to update `package-lock.json`.
+    *   **Reason:** Mitigates the algorithmic CPU exhaustion (Denial of Service) vulnerability in `js-yaml`'s merge-key processing (specifically tag:yaml.org,2002:merge handling inside `lib/loader.js`). Overrides force transitive usage (such as inside `jest`) to resolve to the secure version `4.2.0`.
+
+### Risk Assessment & Findings
+
+*   **Type:** Dependency Security / Denial of Service.
+*   **Impact:** **High** (development toolchain and test suites). Prevents algorithmic complexity exhaustion attacks when parsing YAML.
+*   **Mitigation Status:** **High**. All direct and transitive references are patched.
+*   **Residual Note:** None. The dependency tree is fully patched for this issue.
+
+---
+
 ## 2026-05-10 - Transitive Dependency Remediation & CI/CD Hardening
 
 *   **Activity:** Resolved critical transitive dependency vulnerabilities and hardened GitHub Actions security posture.

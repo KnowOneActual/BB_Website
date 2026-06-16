@@ -2,7 +2,7 @@
 <img src="img/readme/BB_logo_green.webp" alt="Beau Bremer Logo" width="150">
 </p>
 
-# Beau Bremer's personal website & technical playground
+# Beau Bremer's Personal Website & Technical Playground
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -12,45 +12,42 @@
 ![Security](https://img.shields.io/badge/Security-Policy-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-## 👋 Hey there!
-Welcome to the source code for [beaubremer.com](https://beaubremer.com/). This is my digital home, a living project where I showcase my background in **Technical Project Management** and **AV/IT Systems**, while experimenting with the modern web.
+This is the repository for [beaubremer.com](https://beaubremer.com/), a portfolio site and technical playground showcasing expertise in **Technical Project Management** and **AV/IT Systems**.
 
-I believe in a straightforward, hands-on approach to tech. This site is a testament to that: built from scratch, refined through curiosity, and maintained with a focus on clean code and solid security.
+## Engineering Standards & Architecture
 
-## Evolution & Feedback
-This site is a living project. It recently underwent a major refactor and redesign based on some great feedback from the community. I'm a big believer that the best work comes from listening and iterating, so **a huge thank you** to everyone who has shared their thoughts so far. Your input keeps this project moving forward.
+The codebase prioritizes performance, security, and clean architecture:
 
-## Engineering Standards (The "Under the Hood" Stuff)
-I like my projects to run as smoothly as the systems I manage. To keep things high-performance and secure, I've implemented:
-*   **Static Analysis & Quality:** I use **ESLint** with security-focused plugins to catch bugs and vulnerabilities before they ever reach the site. I also use **Prettier** to ensure consistent code formatting.
-*   **Security-First Architecture:** A hardened Content Security Policy (CSP) with zero `'unsafe-inline'` scripts. It's built to be resilient.
-*   **Privacy & Performance:** I've moved to **Self-Hosted Typography** to keep things private and fast, resolving fingerprinting blocks while keeping the sub-second Tailwind build times.
-*   **Automated Auditing:** Continuous dependency scanning via **Snyk** keeps the supply chain clean.
+*   **Code Quality & Formatting:** ESLint (with security-focused plugins) and Prettier for automated syntax validation and style enforcement.
+*   **Hardened Security:** A strict Content Security Policy (CSP) with no `'unsafe-inline'` scripts.
+*   **Privacy & Performance:** Self-hosted fonts to eliminate third-party tracking, optimize loading times, and maintain fast tailwind compilations.
+*   **Dependency Auditing:** Automated vulnerability scanning via Snyk.
 
-## Things I've Built Here
-*   **AI Weather Bot:** A serverless Node.js app that pairs Google Gemini with OpenWeatherMap for conversational updates.
-* **Dynamic UX:** The homepage greeting changes in real-time based on the weather in Chicago (I chose to hard-code Chicago to keep things simple and respect visitors' privacy, ensuring their location isn't tracked or logged.) Just a little touch to make the site feel alive.
-*   **Privacy-First Resume Workflow:** An interactive request system that protects personal info from scrapers while ensuring you get the latest version.
-*   **Network Diagnostics:** A suite of lightweight utilities for AV/IT pros, including a Latency Monitor and IP Subnet Calculator.
+## Implemented Features & Tools
 
-## The Stack
+*   **AI Weather Bot:** A serverless Node.js service integrating Google Gemini and OpenWeatherMap for conversational queries.
+*   **Weather-Responsive Greeting:** Dynamic Chicago-hardcoded weather integration to make the homepage interactive without tracking visitor locations.
+*   **Secure Resume Delivery:** An interactive workflow protecting contact details from scrapers while delivering verified copies.
+*   **Network Diagnostics:** Client-side utilities including a Subnet Calculator and Latency Monitor for AV/IT operations.
+
+## Technology Stack
+
 *   **Frontend:** HTML5, CSS3, ES6+ JavaScript, Tailwind CSS, Chart.js.
-*   **Backend:** Netlify Functions (Node.js), Firebase Firestore.
-*   **Services:** Cloudflare WAF/DNS, Google Gemini AI, Resend.
+*   **Backend & Serverless:** Netlify Functions (Node.js), Firebase Firestore.
+*   **Services:** Cloudflare WAF/DNS, Google Gemini API, Resend.
 
-## Documentation & Labs
-If you're curious about the "why" behind the "what," check out:
-*   **[Full Design Rationale](docs/DESIGN_NOTES.md)**: My thoughts on color, typography, and professional branding.
-*   **[Security Log](securitylog.md)**: A transparent record of every security hardening action I've taken.
-*   **[The Labs (Experimental)](https://beaubremer.com/labs.html)**: Where I keep my creative coding and data viz experiments.
-*   **[Tor Onion Service](https://github.com/KnowOneActual/BB_Website/tree/onion-version)**: A privacy-focused, minimalist mirror of the site for the Tor network.
+## Project Documentation
+
+*   **[Design Rationale](docs/DESIGN_NOTES.md):** Details on color systems, typography choices, and professional branding guidelines.
+*   **[Security Log](securitylog.md):** Audit record of security hardening actions and configurations.
+*   **[Labs (Experimental)](https://beaubremer.com/labs.html):** Creative coding and interactive visual experiments.
+*   **[Tor Onion Service Mirror](https://github.com/KnowOneActual/BB_Website/tree/onion-version):** Minimalist, privacy-focused mirror for the Tor network.
 
 ---
 
-### Stay Bold. Keep Creating.
-*   **LinkedIn:** [Beau Bremer's LinkedIn](https://www.linkedin.com/in/beau-bremer-chicago/)
-*   **Blog:** [blog.beaubremer.com](https://blog.beaubremer.com/)
+## Contact & Links
 
-### Contact
-*   **Contact form:** https://beaubremer.com/#contact
-*   **PGP Key:** https://beaubremer.com/BeauBremer-pgp-key.asc
+*   **LinkedIn:** [/in/beau-bremer-chicago](https://www.linkedin.com/in/beau-bremer-chicago/)
+*   **Blog:** [blog.beaubremer.com](https://blog.beaubremer.com/)
+*   **Contact Form:** [beaubremer.com/#contact](https://beaubremer.com/#contact)
+*   **PGP Public Key:** [beaubremer.com/BeauBremer-pgp-key.asc](https://beaubremer.com/BeauBremer-pgp-key.asc)

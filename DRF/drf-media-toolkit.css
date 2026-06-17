@@ -61,6 +61,22 @@
   }
 }
 
+.sidebar-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .sidebar-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+}
+
 .nav-btn {
   display: flex;
   align-items: center;

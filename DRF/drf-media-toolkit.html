@@ -27,62 +27,64 @@
     <main class="av-lab-container">
       <div class="main-layout">
         <!-- Sidebar Navigation -->
-        <nav class="sidebar" role="tablist" aria-label="AV Lab Sections">
-          <button class="nav-btn active" data-tab="tab-generators" role="tab" aria-selected="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-            </svg>
-            Signal Generators
-          </button>
-          <button class="nav-btn" data-tab="tab-sync" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-              />
-            </svg>
-            AV Sync / Lip-Sync
-          </button>
-          <button class="nav-btn" data-tab="tab-visual" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"
-              />
-            </svg>
-            Display Calibration
-          </button>
-          <button class="nav-btn" data-tab="tab-webrtc" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"
-              />
-            </svg>
-            Hardware Diagnostics
-          </button>
-          <button class="nav-btn" data-tab="tab-checklists" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-              />
-            </svg>
-            Tech Checklists
-          </button>
-          <button class="nav-btn" data-tab="tab-library" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"
-              />
-            </svg>
-            Troubleshooting Library
-          </button>
+        <nav class="sidebar" aria-label="AV Lab Sections">
+          <div class="sidebar-tabs" role="tablist" aria-label="AV Lab Sections">
+            <button class="nav-btn active" data-tab="tab-generators" role="tab" aria-selected="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+              </svg>
+              Signal Generators
+            </button>
+            <button class="nav-btn" data-tab="tab-sync" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                />
+              </svg>
+              AV Sync / Lip-Sync
+            </button>
+            <button class="nav-btn" data-tab="tab-visual" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"
+                />
+              </svg>
+              Display Calibration
+            </button>
+            <button class="nav-btn" data-tab="tab-webrtc" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"
+                />
+              </svg>
+              Hardware Diagnostics
+            </button>
+            <button class="nav-btn" data-tab="tab-checklists" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+              Tech Checklists
+            </button>
+            <button class="nav-btn" data-tab="tab-library" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"
+                />
+              </svg>
+              Troubleshooting Library
+            </button>
 
-          <button class="nav-btn nav-btn-disclaimer" data-tab="tab-disclaimer" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-              />
-            </svg>
-            Disclaimer & EULA
-          </button>
+            <button class="nav-btn nav-btn-disclaimer" data-tab="tab-disclaimer" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                />
+              </svg>
+              Disclaimer & EULA
+            </button>
+          </div>
 
           <a class="nav-btn nav-btn-back" href="drf-index.html">
             <svg viewBox="0 0 24 24">

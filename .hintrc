@@ -8,7 +8,8 @@
       {
         "ignore": [
           "link[sizes]",
-          "theme-color"
+          "theme-color",
+          "meta[name=theme-color]"
         ]
       }
     ],

@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Expanded display calibration patterns (Solid White, Solid Black, RGB loop).
   - Added PoE budget calculator and interactive IGMP multicast wizard.
   - Enabled Screen Wake Lock API and fullscreen keyboard calibration shortcuts.
+- **Beta Warning Banner:** Added a warning-colored beta banner at the top of the AV Lab portal to notify users of active beta status and caution guidelines.
 - **Standalone Download References:** Updated all download links and metadata across the site (`labs.html`, `toolbag.html`, `DRF/drf-index.html`) to point to the v2.0.0 release.
 - **Google Drive Update:** Overwrote the legacy standalone zip archive on Google Drive with the v2.0.0 build.
 

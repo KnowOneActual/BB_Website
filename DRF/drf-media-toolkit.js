@@ -212,8 +212,8 @@ function updateStats() {
 }
 
 function calculateDelay() {
-  const distance = parseFloat($('#distanceMeters').value || '0');
-  const speed = parseFloat($('#speedOfSound').value || '343');
+  const distance = parseFloat($('#distanceFeet').value || '0');
+  const speed = parseFloat($('#speedOfSound').value || '1130');
   if (distance <= 0 || speed <= 0) {
     $('#delayResult').textContent = 'Enter valid positive values for distance and speed of sound.';
     return;
@@ -221,7 +221,7 @@ function calculateDelay() {
   const seconds = distance / speed;
   const ms = seconds * 1000;
   $('#delayResult').textContent =
-    `Suggested delay: ${ms.toFixed(1)} ms (${seconds.toFixed(3)} s) for ${distance.toFixed(1)} m from the reference source.`;
+    `Suggested delay: ${ms.toFixed(1)} ms (${seconds.toFixed(3)} s) for ${distance.toFixed(1)} ft from the reference source.`;
 }
 
 function renderMacro(note) {

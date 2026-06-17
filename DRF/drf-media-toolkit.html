@@ -75,18 +75,14 @@
             Troubleshooting Library
           </button>
 
-          <button class="nav-btn" class="nav-btn nav-btn-disclaimer" data-tab="tab-disclaimer" role="tab" aria-selected="false">
+          <button class="nav-btn nav-btn-disclaimer" data-tab="tab-disclaimer" role="tab" aria-selected="false">
             <svg viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
             </svg>
             Disclaimer & EULA
           </button>
 
-          <a
-            href="drf-index.html"
-            class="nav-btn"
-            class="nav-btn nav-btn-back"
-          >
+          <a class="nav-btn nav-btn-back" href="drf-index.html">
             <svg viewBox="0 0 24 24">
               <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
             </svg>
@@ -196,7 +192,7 @@
                 </div>
 
                 <div class="btn-row margin-top-md">
-                  <button class="btn btn-primary" id="btn-toggle-tone" class="btn-flex-1 btn-padding-md">
+                  <button class="btn btn-primary btn-flex-1 btn-padding-md" id="btn-toggle-tone">
                     ▶ Start Tone
                   </button>
                 </div>
@@ -218,16 +214,16 @@
                 <div class="control-group">
                   <div class="control-label">Pink & White Noise</div>
                   <div class="btn-row">
-                    <button class="btn btn-secondary" id="btn-noise-pink" class="btn-flex-1">Pink Noise</button>
-                    <button class="btn btn-secondary" id="btn-noise-white" class="btn-flex-1">White Noise</button>
+                    <button class="btn btn-secondary btn-flex-1" id="btn-noise-pink">Pink Noise</button>
+                    <button class="btn btn-secondary btn-flex-1" id="btn-noise-white">White Noise</button>
                   </div>
                 </div>
 
                 <div class="control-group control-group-margin">
                   <div class="control-label">Speaker Channel Routing Check</div>
                   <div class="btn-row">
-                    <button class="btn btn-secondary" id="btn-channel-left" class="btn-flex-1">Left Only</button>
-                    <button class="btn btn-secondary" id="btn-channel-right" class="btn-flex-1">Right Only</button>
+                    <button class="btn btn-secondary btn-flex-1" id="btn-channel-left">Left Only</button>
+                    <button class="btn btn-secondary btn-flex-1" id="btn-channel-right">Right Only</button>
                   </div>
                 </div>
 
@@ -237,7 +233,7 @@
                     Alternates tone between In-Phase (centered) and Out-of-Phase (inverted). If Out-of-Phase sounds
                     identical or louder, your speaker wires are inverted!
                   </p>
-                  <button class="btn btn-secondary" id="btn-phase-polarity" class="btn-full-width">
+                  <button class="btn btn-secondary btn-full-width" id="btn-phase-polarity">
                     Check Speaker Polarity Phase
                   </button>
                 </div>
@@ -260,10 +256,7 @@
                 <canvas id="sync-tester-canvas" width="600" height="260"></canvas>
               </div>
 
-              <div
-                class="bento-grid"
-                class="sync-bento-grid"
-              >
+              <div class="bento-grid sync-bento-grid">
                 <div class="glass-card glass-card-padding-sm">
                   <div class="control-label">
                     <span>Simulate Audio Offset</span>
@@ -285,15 +278,12 @@
                   </p>
                 </div>
 
-                <div
-                  class="glass-card"
-                  class="glass-card-flex-center"
-                >
+                <div class="glass-card glass-card-flex-center">
                   <div class="btn-row">
-                    <button class="btn btn-primary" id="btn-toggle-sync" class="btn-flex-1 btn-padding-md">
+                    <button class="btn btn-primary btn-flex-1 btn-padding-md" id="btn-toggle-sync">
                       ▶ Run Sync Sweep
                     </button>
-                    <button class="btn btn-secondary" id="btn-reset-sync" class="btn-flex-05">Reset</button>
+                    <button class="btn btn-secondary btn-flex-05" id="btn-reset-sync">Reset</button>
                   </div>
                   <p class="card-desc-sm-top-center">
                     Press <strong>spacebar</strong> to play/pause. Use this screen to verify local browser engine
@@ -393,7 +383,7 @@
                   <option value="">Choose camera...</option>
                 </select>
                 <div class="btn-row">
-                  <button class="btn btn-primary" id="btn-refresh-devices" class="btn-flex-1 btn-padding-sm">
+                  <button class="btn btn-primary btn-flex-1 btn-padding-sm" id="btn-refresh-devices">
                     Refresh Devices
                   </button>
                 </div>

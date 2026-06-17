@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-06-16
+
+### Added
+- **AV Diagnostics Lab:** Integrated an interactive Audio/Video diagnostics and calibration dashboard into the David Rubenstein Forum (DRF) portal (`/DRF/drf-media-toolkit.html`).
+  - **Waveform Tone Generator:** Web Audio API tone generator supporting custom wave types (sine, square, triangle, saw), volume controls, and frequency range sliders/presets.
+  - **Lip-Sync Latency Sweep:** Visual/audible sweep simulator measuring delay offsets between displays and speakers (DSPs).
+  - **Projector Calibration Canvas:** Interactive patterns (SMPTE Color Bars, Convergence Grid, Chroma Sub-sampling text legibility, pure black/white screens) designed for high-resolution projection screens with full keyboard control.
+  - **Hardware VU Level Meter:** Camera check-ins and live microphone analysis reporting real-time input decibels (dB).
+  - **Tech Checklists & Compliance Logs:** Walkthrough checklists that persist state to local storage and compile textual run-sheet compliance reports.
+  - **Beta Status Notice:** Added a dashboard notice advising users of active beta testing.
+- **DRF Navigation Card:** Added a portal entry linking to the AV Lab within `drf-index.html`.
+
+### Security
+- **Strict Content Security Policy Compliance:** Removed all inline event handlers (`onclick`, `oninput`, etc.) from the HTML markup and fully bound event listeners dynamically inside a decoupled script (`drf-media-toolkit.js`) to strictly avoid `unsafe-inline` scripts.
+
 ## [2.1.4] - 2026-06-15
 
 ### Security

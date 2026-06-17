@@ -75,14 +75,21 @@
             Troubleshooting Library
           </button>
 
+          <button class="nav-btn" data-tab="tab-disclaimer" role="tab" aria-selected="false" style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 1rem; color: var(--accent-rose);">
+            <svg viewBox="0 0 24 24" style="fill: currentColor; width: 1.25rem; height: 1.25rem;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+            </svg>
+            Disclaimer & EULA
+          </button>
+
           <a
             href="drf-index.html"
             class="nav-btn"
             style="
-              margin-top: 2rem;
+              margin-top: 1rem;
               border-top: 1px solid var(--border);
               border-radius: 0;
-              padding-top: 1.5rem;
+              padding-top: 1rem;
               color: var(--accent-cyan);
             "
           >
@@ -650,6 +657,37 @@
                     Aggregation (LAG).
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <!-- Tab: Disclaimer & EULA -->
+            <div id="tab-disclaimer" class="tab-panel">
+              <div class="panel-header">
+                <h2>Disclaimer & EULA</h2>
+                <p>End-User License Agreement and liability terms for the Corporate AV Testing & Calibration Toolkit.</p>
+              </div>
+
+              <div class="glass-card" style="max-width: 800px; margin: 0 auto; line-height: 1.6; color: var(--text-secondary);">
+                <h3 style="font-family: var(--font-display); color: var(--accent-rose); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                  <svg viewBox="0 0 24 24" style="width: 1.5rem; height: 1.5rem; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                  Important Legal Notice
+                </h3>
+                <p style="margin-bottom: 1rem;">
+                  This Corporate AV Testing & Calibration Toolkit (hereafter "the Software"), including all interactive web pages, audio generators, calibration graphics, video clips, checklists, guides, and Python scripts, is provided in good faith for system validation, education, and tuning purposes.
+                </p>
+                <h4 style="color: var(--text-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-display);">No Warranty or Guarantee</h4>
+                <p style="margin-bottom: 1rem;">
+                  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+                </p>
+                <h4 style="color: var(--text-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-display);">Operational Cautions</h4>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: disc;">
+                  <li><strong>Audio sweeps and tones:</strong> High-frequency sweeps and reference tones can cause permanent hearing damage or damage speaker elements if played at excessive volumes. Always begin tests at minimum volume and increase level incrementally.</li>
+                  <li><strong>Network diagnostic scripts:</strong> Running automated ping sweeps or packet tests can trigger security alerts or saturate low-bandwidth links in corporate environments. Run only with appropriate administrative authorization.</li>
+                  <li><strong>Display convergence patterns:</strong> Do not leave static, high-contrast calibration grids on OLED or plasma displays for extended periods to avoid burn-in risks.</li>
+                </ul>
+                <p style="font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; color: var(--text-secondary); font-style: italic;">
+                  By using this toolkit or any of its components, you acknowledge that you have read, understood, and agreed to these terms, and that you are using them at your own risk.
+                </p>
               </div>
             </div>
           </div>

@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2026-06-16
+
+### Added
+- **Standalone Corporate AV Toolkit Repository:** Packaged and published the toolkit as an independent public repository (`KnowOneActual/corporate-av-toolkit`).
+- **Toolkit GitHub Release:** Created initial release `v1.0.0` with the pre-compiled 88 MB standalone ZIP archive (dashboard, waveforms, video loops, Python scripts, checklists) attached as a release asset.
+- **Standalone Download Advertising:** Integrated featured download cards, banners, and links pointing to the GitHub Release ZIP across the website:
+  - Added a "Featured Download" banner to `toolbag.html`.
+  - Added an "AV Toolkit" card to `labs.html`.
+  - Added a "Download Standalone" button to the AV Lab card in `DRF/drf-index.html`.
+- **EULA & Legal Disclaimer:** Created `DISCLAIMER.md` (and updated the toolkit `README.md` and offline/online dashboards) outlining terms of use, lack of warranty/guarantee, and critical safety warnings for high-volume audio tones and network probes.
+
 ## [2.2.0] - 2026-06-16
 
 ### Added

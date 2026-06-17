@@ -213,15 +213,15 @@ function updateStats() {
 
 function calculateDelay() {
   const distance = parseFloat($('#distanceFeet').value || '0');
-  const speed = parseFloat($('#speedOfSound').value || '1130');
-  if (distance <= 0 || speed <= 0) {
-    $('#delayResult').textContent = 'Enter valid positive values for distance and speed of sound.';
+  const speed = 1130; // Speed of sound in ft/s at standard event room temperature (~70°F)
+  if (distance <= 0) {
+    $('#delayResult').textContent = 'Enter a valid positive distance in feet.';
     return;
   }
   const seconds = distance / speed;
   const ms = seconds * 1000;
   $('#delayResult').textContent =
-    `Suggested delay: ${ms.toFixed(1)} ms (${seconds.toFixed(3)} s) for ${distance.toFixed(1)} ft from the reference source.`;
+    `Suggested delay: ${ms.toFixed(1)} ms (${seconds.toFixed(3)} s) for ${distance.toFixed(1)} ft (based on 1,130 ft/s).`;
 }
 
 function renderMacro(note) {

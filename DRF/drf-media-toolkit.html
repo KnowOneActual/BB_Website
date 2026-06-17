@@ -77,7 +77,9 @@
 
           <button class="nav-btn nav-btn-disclaimer" data-tab="tab-disclaimer" role="tab" aria-selected="false">
             <svg viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+              />
             </svg>
             Disclaimer & EULA
           </button>
@@ -192,9 +194,7 @@
                 </div>
 
                 <div class="btn-row margin-top-md">
-                  <button class="btn btn-primary btn-flex-1 btn-padding-md" id="btn-toggle-tone">
-                    ▶ Start Tone
-                  </button>
+                  <button class="btn btn-primary btn-flex-1 btn-padding-md" id="btn-toggle-tone">▶ Start Tone</button>
                 </div>
               </div>
 
@@ -608,29 +608,53 @@
             <div id="tab-disclaimer" class="tab-panel">
               <div class="panel-header">
                 <h2>Disclaimer & EULA</h2>
-                <p>End-User License Agreement and liability terms for the Corporate AV Testing & Calibration Toolkit.</p>
+                <p>
+                  End-User License Agreement and liability terms for the Corporate AV Testing & Calibration Toolkit.
+                </p>
               </div>
 
               <div class="glass-card eula-card">
                 <h3 class="eula-title">
                   <svg viewBox="0 0 24 24" class="eula-icon">
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                    />
+                  </svg>
                   Important Legal Notice
                 </h3>
                 <p class="eula-text">
-                  This Corporate AV Testing & Calibration Toolkit (hereafter "the Software"), including all interactive web pages, audio generators, calibration graphics, video clips, checklists, guides, and Python scripts, is provided in good faith for system validation, education, and tuning purposes.
+                  This Corporate AV Testing & Calibration Toolkit (hereafter "the Software"), including all interactive
+                  web pages, audio generators, calibration graphics, video clips, checklists, guides, and Python
+                  scripts, is provided in good faith for system validation, education, and tuning purposes.
                 </p>
                 <h4 class="eula-subtitle">No Warranty or Guarantee</h4>
                 <p class="eula-text">
-                  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+                  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+                  LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+                  NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+                  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+                  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 </p>
                 <h4 class="eula-subtitle">Operational Cautions</h4>
                 <ul class="eula-list">
-                  <li><strong>Audio sweeps and tones:</strong> High-frequency sweeps and reference tones can cause permanent hearing damage or damage speaker elements if played at excessive volumes. Always begin tests at minimum volume and increase level incrementally.</li>
-                  <li><strong>Network diagnostic scripts:</strong> Running automated ping sweeps or packet tests can trigger security alerts or saturate low-bandwidth links in corporate environments. Run only with appropriate administrative authorization.</li>
-                  <li><strong>Display convergence patterns:</strong> Do not leave static, high-contrast calibration grids on OLED or plasma displays for extended periods to avoid burn-in risks.</li>
+                  <li>
+                    <strong>Audio sweeps and tones:</strong> High-frequency sweeps and reference tones can cause
+                    permanent hearing damage or damage speaker elements if played at excessive volumes. Always begin
+                    tests at minimum volume and increase level incrementally.
+                  </li>
+                  <li>
+                    <strong>Network diagnostic scripts:</strong> Running automated ping sweeps or packet tests can
+                    trigger security alerts or saturate low-bandwidth links in corporate environments. Run only with
+                    appropriate administrative authorization.
+                  </li>
+                  <li>
+                    <strong>Display convergence patterns:</strong> Do not leave static, high-contrast calibration grids
+                    on OLED or plasma displays for extended periods to avoid burn-in risks.
+                  </li>
                 </ul>
                 <p class="eula-footer">
-                  By using this toolkit or any of its components, you acknowledge that you have read, understood, and agreed to these terms, and that you are using them at your own risk.
+                  By using this toolkit or any of its components, you acknowledge that you have read, understood, and
+                  agreed to these terms, and that you are using them at your own risk.
                 </p>
               </div>
             </div>
@@ -656,12 +680,8 @@
     <!-- Checklist Run-Sheet Report Modal -->
     <div class="report-modal" id="report-modal-el">
       <div class="report-content">
-        <h3 class="report-title">
-          Compliance Run-Sheet Report
-        </h3>
-        <p class="report-subtitle">
-          Copy this verification log to paste into event tickets or team chats.
-        </p>
+        <h3 class="report-title">Compliance Run-Sheet Report</h3>
+        <p class="report-subtitle">Copy this verification log to paste into event tickets or team chats.</p>
         <textarea
           class="report-textarea"
           id="report-text-output"

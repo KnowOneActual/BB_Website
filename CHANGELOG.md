@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.2] - 2026-06-17
+
+### Added
+- **DRF AV Lab Upgrade:** Integrated Corporate AV Toolkit v2.0.0 into the David Rubenstein Forum portal (`/DRF/drf-media-toolkit.html`, `.css`, `.js`).
+  - Added Room Profiles (save, load, export, import).
+  - Added manual signal generator with customizable frequency/waveform presets.
+  - Added speaker line check routing/panning checks (Left, Right, Sub, Fills, Lobby).
+  - Expanded display calibration patterns (Solid White, Solid Black, RGB loop).
+  - Added PoE budget calculator and interactive IGMP multicast wizard.
+  - Enabled Screen Wake Lock API and fullscreen keyboard calibration shortcuts.
+- **Standalone Download References:** Updated all download links and metadata across the site (`labs.html`, `toolbag.html`, `DRF/drf-index.html`) to point to the v2.0.0 release.
+- **Google Drive Update:** Overwrote the legacy standalone zip archive on Google Drive with the v2.0.0 build.
+
+### Removed
+- **Inline Styles Cleaned:** Migrated all 18 occurrences of inline CSS `style` properties from `/DRF/drf-media-toolkit.html` into modular classes within `/DRF/drf-media-toolkit.css` to ensure full compliance with strict Content Security Policy guidelines.
+
+### Fixed
+- **Theme-Color Compatibility Warning:** Updated `.hintrc` to ignore compatibility warnings for the `theme-color` meta tag on Firefox/Opera, keeping the branding enhancement active on supporting browsers while resolving validation issues.
+
+
 ## [2.2.1] - 2026-06-16
 
 ### Added

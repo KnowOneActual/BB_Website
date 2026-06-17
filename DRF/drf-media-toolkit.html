@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,686 +15,549 @@
     <link rel="apple-touch-icon" href="/DRF/img/favicon/apple-touch-icon.png" />
 
     <link rel="stylesheet" href="drf-media-toolkit.css" />
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   </head>
-
   <body>
-    <header>
-      <h1>David Rubenstein Forum</h1>
-      <p class="subtitle">AV Lab: Signals & Calibration</p>
-      <p>Interactive floor/room diagnostics, signal generators, Lip-Sync sweep, and display calibration patterns.</p>
-    </header>
+    <a href="#main" class="skip-link">Skip to content</a>
 
-    <main class="av-lab-container">
-      <div class="main-layout">
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar" aria-label="AV Lab Sections">
-          <div class="sidebar-tabs" role="tablist" aria-label="AV Lab Sections">
-            <button class="nav-btn active" data-tab="tab-generators" role="tab" aria-selected="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-              </svg>
-              Signal Generators
-            </button>
-            <button class="nav-btn" data-tab="tab-sync" role="tab" aria-selected="false">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                />
-              </svg>
-              AV Sync / Lip-Sync
-            </button>
-            <button class="nav-btn" data-tab="tab-visual" role="tab" aria-selected="false">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"
-                />
-              </svg>
-              Display Calibration
-            </button>
-            <button class="nav-btn" data-tab="tab-webrtc" role="tab" aria-selected="false">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"
-                />
-              </svg>
-              Hardware Diagnostics
-            </button>
-            <button class="nav-btn" data-tab="tab-checklists" role="tab" aria-selected="false">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                />
-              </svg>
-              Tech Checklists
-            </button>
-            <button class="nav-btn" data-tab="tab-library" role="tab" aria-selected="false">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"
-                />
-              </svg>
-              Troubleshooting Library
-            </button>
-
-            <button class="nav-btn nav-btn-disclaimer" data-tab="tab-disclaimer" role="tab" aria-selected="false">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-                />
-              </svg>
-              Disclaimer & EULA
-            </button>
-          </div>
-
-          <a class="nav-btn nav-btn-back" href="drf-index.html">
-            <svg viewBox="0 0 24 24">
-              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+    <div class="app-shell" id="appShell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-label="AV Lab logo"
+            >
+              <path d="M5 17 10 7l4 10 5-10" />
+              <path d="M4 19h16" />
             </svg>
-            Back to Hub
-          </a>
-        </nav>
-
-        <!-- Content Area -->
-        <div class="content-area">
-          <!-- Beta Warning Alert Box -->
-          <div class="alert-box alert-box-beta">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-              />
-            </svg>
-            <div>
-              <strong>Beta Diagnostics Tool</strong>
-              This tool is currently in beta. You may encounter minor bugs or interface adjustments depending on your
-              browser and audio card hardware.
-            </div>
           </div>
-
-          <!-- Audio Init Alert Box -->
-          <div class="alert-box" id="audio-init-alert">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-              />
-            </svg>
-            <div>
-              <strong>Web Audio Activation Required</strong>
-              Browsers block audio nodes from executing before user interaction. Click anywhere or toggle the Audio
-              Generator below to enable diagnostics signals.
-            </div>
+          <div class="brand-copy">
+            <h1>DRF AV Lab</h1>
+            <p>David Rubenstein Forum • Signals & Calibration</p>
           </div>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="moon-star"></i>
+          </button>
+        </div>
 
-          <!-- Tab Panel: Tone & Noise Generators -->
-          <div id="tab-generators" class="tab-panel active">
-            <div class="panel-header">
-              <h2>Audio Signal Generators</h2>
+        <div class="nav-group">
+          <p class="nav-label">Mission control</p>
+          <nav class="nav-list">
+            <a class="nav-link active" href="#dashboard"
+              ><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a
+            >
+            <a class="nav-link" href="#profiles"><i data-lucide="folders"></i><span>Profiles</span></a>
+            <a class="nav-link" href="#audio"><i data-lucide="audio-lines"></i><span>Audio</span></a>
+            <a class="nav-link" href="#video"><i data-lucide="monitor-play"></i><span>Video</span></a>
+            <a class="nav-link" href="#lighting"><i data-lucide="lamp-floor"></i><span>Lighting</span></a>
+            <a class="nav-link" href="#network"><i data-lucide="network"></i><span>Networking</span></a>
+            <a class="nav-link" href="#ops"><i data-lucide="clipboard-check"></i><span>Ops</span></a>
+            <a class="nav-link" href="#troubleshooting"><i data-lucide="wrench"></i><span>Troubleshooting</span></a>
+            <a class="nav-link nav-link-divider" href="drf-index.html"
+              ><i data-lucide="arrow-left"></i><span>Back to Hub</span></a
+            >
+          </nav>
+        </div>
+
+        <div class="sidebar-card">
+          <h2>Keyboard shortcuts</h2>
+          <p>Press 1-6 to jump sections, G for dashboard, and S to toggle Show Mode.</p>
+          <div class="tag-row">
+            <span class="tag">1 Audio</span>
+            <span class="tag">2 Video</span>
+            <span class="tag">3 Lighting</span>
+            <span class="tag">4 Network</span>
+            <span class="tag">5 Ops</span>
+            <span class="tag">6 Trouble</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main" id="main">
+        <header class="topbar">
+          <div class="topbar-copy">
+            <h2>Enhanced AV Lab Portal</h2>
+            <p>
+              Interactive floor/room diagnostics, signal generators, Lip-Sync sweep, and display calibration patterns.
+            </p>
+          </div>
+          <div class="topbar-actions">
+            <button class="btn" id="importBtn"><i data-lucide="upload"></i>Import Profile</button>
+            <input id="importFile" type="file" accept="application/json" hidden />
+            <button class="btn" id="exportProfileBtn"><i data-lucide="download"></i>Export Active Profile</button>
+            <button class="btn btn-primary" id="showModeBtn"><i data-lucide="presentation"></i>Toggle Show Mode</button>
+          </div>
+        </header>
+
+        <div class="show-banner">
+          Show Mode is on. Sidebar is hidden and controls are optimized for fast navigation.
+        </div>
+
+        <div class="page-grid">
+          <section id="dashboard" class="hero">
+            <article class="hero-card">
+              <span class="eyebrow"><i data-lucide="zap"></i>Room mission control</span>
+              <h3>One launcher for room prep, show checks, and failure triage.</h3>
               <p>
-                Generate precise sine waveforms, channel sweeps, pink noise, and speaker polarity tests directly through
-                your sound card.
+                This enhanced diagnostics panel coordinates profiles, fast calculators, lighting coverage, network
+                utilities, and incident logging in one operational shell.
               </p>
+              <div class="stat-grid">
+                <div class="stat"><strong id="statProfiles">1</strong><span>Profiles loaded</span></div>
+                <div class="stat"><strong id="statChecks">0%</strong><span>Checklist completion</span></div>
+                <div class="stat"><strong id="statIncidents">0</strong><span>Logged incidents</span></div>
+              </div>
+            </article>
+
+            <aside class="hero-card quick-actions">
+              <div>
+                <h3>Quick launch</h3>
+                <p>These tiles mimic the "grab it under pressure" layout for show-time use.</p>
+              </div>
+              <div class="mission-grid">
+                <button class="mission-btn" data-scroll="#audio">
+                  <strong>Audio</strong><small>Delay, line checks, speech tuning</small>
+                </button>
+                <button class="mission-btn" data-scroll="#video">
+                  <strong>Video</strong><small>Motion tests, safe areas, patterns</small>
+                </button>
+                <button class="mission-btn" data-scroll="#lighting">
+                  <strong>Lighting</strong><small>DMX patching and camera flicker notes</small>
+                </button>
+                <button class="mission-btn" data-scroll="#network">
+                  <strong>Network</strong><small>PoE, IGMP, multicast, uplink triage</small>
+                </button>
+                <button class="mission-btn" data-scroll="#ops">
+                  <strong>Ops</strong><small>Checklists, incidents, room reports</small>
+                </button>
+                <button class="mission-btn" data-scroll="#troubleshooting">
+                  <strong>Troubleshooting</strong><small>HDCP, EDID, AVoIP, room recoveries</small>
+                </button>
+              </div>
+            </aside>
+          </section>
+
+          <section id="profiles" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>Room profiles</h3>
+                <p>Create a reusable profile for a ballroom, boardroom, venue, or recurring client setup.</p>
+              </div>
+              <div class="section-actions">
+                <button class="btn btn-primary" id="saveProfileBtn">
+                  <i data-lucide="save"></i>Save current profile
+                </button>
+                <button class="btn" id="newProfileBtn"><i data-lucide="file-plus-2"></i>New blank profile</button>
+              </div>
             </div>
-
-            <div class="bento-grid">
-              <!-- Waveform Tone Generator Card -->
-              <div class="glass-card">
-                <div class="card-title">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-                  </svg>
-                  Waveform Tone Generator
-                </div>
-
-                <div class="control-group">
-                  <div class="control-label">
-                    <span>Signal Type</span>
-                    <span id="lbl-wavetype" class="control-value control-value-cap">Sine</span>
+            <div class="cards-2">
+              <div class="subpanel">
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="profileName">Profile name</label>
+                    <input id="profileName" value="Default Room" />
                   </div>
-                  <div class="btn-row margin-bottom">
-                    <button class="preset-badge active" id="btn-sine" data-wavetype="sine">Sine</button>
-                    <button class="preset-badge" id="btn-square" data-wavetype="square">Square</button>
-                    <button class="preset-badge" id="btn-triangle" data-wavetype="triangle">Triangle</button>
-                    <button class="preset-badge" id="btn-sawtooth" data-wavetype="sawtooth">Sawtooth</button>
+                  <div class="field">
+                    <label for="profileClient">Client / venue</label>
+                    <input id="profileClient" placeholder="Acme keynote" />
+                  </div>
+                  <div class="field">
+                    <label for="profileResolution">Preferred output</label>
+                    <input id="profileResolution" value="1920x1080 @ 60Hz" />
+                  </div>
+                  <div class="field">
+                    <label for="profileCodec">Playback note</label>
+                    <input id="profileCodec" placeholder="ProRes 422 / H.264 fallback" />
                   </div>
                 </div>
-
-                <div class="control-group">
-                  <div class="control-label">
-                    <span>Frequency</span>
-                    <span id="lbl-freq" class="control-value">1000 Hz</span>
-                  </div>
-                  <input
-                    type="range"
-                    class="slider-input"
-                    id="range-freq"
-                    min="20"
-                    max="20000"
-                    value="1000"
-                    aria-label="Frequency Range Selector"
-                  />
-                  <div class="btn-row margin-top-sm">
-                    <button class="preset-badge" data-freq="100">100 Hz</button>
-                    <button class="preset-badge" data-freq="440">440 Hz</button>
-                    <button class="preset-badge" data-freq="1000">1 kHz</button>
-                    <button class="preset-badge" data-freq="10000">10 kHz</button>
-                  </div>
-                </div>
-
-                <div class="control-group">
-                  <div class="control-label">
-                    <span>Output Gain</span>
-                    <span id="lbl-volume" class="control-value">50%</span>
-                  </div>
-                  <input
-                    type="range"
-                    class="slider-input"
-                    id="range-volume"
-                    min="0"
-                    max="100"
-                    value="50"
-                    aria-label="Volume Slider"
-                  />
-                </div>
-
-                <div class="btn-row margin-top-md">
-                  <button class="btn btn-primary btn-flex-1 btn-padding-md" id="btn-toggle-tone">▶ Start Tone</button>
+                <div class="field field-mt-4">
+                  <label for="profileNotes">Profile notes</label>
+                  <textarea
+                    id="profileNotes"
+                    placeholder="Routing notes, DSP quirks, switch ports, PTZ IDs..."
+                  ></textarea>
                 </div>
               </div>
+              <div class="subpanel">
+                <h4>Saved profiles</h4>
+                <ul class="profile-list" id="profileList"></ul>
+              </div>
+            </div>
+          </section>
 
-              <!-- Noise & Calibration Routing Card -->
-              <div class="glass-card">
-                <div class="card-title">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M20 12H4v2h16v-2zm0-4H4v2h16V8zm0 8H4v2h16v-2z" />
-                  </svg>
-                  Reference Noise & Calibration
+          <section id="audio" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>Audio tools</h3>
+                <p>Expand the current generators with alignment, line-check, and quick tuning helpers.</p>
+              </div>
+              <div class="section-actions section-actions-flex">
+                <div class="volume-control-wrap">
+                  <label for="audioVolume" class="volume-control-label">
+                    <i data-lucide="volume-2" class="icon-sm"></i>
+                    <span>Vol: <span id="volumeVal">50%</span></span>
+                  </label>
+                  <input id="audioVolume" type="range" min="0" max="100" value="50" class="volume-control-slider" />
                 </div>
-                <p class="card-desc">
-                  Use Voss-McCartney Pink Noise to calibrate Room EQs and Real-Time Analyzers (RTA). Toggle Channel
-                  Check to check speaker mappings.
-                </p>
-
-                <div class="control-group">
-                  <div class="control-label">Pink & White Noise</div>
-                  <div class="btn-row">
-                    <button class="btn btn-secondary btn-flex-1" id="btn-noise-pink">Pink Noise</button>
-                    <button class="btn btn-secondary btn-flex-1" id="btn-noise-white">White Noise</button>
+                <button class="btn btn-danger" id="stopAudioBtn"><i data-lucide="square"></i>Stop Audio</button>
+              </div>
+            </div>
+            <div class="cards-4">
+              <div class="subpanel">
+                <h4>Distance to delay</h4>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="distanceMeters">Distance (meters)</label
+                    ><input id="distanceMeters" type="number" value="12" min="0" step="0.1" />
+                  </div>
+                  <div class="field">
+                    <label for="speedOfSound">Speed of sound</label
+                    ><input id="speedOfSound" type="number" value="343" min="1" />
                   </div>
                 </div>
-
-                <div class="control-group control-group-margin">
-                  <div class="control-label">Speaker Channel Routing Check</div>
-                  <div class="btn-row">
-                    <button class="btn btn-secondary btn-flex-1" id="btn-channel-left">Left Only</button>
-                    <button class="btn btn-secondary btn-flex-1" id="btn-channel-right">Right Only</button>
-                  </div>
-                </div>
-
-                <div class="control-group control-group-margin">
-                  <div class="control-label">Speaker Phase Polarity Check</div>
-                  <p class="card-desc-sm">
-                    Alternates tone between In-Phase (centered) and Out-of-Phase (inverted). If Out-of-Phase sounds
-                    identical or louder, your speaker wires are inverted!
-                  </p>
-                  <button class="btn btn-secondary btn-full-width" id="btn-phase-polarity">
-                    Check Speaker Polarity Phase
+                <div class="toolbar"><button class="btn btn-primary" id="calcDelayBtn">Calculate</button></div>
+                <p class="result-box" id="delayResult">Delay result will appear here.</p>
+              </div>
+              <div class="subpanel">
+                <h4>Speech tuning macro</h4>
+                <p>Use these as placeholders for the real generators already in your app.</p>
+                <div class="toolbar">
+                  <button
+                    class="btn macro-btn"
+                    data-sound="speech"
+                    data-macro="Band-limited pink noise from 125 Hz to 8 kHz for speech EQ."
+                  >
+                    Speech tuning
+                  </button>
+                  <button class="btn macro-btn" data-sound="lowend" data-macro="Low-end rumble check around 40-100 Hz.">
+                    Low-end check
+                  </button>
+                  <button
+                    class="btn macro-btn"
+                    data-sound="feedback"
+                    data-macro="Slow feedback hunt sweep through 500 Hz to 6 kHz."
+                  >
+                    Feedback hunt
                   </button>
                 </div>
+                <p class="result-box" id="macroResult">Select a macro to preview operator notes.</p>
               </div>
-            </div>
-          </div>
-
-          <!-- Tab Panel: AV Sync / Lip-Sync -->
-          <div id="tab-sync" class="tab-panel">
-            <div class="panel-header">
-              <h2>AV Lip-Sync Latency Tester</h2>
-              <p>
-                Interactively simulate and measure latency offsets between speakers and displays. Align the audio click
-                with the center flash.
-              </p>
-            </div>
-
-            <div class="sync-tester-display glass-card">
-              <div class="sync-canvas-wrapper">
-                <canvas id="sync-tester-canvas" width="600" height="260"></canvas>
-              </div>
-
-              <div class="bento-grid sync-bento-grid">
-                <div class="glass-card glass-card-padding-sm">
-                  <div class="control-label">
-                    <span>Simulate Audio Offset</span>
-                    <span id="lbl-sync-delay" class="control-value">0 ms</span>
-                  </div>
-                  <input
-                    type="range"
-                    class="slider-input"
-                    id="range-sync-delay"
-                    min="-300"
-                    max="300"
-                    step="5"
-                    value="0"
-                    aria-label="Sync Delay Range Selector"
-                  />
-                  <p class="card-desc-sm-top">
-                    <strong>Negative (-)</strong>: Audio triggers *before* the sync flash.<br />
-                    <strong>Positive (+)</strong>: Audio triggers *after* the sync flash (typical DSP lag).
-                  </p>
+              <div class="subpanel">
+                <h4>Line check runner</h4>
+                <div class="field-grid-3">
+                  <button class="btn line-btn" data-line="Left">Left</button>
+                  <button class="btn line-btn" data-line="Right">Right</button>
+                  <button class="btn line-btn" data-line="Sub">Sub</button>
+                  <button class="btn line-btn" data-line="Fill 1">Fill 1</button>
+                  <button class="btn line-btn" data-line="Fill 2">Fill 2</button>
+                  <button class="btn line-btn" data-line="Lobby">Lobby</button>
                 </div>
-
-                <div class="glass-card glass-card-flex-center">
-                  <div class="btn-row">
-                    <button class="btn btn-primary btn-flex-1 btn-padding-md" id="btn-toggle-sync">
-                      ▶ Run Sync Sweep
-                    </button>
-                    <button class="btn btn-secondary btn-flex-05" id="btn-reset-sync">Reset</button>
-                  </div>
-                  <p class="card-desc-sm-top-center">
-                    Press <strong>spacebar</strong> to play/pause. Use this screen to verify local browser engine
-                    latency.
-                  </p>
+                <div class="toolbar"><button class="btn" id="clearLineLogBtn">Clear line log</button></div>
+                <pre id="lineCheckLog">No line checks yet.</pre>
+              </div>
+              <div class="subpanel">
+                <h4>Manual signal generator</h4>
+                <div class="field">
+                  <label for="manualWaveform">Waveform</label>
+                  <select id="manualWaveform">
+                    <option value="sine" selected>Sine wave</option>
+                    <option value="triangle">Triangle wave</option>
+                    <option value="sawtooth">Sawtooth wave</option>
+                    <option value="square">Square wave</option>
+                    <option value="pink">Pink noise</option>
+                  </select>
+                </div>
+                <div class="field field-mt-3">
+                  <label for="manualFreq">Frequency: <span id="manualFreqVal">1000 Hz</span></label>
+                  <input id="manualFreq" type="range" min="20" max="20000" value="1000" class="full-width-slider" />
+                </div>
+                <div class="tag-row tag-row-spacing">
+                  <button class="tag tag-btn" data-freq-preset="100">100 Hz</button>
+                  <button class="tag tag-btn" data-freq-preset="440">440 Hz</button>
+                  <button class="tag tag-btn" data-freq-preset="1000">1 kHz</button>
+                  <button class="tag tag-btn" data-freq-preset="10000">10 kHz</button>
+                </div>
+                <div class="toolbar">
+                  <button class="btn btn-primary" id="playManualBtn">▶ Start Generator</button>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <!-- Tab Panel: Display Calibration -->
-          <div id="tab-visual" class="tab-panel">
-            <div class="panel-header">
-              <h2>Display Calibration & Projector Convergence</h2>
-              <p>
-                Launch high-precision fullscreen vector test patterns to verify focus, aspect ratios, color alignment,
-                and screen share compression artifacts.
-              </p>
-            </div>
-
-            <div class="calibration-grid">
-              <div class="cal-item" data-pattern="convergence">
-                <svg class="cal-item-icon" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93h2c0 2.82 2.05 5.17 4.8 5.76v2.17zm1-2.17c2.75-.59 4.8-2.94 4.8-5.76h2c0 4.08-3.05 7.44-7 7.93v-2.17z"
-                  />
-                </svg>
-                <div class="cal-item-title">Convergence Grid</div>
-                <div class="cal-item-desc">Corner alignment, focus, and 16:9 aspect circle check.</div>
-              </div>
-
-              <div class="cal-item" data-pattern="legibility">
-                <svg class="cal-item-icon" viewBox="0 0 24 24">
-                  <path d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z" />
-                </svg>
-                <div class="cal-item-title">Legibility Chart</div>
-                <div class="cal-item-desc">Font size check & chroma sub-sampling (red/blue on black).</div>
-              </div>
-
-              <div class="cal-item" data-pattern="colorbars">
-                <svg class="cal-item-icon" viewBox="0 0 24 24">
-                  <path
-                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"
-                  />
-                </svg>
-                <div class="cal-item-title">SMPTE Color Bars</div>
-                <div class="cal-item-desc">Saturation, brightness and panel color accuracy verification.</div>
-              </div>
-
-              <div class="cal-item" data-pattern="white">
-                <div class="cal-item-icon cal-icon-white"></div>
-                <div class="cal-item-title cal-title-margin">Pure White Screen</div>
-                <div class="cal-item-desc">Backlight bleed, dead pixels, and projector bulb uniformity.</div>
-              </div>
-
-              <div class="cal-item" data-pattern="black">
-                <div class="cal-item-icon cal-icon-black"></div>
-                <div class="cal-item-title cal-title-margin">Pure Black Screen</div>
-                <div class="cal-item-desc">Verify display panel black level thresholds.</div>
-              </div>
-
-              <div class="cal-item" data-pattern="rgb">
-                <svg class="cal-item-icon" viewBox="0 0 24 24">
-                  <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z" />
-                </svg>
-                <div class="cal-item-title">RGB Uniformity</div>
-                <div class="cal-item-desc">Cyclic primary colors to audit pixel health.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab Panel: WebRTC Diagnostics -->
-          <div id="tab-webrtc" class="tab-panel">
-            <div class="panel-header">
-              <h2>Live Hardware Diagnostics (Camera & Mic)</h2>
-              <p>
-                Test capture card latency, camera sightlines, and speakerphone microphone levels in real time directly
-                inside the browser sandbox.
-              </p>
-            </div>
-
-            <div class="bento-grid">
-              <!-- Camera Input Card -->
-              <div class="glass-card">
-                <div class="card-title">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"
-                    />
-                  </svg>
-                  Video Diagnostics
-                </div>
-                <video class="video-preview" id="video-preview-el" autoplay playsinline></video>
-
-                <label class="control-label" for="select-camera">Camera Input Device</label>
-                <select id="select-camera" class="device-select">
-                  <option value="">Choose camera...</option>
-                </select>
-                <div class="btn-row">
-                  <button class="btn btn-primary btn-flex-1 btn-padding-sm" id="btn-refresh-devices">
-                    Refresh Devices
-                  </button>
-                </div>
-              </div>
-
-              <!-- Microphone Input Card -->
-              <div class="glass-card">
-                <div class="card-title">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"
-                    />
-                  </svg>
-                  Audio Input Diagnostics
-                </div>
-                <p class="card-desc-lg">
-                  Speak into the room microphones. Look for input response on the level meter below. Ensure signals do
-                  not red-line/clip.
-                </p>
-
-                <label class="control-label" for="select-mic">Microphone Input Device</label>
-                <select id="select-mic" class="device-select">
-                  <option value="">Choose microphone...</option>
-                </select>
-
-                <div class="vu-meter-container">
-                  <div class="vu-label">
-                    <span>Input Volume (VU)</span>
-                    <span class="vu-value" id="lbl-vu-db">-inf dB</span>
-                  </div>
-                  <div class="vu-bar-wrapper">
-                    <div class="vu-bar" id="vu-bar-fill"></div>
-                  </div>
-                </div>
-
-                <p class="card-desc-sm-top-md">
-                  Teams/Zoom utilize Acoustic Echo Cancellation (AEC). If input mirrors output speakers on a call, AEC
-                  is failing in the hardware DSP.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab Panel: Checklists -->
-          <div id="tab-checklists" class="tab-panel">
-            <div class="panel-header">
-              <h2>Operational AV Checklists</h2>
-              <p>
-                Complete your room checks digitally. Progress is auto-saved locally. Export a compliance run-sheet when
-                finished.
-              </p>
-            </div>
-
-            <div class="checklist-tabs">
-              <button class="btn btn-secondary active" id="btn-chk-mtr">Daily Zoom/MTR Walkthrough</button>
-              <button class="btn btn-secondary" id="btn-chk-event">Pre-Event Technician Checklist</button>
-            </div>
-
-            <div class="glass-card glass-card-margin-bottom">
-              <div id="chk-group-mtr" class="checklist-group">
-                <div class="checklist-item">
-                  <input type="checkbox" id="mtr-1" aria-label="Tablet controller check" />
-                  <div>
-                    <span class="checklist-badge badge-critical">Tablet</span>
-                    <div class="checklist-text">
-                      Controller Tablet Powered & charging, correct local time displayed.
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="mtr-2" aria-label="Mic mute sync check" />
-                  <div>
-                    <span class="checklist-badge badge-critical">Audio</span>
-                    <div class="checklist-text">
-                      DSP Mute Sync Verification: Tablet mute triggers red LEDs on physical room microphones.
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="mtr-3" aria-label="Speaker playback check" />
-                  <div>
-                    <span class="checklist-badge badge-standard">Speakers</span>
-                    <div class="checklist-text">
-                      Trigger audio test ringtone. Verify clear sound across all speaker arrays.
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="mtr-4" aria-label="Camera sightlines check" />
-                  <div>
-                    <span class="checklist-badge badge-standard">Camera</span>
-                    <div class="checklist-text">
-                      Test PTZ camera controls, verify presets (Whiteboard, Podium, Room overview).
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="mtr-5" aria-label="Cabling slide check" />
-                  <div>
-                    <span class="checklist-badge badge-physical">Cabling</span>
-                    <div class="checklist-text">
-                      Examine table HDMI/USB-C cables. Verify retractors slide back smoothly.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="chk-group-event" class="checklist-group hide-initially">
-                <div class="checklist-item">
-                  <input type="checkbox" id="event-1" aria-label="Floor cables check" />
-                  <div>
-                    <span class="checklist-badge badge-critical">Safety</span>
-                    <div class="checklist-text">
-                      Sightlines checked, floor cables taped down securely with gaffer tape.
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="event-2" aria-label="Wireless mic battery check" />
-                  <div>
-                    <span class="checklist-badge badge-critical">Batteries</span>
-                    <div class="checklist-text">
-                      Check lapel/wireless mic batteries. Replace if charge is under 2 bars.
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="event-3" aria-label="Acoustic walking check" />
-                  <div>
-                    <span class="checklist-badge badge-standard">Audio Gain</span>
-                    <div class="checklist-text">
-                      Perform physical mic walk-test to back corners, listening for RF drops/static.
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="event-4" aria-label="Laptop AC check" />
-                  <div>
-                    <span class="checklist-badge badge-physical">Laptop Settings</span>
-                    <div class="checklist-text">
-                      Laptop Focus Assist (Do Not Disturb) enabled. Sleep timers disabled. AC power connected.
-                    </div>
-                  </div>
-                </div>
-                <div class="checklist-item">
-                  <input type="checkbox" id="event-5" aria-label="Confidence monitor check" />
-                  <div>
-                    <span class="checklist-badge badge-standard">Confidence Monitor</span>
-                    <div class="checklist-text">
-                      Verify stage confidence monitor is in "Presenter View" (slides, notes, timer).
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="btn-row margin-top-lg">
-                <button class="btn btn-primary" id="btn-generate-report">Generate Run-Sheet Report</button>
-                <button class="btn btn-secondary" id="btn-reset-checklists">Reset Checklists</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab Panel: Troubleshooting Reference -->
-          <div id="tab-library" class="tab-panel">
-            <div class="panel-header">
-              <h2>Troubleshooting Library & Reference</h2>
-              <p>
-                Quick operational guidelines for resolving common boardroom hardware, EDID, HDCP, and networked audio
-                errors.
-              </p>
-            </div>
-
-            <div class="lib-grid">
-              <div class="glass-card">
-                <div class="lib-section">
-                  <div class="lib-subtitle">EDID Handshake Failures</div>
-                  <div class="lib-text">
-                    <strong>Symptoms:</strong> Display reports "No Signal", resolution is stretched or blurry.<br />
-                    <strong>Fixes:</strong> Force laptop output resolution manually to
-                    <span class="lib-code">1920x1080 @ 60Hz</span>. On professional switchers (Crestron/Extron), set
-                    input EDID profiles to "Static" rather than "Dynamic". Power cycle the switch to force a fresh HDMI
-                    handshake.
-                  </div>
-                </div>
-
-                <div class="lib-section">
-                  <div class="lib-subtitle">HDCP Copyright Blocks</div>
-                  <div class="lib-text">
-                    <strong>Symptoms:</strong> Laptop desktop is visible, but opening YouTube or training videos shows a
-                    completely black video block (audio plays).<br />
-                    <strong>Fixes:</strong> Disabling HDCP on professional switcher input ports forces the laptop
-                    browser to output standard unencrypted resolution instead of blocking the stream. Avoid
-                    daisy-chaining capture cards on the main display path.
-                  </div>
-                </div>
-
-                <div class="lib-section">
-                  <div class="lib-subtitle">Dante Networked Audio Dropouts</div>
-                  <div class="lib-text">
-                    <strong>Symptoms:</strong> Audio completely drops out after exactly 2 to 5 minutes.<br />
-                    <strong>Root Cause:</strong> IGMP snooping is active on the network switch but **no IGMP Querier**
-                    is running. The switch terminates multicast streams when tables expire.<br />
-                    <strong>Fixes:</strong> Enable IGMP Querier on the AV VLAN switch settings. Disable Energy Efficient
-                    Ethernet (EEE / 802.3az) on all AV network ports to prevent clock synchronization jitters.
-                  </div>
-                </div>
-
-                <div class="lib-section">
-                  <div class="lib-subtitle">AV-over-IP Stream Stuttering</div>
-                  <div class="lib-text">
-                    <strong>Symptoms:</strong> Video stream freezes, displays digital noise, or projector drops
-                    connection.<br />
-                    <strong>Fixes:</strong> Enable **Jumbo Frames** (MTU 9000) on the switches to prevent AVoIP packet
-                    fragmentation. Ensure switch interconnect links (uplinks) have at least 10 Gbps capacity or use Link
-                    Aggregation (LAG).
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tab: Disclaimer & EULA -->
-            <div id="tab-disclaimer" class="tab-panel">
-              <div class="panel-header">
-                <h2>Disclaimer & EULA</h2>
+          <section id="video" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>Video and display</h3>
                 <p>
-                  End-User License Agreement and liability terms for the Corporate AV Testing & Calibration Toolkit.
+                  Add frame-rate sanity patterns, operator framing guides, and a visual test surface for motion and
+                  scaling artifacts.
                 </p>
               </div>
+            </div>
+            <div class="video-patterns">
+              <div class="canvas-wrap">
+                <canvas id="patternCanvas" width="1280" height="720" aria-label="Video test pattern canvas"></canvas>
+              </div>
+              <div class="subpanel">
+                <h4>Pattern controls</h4>
+                <div class="field">
+                  <label for="patternSelect">Pattern</label>
+                  <select id="patternSelect">
+                    <option value="bars">Color bars + safe area</option>
+                    <option value="grid">Convergence grid</option>
+                    <option value="motion">Motion bar</option>
+                    <option value="framing">Camera framing overlay</option>
+                    <option value="white">Solid White (brightness check)</option>
+                    <option value="black">Solid Black (leak/contrast check)</option>
+                    <option value="rgb">RGB Color Cycle (pixel audit)</option>
+                  </select>
+                </div>
+                <div class="field field-mt-4">
+                  <label for="frameRateSelect">Motion reference</label>
+                  <select id="frameRateSelect">
+                    <option>23.98 fps</option>
+                    <option>29.97 fps</option>
+                    <option>50 fps</option>
+                    <option selected>59.94 fps</option>
+                  </select>
+                </div>
+                <div class="toolbar">
+                  <button class="btn btn-primary" id="drawPatternBtn">Draw pattern</button>
+                  <button class="btn" id="animatePatternBtn">Animate motion</button>
+                  <button class="btn btn-primary" id="fullscreenPatternBtn">
+                    <i data-lucide="maximize"></i>Go Fullscreen
+                  </button>
+                </div>
+                <p class="result-box">
+                  Use the moving bar mode to spot stutter, frame conversion, and display processing lag.
+                </p>
+              </div>
+            </div>
+          </section>
 
-              <div class="glass-card eula-card">
-                <h3 class="eula-title">
-                  <svg viewBox="0 0 24 24" class="eula-icon">
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-                    />
-                  </svg>
-                  Important Legal Notice
-                </h3>
-                <p class="eula-text">
-                  This Corporate AV Testing & Calibration Toolkit (hereafter "the Software"), including all interactive
-                  web pages, audio generators, calibration graphics, video clips, checklists, guides, and Python
-                  scripts, is provided in good faith for system validation, education, and tuning purposes.
+          <section id="lighting" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>Lighting tools</h3>
+                <p>
+                  Patch fixtures faster, prep for camera flicker, and add lighting checks to the same room workflow.
                 </p>
-                <h4 class="eula-subtitle">No Warranty or Guarantee</h4>
-                <p class="eula-text">
-                  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-                  LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-                  NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-                  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-                  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-                </p>
-                <h4 class="eula-subtitle">Operational Cautions</h4>
-                <ul class="eula-list">
+              </div>
+            </div>
+            <div class="cards-2">
+              <div class="subpanel">
+                <h4>DMX address calculator</h4>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="dmxUniverse">Universe</label
+                    ><input id="dmxUniverse" type="number" value="1" min="1" max="99" />
+                  </div>
+                  <div class="field">
+                    <label for="dmxStart">Start address</label
+                    ><input id="dmxStart" type="number" value="1" min="1" max="512" />
+                  </div>
+                  <div class="field">
+                    <label for="dmxFootprint">Channels / fixture</label
+                    ><input id="dmxFootprint" type="number" value="16" min="1" max="512" />
+                  </div>
+                  <div class="field">
+                    <label for="dmxCount">Fixture count</label
+                    ><input id="dmxCount" type="number" value="6" min="1" max="128" />
+                  </div>
+                </div>
+                <div class="toolbar">
+                  <button class="btn btn-primary" id="dmxCalcBtn">Generate patch</button>
+                  <button class="btn" id="dmxExportBtn">Export CSV</button>
+                </div>
+                <pre id="dmxResults">DMX patch output will appear here.</pre>
+              </div>
+              <div class="subpanel">
+                <h4>Camera and flicker notes</h4>
+                <ul>
+                  <li>Verify shutter angle / shutter speed against mains frequency before blaming the fixture.</li>
+                  <li>Check projection wash with house lights at presenter level, not just full on / full off.</li>
                   <li>
-                    <strong>Audio sweeps and tones:</strong> High-frequency sweeps and reference tones can cause
-                    permanent hearing damage or damage speaker elements if played at excessive volumes. Always begin
-                    tests at minimum volume and increase level incrementally.
-                  </li>
-                  <li>
-                    <strong>Network diagnostic scripts:</strong> Running automated ping sweeps or packet tests can
-                    trigger security alerts or saturate low-bandwidth links in corporate environments. Run only with
-                    appropriate administrative authorization.
-                  </li>
-                  <li>
-                    <strong>Display convergence patterns:</strong> Do not leave static, high-contrast calibration grids
-                    on OLED or plasma displays for extended periods to avoid burn-in risks.
+                    Store preferred stage look notes in the room profile so recurring gigs start from a known baseline.
                   </li>
                 </ul>
-                <p class="eula-footer">
-                  By using this toolkit or any of its components, you acknowledge that you have read, understood, and
-                  agreed to these terms, and that you are using them at your own risk.
-                </p>
+                <div class="field field-mt-4">
+                  <label for="cctTarget">Target white point note</label>
+                  <input id="cctTarget" value="3200K stage / 5600K camera" />
+                </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <section id="network" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>Networking and AVoIP</h3>
+                <p>Turn static troubleshooting guidance into calculators and guided triage steps.</p>
+              </div>
+            </div>
+            <div class="cards-3">
+              <div class="subpanel">
+                <h4>PoE budget calculator</h4>
+                <div class="field">
+                  <label for="poeCapacity">Switch PoE capacity (W)</label
+                  ><input id="poeCapacity" type="number" value="370" />
+                </div>
+                <div class="field field-mt-4">
+                  <label for="poeDevices">Devices</label>
+                  <textarea id="poeDevices">
+PTZ Cam 1, 15
+PTZ Cam 2, 15
+Ceiling Mic Array, 12
+DSP, 25
+Touch Panel, 7</textarea
+                  >
+                </div>
+                <div class="toolbar"><button class="btn btn-primary" id="poeCalcBtn">Calculate budget</button></div>
+                <p class="result-box" id="poeSummary">PoE summary will appear here.</p>
+              </div>
+              <div class="subpanel">
+                <h4>IGMP / multicast wizard</h4>
+                <div class="field">
+                  <label for="networkSymptom">Observed symptom</label>
+                  <select id="networkSymptom">
+                    <option value="drop">Audio drops after 2-5 minutes</option>
+                    <option value="freeze">Video freezes or packet artifacts</option>
+                    <option value="black">Black video from content playback</option>
+                    <option value="signal">No signal / blurry output</option>
+                  </select>
+                </div>
+                <div class="toolbar"><button class="btn btn-primary" id="wizardBtn">Generate steps</button></div>
+                <ul class="wizard-list" id="wizardList"></ul>
+              </div>
+              <div class="subpanel">
+                <h4>AV network crib sheet</h4>
+                <div class="field-grid">
+                  <div class="field"><label for="vlanId">AV VLAN</label><input id="vlanId" value="30" /></div>
+                  <div class="field">
+                    <label for="subnetRange">Subnet</label><input id="subnetRange" value="10.30.0.0/24" />
+                  </div>
+                </div>
+                <div class="toolbar"><button class="btn" id="cribBtn">Generate crib sheet</button></div>
+                <pre id="cribSheet">VLAN notes will appear here.</pre>
+              </div>
+            </div>
+          </section>
+
+          <section id="ops" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>Operations</h3>
+                <p>Keep checklist progress, incidents, and a room-ready export in one place.</p>
+              </div>
+              <div class="section-actions">
+                <button class="btn" id="exportChecklistBtn"><i data-lucide="file-down"></i>Export room report</button>
+              </div>
+            </div>
+            <div class="cards-2">
+              <div class="subpanel">
+                <h4>Room checklist</h4>
+                <div class="check-grid" id="checklistGrid"></div>
+              </div>
+              <div class="subpanel">
+                <h4>Incident log</h4>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="incidentCategory">Category</label>
+                    <select id="incidentCategory">
+                      <option>Audio</option>
+                      <option>Video</option>
+                      <option>Lighting</option>
+                      <option>Network</option>
+                      <option>Ops</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="incidentOwner">Owner</label><input id="incidentOwner" placeholder="FOH / A2 / TD" />
+                  </div>
+                </div>
+                <div class="field field-mt-4">
+                  <label for="incidentNotes">Notes</label>
+                  <textarea
+                    id="incidentNotes"
+                    placeholder="What happened, what you changed, and what fixed it."
+                  ></textarea>
+                </div>
+                <div class="toolbar">
+                  <button class="btn btn-primary" id="addIncidentBtn">Add incident</button>
+                  <button class="btn" id="clearIncidentBtn">Clear log</button>
+                </div>
+                <ul class="incident-list" id="incidentList"></ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="troubleshooting" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>Troubleshooting library</h3>
+                <p>Interactive versions of the operational issues that matter most in boardrooms and event spaces.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Symptom</th>
+                    <th>Likely root cause</th>
+                    <th>Recommended first actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No signal or blurry output</td>
+                    <td>Bad handshake, wrong laptop resolution, unstable EDID</td>
+                    <td>Force 1080p60, set switcher EDID to static, re-handshake the input path.</td>
+                  </tr>
+                  <tr>
+                    <td>Desktop visible but streaming video black</td>
+                    <td>HDCP path issue or encrypted playback over unsupported chain</td>
+                    <td>
+                      Disable HDCP where appropriate, simplify the display path, avoid unnecessary inline capture
+                      devices.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Audio dies after a few minutes</td>
+                    <td>IGMP snooping with no querier, or power-saving features hurting timing</td>
+                    <td>Enable IGMP querier, disable EEE, verify multicast is intentionally handled.</td>
+                  </tr>
+                  <tr>
+                    <td>AVoIP freezes or packet corruption</td>
+                    <td>Insufficient uplink bandwidth, MTU mismatch, or packet fragmentation</td>
+                    <td>
+                      Confirm 10Gb uplinks where needed, align jumbo frame settings, verify port membership and QoS
+                      policy.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="footer-note">
+              This section is intentionally concise here because the app is meant to turn these into faster operator
+              workflows, not just static notes.
+            </p>
+          </section>
         </div>
-      </div>
-    </main>
-
-    <footer>
-      <p>© For the David Rubenstein Forum • University of Chicago • Maintained by Beau Bremer</p>
-      <p>For suggestions or corrections, contact Beau Bremer.</p>
-      <p class="footer-small">
-        <a href="STYLE_CONTENT_GUIDE.md">Style & Content Guide</a>
-      </p>
-    </footer>
-
-    <!-- Fullscreen Calibration Pattern Canvas -->
-    <div id="fullscreen-canvas-container">
-      <div class="exit-hint">Press <strong>ESC</strong> to exit calibration mode</div>
-      <canvas id="cal-canvas"></canvas>
+      </main>
     </div>
 
-    <!-- Checklist Run-Sheet Report Modal -->
-    <div class="report-modal" id="report-modal-el">
-      <div class="report-content">
-        <h3 class="report-title">Compliance Run-Sheet Report</h3>
-        <p class="report-subtitle">Copy this verification log to paste into event tickets or team chats.</p>
-        <textarea
-          class="report-textarea"
-          id="report-text-output"
-          readonly
-          aria-label="Compliance Report Text"
-        ></textarea>
-        <div class="btn-row justify-end">
-          <button class="btn btn-primary" id="btn-copy-report">Copy to Clipboard</button>
-          <button class="btn btn-secondary" id="btn-close-report">Close</button>
-        </div>
-      </div>
+    <!-- Fullscreen Calibration Container -->
+    <div id="fullscreen-canvas-container">
+      <div class="exit-hint">Press <strong>ESC</strong> or Click to exit fullscreen pattern</div>
+      <canvas id="fullscreenCanvas"></canvas>
     </div>
 
     <script src="drf-media-toolkit.js"></script>

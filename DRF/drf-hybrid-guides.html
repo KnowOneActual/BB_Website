@@ -1,1776 +1,1674 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0e17" />
-    <title>David Rubenstein Forum | Hybrid Meeting Room Guides</title>
-    <link rel="stylesheet" href="/fonts.css" />
-    <link rel="stylesheet" href="drf-index.css" />
-    <link rel="stylesheet" href="drf-hybrid-guides.css" />
 
-    <link rel="icon" type="image/svg+xml" href="/DRF/img/favicon/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/DRF/img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/webp" sizes="32x32" href="/DRF/img/favicon/favicon-32x32.webp" />
-    <link rel="alternate icon" href="/DRF/img/favicon/favicon.ico" />
-    <link rel="manifest" href="/DRF/img/favicon/site.webmanifest" />
-    <link rel="apple-touch-icon" href="/DRF/img/favicon/apple-touch-icon.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e17" />
+  <title>David Rubenstein Forum | Hybrid Meeting Room Guides</title>
+  <link rel="stylesheet" href="/fonts.css" />
+  <link rel="stylesheet" href="drf-index.css" />
+  <link rel="stylesheet" href="drf-hybrid-guides.css" />
 
-    <meta
-      name="description"
-      content="Comprehensive operator guides, checklists, and troubleshooting references for running hybrid meetings (Google Meet, MS Teams, Zoom) at the David Rubenstein Forum."
-    />
-  </head>
+  <link rel="icon" type="image/svg+xml" href="/DRF/img/favicon/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/DRF/img/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/webp" sizes="32x32" href="/DRF/img/favicon/favicon-32x32.webp" />
+  <link rel="alternate icon" href="/DRF/img/favicon/favicon.ico" />
+  <link rel="manifest" href="/DRF/img/favicon/site.webmanifest" />
+  <link rel="apple-touch-icon" href="/DRF/img/favicon/apple-touch-icon.png" />
 
-  <body>
-    <header class="glass-header">
-      <div class="header-top">
-        <a href="drf-index.html" class="btn btn-secondary back-link">
-          <svg
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            stroke="currentColor"
-            stroke-width="2.5"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="19" x2="5" y1="12" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          Back to Hub
-        </a>
-      </div>
-      <div class="header-main">
-        <h1>David Rubenstein Forum</h1>
-        <p class="subtitle">Hybrid Meeting Room Guides</p>
-        <p class="desc">Technical procedures, signal flows, and platform-specific configurations for FOH operators.</p>
-      </div>
-    </header>
+  <meta name="description"
+    content="Comprehensive operator guides, checklists, and troubleshooting references for running hybrid meetings (Google Meet, MS Teams, Zoom) at the David Rubenstein Forum." />
+</head>
 
-    <main>
-      <!-- Beta Alert Banner -->
-      <div class="beta-banner info-alert" role="alert">
-        <svg
-          viewBox="0 0 24 24"
-          width="18"
-          height="18"
-          stroke="currentColor"
-          stroke-width="2.2"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" x2="12" y1="16" y2="12"></line>
-          <line x1="12" x2="12" y1="8" y2="8"></line>
+<body>
+  <header class="glass-header">
+    <div class="header-top">
+      <a href="drf-index.html" class="btn btn-secondary back-link">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" x2="5" y1="12" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
-        <span class="beta-text"
-          ><strong>Beta:</strong> These guides are currently under active development and will be updated regularly for
-          accuracy.</span
-        >
-      </div>
+        Back to Hub
+      </a>
+    </div>
+    <div class="header-main">
+      <h1>David Rubenstein Forum</h1>
+      <p class="subtitle">Hybrid Meeting Room Guides</p>
+      <p class="desc">Technical procedures, signal flows, and platform-specific configurations for FOH operators.</p>
+    </div>
+  </header>
 
-      <!-- Mobile selector (replaces sidebar on small screens) -->
-      <select id="mobile-guide-select" class="mobile-nav-selector" aria-label="Select Guide">
-        <option value="general-guide">General Hybrid AV Guide</option>
-        <option value="meet-guide">Google Meet Guide</option>
-        <option value="teams-guide">Microsoft Teams Guide</option>
-        <option value="zoom-guide">Zoom Room Guide</option>
-        <option value="zoom-cheat-sheet">Zoom FOH Operator Cheat Sheet</option>
-      </select>
+  <main>
+    <!-- Beta Alert Banner -->
+    <div class="beta-banner info-alert" role="alert">
+      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.2" fill="none"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" x2="12" y1="16" y2="12"></line>
+        <line x1="12" x2="12" y1="8" y2="8"></line>
+      </svg>
+      <span class="beta-text"><strong>Beta:</strong> These guides are currently under active development and will be
+        updated regularly. </span>
+    </div>
 
-      <div class="layout-container">
-        <!-- Sidebar Navigation (Desktop) -->
-        <nav class="sidebar-nav" role="tablist" aria-label="Guides Navigation">
-          <h3 class="sidebar-title">Select Guide</h3>
+    <!-- Mobile selector (replaces sidebar on small screens) -->
+    <select id="mobile-guide-select" class="mobile-nav-selector" aria-label="Select Guide">
+      <option value="general-guide">General Hybrid AV Guide</option>
+      <option value="meet-guide">Google Meet Guide</option>
+      <option value="teams-guide">Microsoft Teams Guide</option>
+      <option value="zoom-guide">Zoom Room Guide</option>
+      <option value="zoom-cheat-sheet">Zoom FOH Operator Cheat Sheet</option>
+    </select>
 
-          <!-- Search box -->
-          <div class="search-wrapper">
-            <svg
-              class="sidebar-search-icon"
-              viewBox="0 0 24 24"
-              width="16"
-              height="16"
-              stroke="currentColor"
-              stroke-width="2.5"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
-            </svg>
-            <input
-              type="text"
-              id="sidebar-search"
-              placeholder="Search guides..."
-              aria-label="Search guides"
-              class="sidebar-search-input"
-            />
+    <div class="layout-container">
+      <!-- Sidebar Navigation (Desktop) -->
+      <nav class="sidebar-nav" role="tablist" aria-label="Guides Navigation">
+        <h3 class="sidebar-title">Select Guide</h3>
+
+        <!-- Search box -->
+        <div class="search-wrapper">
+          <svg class="sidebar-search-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+            stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+          </svg>
+          <input type="text" id="sidebar-search" placeholder="Search guides..." aria-label="Search guides"
+            class="sidebar-search-input" />
+        </div>
+
+        <ul class="nav-list">
+          <li class="nav-item active">
+            <button data-target="general-guide" role="tab" aria-selected="true">
+              <span>🌐</span> General AV Guide
+            </button>
+          </li>
+          <li class="nav-item">
+            <button data-target="meet-guide" role="tab" aria-selected="false">
+              <span>🟢</span> Google Meet Guide
+            </button>
+          </li>
+          <li class="nav-item">
+            <button data-target="teams-guide" role="tab" aria-selected="false"><span>🟣</span> MS Teams Guide</button>
+          </li>
+          <li class="nav-item">
+            <button data-target="zoom-guide" role="tab" aria-selected="false"><span>🔵</span> Zoom Room Guide</button>
+          </li>
+          <li class="nav-item">
+            <button data-target="zoom-cheat-sheet" role="tab" aria-selected="false">
+              <span>📄</span> Zoom FOH Cheat Sheet
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- ==================== 1. GENERAL AV GUIDE ==================== -->
+        <section id="general-guide" class="guide-panel active" role="tabpanel">
+          <h2>Hybrid Meeting Room AV Guide</h2>
+          <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
+
+          <p>
+            This guide explains how to set up, operate, and troubleshoot a professional hybrid meeting or event in a
+            room with local audience, in‑room presenters, and remote participants on a video conferencing platform
+            (Zoom, Microsoft Teams, Google Meet, etc.).
+          </p>
+
+          <div class="callout info">
+            <div class="callout-title">ℹ️ System Assumptions</div>
+            <p>This guide assumes the following hardware is available in the space:</p>
+            <ul>
+              <li>A hardware <strong>DSP</strong> for audio (e.g., Extron DMP, Q‑Sys, Biamp).</li>
+              <li>
+                A <strong>video switcher/matrix</strong> for routing HDMI/SDI signals to screens and capture (e.g.,
+                Extron IN/INX/DXP, Kramer, Blackmagic ATEM).
+              </li>
+              <li>
+                A <strong>Front of House (FOH) computer</strong> acting as the platform host and primary audio/video
+                send/receive.
+              </li>
+              <li>A <strong>Podium computer</strong> for slide playback and screen sharing.</li>
+              <li>One or more <strong>handheld/wireless mics</strong> for Q&A.</li>
+            </ul>
+            <p>Brand names in this guide are examples; the concepts are the same for other vendors and platforms.</p>
           </div>
 
-          <ul class="nav-list">
-            <li class="nav-item active">
-              <button data-target="general-guide" role="tab" aria-selected="true">
-                <span>🌐</span> General AV Guide
-              </button>
+          <h3>0. Quick Start Overview</h3>
+
+          <h4>Roles</h4>
+          <ul>
+            <li>
+              <strong>FOH Operator:</strong> Runs the conferencing platform host, controls the switcher and DSP,
+              monitors audio/video, manages spotlighting/pinning, and records the session.
             </li>
-            <li class="nav-item">
-              <button data-target="meet-guide" role="tab" aria-selected="false">
-                <span>🟢</span> Google Meet Guide
-              </button>
+            <li>
+              <strong>Podium Presenter:</strong> Runs the slide deck, shares screen to the meeting, and presents
+              locally in the room.
             </li>
-            <li class="nav-item">
-              <button data-target="teams-guide" role="tab" aria-selected="false"><span>🟣</span> MS Teams Guide</button>
+            <li>
+              <strong>Remote Presenter(s):</strong> Join via the conferencing platform, are spotlighted for the room
+              and remote audience, and interact with Q&A.
             </li>
-            <li class="nav-item">
-              <button data-target="zoom-guide" role="tab" aria-selected="false"><span>🔵</span> Zoom Room Guide</button>
-            </li>
-            <li class="nav-item">
-              <button data-target="zoom-cheat-sheet" role="tab" aria-selected="false">
-                <span>📄</span> Zoom FOH Cheat Sheet
-              </button>
+            <li>
+              <strong>Shadow/Auditor PC (optional but recommended):</strong> A separate device joined to the meeting
+              solely to monitor what remote attendees see and hear.
             </li>
           </ul>
-        </nav>
 
-        <!-- Content Area -->
-        <div class="content-area">
-          <!-- ==================== 1. GENERAL AV GUIDE ==================== -->
-          <section id="general-guide" class="guide-panel active" role="tabpanel">
-            <h2>Hybrid Meeting Room AV Guide</h2>
-            <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
+          <h4>Typical Architectures</h4>
+          <ul>
+            <li>
+              <strong>Single‑PC Setup:</strong> One computer in the room handles everything (host, slides, capture).
+              Easier but higher risk and less flexible.
+            </li>
+            <li>
+              <strong>Dual‑PC Setup:</strong> FOH computer is host/AV hub; podium computer is just a participant for
+              slides. Much safer and more controllable in corporate/event environments.
+            </li>
+          </ul>
+          <p>
+            This guide assumes the <strong>dual‑PC setup</strong> as the default and calls out when a single‑PC setup
+            behaves differently.
+          </p>
 
+          <h3>1. System Architecture and Signal Flow</h3>
+          <p>Hybrid meeting rooms combine three main planes:</p>
+          <ol>
+            <li>
+              <strong>Room plane:</strong> Podium mic, handheld mics, speakers, projector/LED wall, confidence
+              monitor.
+            </li>
+            <li>
+              <strong>Platform plane:</strong> The conferencing platform (Zoom/Teams/Meet) running on the FOH computer
+              and optionally the podium computer.
+            </li>
+            <li>
+              <strong>Bridge plane:</strong> Hardware that glues them together: DSP, video switcher, USB bridge or
+              capture card.
+            </li>
+          </ol>
+
+          <h4>Generic AV Signal Flow Diagram</h4>
+          <div class="mermaid-wrapper">
+            <div class="mermaid">
+              graph TD subgraph Stage_Area ["Stage & Audience Q&A"] PodiumPC["Podium PC&lt;br/&gt;(Slides & Screen
+              Share)"] PodiumMic["Podium Mic&lt;br/&gt;(Local Presenter)"] HandheldMic["Handheld Q&A
+              Mics&lt;br/&gt;(Audience Questions)"] ConfMonitor["Confidence Monitor&lt;br/&gt;(Switcher Output)"] end
+              subgraph AV_Rack ["AV Processing Rack"] DSP["Audio DSP&lt;br/&gt;(Mix-Minus + AEC)"] Switcher["Video
+              Switcher / Matrix"] PTZ_Cam["Room PTZ Camera"] RoomAmp["Amplifier & Room Speakers"] Projector["Main Room
+              Screen&lt;br/&gt;(Projector / LED Wall)"] end subgraph FOH_Position ["FOH Control Position"] FOH_PC["FOH
+              Control PC&lt;br/&gt;(Platform Host, Record, Mix)"] USB_Bridge["USB AV Interface&lt;br/&gt;(MediaPort /
+              Capture Card)"] FOH_Monitor["FOH Monitor&lt;br/&gt;(Gallery / Stats / Tools)"] end subgraph Cloud
+              ["Remote Participants"] PlatformCloud["Video Conferencing Platform"] RemotePresenter["Remote Presenter"]
+              end PodiumPC -->|HDMI Out| Switcher PTZ_Cam -->|HDMI/SDI| Switcher FOH_PC -->|HDMI Out| Switcher
+              Switcher -->|Output 1| Projector Switcher -->|Output 2| ConfMonitor Switcher -->|Output 3| USB_Bridge
+              USB_Bridge -->|USB Video| FOH_PC PodiumMic -->|Mic In 1| DSP HandheldMic -->|Mic In 2| DSP USB_Bridge
+              ---|USB Audio (Send/Return)| FOH_PC DSP -->|"Output to Platform (Mix-Minus)"| USB_Bridge USB_Bridge
+              -->|"Platform Return Audio"| DSP DSP -->|"Output to Amp"| RoomAmp FOH_PC ---|Network| PlatformCloud
+              PodiumPC -->|Network| PlatformCloud RemotePresenter ---|Internet| PlatformCloud
+            </div>
+          </div>
+
+          <h3>2. Audio DSP Routing: Mix‑Minus and Echo Control</h3>
+          <p>
+            The number one failure in hybrid rooms is <strong>echo</strong>: remote voices come out of the room
+            speakers, go back into room mics, and are sent back to remote participants.
+          </p>
+          <p>To avoid this, the DSP must provide:</p>
+          <ul>
+            <li>
+              A <strong>mix‑minus</strong> feed to the platform (send all local mics, but not the platform's own
+              return audio).
+            </li>
+            <li>
+              <strong>Acoustic Echo Cancellation (AEC)</strong> on local mic inputs, referencing the platform return.
+            </li>
+          </ul>
+
+          <h4>Example DSP Matrix Configuration</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>DSP Input Channel</th>
+                <th>Source</th>
+                <th>To Room Speakers?</th>
+                <th>To Platform Send?</th>
+                <th>AEC Configuration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Input 1</strong></td>
+                <td>Podium Mic</td>
+                <td>YES</td>
+                <td>YES</td>
+                <td>AEC enabled; AEC reference = platform return input</td>
+              </tr>
+              <tr>
+                <td><strong>Input 2</strong></td>
+                <td>Handheld Q&A Mic(s)</td>
+                <td>YES</td>
+                <td>YES</td>
+                <td>AEC enabled; AEC reference = platform return input</td>
+              </tr>
+              <tr>
+                <td><strong>Input 3</strong></td>
+                <td>Platform RX (remote participants)</td>
+                <td>YES</td>
+                <td>NO (mix‑minus)</td>
+                <td>AEC disabled; set as AEC reference source</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>AEC and Mix‑Minus Checklist</h4>
+          <ol>
+            <li>Set AEC reference in the DSP software to the platform return input for all mic inputs.</li>
+            <li>Enforce mix‑minus: platform return must not be routed to the platform send.</li>
+            <li>Avoid double echo cancellation in the conferencing client if the DSP is doing AEC.</li>
+            <li>Use gates and duckers to keep handheld mics from opening on room noise.</li>
+          </ol>
+
+          <h3>3. Video Switcher Configuration and Presets</h3>
+          <p>
+            Your video switcher controls <strong>what the room sees</strong> and
+            <strong>what the platform sees</strong>.
+          </p>
+
+          <h4>Typical Inputs</h4>
+          <ol>
+            <li><strong>Podium PC HDMI:</strong> Slide deck output.</li>
+            <li><strong>FOH PC HDMI:</strong> Full screen view of spotlighted remote presenter or gallery.</li>
+            <li><strong>PTZ Camera:</strong> Camera on the room/audience.</li>
+          </ol>
+
+          <h4>Typical Outputs</h4>
+          <ol>
+            <li><strong>Main Room Display / Projector:</strong> What the local audience sees.</li>
+            <li>
+              <strong>Confidence Monitor (on stage):</strong> What the presenter sees (remote faces, notes, preview).
+            </li>
+            <li><strong>USB/Capture Output:</strong> What is sent to the platform as "camera" via the USB bridge.</li>
+          </ol>
+
+          <h4>Core Switcher Presets</h4>
+          <h5>Preset 1 – Local Presenter Mode</h5>
+          <ul>
+            <li>Room screen: Podium PC (slides full screen).</li>
+            <li>Confidence monitor: FOH PC platform output (remote participants).</li>
+            <li>Capture/USB to platform: PTZ camera on presenter.</li>
+          </ul>
+          <p>The podium PC also shares its slides directly into the meeting.</p>
+
+          <h5>Preset 2 – Remote Presenter Mode</h5>
+          <ul>
+            <li>Room screen: FOH platform output (remote presenter full screen).</li>
+            <li>Confidence monitor: PTZ camera or podium screen.</li>
+            <li>Capture/USB to platform: PTZ camera on room, so remotes see the audience.</li>
+          </ul>
+
+          <h5>Preset 3 – Active Q&A Mode</h5>
+          <ul>
+            <li>Room screen: FOH platform output (remote presenter responding).</li>
+            <li>Confidence monitor: PTZ camera focused on audience member asking a question.</li>
+            <li>Capture/USB to platform: PTZ camera on that audience member.</li>
+          </ul>
+
+          <h3>4. Conferencing Platform Settings (Generic)</h3>
+          <p>
+            Choose the <strong>USB bridge</strong> as your mic/speaker/camera and lock down sleep and network
+            behavior.
+          </p>
+
+          <h4>FOH Computer (Host)</h4>
+          <ul>
+            <li>
+              <strong>Audio:</strong> Mic: USB audio interface / DSP send. Speaker: USB audio interface / DSP return.
+            </li>
+            <li><strong>Video:</strong> Camera: USB capture device / switcher output.</li>
+            <li>
+              <strong>Meeting:</strong> Host the meeting from FOH. Enable local or cloud recording. Mute participants
+              on entry. Assign co‑host rights to podium computer and remote presenters.
+            </li>
+          </ul>
+
+          <h4>Podium Computer (Slides)</h4>
+          <ul>
+            <li>Keep on AC power; disable sleep, screen savers, and display timeouts.</li>
+            <li>Use hard‑wired Ethernet; disable Wi‑Fi.</li>
+            <li>Set display mode to <strong>Extend</strong>, not Duplicate.</li>
+            <li>Join meeting as a participant but <strong>Leave Computer Audio</strong> in dual‑PC setups.</li>
+            <li>Only screen‑share slides; never send or receive audio.</li>
+          </ul>
+
+          <h3>5. Single‑PC vs Dual‑PC Behavior</h3>
+          <ul>
+            <li><strong>Dual‑PC (recommended):</strong> FOH PC is audio host; podium PC is slides‑only.</li>
+            <li>
+              <strong>Single‑PC:</strong> One PC joins audio and sends both program audio and room mics through DSP
+              and switcher; HDMI audio routing must be checked carefully.
+            </li>
+          </ul>
+          <p>Always identify the <strong>actual audio host</strong> before troubleshooting audio issues.</p>
+
+          <h3>6. FOH Operations and Q&A Playbook</h3>
+          <h4>Microphone and Camera Discipline</h4>
+          <ul>
+            <li>Keep handheld Q&A mics muted until the person is framed on camera.</li>
+            <li>Coach participants to speak close to the mic and avoid pointing it at speakers.</li>
+            <li>Coordinate PTZ shots and mic opens so remotes always see who is talking.</li>
+          </ul>
+
+          <h4>Spotlighting vs Pinning (Conceptual)</h4>
+          <ul>
+            <li><strong>Pinning</strong> changes only the local FOH view.</li>
+            <li>
+              <strong>Spotlighting</strong> changes what everyone sees and what is recorded/sent to the projector.
+            </li>
+          </ul>
+          <p>
+            Usage pattern: Spotlight the remote presenter while they speak. During Q&A, spotlight remote presenter +
+            room camera for side‑by‑side view where supported.
+          </p>
+
+          <h3>7. Monitoring Quality: Audio, Video, and System Health</h3>
+
+          <h4>Hardware‑Level Audio Monitoring</h4>
+          <ul>
+            <li>Plug closed‑back headphones into DSP or USB audio interface.</li>
+            <li>
+              Route the platform send bus (mix‑minus) to this monitor to hear exactly what is being sent upstream.
+            </li>
+          </ul>
+
+          <h4>Software‑Level Monitoring</h4>
+          <p>Use the platform's statistics/diagnostics (Zoom Statistics, Teams call health, etc.) to monitor:</p>
+          <ul>
+            <li>CPU load.</li>
+            <li>Audio jitter and packet loss (keep loss below 1–2%).</li>
+            <li>Video resolution and frame rate.</li>
+          </ul>
+
+          <h4>Shadow PC Monitoring</h4>
+          <ul>
+            <li>Shadow machine joins the meeting with muted mic and headphones.</li>
+            <li>Confirms remote experience and reports issues back to FOH.</li>
+          </ul>
+
+          <h3>8. Troubleshooting: Common Symptoms and Fixes</h3>
+
+          <h4>Echo, Feedback, and Audio Loops</h4>
+          <div class="callout caution">
+            <div class="callout-title">🛑 Symptom: Remote presenter hears themselves</div>
             <p>
-              This guide explains how to set up, operate, and troubleshoot a professional hybrid meeting or event in a
-              room with local audience, in‑room presenters, and remote participants on a video conferencing platform
-              (Zoom, Microsoft Teams, Google Meet, etc.).
+              <strong>Causes:</strong> Platform return routed into platform send, or extra devices joined to audio.
             </p>
+            <p><strong>Fixes:</strong></p>
+            <ul>
+              <li>In DSP, ensure platform return isn't routed to platform send.</li>
+              <li>Ensure all in‑room devices except the audio host have <strong>left audio</strong>.</li>
+            </ul>
+          </div>
 
-            <div class="callout info">
-              <div class="callout-title">ℹ️ System Assumptions</div>
-              <p>This guide assumes the following hardware is available in the space:</p>
+          <div class="callout caution">
+            <div class="callout-title">🛑 Symptom: Loud squeal when handheld mic is unmuted</div>
+            <p><strong>Causes:</strong> Gain too high or mic too close to speakers.</p>
+            <p><strong>Fixes:</strong></p>
+            <ul>
+              <li>Mute the channel immediately.</li>
+              <li>Reduce gain; adjust gate settings.</li>
+              <li>Move the presenter out of loud speaker zones.</li>
+            </ul>
+          </div>
+
+          <h4>Signal Routing Failures</h4>
+          <ul>
+            <li>
+              <strong>No Audio from Remote in Room:</strong> On host PC, check speaker device and OS volume. In DSP,
+              check platform return input meter and routing to room speakers.
+            </li>
+            <li>
+              <strong>Remote Cannot Hear the Room:</strong> Ensure host PC mic device is USB/DSP send. Check DSP
+              routing of podium and handheld mics to platform send.
+            </li>
+            <li>
+              <strong>Display / Signal Issues:</strong> Reseat HDMI/dongles; force EDID renegotiation. Set display
+              mode to Extend and resolution to 1920×1080 @ 60Hz. Avoid DRM‑protected content.
+            </li>
+          </ul>
+
+          <h3>9. Podium Slide Presentation Gotchas</h3>
+          <div class="callout warning">
+            <div class="callout-title">⚠️ Presenter View showing on room projector</div>
+            <p>
+              <strong>Fixes:</strong> In PowerPoint/Keynote, set slide show to external monitor. Start slide show,
+              then share the slide show window in the conferencing app.
+            </p>
+          </div>
+
+          <h3>10. Pre-Event Checklist</h3>
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>FOH Setup Checklist</h4>
+              <button class="checklist-reset-btn">Reset</button>
+            </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">DSP: Mix‑minus verified; platform return not in send path.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">DSP: AEC reference set; mics have AEC enabled.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Switcher: Presets set for local presenter, remote presenter, and Q&A.
+                  Inputs labeled.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">FOH PC: Wired Ethernet; Wi-Fi off. USB bridge selected as
+                  mic/speaker/camera.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">FOH PC: Dual monitors extended; full‑screen output routed to switcher
+                  input.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Podium PC: Wired Ethernet; Wi-Fi off. Extend desktop; external at
+                  1080p/60.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Podium PC: Joined to meeting; Left Computer Audio verified (no mic/speaker
+                  active).</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Shadow PC: Joined early; monitoring with headphones; feedback system with
+                  FOH confirmed.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Rehearsal: Mic walk test and full flow rehearsal completed with remote
+                  participant.</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== 2. GOOGLE MEET GUIDE ==================== -->
+        <section id="meet-guide" class="guide-panel" role="tabpanel">
+          <h2>Google Meet Room Guide</h2>
+          <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
+
+          <p>
+            This guide covers how to set up, operate, and troubleshoot a hybrid conference room that uses Google Meet
+            with in-person participants, in-room presenters, and remote attendees.
+          </p>
+
+          <div class="callout info">
+            <div class="callout-title">ℹ️ Site-Specific Infrastructure</div>
+            <p>Update these parameters internally for your specific event setup:</p>
+            <ul>
+              <li><strong>Audio DSP IP / Access:</strong> [Insert IP address / Web interface link]</li>
+              <li><strong>USB Capture Interface:</strong> [Insert Hardware ID / Device Name]</li>
+              <li><strong>Video Switcher IP / Access:</strong> [Insert IP address / Web interface link]</li>
+              <li><strong>FOH Service Account:</strong> [Insert Google Workspace host account]</li>
+              <li><strong>AV Support Hotline:</strong> [Insert contact number]</li>
+            </ul>
+          </div>
+
+          <h3>1. Interactive Operator Checklists</h3>
+
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>Google Meet Pre-Flight Checklist</h4>
+              <button class="checklist-reset-btn">Reset</button>
+            </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Log into the FOH Host PC with the dedicated corporate Google Workspace
+                  account.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Verify the FOH PC audio settings map exactly to the hardware DSP via
+                  USB.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Disable "Noise cancellation" in Google Meet settings if using a hardware
+                  DSP to prevent processing
+                  conflicts.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Join a second operator PC to the meeting as an auditor with noise-isolating
+                  headphones.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Join the auditor PC using Companion Mode.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Verify the hardware DSP mix sounds clear to the remote auditor.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Test the video switcher to ensure it pushes the correct camera
+                  angles.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>Google Meet Show Start Checklist</h4>
+              <button class="checklist-reset-btn">Reset</button>
+            </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Display a corporate holding slide by presenting a clean Chrome tab or
+                  window to the room and
+                  broadcast feed.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Have a Co-host monitor the knocking queue and admit approved external
+                  guests.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Verify all in-person attendees opening laptops use Companion Mode to join
+                  the meeting.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Turn on live transcription or captions if required.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Start the cloud recording.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>Google Meet Show Run Checklist</h4>
+              <button class="checklist-reset-btn">Reset</button>
+            </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Use the Google Meet "Pin" or "Co-host spotlight" controls to fix presenter
+                  video feeds for the room
+                  display.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Monitor the raised hands queue and text chat continuously during the
+                  broadcast.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Ensure in-person attendees speak directly into a routed wireless microphone
+                  when asking
+                  questions.</span>
+              </label>
+            </div>
+          </div>
+
+          <h3>2. Google Workspace Account, Licensing, and Security</h3>
+          <p>Configure security defaults at the Google Workspace Admin console level to enforce consistency.</p>
+
+          <h4>Licensing Requirements</h4>
+          <ul>
+            <li>
+              Use Google Workspace Enterprise (Standard or Plus) host accounts to support large participant caps,
+              advanced moderation features, and extended meeting durations.
+            </li>
+            <li>
+              Equip accounts with Gemini for Google Workspace licenses to use automated meeting tools like "Take notes
+              for me."
+            </li>
+            <li>
+              Assign dedicated Google Meet Hardware licenses if using native room kits (such as ASUS, Logitech, or
+              Avocor systems).
+            </li>
+          </ul>
+
+          <h4>Host Safety Controls</h4>
+          <ul>
+            <li>
+              <strong>Quick Access and Meet Safety:</strong> Toggle "Quick Access" off for high-stakes events. This
+              forces all external participants and non-invited users to request access before entering.
+            </li>
+            <li>
+              <strong>Co-host Delegation:</strong> Assign co-hosts preemptively or during the live call to share
+              management tasks like muting, admitting guests, and text moderation.
+            </li>
+            <li>
+              <strong>Shared Management Limits:</strong> Restrict the "Share their screen" and "Send chat messages"
+              toggles under Host Controls if you need a locked-down broadcast style.
+            </li>
+          </ul>
+
+          <h3>3. Google Meet Audio and Echo Cancellation with Hardware DSP</h3>
+          <p>
+            Google Meet features built-in, cloud-based AI noise cancellation. When stacked on top of a professional
+            hardware DSP, it can cause voices to sound cut off or heavily gated.
+          </p>
+
+          <div class="callout caution">
+            <div class="callout-title">🛑 Feedback Loop Risk</div>
+            <p>
+              Any laptop or phone in the room that joins with active audio will bypass the hardware DSP and trigger a
+              feedback loop. FOH operators must confirm that all in-room devices join via Companion Mode.
+            </p>
+          </div>
+
+          <h4>Audio Settings and Setup</h4>
+          <ul>
+            <li>
+              <strong>Hardware Interoperability:</strong> Select your USB audio interface (such as Extron, Q-Sys, or
+              Biamp) as the primary Input and Output device inside Google Meet’s Audio Settings.
+            </li>
+            <li>
+              <strong>Software DSP Bypass:</strong> Navigate to Settings -> Audio and turn off "Noise cancellation."
+              This allows your high-end room hardware to handle 100% of the acoustic echo cancellation (AEC) and
+              filtering without interference.
+            </li>
+          </ul>
+
+          <h4>DSP Routing Rules</h4>
+          <ul>
+            <li>
+              Route all in-room microphones to the local amplifier and to the USB transmitter bus connected to the FOH
+              PC.
+            </li>
+            <li>
+              Route the Google Meet far-end audio to the room speakers and the DSP's Acoustic Echo Cancellation (AEC)
+              reference input. Do not route the far-end feed back into the USB transmitter bus.
+            </li>
+          </ul>
+
+          <h3>4. Video, Screen Layouts, and Room Routing</h3>
+          <p>
+            Visual layouts must keep remote attendees visible on local room displays and presentation slides visible
+            on both feeds.
+          </p>
+
+          <h4>Layout Reference Guide</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Layout Mode</th>
+                <th>Ideal Environment</th>
+                <th>Screen Setup</th>
+                <th>Operator Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Companion Mode</strong></td>
+                <td>BYOD & In-Room Audience</td>
+                <td>Personal Secondary Laptops</td>
+                <td>
+                  Users go to <code>g.co/companion</code>. Joins the meeting completely audio-free. Allows
+                  participation in chat, polls, and hand raises without audio loops.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Tiled and Spotlight</strong></td>
+                <td>Multi-Participant Rooms</td>
+                <td>FOH Control & Projector</td>
+                <td>
+                  Select "Tiled" layout and scale the tile count slider up to 49. Pin active presenters to fix them
+                  onto the physical room display.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Tab Presenting</strong></td>
+                <td>High-Stakes Slides & Media</td>
+                <td>Dual FOH Monitors</td>
+                <td>
+                  Select "Present a Chrome tab" instead of the entire screen. This prioritizes high-frame-rate video
+                  and clear audio transmission.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout tip">
+            <div class="callout-title">💡 Presenting from Google Workspace Apps</div>
+            <p>
+              Presenters on the Podium PC can open their Google Slides or Docs file directly in Chrome and click the
+              built-in "Present to Meet" icon. This shares the file into the active call without requiring the
+              presenter to manage browser windows.
+            </p>
+          </div>
+
+          <h3>5. Google Meet Roles</h3>
+          <ul>
+            <li>
+              <strong>Host:</strong> The account that created the Calendar event or initiated the Meet link. Holds
+              ultimate control over safety settings, recording, and co-host assignments.
+            </li>
+            <li>
+              <strong>Co-hosts:</strong> Staff promoted during the meeting. They share administrative powers,
+              including the ability to mute participants, eject disruptive users, and accept lobby knocks.
+            </li>
+            <li>
+              <strong>Participants:</strong> Standard attendees. They can speak, turn on video, and share screens
+              unless restricted by the host's safety settings.
+            </li>
+          </ul>
+
+          <h3>6. Troubleshooting Diagnostics</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Symptom</th>
+                <th>Root Cause</th>
+                <th>Operator Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Severe Audio Echo</strong></td>
+                <td>An in-room laptop or phone joined with active audio enabled.</td>
+                <td>
+                  Scan the participant list for active volume indicators. Mute the user or eject them. Instruct them
+                  to rejoin via <code>g.co/companion</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Robotic, Fading Room Audio</strong></td>
+                <td>Google Meet's built-in noise cancellation is fighting the hardware DSP.</td>
+                <td>Open Meet Audio Settings and turn off "Noise cancellation."</td>
+              </tr>
+              <tr>
+                <td><strong>FOH Control UI Visible on Projector</strong></td>
+                <td>The FOH Host PC is using duplicate display settings in the OS.</td>
+                <td>
+                  Switch OS display settings to "Extend." Move the clean Meet video stage window to Monitor 2
+                  (Projector) and keep the control panels on Monitor 1.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Laggy Slide Video or Audio Playback</strong></td>
+                <td>The operator shared their entire desktop instead of an isolated browser tab.</td>
+                <td>
+                  Stop sharing. Re-share using the "Present a Chrome tab" option to improve video performance and pass
+                  audio.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>7. Recording, Transcripts, and Governance</h3>
+
+          <h4>Storage and Access Controls</h4>
+          <p>
+            Google Meet recordings and automated text transcripts are generated directly in the cloud. Once the
+            meeting concludes, these files are automatically saved into the Primary Host’s Google Drive in a folder
+            named "Meet Recordings." The host will also receive an email with direct links to the files. Access
+            control is maintained entirely through Google Drive file permissions.
+          </p>
+
+          <h4>Automated Documentation</h4>
+          <p>
+            If your workspace uses Gemini enterprise features, you can activate tools like "Take notes for me." This
+            creates a running summary of the event in a Google Doc without requiring manual typing from your
+            moderation team. Ensure this is initialized during the show start sequence.
+          </p>
+        </section>
+
+        <!-- ==================== 3. MICROSOFT TEAMS GUIDE ==================== -->
+        <section id="teams-guide" class="guide-panel" role="tabpanel">
+          <h2>Microsoft Teams Room Guide</h2>
+          <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
+
+          <p>
+            This guide covers how to set up, operate, and troubleshoot a hybrid conference room that uses Microsoft
+            Teams with in-person participants, in-room presenters, and remote attendees.
+          </p>
+
+          <div class="callout info">
+            <div class="callout-title">ℹ️ Site-Specific Infrastructure</div>
+            <p>Update this section with your local room details before an event.</p>
+            <ul>
+              <li><strong>Audio DSP IP / Access:</strong> [Insert IP address / Web interface link]</li>
+              <li><strong>USB Capture Interface:</strong> [Insert Hardware ID / Device Name]</li>
+              <li><strong>Video Switcher IP / Access:</strong> [Insert IP address / Web interface link]</li>
+              <li><strong>FOH Service Account:</strong> [Insert Teams meeting host account]</li>
+              <li><strong>AV Support Hotline:</strong> [Insert contact number]</li>
+            </ul>
+          </div>
+
+          <h3>1. Interactive Operator Checklists</h3>
+
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>Phase 1: Pre-Flight Sequence</h4>
+              <button class="checklist-reset-btn">Reset</button>
+            </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Log into the FOH Host PC with the dedicated corporate service
+                  account.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Verify the FOH PC audio settings map exactly to the hardware DSP via
+                  USB.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Enable "High-Fidelity Music Mode" in Teams device settings if using an
+                  uncertified hardware
+                  DSP.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Join a second operator PC to the meeting as an auditor with noise-isolating
+                  headphones.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Join the auditor PC using the "Don't use audio" option.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Verify the hardware DSP mix sounds clear to the remote auditor.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Test the video switcher to ensure it pushes the correct camera
+                  angles.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>Phase 2: Show Start Sequence</h4>
+              <button class="checklist-reset-btn">Reset</button>
+            </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Display a corporate holding slide via PowerPoint Live to the room and
+                  broadcast feed.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Have a Co-organizer monitor the lobby and admit approved guests.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Verify all in-person attendees opening laptops select the "Don't use audio"
+                  option.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Turn on live transcription.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Start the recording.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>Phase 3: Show Run Sequence</h4>
+              <button class="checklist-reset-btn">Reset</button>
+            </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Use the Teams "Spotlight" feature to force presenter video feeds to the
+                  main stage.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Switch to "Multi-spotlight" during Q&A to frame the remote speaker and
+                  physical room camera
+                  side-by-side.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Ensure in-person attendees speak directly into a routed wireless microphone
+                  when asking
+                  questions.</span>
+              </label>
+            </div>
+          </div>
+
+          <h3>2. Teams Account, Licensing, and Security</h3>
+          <p>FOH host accounts must be centrally managed through the corporate directory.</p>
+
+          <h4>Licensing Requirements</h4>
+          <ul>
+            <li>
+              FOH host accounts require enterprise-grade licenses (such as Office 365 E3 or E5) to support large
+              meetings.
+            </li>
+            <li>
+              Teams Premium is required for custom corporate lobbies, end-to-end encryption, and custom watermarking.
+            </li>
+            <li>
+              Assign Microsoft 365 Copilot or Teams Premium licenses to access post-meeting transcripts and the
+              AI-generated Intelligent Recap.
+            </li>
+          </ul>
+
+          <h4>Pre-Join Security Defaults</h4>
+          <ul>
+            <li>
+              Set "Who can bypass the lobby?" to "People in my organization" to prevent unvetted external access.
+            </li>
+            <li>
+              Set "Who can present" to "Only organizers and co-organizers" to block attendees from sharing their
+              screens.
+            </li>
+            <li>
+              Enable "Manage what attendees see" to restrict the display to shared content and spotlighted video
+              feeds. This setting automatically disables attendee microphones and cameras.
+            </li>
+            <li>Turn on "Green room" to give presenters a private space to test audio before the meeting starts.</li>
+          </ul>
+
+          <h3>3. Teams Audio and Echo Cancellation with Hardware DSP</h3>
+          <p>
+            Microsoft Teams uses cloud-driven echo cancellation & noise suppression. These settings will clash with
+            your hardware DSP and distort audio unless they are disabled.
+          </p>
+
+          <div class="callout caution">
+            <div class="callout-title">🛑 Feedback Loop Risk</div>
+            <p>
+              Any laptop or phone in the room that joins with active audio will bypass the hardware DSP and trigger a
+              feedback loop. FOH operators must confirm that all in-room devices join via the "Don't use audio"
+              option.
+            </p>
+          </div>
+
+          <h4>Audio Settings and Setup</h4>
+          <ul>
+            <li>
+              <strong>Certified Hardware:</strong> Teams-certified DSPs automatically negotiate with the Teams client
+              to disable software echo cancellation.
+            </li>
+            <li>
+              <strong>Uncertified Hardware:</strong> For uncertified DSPs, enable "High-Fidelity Music Mode" in Teams
+              settings. This option allows you to manually turn off Teams' built-in echo cancellation and noise
+              suppression.
+            </li>
+          </ul>
+
+          <h4>DSP Routing Rules</h4>
+          <ul>
+            <li>
+              Route all in-room microphones to the local amplifier and to the USB transmitter bus connected to the FOH
+              PC.
+            </li>
+            <li>
+              Route the Teams far-end audio to the room speakers and the DSP's Acoustic Echo Cancellation (AEC)
+              reference input. Do not route the far-end feed back into the USB transmitter bus.
+            </li>
+          </ul>
+
+          <h3>4. Video, Screen Layouts, and Room Routing</h3>
+          <p>
+            Visual layouts must keep remote attendees visible in the room and presentation slides visible on both
+            feeds.
+          </p>
+
+          <h4>Layout Reference Guide</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Layout Mode</th>
+                <th>Ideal Environment</th>
+                <th>Screen Setup</th>
+                <th>Operator Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Front Row</strong></td>
+                <td>Dedicated MTR Boardrooms</td>
+                <td>Requires ultra-wide 21:9 or dual displays</td>
+                <td>
+                  Default layout. Puts remote video at the bottom of the screen to simulate eye contact. Places chat
+                  and raised hands on the sides.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Shared Display</strong></td>
+                <td>BYOD Rooms</td>
+                <td>Standard 16:9 screen</td>
+                <td>
+                  Have the user select "Room Audio" when joining. This pushes the slides to the TV while keeping
+                  private desktop controls on the laptop.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>PowerPoint Live</strong></td>
+                <td>High-Stakes FOH Events</td>
+                <td>Dual FOH monitors</td>
+                <td>
+                  Launch PPT Live. Monitor 1 shows the private Presenter View. Monitor 2 feeds the clean slides to the
+                  room projector and remote audience.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout tip">
+            <div class="callout-title">💡 Spotlight and Pin Settings</div>
+            <p>
+              Use Spotlight to control what the remote audience sees and what gets recorded. Use Pin on your local FOH
+              monitor to privately watch VIP feeds or specific camera angles without changing the global layout.
+            </p>
+          </div>
+
+          <h3>5. Teams Roles</h3>
+          <ul>
+            <li>
+              <strong>Organizer:</strong> Controls the meeting lifecycle, sets lobby policies, starts the recording,
+              and assigns Co-organizers.
+            </li>
+            <li>
+              <strong>Co-organizers:</strong> Adjust meeting settings during the event, manage breakout rooms, and
+              change participant roles. They must belong to the internal domain.
+            </li>
+            <li>
+              <strong>Presenters:</strong> Share audio, video, and slides via PowerPoint Live. They cannot modify
+              security settings.
+            </li>
+            <li>
+              <strong>Attendees:</strong> Read-only participants who are restricted to using chat, raising hands, and
+              viewing content.
+            </li>
+          </ul>
+
+          <h3>6. Troubleshooting Diagnostics</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Symptom</th>
+                <th>Root Cause</th>
+                <th>Operator Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Severe Audio Echo</strong></td>
+                <td>A secondary device in the room joined with active audio.</td>
+                <td>
+                  Identify the active green mic icon in the participant list. Force-mute them. Instruct the user to
+                  rejoin using "Don't use audio".
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Choppy or Gated Voice</strong></td>
+                <td>Teams is applying its cloud AEC on top of an uncertified hardware DSP.</td>
+                <td>Enable "High-Fidelity Music Mode" in the device settings to bypass the cloud processing.</td>
+              </tr>
+              <tr>
+                <td><strong>Presenter Notes on Projector</strong></td>
+                <td>The presenter is using duplicate screen mode.</td>
+                <td>Switch to PowerPoint Live to isolate the Presenter View from the audience view.</td>
+              </tr>
+              <tr>
+                <td><strong>Missing Slide Animations in Recording</strong></td>
+                <td>Slide animations are not captured in PowerPoint Live cloud recordings.</td>
+                <td>
+                  If complex motion graphics must be preserved in the archive, revert to standard full-screen desktop
+                  sharing.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>7. Recording, Transcription, and Governance</h3>
+
+          <h4>Storage and Access Controls</h4>
+          <p>
+            Restrict transcript access to organizers to prevent unauthorized data sharing. Set "Who can record and
+            transcribe" to "Organizers and co-organizers" to block attendees from downloading the text or feeding it
+            into external tools. Ad-hoc meeting recordings save to the host organizer's OneDrive, while channel-based
+            meetings save to the SharePoint site of the associated Team.
+          </p>
+
+          <h4>Intelligent Recap and Copilot</h4>
+          <ul>
+            <li>
+              <strong>Teams Premium:</strong> Generates notes, task lists, and speaker timeline markers after the
+              meeting concludes.
+            </li>
+            <li>
+              <strong>Microsoft 365 Copilot:</strong> Serves as a real-time query engine during the meeting. Copilot
+              requires live transcription to be enabled to answer questions about the event afterwards.
+            </li>
+          </ul>
+        </section>
+
+        <!-- ==================== 4. ZOOM GUIDE ==================== -->
+        <section id="zoom-guide" class="guide-panel" role="tabpanel">
+          <h2>Zoom Room Guide</h2>
+          <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
+
+          <p>
+            This guide covers how to set up, operate, and troubleshoot a hybrid conference room that uses **Zoom
+            Meetings** with in‑room participants, in‑room presenters, and remote participants.
+          </p>
+
+          <h3>1. Zoom Account, Licensing, and Security</h3>
+          <p>
+            For corporate environments, you typically want centrally managed account settings and locked defaults.
+          </p>
+
+          <h4>1.1 Licensing and Features</h4>
+          <ul>
+            <li>
+              Use <strong>licensed Zoom accounts</strong> for hosts so meetings aren't time‑limited and can support
+              required participant counts.
+            </li>
+            <li>
+              Enable <strong>Cloud Recording</strong> or <strong>local recording</strong> as appropriate to your
+              corporate policy.
+            </li>
+            <li>
+              For internal meetings, consider enabling <strong>"Only authenticated users can join"</strong> with SSO
+              or corporate email domains.
+            </li>
+          </ul>
+
+          <h4>1.2 Security Defaults (Admin / Account Level)</h4>
+          <p>Recommended defaults for corporate hybrid rooms:</p>
+          <ul>
+            <li>Require <strong>meeting passcodes</strong> for all meeting types and enforce passcode complexity.</li>
+            <li>
+              Require at least one: <strong>Passcode</strong>, <strong>Waiting Room</strong>, or
+              <strong>Only authenticated users can join</strong> for every meeting.
+            </li>
+            <li>
+              Disable or strongly discourage use of <strong>Personal Meeting ID (PMI)</strong> for public or external
+              events; use generated meeting IDs.
+            </li>
+            <li>Enable <strong>Waiting Room</strong> for external‑facing events so FOH can vet participants.</li>
+            <li>
+              Disable <strong>Join before host</strong> for corporate hybrid rooms to avoid unmoderated pre‑meeting
+              chaos.
+            </li>
+            <li>
+              Default <strong>Screen Sharing</strong> to <strong>Host only</strong>; allow FOH to selectively enable
+              sharing for participants or co‑hosts.
+            </li>
+          </ul>
+          <p>
+            These should be configured under <strong>Account Settings → Meeting tab</strong> and locked at the account
+            or group level for rooms.
+          </p>
+
+          <h3>2. Zoom Audio with Hardware DSP (Mix‑Minus + AEC)</h3>
+
+          <h4>2.1 FOH Host PC Audio Settings</h4>
+          <p>On the FOH Zoom host PC:</p>
+          <ol>
+            <li>Open <strong>Zoom → Settings → Audio</strong>.</li>
+            <li>
+              Set <strong>Microphone</strong> to your <strong>USB audio interface / DSP send</strong> (e.g., "Extron
+              USB Audio," "USB Audio CODEC").
+            </li>
+            <li>
+              Set <strong>Speaker</strong> to the <strong>same interface</strong> so all remote audio flows through
+              the DSP.
+            </li>
+          </ol>
+          <p>Click <strong>Advanced</strong> at the bottom:</p>
+          <ul>
+            <li>
+              Set <strong>Echo cancellation</strong> to <strong>Auto</strong> (or Low) when using a well‑configured
+              hardware DSP so Zoom's echo canceller doesn't fight the DSP.
+            </li>
+            <li>
+              Avoid "<strong>Original sound for musicians</strong>" for room mics unless you are deliberately
+              bypassing Zoom processing for a specific reason.
+            </li>
+          </ul>
+
+          <h4>2.2 DSP Routing Summary</h4>
+          <p>In the DSP:</p>
+          <ul>
+            <li>
+              Route <strong>Podium Mic</strong> and <strong>Q&A mics</strong> to:
               <ul>
-                <li>A hardware <strong>DSP</strong> for audio (e.g., Extron DMP, Q‑Sys, Biamp).</li>
+                <li>Room speakers output (amplifier).</li>
+                <li>Zoom TX bus (USB send).</li>
+              </ul>
+            </li>
+            <li>
+              Route <strong>Zoom RX input</strong> (from FOH PC via USB) to:
+              <ul>
+                <li>Room speakers output.</li>
+                <li>AEC reference.</li>
+                <li><strong>Not</strong> to Zoom TX (mix‑minus).</li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            Zoom's "Auto/Low" echo cancellation plus DSP‑side AEC yields stable, echo‑free audio when configured
+            properly.
+          </p>
+
+          <h4>2.3 Podium PC Audio Rules</h4>
+          <p>For <strong>dual‑PC architecture</strong>:</p>
+          <ul>
+            <li>Podium PC joins Zoom, then immediately selects <strong>"Leave Computer Audio"</strong>.</li>
+            <li>Confirm there's no mic icon; it should show <strong>Join Audio</strong>.</li>
+            <li>Set OS system volume to 0% as a second safeguard.</li>
+          </ul>
+          <p>
+            For <strong>single‑PC rooms</strong> (not recommended for larger corporate events), that PC must be the
+            audio host and you do <strong>not</strong> use "Leave Computer Audio"; all room audio flows through that
+            machine and the DSP.
+          </p>
+
+          <h3>3. Zoom Video, Screen Layout, and Room Routing</h3>
+
+          <h4>3.1 FOH Dual‑Monitor Configuration</h4>
+          <p>On FOH host PC:</p>
+          <ol>
+            <li>In Zoom, go to <strong>Settings → General</strong> and enable <strong>Use dual monitors</strong>.</li>
+            <li>Configure OS displays as <strong>Extended desktop</strong>.</li>
+            <li>
+              Use:
+              <ul>
                 <li>
-                  A <strong>video switcher/matrix</strong> for routing HDMI/SDI signals to screens and capture (e.g.,
-                  Extron IN/INX/DXP, Kramer, Blackmagic ATEM).
+                  <strong>Monitor 1</strong> (FOH control screen): Zoom UI, chat, participants, Statistics, etc.
                 </li>
                 <li>
-                  A <strong>Front of House (FOH) computer</strong> acting as the platform host and primary audio/video
-                  send/receive.
+                  <strong>Monitor 2</strong>: full‑screen Zoom video (spotlighted speaker/gallery) feeding the
+                  switcher input via HDMI.
                 </li>
-                <li>A <strong>Podium computer</strong> for slide playback and screen sharing.</li>
-                <li>One or more <strong>handheld/wireless mics</strong> for Q&A.</li>
               </ul>
-              <p>Brand names in this guide are examples; the concepts are the same for other vendors and platforms.</p>
-            </div>
+            </li>
+          </ol>
+          <p>This lets FOH manage the meeting without affecting what the room sees.</p>
 
-            <h3>0. Quick Start Overview</h3>
-
-            <h4>Roles</h4>
-            <ul>
-              <li>
-                <strong>FOH Operator:</strong> Runs the conferencing platform host, controls the switcher and DSP,
-                monitors audio/video, manages spotlighting/pinning, and records the session.
-              </li>
-              <li>
-                <strong>Podium Presenter:</strong> Runs the slide deck, shares screen to the meeting, and presents
-                locally in the room.
-              </li>
-              <li>
-                <strong>Remote Presenter(s):</strong> Join via the conferencing platform, are spotlighted for the room
-                and remote audience, and interact with Q&A.
-              </li>
-              <li>
-                <strong>Shadow/Auditor PC (optional but recommended):</strong> A separate device joined to the meeting
-                solely to monitor what remote attendees see and hear.
-              </li>
-            </ul>
-
-            <h4>Typical Architectures</h4>
-            <ul>
-              <li>
-                <strong>Single‑PC Setup:</strong> One computer in the room handles everything (host, slides, capture).
-                Easier but higher risk and less flexible.
-              </li>
-              <li>
-                <strong>Dual‑PC Setup:</strong> FOH computer is host/AV hub; podium computer is just a participant for
-                slides. Much safer and more controllable in corporate/event environments.
-              </li>
-            </ul>
-            <p>
-              This guide assumes the <strong>dual‑PC setup</strong> as the default and calls out when a single‑PC setup
-              behaves differently.
-            </p>
-
-            <h3>1. System Architecture and Signal Flow</h3>
-            <p>Hybrid meeting rooms combine three main planes:</p>
-            <ol>
-              <li>
-                <strong>Room plane:</strong> Podium mic, handheld mics, speakers, projector/LED wall, confidence
-                monitor.
-              </li>
-              <li>
-                <strong>Platform plane:</strong> The conferencing platform (Zoom/Teams/Meet) running on the FOH computer
-                and optionally the podium computer.
-              </li>
-              <li>
-                <strong>Bridge plane:</strong> Hardware that glues them together: DSP, video switcher, USB bridge or
-                capture card.
-              </li>
-            </ol>
-
-            <h4>Generic AV Signal Flow Diagram</h4>
-            <div class="mermaid-wrapper">
-              <div class="mermaid">
-                graph TD subgraph Stage_Area ["Stage & Audience Q&A"] PodiumPC["Podium PC&lt;br/&gt;(Slides & Screen
-                Share)"] PodiumMic["Podium Mic&lt;br/&gt;(Local Presenter)"] HandheldMic["Handheld Q&A
-                Mics&lt;br/&gt;(Audience Questions)"] ConfMonitor["Confidence Monitor&lt;br/&gt;(Switcher Output)"] end
-                subgraph AV_Rack ["AV Processing Rack"] DSP["Audio DSP&lt;br/&gt;(Mix-Minus + AEC)"] Switcher["Video
-                Switcher / Matrix"] PTZ_Cam["Room PTZ Camera"] RoomAmp["Amplifier & Room Speakers"] Projector["Main Room
-                Screen&lt;br/&gt;(Projector / LED Wall)"] end subgraph FOH_Position ["FOH Control Position"] FOH_PC["FOH
-                Control PC&lt;br/&gt;(Platform Host, Record, Mix)"] USB_Bridge["USB AV Interface&lt;br/&gt;(MediaPort /
-                Capture Card)"] FOH_Monitor["FOH Monitor&lt;br/&gt;(Gallery / Stats / Tools)"] end subgraph Cloud
-                ["Remote Participants"] PlatformCloud["Video Conferencing Platform"] RemotePresenter["Remote Presenter"]
-                end PodiumPC -->|HDMI Out| Switcher PTZ_Cam -->|HDMI/SDI| Switcher FOH_PC -->|HDMI Out| Switcher
-                Switcher -->|Output 1| Projector Switcher -->|Output 2| ConfMonitor Switcher -->|Output 3| USB_Bridge
-                USB_Bridge -->|USB Video| FOH_PC PodiumMic -->|Mic In 1| DSP HandheldMic -->|Mic In 2| DSP USB_Bridge
-                ---|USB Audio (Send/Return)| FOH_PC DSP -->|"Output to Platform (Mix-Minus)"| USB_Bridge USB_Bridge
-                -->|"Platform Return Audio"| DSP DSP -->|"Output to Amp"| RoomAmp FOH_PC ---|Network| PlatformCloud
-                PodiumPC -->|Network| PlatformCloud RemotePresenter ---|Internet| PlatformCloud
-              </div>
-            </div>
-
-            <h3>2. Audio DSP Routing: Mix‑Minus and Echo Control</h3>
-            <p>
-              The number one failure in hybrid rooms is <strong>echo</strong>: remote voices come out of the room
-              speakers, go back into room mics, and are sent back to remote participants.
-            </p>
-            <p>To avoid this, the DSP must provide:</p>
-            <ul>
-              <li>
-                A <strong>mix‑minus</strong> feed to the platform (send all local mics, but not the platform's own
-                return audio).
-              </li>
-              <li>
-                <strong>Acoustic Echo Cancellation (AEC)</strong> on local mic inputs, referencing the platform return.
-              </li>
-            </ul>
-
-            <h4>Example DSP Matrix Configuration</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>DSP Input Channel</th>
-                  <th>Source</th>
-                  <th>To Room Speakers?</th>
-                  <th>To Platform Send?</th>
-                  <th>AEC Configuration</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Input 1</strong></td>
-                  <td>Podium Mic</td>
-                  <td>YES</td>
-                  <td>YES</td>
-                  <td>AEC enabled; AEC reference = platform return input</td>
-                </tr>
-                <tr>
-                  <td><strong>Input 2</strong></td>
-                  <td>Handheld Q&A Mic(s)</td>
-                  <td>YES</td>
-                  <td>YES</td>
-                  <td>AEC enabled; AEC reference = platform return input</td>
-                </tr>
-                <tr>
-                  <td><strong>Input 3</strong></td>
-                  <td>Platform RX (remote participants)</td>
-                  <td>YES</td>
-                  <td>NO (mix‑minus)</td>
-                  <td>AEC disabled; set as AEC reference source</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h4>AEC and Mix‑Minus Checklist</h4>
-            <ol>
-              <li>Set AEC reference in the DSP software to the platform return input for all mic inputs.</li>
-              <li>Enforce mix‑minus: platform return must not be routed to the platform send.</li>
-              <li>Avoid double echo cancellation in the conferencing client if the DSP is doing AEC.</li>
-              <li>Use gates and duckers to keep handheld mics from opening on room noise.</li>
-            </ol>
-
-            <h3>3. Video Switcher Configuration and Presets</h3>
-            <p>
-              Your video switcher controls <strong>what the room sees</strong> and
-              <strong>what the platform sees</strong>.
-            </p>
-
-            <h4>Typical Inputs</h4>
-            <ol>
-              <li><strong>Podium PC HDMI:</strong> Slide deck output.</li>
-              <li><strong>FOH PC HDMI:</strong> Full screen view of spotlighted remote presenter or gallery.</li>
-              <li><strong>PTZ Camera:</strong> Camera on the room/audience.</li>
-            </ol>
-
-            <h4>Typical Outputs</h4>
-            <ol>
-              <li><strong>Main Room Display / Projector:</strong> What the local audience sees.</li>
-              <li>
-                <strong>Confidence Monitor (on stage):</strong> What the presenter sees (remote faces, notes, preview).
-              </li>
-              <li><strong>USB/Capture Output:</strong> What is sent to the platform as "camera" via the USB bridge.</li>
-            </ol>
-
-            <h4>Core Switcher Presets</h4>
-            <h5>Preset 1 – Local Presenter Mode</h5>
-            <ul>
-              <li>Room screen: Podium PC (slides full screen).</li>
-              <li>Confidence monitor: FOH PC platform output (remote participants).</li>
-              <li>Capture/USB to platform: PTZ camera on presenter.</li>
-            </ul>
-            <p>The podium PC also shares its slides directly into the meeting.</p>
-
-            <h5>Preset 2 – Remote Presenter Mode</h5>
-            <ul>
-              <li>Room screen: FOH platform output (remote presenter full screen).</li>
-              <li>Confidence monitor: PTZ camera or podium screen.</li>
-              <li>Capture/USB to platform: PTZ camera on room, so remotes see the audience.</li>
-            </ul>
-
-            <h5>Preset 3 – Active Q&A Mode</h5>
-            <ul>
-              <li>Room screen: FOH platform output (remote presenter responding).</li>
-              <li>Confidence monitor: PTZ camera focused on audience member asking a question.</li>
-              <li>Capture/USB to platform: PTZ camera on that audience member.</li>
-            </ul>
-
-            <h3>4. Conferencing Platform Settings (Generic)</h3>
-            <p>
-              Choose the <strong>USB bridge</strong> as your mic/speaker/camera and lock down sleep and network
-              behavior.
-            </p>
-
-            <h4>FOH Computer (Host)</h4>
-            <ul>
-              <li>
-                <strong>Audio:</strong> Mic: USB audio interface / DSP send. Speaker: USB audio interface / DSP return.
-              </li>
-              <li><strong>Video:</strong> Camera: USB capture device / switcher output.</li>
-              <li>
-                <strong>Meeting:</strong> Host the meeting from FOH. Enable local or cloud recording. Mute participants
-                on entry. Assign co‑host rights to podium computer and remote presenters.
-              </li>
-            </ul>
-
-            <h4>Podium Computer (Slides)</h4>
-            <ul>
-              <li>Keep on AC power; disable sleep, screen savers, and display timeouts.</li>
-              <li>Use hard‑wired Ethernet; disable Wi‑Fi.</li>
-              <li>Set display mode to <strong>Extend</strong>, not Duplicate.</li>
-              <li>Join meeting as a participant but <strong>Leave Computer Audio</strong> in dual‑PC setups.</li>
-              <li>Only screen‑share slides; never send or receive audio.</li>
-            </ul>
-
-            <h3>5. Single‑PC vs Dual‑PC Behavior</h3>
-            <ul>
-              <li><strong>Dual‑PC (recommended):</strong> FOH PC is audio host; podium PC is slides‑only.</li>
-              <li>
-                <strong>Single‑PC:</strong> One PC joins audio and sends both program audio and room mics through DSP
-                and switcher; HDMI audio routing must be checked carefully.
-              </li>
-            </ul>
-            <p>Always identify the <strong>actual audio host</strong> before troubleshooting audio issues.</p>
-
-            <h3>6. FOH Operations and Q&A Playbook</h3>
-            <h4>Microphone and Camera Discipline</h4>
-            <ul>
-              <li>Keep handheld Q&A mics muted until the person is framed on camera.</li>
-              <li>Coach participants to speak close to the mic and avoid pointing it at speakers.</li>
-              <li>Coordinate PTZ shots and mic opens so remotes always see who is talking.</li>
-            </ul>
-
-            <h4>Spotlighting vs Pinning (Conceptual)</h4>
-            <ul>
-              <li><strong>Pinning</strong> changes only the local FOH view.</li>
-              <li>
-                <strong>Spotlighting</strong> changes what everyone sees and what is recorded/sent to the projector.
-              </li>
-            </ul>
-            <p>
-              Usage pattern: Spotlight the remote presenter while they speak. During Q&A, spotlight remote presenter +
-              room camera for side‑by‑side view where supported.
-            </p>
-
-            <h3>7. Monitoring Quality: Audio, Video, and System Health</h3>
-
-            <h4>Hardware‑Level Audio Monitoring</h4>
-            <ul>
-              <li>Plug closed‑back headphones into DSP or USB audio interface.</li>
-              <li>
-                Route the platform send bus (mix‑minus) to this monitor to hear exactly what is being sent upstream.
-              </li>
-            </ul>
-
-            <h4>Software‑Level Monitoring</h4>
-            <p>Use the platform's statistics/diagnostics (Zoom Statistics, Teams call health, etc.) to monitor:</p>
-            <ul>
-              <li>CPU load.</li>
-              <li>Audio jitter and packet loss (keep loss below 1–2%).</li>
-              <li>Video resolution and frame rate.</li>
-            </ul>
-
-            <h4>Shadow PC Monitoring</h4>
-            <ul>
-              <li>Shadow machine joins the meeting with muted mic and headphones.</li>
-              <li>Confirms remote experience and reports issues back to FOH.</li>
-            </ul>
-
-            <h3>8. Troubleshooting: Common Symptoms and Fixes</h3>
-
-            <h4>Echo, Feedback, and Audio Loops</h4>
-            <div class="callout caution">
-              <div class="callout-title">🛑 Symptom: Remote presenter hears themselves</div>
-              <p>
-                <strong>Causes:</strong> Platform return routed into platform send, or extra devices joined to audio.
-              </p>
-              <p><strong>Fixes:</strong></p>
+          <h4>3.2 Camera and Content Feeds</h4>
+          <ul>
+            <li>
+              Set <strong>Zoom Camera</strong> to the <strong>USB capture device</strong> connected to the switcher
+              output; whatever is routed to that output becomes the Zoom camera feed.
+            </li>
+            <li>
+              To send <strong>slides</strong>:
               <ul>
-                <li>In DSP, ensure platform return isn't routed to platform send.</li>
-                <li>Ensure all in‑room devices except the audio host have <strong>left audio</strong>.</li>
+                <li>Podium PC shares its slide show via Zoom <strong>Share Screen</strong>.</li>
+                <li>Switcher routes podium HDMI to projector and confidence monitor as needed.</li>
               </ul>
-            </div>
+            </li>
+          </ul>
+          <p>
+            Zoom's full‑screen output on FOH is what you route to the projector for remote speakers and hybrid
+            galleries.
+          </p>
 
-            <div class="callout caution">
-              <div class="callout-title">🛑 Symptom: Loud squeal when handheld mic is unmuted</div>
-              <p><strong>Causes:</strong> Gain too high or mic too close to speakers.</p>
-              <p><strong>Fixes:</strong></p>
-              <ul>
-                <li>Mute the channel immediately.</li>
-                <li>Reduce gain; adjust gate settings.</li>
-                <li>Move the presenter out of loud speaker zones.</li>
-              </ul>
-            </div>
+          <h3>4. Zoom Roles: Host, Co‑host, Moderator, Shadow</h3>
+          <ul>
+            <li>
+              <strong>Host (FOH):</strong> Controls security, Waiting Room, spotlighting/pinning, and recording.
+            </li>
+            <li>
+              <strong>Co-hosts:</strong> Podium PC (for screen sharing) and remote presenters (for self-management of
+              mic/video).
+            </li>
+            <li>
+              <strong>Zoom Moderator:</strong> Watches chat, raised hands, and Q&A to ensure remote participants are
+              heard.
+            </li>
+            <li>
+              <strong>Shadow PC Auditor:</strong> Joins from separate machine with muted mic and headphones to verify
+              remote experience; communicates with FOH via back-channel.
+            </li>
+          </ul>
 
-            <h4>Signal Routing Failures</h4>
-            <ul>
-              <li>
-                <strong>No Audio from Remote in Room:</strong> On host PC, check speaker device and OS volume. In DSP,
-                check platform return input meter and routing to room speakers.
-              </li>
-              <li>
-                <strong>Remote Cannot Hear the Room:</strong> Ensure host PC mic device is USB/DSP send. Check DSP
-                routing of podium and handheld mics to platform send.
-              </li>
-              <li>
-                <strong>Display / Signal Issues:</strong> Reseat HDMI/dongles; force EDID renegotiation. Set display
-                mode to Extend and resolution to 1920×1080 @ 60Hz. Avoid DRM‑protected content.
-              </li>
-            </ul>
+          <h3>5. Zoom Meeting Workflow for Hybrid Rooms</h3>
 
-            <h3>9. Podium Slide Presentation Gotchas</h3>
-            <div class="callout warning">
-              <div class="callout-title">⚠️ Presenter View showing on room projector</div>
-              <p>
-                <strong>Fixes:</strong> In PowerPoint/Keynote, set slide show to external monitor. Start slide show,
-                then share the slide show window in the conferencing app.
-              </p>
-            </div>
+          <h4>5.1 Before the Meeting</h4>
+          <ul>
+            <li>
+              Schedule from a <strong>corporate host account</strong> with correct security defaults (passcode +
+              Waiting Room or authenticated users).
+            </li>
+            <li>In invitations, instruct remote attendees to use wired Ethernet when possible and stay muted.</li>
+            <li>Run a <strong>tech rehearsal</strong> to validate AV and screen sharing.</li>
+          </ul>
 
-            <h3>10. Pre-Event Checklist</h3>
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>FOH Setup Checklist</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">DSP: Mix‑minus verified; platform return not in send path.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">DSP: AEC reference set; mics have AEC enabled.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Switcher: Presets set for local presenter, remote presenter, and Q&A. Inputs labeled.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >FOH PC: Wired Ethernet; Wi-Fi off. USB bridge selected as mic/speaker/camera.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >FOH PC: Dual monitors extended; full‑screen output routed to switcher input.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Podium PC: Wired Ethernet; Wi-Fi off. Extend desktop; external at 1080p/60.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Podium PC: Joined to meeting; Left Computer Audio verified (no mic/speaker active).</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Shadow PC: Joined early; monitoring with headphones; feedback system with FOH confirmed.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Rehearsal: Mic walk test and full flow rehearsal completed with remote participant.</span
-                  >
-                </label>
-              </div>
-            </div>
-          </section>
+          <h4>5.2 Meeting Start</h4>
+          <ol>
+            <li>FOH host starts the Zoom meeting and confirms recording status.</li>
+            <li>Shadow PC joins; verify audio/video.</li>
+            <li>Admit podium PC; assign <strong>Co‑host</strong>.</li>
+            <li>On podium PC: Join Zoom, then immediately <strong>Leave Computer Audio</strong>.</li>
+            <li>FOH shares a holding slide ("Welcome") while participants join.</li>
+          </ol>
 
-          <!-- ==================== 2. GOOGLE MEET GUIDE ==================== -->
-          <section id="meet-guide" class="guide-panel" role="tabpanel">
-            <h2>Google Meet Room Guide</h2>
-            <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
+          <h4>5.3 During the Meeting</h4>
+          <ul>
+            <li>
+              Use <strong>Spotlight</strong> to control what everyone sees and what goes to the projector and
+              recording.
+            </li>
+            <li>For Q&A, use multi‑spotlight (remote presenter + room PTZ camera).</li>
+            <li>Moderator monitors chat/raised hands and alternates between in-room and remote questions.</li>
+            <li>In-room laptops/phones that join Zoom must stay muted and <strong>Leave Computer Audio</strong>.</li>
+          </ul>
 
+          <h3>6. Zoom‑Specific Best Practices, Tips, and Tricks</h3>
+
+          <h4>6.1 Hybrid Experience and Meeting Culture</h4>
+          <ul>
+            <li>
+              Ask remote attendees to rename themselves with full name and role (e.g., "Alex – Remote – Sales").
+            </li>
+            <li>Open by acknowledging remote participants and confirming audio quality.</li>
+            <li>Encourage reactions and Hand Raises; moderator uses these to manage flow.</li>
+          </ul>
+
+          <h4>6.2 Security and "Zoom‑bombing" Protection</h4>
+          <ul>
+            <li>Do not publish Zoom links publicly; distribute via secure email or calendar.</li>
+            <li>Use generated meeting IDs, require passcodes, and keep waiting room enabled.</li>
+            <li>Lock the meeting once everyone has arrived. Remove/Report disruptive attendees if needed.</li>
+          </ul>
+
+          <h4>6.3 Echo and Feedback Tips</h4>
+          <div class="callout caution">
+            <div class="callout-title">🛑 Echo in Room</div>
             <p>
-              This guide covers how to set up, operate, and troubleshoot a hybrid conference room that uses Google Meet
-              with in-person participants, in-room presenters, and remote attendees.
+              Only <strong>one Zoom device</strong> in the physical room should have active audio (FOH host). Ensure
+              all other devices Disconnect/Leave Computer Audio.
             </p>
+          </div>
 
-            <div class="callout info">
-              <div class="callout-title">ℹ️ Site-Specific Infrastructure</div>
-              <p>Update these parameters internally for your specific event setup:</p>
-              <ul>
-                <li><strong>Audio DSP IP / Access:</strong> [Insert IP address / Web interface link]</li>
-                <li><strong>USB Capture Interface:</strong> [Insert Hardware ID / Device Name]</li>
-                <li><strong>Video Switcher IP / Access:</strong> [Insert IP address / Web interface link]</li>
-                <li><strong>FOH Service Account:</strong> [Insert Google Workspace host account]</li>
-                <li><strong>AV Support Hotline:</strong> [Insert contact number]</li>
-              </ul>
+          <h4>6.4 Layout and Pinning Tricks for FOH</h4>
+          <ul>
+            <li>
+              Use <strong>Pin</strong> locally on FOH to monitor specific feeds without changing what attendees see.
+            </li>
+            <li>Use <strong>Spotlight</strong> for what should be on the projector and in recordings.</li>
+            <li>Arrange the gallery view so remote participants are prominent to the room.</li>
+          </ul>
+
+          <h4>6.5 Rehearsal and Backup Plans</h4>
+          <ul>
+            <li>Run a 5-10 minute pre-flight check.</li>
+            <li>Assign a backup host (co-host) to take over if the FOH PC fails.</li>
+            <li>Have a simple fallback: direct webcam and USB speaker/mic on a single PC.</li>
+          </ul>
+
+          <h3>7. Zoom‑Tailored Troubleshooting Snippets</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Symptom</th>
+                <th>Potential Cause</th>
+                <th>Solution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Remote Participants Hear Echo</strong></td>
+                <td>Secondary room device with active mic/speaker.</td>
+                <td>Identify device, mute, and click "Leave Computer Audio". Check DSP mix-minus.</td>
+              </tr>
+              <tr>
+                <td><strong>Presenter Cannot Share Screen</strong></td>
+                <td>Not a Co-host or missing macOS permissions.</td>
+                <td>
+                  Assign Co-host role. Verify System Settings -> Privacy & Security -> Screen Recording is enabled for
+                  Zoom.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Remotes See Black Screen</strong></td>
+                <td>Incorrect share window selected or HDCP block.</td>
+                <td>
+                  Share the specific Slide Show window. Close DRM-protected content (e.g., Netflix, YouTube in certain
+                  states).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>8. Recording in Zoom (FOH Summary)</h3>
+          <ul>
+            <li>
+              Choose <strong>local recording</strong> for high quality and manual editing. Choose
+              <strong>cloud</strong> for easy sharing.
+            </li>
+            <li>Ensure recording settings capture both screen sharing and speaker video.</li>
+            <li>
+              Start recording early; rename files as <code>YYYY-MM-DD_Event-Name</code> and archive them immediately.
+            </li>
+          </ul>
+        </section>
+
+        <!-- ==================== 5. ZOOM FOH CHEAT SHEET ==================== -->
+        <section id="zoom-cheat-sheet" class="guide-panel" role="tabpanel">
+          <h2>Zoom FOH Operator Cheat Sheet</h2>
+          <p class="subtitle">For corporate hybrid meetings with in-room audience and Zoom participants</p>
+
+          <h3>1. Role and Equipment Setup</h3>
+          <ul>
+            <li>
+              <strong>FOH PC:</strong> Primary Zoom Host. Connects to the audio interface and video capture card.
+            </li>
+            <li><strong>Podium PC:</strong> Slides only. No audio to prevent feedback.</li>
+            <li><strong>Shadow PC (Optional):</strong> Monitor attendee experience. Muted mic, headphones only.</li>
+          </ul>
+
+          <h3>2. Audio and Video Configuration</h3>
+          <p>Configure on the FOH PC before opening doors:</p>
+          <ul>
+            <li><strong>Audio Output/Input:</strong> Select DSP/USB interface for both mic and speaker.</li>
+            <li><strong>Echo Cancellation:</strong> Set to Auto (or Low if DSP handles AEC).</li>
+            <li><strong>Original Sound:</strong> Disable "Original sound for musicians" unless required.</li>
+            <li><strong>Video Input:</strong> Select the USB capture card / switcher output.</li>
+            <li><strong>Display:</strong> Enable "Use dual monitors" and set OS display mode to Extended.</li>
+          </ul>
+
+          <h3>3. Signal Routing</h3>
+          <ul>
+            <li><strong>Video to Zoom:</strong> Send switcher program/aux output to the FOH capture card.</li>
+            <li>
+              <strong>Room Screens:</strong> Route Podium PC HDMI output to projector for local slides, or FOH PC
+              Monitor 2 to projector for remote speakers.
+            </li>
+            <li>
+              <strong>Room Audio:</strong> Zoom output -> DSP -> Room speakers. DSP (Mix-Minus) -> FOH PC Mic input.
+            </li>
+          </ul>
+
+          <h3>4. Pre-Show Checklist</h3>
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <h4>Zoom Pre-Show Tasks (15-20 Min Before)</h4>
+              <button class="checklist-reset-btn">Reset</button>
             </div>
-
-            <h3>1. Interactive Operator Checklists</h3>
-
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>Google Meet Pre-Flight Checklist</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Log into the FOH Host PC with the dedicated corporate Google Workspace account.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Verify the FOH PC audio settings map exactly to the hardware DSP via USB.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Disable "Noise cancellation" in Google Meet settings if using a hardware DSP to prevent processing
-                    conflicts.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Join a second operator PC to the meeting as an auditor with noise-isolating headphones.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Join the auditor PC using Companion Mode.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Verify the hardware DSP mix sounds clear to the remote auditor.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Test the video switcher to ensure it pushes the correct camera angles.</span
-                  >
-                </label>
-              </div>
+            <div class="checklist-progress-container">
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
             </div>
-
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>Google Meet Show Start Checklist</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Display a corporate holding slide by presenting a clean Chrome tab or window to the room and
-                    broadcast feed.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Have a Co-host monitor the knocking queue and admit approved external guests.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Verify all in-person attendees opening laptops use Companion Mode to join the meeting.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Turn on live transcription or captions if required.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Start the cloud recording.</span>
-                </label>
-              </div>
+            <div class="checklist-items">
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Power on all hardware (DSP, switcher, cameras).</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Launch the Zoom meeting on the FOH PC as the Host.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Admit the Podium PC, make it Co-host, select "Leave Computer Audio" on it,
+                  and set system volume to
+                  zero.</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Admit the Shadow PC (if used).</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" />
+                <span class="checklist-text">Verify FOH camera feed and confirm audio input meters respond to local
+                  mics.</span>
+              </label>
             </div>
-
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>Google Meet Show Run Checklist</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Use the Google Meet "Pin" or "Co-host spotlight" controls to fix presenter video feeds for the room
-                    display.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Monitor the raised hands queue and text chat continuously during the broadcast.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Ensure in-person attendees speak directly into a routed wireless microphone when asking
-                    questions.</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <h3>2. Google Workspace Account, Licensing, and Security</h3>
-            <p>Configure security defaults at the Google Workspace Admin console level to enforce consistency.</p>
-
-            <h4>Licensing Requirements</h4>
-            <ul>
-              <li>
-                Use Google Workspace Enterprise (Standard or Plus) host accounts to support large participant caps,
-                advanced moderation features, and extended meeting durations.
-              </li>
-              <li>
-                Equip accounts with Gemini for Google Workspace licenses to use automated meeting tools like "Take notes
-                for me."
-              </li>
-              <li>
-                Assign dedicated Google Meet Hardware licenses if using native room kits (such as ASUS, Logitech, or
-                Avocor systems).
-              </li>
-            </ul>
-
-            <h4>Host Safety Controls</h4>
-            <ul>
-              <li>
-                <strong>Quick Access and Meet Safety:</strong> Toggle "Quick Access" off for high-stakes events. This
-                forces all external participants and non-invited users to request access before entering.
-              </li>
-              <li>
-                <strong>Co-host Delegation:</strong> Assign co-hosts preemptively or during the live call to share
-                management tasks like muting, admitting guests, and text moderation.
-              </li>
-              <li>
-                <strong>Shared Management Limits:</strong> Restrict the "Share their screen" and "Send chat messages"
-                toggles under Host Controls if you need a locked-down broadcast style.
-              </li>
-            </ul>
-
-            <h3>3. Google Meet Audio and Echo Cancellation with Hardware DSP</h3>
-            <p>
-              Google Meet features built-in, cloud-based AI noise cancellation. When stacked on top of a professional
-              hardware DSP, it can cause voices to sound cut off or heavily gated.
-            </p>
-
-            <div class="callout caution">
-              <div class="callout-title">🛑 Feedback Loop Risk</div>
-              <p>
-                Any laptop or phone in the room that joins with active audio will bypass the hardware DSP and trigger a
-                feedback loop. FOH operators must confirm that all in-room devices join via Companion Mode.
-              </p>
-            </div>
-
-            <h4>Audio Settings and Setup</h4>
-            <ul>
-              <li>
-                <strong>Hardware Interoperability:</strong> Select your USB audio interface (such as Extron, Q-Sys, or
-                Biamp) as the primary Input and Output device inside Google Meet’s Audio Settings.
-              </li>
-              <li>
-                <strong>Software DSP Bypass:</strong> Navigate to Settings -> Audio and turn off "Noise cancellation."
-                This allows your high-end room hardware to handle 100% of the acoustic echo cancellation (AEC) and
-                filtering without interference.
-              </li>
-            </ul>
-
-            <h4>DSP Routing Rules</h4>
-            <ul>
-              <li>
-                Route all in-room microphones to the local amplifier and to the USB transmitter bus connected to the FOH
-                PC.
-              </li>
-              <li>
-                Route the Google Meet far-end audio to the room speakers and the DSP's Acoustic Echo Cancellation (AEC)
-                reference input. Do not route the far-end feed back into the USB transmitter bus.
-              </li>
-            </ul>
-
-            <h3>4. Video, Screen Layouts, and Room Routing</h3>
-            <p>
-              Visual layouts must keep remote attendees visible on local room displays and presentation slides visible
-              on both feeds.
-            </p>
-
-            <h4>Layout Reference Guide</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Layout Mode</th>
-                  <th>Ideal Environment</th>
-                  <th>Screen Setup</th>
-                  <th>Operator Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Companion Mode</strong></td>
-                  <td>BYOD & In-Room Audience</td>
-                  <td>Personal Secondary Laptops</td>
-                  <td>
-                    Users go to <code>g.co/companion</code>. Joins the meeting completely audio-free. Allows
-                    participation in chat, polls, and hand raises without audio loops.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Tiled and Spotlight</strong></td>
-                  <td>Multi-Participant Rooms</td>
-                  <td>FOH Control & Projector</td>
-                  <td>
-                    Select "Tiled" layout and scale the tile count slider up to 49. Pin active presenters to fix them
-                    onto the physical room display.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Tab Presenting</strong></td>
-                  <td>High-Stakes Slides & Media</td>
-                  <td>Dual FOH Monitors</td>
-                  <td>
-                    Select "Present a Chrome tab" instead of the entire screen. This prioritizes high-frame-rate video
-                    and clear audio transmission.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="callout tip">
-              <div class="callout-title">💡 Presenting from Google Workspace Apps</div>
-              <p>
-                Presenters on the Podium PC can open their Google Slides or Docs file directly in Chrome and click the
-                built-in "Present to Meet" icon. This shares the file into the active call without requiring the
-                presenter to manage browser windows.
-              </p>
-            </div>
-
-            <h3>5. Google Meet Roles</h3>
-            <ul>
-              <li>
-                <strong>Host:</strong> The account that created the Calendar event or initiated the Meet link. Holds
-                ultimate control over safety settings, recording, and co-host assignments.
-              </li>
-              <li>
-                <strong>Co-hosts:</strong> Staff promoted during the meeting. They share administrative powers,
-                including the ability to mute participants, eject disruptive users, and accept lobby knocks.
-              </li>
-              <li>
-                <strong>Participants:</strong> Standard attendees. They can speak, turn on video, and share screens
-                unless restricted by the host's safety settings.
-              </li>
-            </ul>
-
-            <h3>6. Troubleshooting Diagnostics</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Symptom</th>
-                  <th>Root Cause</th>
-                  <th>Operator Fix</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Severe Audio Echo</strong></td>
-                  <td>An in-room laptop or phone joined with active audio enabled.</td>
-                  <td>
-                    Scan the participant list for active volume indicators. Mute the user or eject them. Instruct them
-                    to rejoin via <code>g.co/companion</code>.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Robotic, Fading Room Audio</strong></td>
-                  <td>Google Meet's built-in noise cancellation is fighting the hardware DSP.</td>
-                  <td>Open Meet Audio Settings and turn off "Noise cancellation."</td>
-                </tr>
-                <tr>
-                  <td><strong>FOH Control UI Visible on Projector</strong></td>
-                  <td>The FOH Host PC is using duplicate display settings in the OS.</td>
-                  <td>
-                    Switch OS display settings to "Extend." Move the clean Meet video stage window to Monitor 2
-                    (Projector) and keep the control panels on Monitor 1.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Laggy Slide Video or Audio Playback</strong></td>
-                  <td>The operator shared their entire desktop instead of an isolated browser tab.</td>
-                  <td>
-                    Stop sharing. Re-share using the "Present a Chrome tab" option to improve video performance and pass
-                    audio.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>7. Recording, Transcripts, and Governance</h3>
-
-            <h4>Storage and Access Controls</h4>
-            <p>
-              Google Meet recordings and automated text transcripts are generated directly in the cloud. Once the
-              meeting concludes, these files are automatically saved into the Primary Host’s Google Drive in a folder
-              named "Meet Recordings." The host will also receive an email with direct links to the files. Access
-              control is maintained entirely through Google Drive file permissions.
-            </p>
-
-            <h4>Automated Documentation</h4>
-            <p>
-              If your workspace uses Gemini enterprise features, you can activate tools like "Take notes for me." This
-              creates a running summary of the event in a Google Doc without requiring manual typing from your
-              moderation team. Ensure this is initialized during the show start sequence.
-            </p>
-          </section>
-
-          <!-- ==================== 3. MICROSOFT TEAMS GUIDE ==================== -->
-          <section id="teams-guide" class="guide-panel" role="tabpanel">
-            <h2>Microsoft Teams Room Guide</h2>
-            <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
-
-            <p>
-              This guide covers how to set up, operate, and troubleshoot a hybrid conference room that uses Microsoft
-              Teams with in-person participants, in-room presenters, and remote attendees.
-            </p>
-
-            <div class="callout info">
-              <div class="callout-title">ℹ️ Site-Specific Infrastructure</div>
-              <p>Update this section with your local room details before an event.</p>
-              <ul>
-                <li><strong>Audio DSP IP / Access:</strong> [Insert IP address / Web interface link]</li>
-                <li><strong>USB Capture Interface:</strong> [Insert Hardware ID / Device Name]</li>
-                <li><strong>Video Switcher IP / Access:</strong> [Insert IP address / Web interface link]</li>
-                <li><strong>FOH Service Account:</strong> [Insert Teams meeting host account]</li>
-                <li><strong>AV Support Hotline:</strong> [Insert contact number]</li>
-              </ul>
-            </div>
-
-            <h3>1. Interactive Operator Checklists</h3>
-
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>Phase 1: Pre-Flight Sequence</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Log into the FOH Host PC with the dedicated corporate service account.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Verify the FOH PC audio settings map exactly to the hardware DSP via USB.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Enable "High-Fidelity Music Mode" in Teams device settings if using an uncertified hardware
-                    DSP.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Join a second operator PC to the meeting as an auditor with noise-isolating headphones.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Join the auditor PC using the "Don't use audio" option.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Verify the hardware DSP mix sounds clear to the remote auditor.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Test the video switcher to ensure it pushes the correct camera angles.</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>Phase 2: Show Start Sequence</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Display a corporate holding slide via PowerPoint Live to the room and broadcast feed.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Have a Co-organizer monitor the lobby and admit approved guests.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Verify all in-person attendees opening laptops select the "Don't use audio" option.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Turn on live transcription.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Start the recording.</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>Phase 3: Show Run Sequence</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Use the Teams "Spotlight" feature to force presenter video feeds to the main stage.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Switch to "Multi-spotlight" during Q&A to frame the remote speaker and physical room camera
-                    side-by-side.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Ensure in-person attendees speak directly into a routed wireless microphone when asking
-                    questions.</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <h3>2. Teams Account, Licensing, and Security</h3>
-            <p>FOH host accounts must be centrally managed through the corporate directory.</p>
-
-            <h4>Licensing Requirements</h4>
-            <ul>
-              <li>
-                FOH host accounts require enterprise-grade licenses (such as Office 365 E3 or E5) to support large
-                meetings.
-              </li>
-              <li>
-                Teams Premium is required for custom corporate lobbies, end-to-end encryption, and custom watermarking.
-              </li>
-              <li>
-                Assign Microsoft 365 Copilot or Teams Premium licenses to access post-meeting transcripts and the
-                AI-generated Intelligent Recap.
-              </li>
-            </ul>
-
-            <h4>Pre-Join Security Defaults</h4>
-            <ul>
-              <li>
-                Set "Who can bypass the lobby?" to "People in my organization" to prevent unvetted external access.
-              </li>
-              <li>
-                Set "Who can present" to "Only organizers and co-organizers" to block attendees from sharing their
-                screens.
-              </li>
-              <li>
-                Enable "Manage what attendees see" to restrict the display to shared content and spotlighted video
-                feeds. This setting automatically disables attendee microphones and cameras.
-              </li>
-              <li>Turn on "Green room" to give presenters a private space to test audio before the meeting starts.</li>
-            </ul>
-
-            <h3>3. Teams Audio and Echo Cancellation with Hardware DSP</h3>
-            <p>
-              Microsoft Teams uses cloud-driven echo cancellation & noise suppression. These settings will clash with
-              your hardware DSP and distort audio unless they are disabled.
-            </p>
-
-            <div class="callout caution">
-              <div class="callout-title">🛑 Feedback Loop Risk</div>
-              <p>
-                Any laptop or phone in the room that joins with active audio will bypass the hardware DSP and trigger a
-                feedback loop. FOH operators must confirm that all in-room devices join via the "Don't use audio"
-                option.
-              </p>
-            </div>
-
-            <h4>Audio Settings and Setup</h4>
-            <ul>
-              <li>
-                <strong>Certified Hardware:</strong> Teams-certified DSPs automatically negotiate with the Teams client
-                to disable software echo cancellation.
-              </li>
-              <li>
-                <strong>Uncertified Hardware:</strong> For uncertified DSPs, enable "High-Fidelity Music Mode" in Teams
-                settings. This option allows you to manually turn off Teams' built-in echo cancellation and noise
-                suppression.
-              </li>
-            </ul>
-
-            <h4>DSP Routing Rules</h4>
-            <ul>
-              <li>
-                Route all in-room microphones to the local amplifier and to the USB transmitter bus connected to the FOH
-                PC.
-              </li>
-              <li>
-                Route the Teams far-end audio to the room speakers and the DSP's Acoustic Echo Cancellation (AEC)
-                reference input. Do not route the far-end feed back into the USB transmitter bus.
-              </li>
-            </ul>
-
-            <h3>4. Video, Screen Layouts, and Room Routing</h3>
-            <p>
-              Visual layouts must keep remote attendees visible in the room and presentation slides visible on both
-              feeds.
-            </p>
-
-            <h4>Layout Reference Guide</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Layout Mode</th>
-                  <th>Ideal Environment</th>
-                  <th>Screen Setup</th>
-                  <th>Operator Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Front Row</strong></td>
-                  <td>Dedicated MTR Boardrooms</td>
-                  <td>Requires ultra-wide 21:9 or dual displays</td>
-                  <td>
-                    Default layout. Puts remote video at the bottom of the screen to simulate eye contact. Places chat
-                    and raised hands on the sides.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Shared Display</strong></td>
-                  <td>BYOD Rooms</td>
-                  <td>Standard 16:9 screen</td>
-                  <td>
-                    Have the user select "Room Audio" when joining. This pushes the slides to the TV while keeping
-                    private desktop controls on the laptop.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>PowerPoint Live</strong></td>
-                  <td>High-Stakes FOH Events</td>
-                  <td>Dual FOH monitors</td>
-                  <td>
-                    Launch PPT Live. Monitor 1 shows the private Presenter View. Monitor 2 feeds the clean slides to the
-                    room projector and remote audience.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="callout tip">
-              <div class="callout-title">💡 Spotlight and Pin Settings</div>
-              <p>
-                Use Spotlight to control what the remote audience sees and what gets recorded. Use Pin on your local FOH
-                monitor to privately watch VIP feeds or specific camera angles without changing the global layout.
-              </p>
-            </div>
-
-            <h3>5. Teams Roles</h3>
-            <ul>
-              <li>
-                <strong>Organizer:</strong> Controls the meeting lifecycle, sets lobby policies, starts the recording,
-                and assigns Co-organizers.
-              </li>
-              <li>
-                <strong>Co-organizers:</strong> Adjust meeting settings during the event, manage breakout rooms, and
-                change participant roles. They must belong to the internal domain.
-              </li>
-              <li>
-                <strong>Presenters:</strong> Share audio, video, and slides via PowerPoint Live. They cannot modify
-                security settings.
-              </li>
-              <li>
-                <strong>Attendees:</strong> Read-only participants who are restricted to using chat, raising hands, and
-                viewing content.
-              </li>
-            </ul>
-
-            <h3>6. Troubleshooting Diagnostics</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Symptom</th>
-                  <th>Root Cause</th>
-                  <th>Operator Fix</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Severe Audio Echo</strong></td>
-                  <td>A secondary device in the room joined with active audio.</td>
-                  <td>
-                    Identify the active green mic icon in the participant list. Force-mute them. Instruct the user to
-                    rejoin using "Don't use audio".
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Choppy or Gated Voice</strong></td>
-                  <td>Teams is applying its cloud AEC on top of an uncertified hardware DSP.</td>
-                  <td>Enable "High-Fidelity Music Mode" in the device settings to bypass the cloud processing.</td>
-                </tr>
-                <tr>
-                  <td><strong>Presenter Notes on Projector</strong></td>
-                  <td>The presenter is using duplicate screen mode.</td>
-                  <td>Switch to PowerPoint Live to isolate the Presenter View from the audience view.</td>
-                </tr>
-                <tr>
-                  <td><strong>Missing Slide Animations in Recording</strong></td>
-                  <td>Slide animations are not captured in PowerPoint Live cloud recordings.</td>
-                  <td>
-                    If complex motion graphics must be preserved in the archive, revert to standard full-screen desktop
-                    sharing.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>7. Recording, Transcription, and Governance</h3>
-
-            <h4>Storage and Access Controls</h4>
-            <p>
-              Restrict transcript access to organizers to prevent unauthorized data sharing. Set "Who can record and
-              transcribe" to "Organizers and co-organizers" to block attendees from downloading the text or feeding it
-              into external tools. Ad-hoc meeting recordings save to the host organizer's OneDrive, while channel-based
-              meetings save to the SharePoint site of the associated Team.
-            </p>
-
-            <h4>Intelligent Recap and Copilot</h4>
-            <ul>
-              <li>
-                <strong>Teams Premium:</strong> Generates notes, task lists, and speaker timeline markers after the
-                meeting concludes.
-              </li>
-              <li>
-                <strong>Microsoft 365 Copilot:</strong> Serves as a real-time query engine during the meeting. Copilot
-                requires live transcription to be enabled to answer questions about the event afterwards.
-              </li>
-            </ul>
-          </section>
-
-          <!-- ==================== 4. ZOOM GUIDE ==================== -->
-          <section id="zoom-guide" class="guide-panel" role="tabpanel">
-            <h2>Zoom Room Guide</h2>
-            <p class="subtitle">FOH Control, Presentation Playback, and Q&A Management</p>
-
-            <p>
-              This guide covers how to set up, operate, and troubleshoot a hybrid conference room that uses **Zoom
-              Meetings** with in‑room participants, in‑room presenters, and remote participants.
-            </p>
-
-            <h3>1. Zoom Account, Licensing, and Security</h3>
-            <p>
-              For corporate environments, you typically want centrally managed account settings and locked defaults.
-            </p>
-
-            <h4>1.1 Licensing and Features</h4>
-            <ul>
-              <li>
-                Use <strong>licensed Zoom accounts</strong> for hosts so meetings aren't time‑limited and can support
-                required participant counts.
-              </li>
-              <li>
-                Enable <strong>Cloud Recording</strong> or <strong>local recording</strong> as appropriate to your
-                corporate policy.
-              </li>
-              <li>
-                For internal meetings, consider enabling <strong>"Only authenticated users can join"</strong> with SSO
-                or corporate email domains.
-              </li>
-            </ul>
-
-            <h4>1.2 Security Defaults (Admin / Account Level)</h4>
-            <p>Recommended defaults for corporate hybrid rooms:</p>
-            <ul>
-              <li>Require <strong>meeting passcodes</strong> for all meeting types and enforce passcode complexity.</li>
-              <li>
-                Require at least one: <strong>Passcode</strong>, <strong>Waiting Room</strong>, or
-                <strong>Only authenticated users can join</strong> for every meeting.
-              </li>
-              <li>
-                Disable or strongly discourage use of <strong>Personal Meeting ID (PMI)</strong> for public or external
-                events; use generated meeting IDs.
-              </li>
-              <li>Enable <strong>Waiting Room</strong> for external‑facing events so FOH can vet participants.</li>
-              <li>
-                Disable <strong>Join before host</strong> for corporate hybrid rooms to avoid unmoderated pre‑meeting
-                chaos.
-              </li>
-              <li>
-                Default <strong>Screen Sharing</strong> to <strong>Host only</strong>; allow FOH to selectively enable
-                sharing for participants or co‑hosts.
-              </li>
-            </ul>
-            <p>
-              These should be configured under <strong>Account Settings → Meeting tab</strong> and locked at the account
-              or group level for rooms.
-            </p>
-
-            <h3>2. Zoom Audio with Hardware DSP (Mix‑Minus + AEC)</h3>
-
-            <h4>2.1 FOH Host PC Audio Settings</h4>
-            <p>On the FOH Zoom host PC:</p>
-            <ol>
-              <li>Open <strong>Zoom → Settings → Audio</strong>.</li>
-              <li>
-                Set <strong>Microphone</strong> to your <strong>USB audio interface / DSP send</strong> (e.g., "Extron
-                USB Audio," "USB Audio CODEC").
-              </li>
-              <li>
-                Set <strong>Speaker</strong> to the <strong>same interface</strong> so all remote audio flows through
-                the DSP.
-              </li>
-            </ol>
-            <p>Click <strong>Advanced</strong> at the bottom:</p>
-            <ul>
-              <li>
-                Set <strong>Echo cancellation</strong> to <strong>Auto</strong> (or Low) when using a well‑configured
-                hardware DSP so Zoom's echo canceller doesn't fight the DSP.
-              </li>
-              <li>
-                Avoid "<strong>Original sound for musicians</strong>" for room mics unless you are deliberately
-                bypassing Zoom processing for a specific reason.
-              </li>
-            </ul>
-
-            <h4>2.2 DSP Routing Summary</h4>
-            <p>In the DSP:</p>
-            <ul>
-              <li>
-                Route <strong>Podium Mic</strong> and <strong>Q&A mics</strong> to:
-                <ul>
-                  <li>Room speakers output (amplifier).</li>
-                  <li>Zoom TX bus (USB send).</li>
-                </ul>
-              </li>
-              <li>
-                Route <strong>Zoom RX input</strong> (from FOH PC via USB) to:
-                <ul>
-                  <li>Room speakers output.</li>
-                  <li>AEC reference.</li>
-                  <li><strong>Not</strong> to Zoom TX (mix‑minus).</li>
-                </ul>
-              </li>
-            </ul>
-            <p>
-              Zoom's "Auto/Low" echo cancellation plus DSP‑side AEC yields stable, echo‑free audio when configured
-              properly.
-            </p>
-
-            <h4>2.3 Podium PC Audio Rules</h4>
-            <p>For <strong>dual‑PC architecture</strong>:</p>
-            <ul>
-              <li>Podium PC joins Zoom, then immediately selects <strong>"Leave Computer Audio"</strong>.</li>
-              <li>Confirm there's no mic icon; it should show <strong>Join Audio</strong>.</li>
-              <li>Set OS system volume to 0% as a second safeguard.</li>
-            </ul>
-            <p>
-              For <strong>single‑PC rooms</strong> (not recommended for larger corporate events), that PC must be the
-              audio host and you do <strong>not</strong> use "Leave Computer Audio"; all room audio flows through that
-              machine and the DSP.
-            </p>
-
-            <h3>3. Zoom Video, Screen Layout, and Room Routing</h3>
-
-            <h4>3.1 FOH Dual‑Monitor Configuration</h4>
-            <p>On FOH host PC:</p>
-            <ol>
-              <li>In Zoom, go to <strong>Settings → General</strong> and enable <strong>Use dual monitors</strong>.</li>
-              <li>Configure OS displays as <strong>Extended desktop</strong>.</li>
-              <li>
-                Use:
-                <ul>
-                  <li>
-                    <strong>Monitor 1</strong> (FOH control screen): Zoom UI, chat, participants, Statistics, etc.
-                  </li>
-                  <li>
-                    <strong>Monitor 2</strong>: full‑screen Zoom video (spotlighted speaker/gallery) feeding the
-                    switcher input via HDMI.
-                  </li>
-                </ul>
-              </li>
-            </ol>
-            <p>This lets FOH manage the meeting without affecting what the room sees.</p>
-
-            <h4>3.2 Camera and Content Feeds</h4>
-            <ul>
-              <li>
-                Set <strong>Zoom Camera</strong> to the <strong>USB capture device</strong> connected to the switcher
-                output; whatever is routed to that output becomes the Zoom camera feed.
-              </li>
-              <li>
-                To send <strong>slides</strong>:
-                <ul>
-                  <li>Podium PC shares its slide show via Zoom <strong>Share Screen</strong>.</li>
-                  <li>Switcher routes podium HDMI to projector and confidence monitor as needed.</li>
-                </ul>
-              </li>
-            </ul>
-            <p>
-              Zoom's full‑screen output on FOH is what you route to the projector for remote speakers and hybrid
-              galleries.
-            </p>
-
-            <h3>4. Zoom Roles: Host, Co‑host, Moderator, Shadow</h3>
-            <ul>
-              <li>
-                <strong>Host (FOH):</strong> Controls security, Waiting Room, spotlighting/pinning, and recording.
-              </li>
-              <li>
-                <strong>Co-hosts:</strong> Podium PC (for screen sharing) and remote presenters (for self-management of
-                mic/video).
-              </li>
-              <li>
-                <strong>Zoom Moderator:</strong> Watches chat, raised hands, and Q&A to ensure remote participants are
-                heard.
-              </li>
-              <li>
-                <strong>Shadow PC Auditor:</strong> Joins from separate machine with muted mic and headphones to verify
-                remote experience; communicates with FOH via back-channel.
-              </li>
-            </ul>
-
-            <h3>5. Zoom Meeting Workflow for Hybrid Rooms</h3>
-
-            <h4>5.1 Before the Meeting</h4>
-            <ul>
-              <li>
-                Schedule from a <strong>corporate host account</strong> with correct security defaults (passcode +
-                Waiting Room or authenticated users).
-              </li>
-              <li>In invitations, instruct remote attendees to use wired Ethernet when possible and stay muted.</li>
-              <li>Run a <strong>tech rehearsal</strong> to validate AV and screen sharing.</li>
-            </ul>
-
-            <h4>5.2 Meeting Start</h4>
-            <ol>
-              <li>FOH host starts the Zoom meeting and confirms recording status.</li>
-              <li>Shadow PC joins; verify audio/video.</li>
-              <li>Admit podium PC; assign <strong>Co‑host</strong>.</li>
-              <li>On podium PC: Join Zoom, then immediately <strong>Leave Computer Audio</strong>.</li>
-              <li>FOH shares a holding slide ("Welcome") while participants join.</li>
-            </ol>
-
-            <h4>5.3 During the Meeting</h4>
-            <ul>
-              <li>
-                Use <strong>Spotlight</strong> to control what everyone sees and what goes to the projector and
-                recording.
-              </li>
-              <li>For Q&A, use multi‑spotlight (remote presenter + room PTZ camera).</li>
-              <li>Moderator monitors chat/raised hands and alternates between in-room and remote questions.</li>
-              <li>In-room laptops/phones that join Zoom must stay muted and <strong>Leave Computer Audio</strong>.</li>
-            </ul>
-
-            <h3>6. Zoom‑Specific Best Practices, Tips, and Tricks</h3>
-
-            <h4>6.1 Hybrid Experience and Meeting Culture</h4>
-            <ul>
-              <li>
-                Ask remote attendees to rename themselves with full name and role (e.g., "Alex – Remote – Sales").
-              </li>
-              <li>Open by acknowledging remote participants and confirming audio quality.</li>
-              <li>Encourage reactions and Hand Raises; moderator uses these to manage flow.</li>
-            </ul>
-
-            <h4>6.2 Security and "Zoom‑bombing" Protection</h4>
-            <ul>
-              <li>Do not publish Zoom links publicly; distribute via secure email or calendar.</li>
-              <li>Use generated meeting IDs, require passcodes, and keep waiting room enabled.</li>
-              <li>Lock the meeting once everyone has arrived. Remove/Report disruptive attendees if needed.</li>
-            </ul>
-
-            <h4>6.3 Echo and Feedback Tips</h4>
-            <div class="callout caution">
-              <div class="callout-title">🛑 Echo in Room</div>
-              <p>
-                Only <strong>one Zoom device</strong> in the physical room should have active audio (FOH host). Ensure
-                all other devices Disconnect/Leave Computer Audio.
-              </p>
-            </div>
-
-            <h4>6.4 Layout and Pinning Tricks for FOH</h4>
-            <ul>
-              <li>
-                Use <strong>Pin</strong> locally on FOH to monitor specific feeds without changing what attendees see.
-              </li>
-              <li>Use <strong>Spotlight</strong> for what should be on the projector and in recordings.</li>
-              <li>Arrange the gallery view so remote participants are prominent to the room.</li>
-            </ul>
-
-            <h4>6.5 Rehearsal and Backup Plans</h4>
-            <ul>
-              <li>Run a 5-10 minute pre-flight check.</li>
-              <li>Assign a backup host (co-host) to take over if the FOH PC fails.</li>
-              <li>Have a simple fallback: direct webcam and USB speaker/mic on a single PC.</li>
-            </ul>
-
-            <h3>7. Zoom‑Tailored Troubleshooting Snippets</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Symptom</th>
-                  <th>Potential Cause</th>
-                  <th>Solution</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Remote Participants Hear Echo</strong></td>
-                  <td>Secondary room device with active mic/speaker.</td>
-                  <td>Identify device, mute, and click "Leave Computer Audio". Check DSP mix-minus.</td>
-                </tr>
-                <tr>
-                  <td><strong>Presenter Cannot Share Screen</strong></td>
-                  <td>Not a Co-host or missing macOS permissions.</td>
-                  <td>
-                    Assign Co-host role. Verify System Settings -> Privacy & Security -> Screen Recording is enabled for
-                    Zoom.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Remotes See Black Screen</strong></td>
-                  <td>Incorrect share window selected or HDCP block.</td>
-                  <td>
-                    Share the specific Slide Show window. Close DRM-protected content (e.g., Netflix, YouTube in certain
-                    states).
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>8. Recording in Zoom (FOH Summary)</h3>
-            <ul>
-              <li>
-                Choose <strong>local recording</strong> for high quality and manual editing. Choose
-                <strong>cloud</strong> for easy sharing.
-              </li>
-              <li>Ensure recording settings capture both screen sharing and speaker video.</li>
-              <li>
-                Start recording early; rename files as <code>YYYY-MM-DD_Event-Name</code> and archive them immediately.
-              </li>
-            </ul>
-          </section>
-
-          <!-- ==================== 5. ZOOM FOH CHEAT SHEET ==================== -->
-          <section id="zoom-cheat-sheet" class="guide-panel" role="tabpanel">
-            <h2>Zoom FOH Operator Cheat Sheet</h2>
-            <p class="subtitle">For corporate hybrid meetings with in-room audience and Zoom participants</p>
-
-            <h3>1. Role and Equipment Setup</h3>
-            <ul>
-              <li>
-                <strong>FOH PC:</strong> Primary Zoom Host. Connects to the audio interface and video capture card.
-              </li>
-              <li><strong>Podium PC:</strong> Slides only. No audio to prevent feedback.</li>
-              <li><strong>Shadow PC (Optional):</strong> Monitor attendee experience. Muted mic, headphones only.</li>
-            </ul>
-
-            <h3>2. Audio and Video Configuration</h3>
-            <p>Configure on the FOH PC before opening doors:</p>
-            <ul>
-              <li><strong>Audio Output/Input:</strong> Select DSP/USB interface for both mic and speaker.</li>
-              <li><strong>Echo Cancellation:</strong> Set to Auto (or Low if DSP handles AEC).</li>
-              <li><strong>Original Sound:</strong> Disable "Original sound for musicians" unless required.</li>
-              <li><strong>Video Input:</strong> Select the USB capture card / switcher output.</li>
-              <li><strong>Display:</strong> Enable "Use dual monitors" and set OS display mode to Extended.</li>
-            </ul>
-
-            <h3>3. Signal Routing</h3>
-            <ul>
-              <li><strong>Video to Zoom:</strong> Send switcher program/aux output to the FOH capture card.</li>
-              <li>
-                <strong>Room Screens:</strong> Route Podium PC HDMI output to projector for local slides, or FOH PC
-                Monitor 2 to projector for remote speakers.
-              </li>
-              <li>
-                <strong>Room Audio:</strong> Zoom output -> DSP -> Room speakers. DSP (Mix-Minus) -> FOH PC Mic input.
-              </li>
-            </ul>
-
-            <h3>4. Pre-Show Checklist</h3>
-            <div class="checklist-container">
-              <div class="checklist-header">
-                <h4>Zoom Pre-Show Tasks (15-20 Min Before)</h4>
-                <button class="checklist-reset-btn">Reset</button>
-              </div>
-              <div class="checklist-progress-container">
-                <div
-                  class="checklist-progress-bar"
-                  role="progressbar"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div class="checklist-items">
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Power on all hardware (DSP, switcher, cameras).</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Launch the Zoom meeting on the FOH PC as the Host.</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Admit the Podium PC, make it Co-host, select "Leave Computer Audio" on it, and set system volume to
-                    zero.</span
-                  >
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text">Admit the Shadow PC (if used).</span>
-                </label>
-                <label class="checklist-item">
-                  <input type="checkbox" />
-                  <span class="checklist-text"
-                    >Verify FOH camera feed and confirm audio input meters respond to local mics.</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <h3>5. Meeting Operation</h3>
-            <ul>
-              <li><strong>Audio Control:</strong> Only the FOH PC is connected to the Zoom audio.</li>
-              <li>
-                <strong>Video Control:</strong> Use Zoom Spotlight to lock the projector on the active presenter. Pin
-                feeds on FOH locally to check shots privately.
-              </li>
-              <li><strong>Slide Sharing:</strong> Share the specific PowerPoint/Keynote window from the Podium PC.</li>
-            </ul>
-
-            <h3>6. Q&A Routing</h3>
-            <ul>
-              <li><strong>Remote Questions:</strong> Spotlight remote speaker + room camera side-by-side.</li>
-              <li>
-                <strong>In-Room Questions:</strong> Frame the audience member with PTZ. Unmute Q&A channel on DSP, mute
-                immediately after they finish.
-              </li>
-            </ul>
-
-            <h3>7. Recording Management</h3>
-            <ul>
-              <li>
-                <strong>Local:</strong> Good for post-event editing. Save to fast internal SSD. Convert files, rename to
-                <code>YYYY-MM-DD_Event-Name</code>, and archive.
-              </li>
-              <li><strong>Cloud:</strong> Good for instant sharing.</li>
-              <li>
-                <strong>Settings:</strong> Verify "Record video during screen sharing" and "Place video next to shared
-                screen" are active.
-              </li>
-            </ul>
-
-            <h3>8. Diagnostics and Troubleshooting</h3>
-
-            <h4>System Monitoring</h4>
-            <p>On the FOH PC, press <code>Cmd/Ctrl + Option/Alt + Shift + D</code> to open the statistics panel:</p>
-            <ul>
-              <li><strong>Processor Load:</strong> Zoom usage &lt; 40%; host system &lt; 80%.</li>
-              <li><strong>Audio Quality:</strong> Packet loss &lt; 2%; minimal jitter.</li>
-              <li><strong>Video Quality:</strong> HD resolution; frame rate &ge; 24 FPS.</li>
-            </ul>
-
-            <h4>Issue Resolution</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Symptom</th>
-                  <th>Root Cause</th>
-                  <th>Fix</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Echo or Feedback</strong></td>
-                  <td>Secondary in-room laptop connected to audio.</td>
-                  <td>
-                    Verify all secondary devices "Leave Computer Audio" or use headphones. Confirm DSP mix-minus
-                    routing.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Remote Cannot Hear</strong></td>
-                  <td>FOH mic input set incorrectly or DSP not sending.</td>
-                  <td>Verify FOH mic device is the USB/DSP interface. Check DSP meters.</td>
-                </tr>
-                <tr>
-                  <td><strong>Room Cannot Hear Remote</strong></td>
-                  <td>FOH speaker output set incorrectly or DSP routing issue.</td>
-                  <td>Verify FOH speaker output is USB/DSP. Check DSP speaker routing.</td>
-                </tr>
-                <tr>
-                  <td><strong>Slides Not Displaying</strong></td>
-                  <td>Incorrect window shared or macOS permissions missing.</td>
-                  <td>
-                    Share the Slide Show application window. Check System Settings -> Screen Recording permissions.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-        </div>
+          </div>
+
+          <h3>5. Meeting Operation</h3>
+          <ul>
+            <li><strong>Audio Control:</strong> Only the FOH PC is connected to the Zoom audio.</li>
+            <li>
+              <strong>Video Control:</strong> Use Zoom Spotlight to lock the projector on the active presenter. Pin
+              feeds on FOH locally to check shots privately.
+            </li>
+            <li><strong>Slide Sharing:</strong> Share the specific PowerPoint/Keynote window from the Podium PC.</li>
+          </ul>
+
+          <h3>6. Q&A Routing</h3>
+          <ul>
+            <li><strong>Remote Questions:</strong> Spotlight remote speaker + room camera side-by-side.</li>
+            <li>
+              <strong>In-Room Questions:</strong> Frame the audience member with PTZ. Unmute Q&A channel on DSP, mute
+              immediately after they finish.
+            </li>
+          </ul>
+
+          <h3>7. Recording Management</h3>
+          <ul>
+            <li>
+              <strong>Local:</strong> Good for post-event editing. Save to fast internal SSD. Convert files, rename to
+              <code>YYYY-MM-DD_Event-Name</code>, and archive.
+            </li>
+            <li><strong>Cloud:</strong> Good for instant sharing.</li>
+            <li>
+              <strong>Settings:</strong> Verify "Record video during screen sharing" and "Place video next to shared
+              screen" are active.
+            </li>
+          </ul>
+
+          <h3>8. Diagnostics and Troubleshooting</h3>
+
+          <h4>System Monitoring</h4>
+          <p>On the FOH PC, press <code>Cmd/Ctrl + Option/Alt + Shift + D</code> to open the statistics panel:</p>
+          <ul>
+            <li><strong>Processor Load:</strong> Zoom usage &lt; 40%; host system &lt; 80%.</li>
+            <li><strong>Audio Quality:</strong> Packet loss &lt; 2%; minimal jitter.</li>
+            <li><strong>Video Quality:</strong> HD resolution; frame rate &ge; 24 FPS.</li>
+          </ul>
+
+          <h4>Issue Resolution</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Symptom</th>
+                <th>Root Cause</th>
+                <th>Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Echo or Feedback</strong></td>
+                <td>Secondary in-room laptop connected to audio.</td>
+                <td>
+                  Verify all secondary devices "Leave Computer Audio" or use headphones. Confirm DSP mix-minus
+                  routing.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Remote Cannot Hear</strong></td>
+                <td>FOH mic input set incorrectly or DSP not sending.</td>
+                <td>Verify FOH mic device is the USB/DSP interface. Check DSP meters.</td>
+              </tr>
+              <tr>
+                <td><strong>Room Cannot Hear Remote</strong></td>
+                <td>FOH speaker output set incorrectly or DSP routing issue.</td>
+                <td>Verify FOH speaker output is USB/DSP. Check DSP speaker routing.</td>
+              </tr>
+              <tr>
+                <td><strong>Slides Not Displaying</strong></td>
+                <td>Incorrect window shared or macOS permissions missing.</td>
+                <td>
+                  Share the Slide Show application window. Check System Settings -> Screen Recording permissions.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <footer>
-      <p>© For the David Rubenstein Forum • University of Chicago • Maintained by Beau Bremer</p>
-      <p>For suggestions or corrections, contact Beau Bremer.</p>
-      <p class="footer-small">
-        <a href="STYLE_CONTENT_GUIDE.md">Style & Content Guide</a>
-      </p>
-    </footer>
+  <footer>
+    <p>© For the David Rubenstein Forum • University of Chicago • Maintained by Beau Bremer</p>
+    <p>For suggestions or corrections, contact Beau Bremer.</p>
+    <p class="footer-small">
+      <a href="STYLE_CONTENT_GUIDE.md">Style & Content Guide</a>
+    </p>
+  </footer>
 
-    <!-- Script Imports -->
-    <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
-    <script src="drf-hybrid-guides.js"></script>
-  </body>
-</html>
+  <!-- Script Imports -->
+  <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="drf-hybrid-guides.js"></script>
+</body>
+
+</html>cho

@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 - **Inline Style Elimination in AV Lab:** Migrated all 21 remaining inline layout, visibility, and color-picker style overrides from `drf-media-toolkit.html` into utility classes in `drf-media-toolkit.css` to comply with CSP guidelines.
 - **Toggled Upload Visibility Cleaner:** Updated custom logo input toggles in `drf-media-toolkit.js` to use `classList.toggle('d-none')` rather than dynamic inline `.style.display` modification.
-- **Header Alignment in Hybrid Portal:** Fixed page header elements being pushed to horizontal extremes on wide screens by resetting the inherited flex layout to a clean vertical stack.
+- **Header Alignment & Centering in Hybrid Portal:** Fixed page header elements being pushed to horizontal extremes on wide screens by resetting the inherited flex layout to a block stack, and wrapped the header contents in a centered, max-width (`1200px`) container matching the main content area layout.
 
 ## [2.2.5] - 2026-06-19
 

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.5] - 2026-06-19
+
+### Added
+- **Restored AV Lip-Sync Latency Tester:** Re-integrated the visual/audible latency offset sweep simulator into the calibration tools. Features interactive audio offset settings ranging from -300ms to +300ms, HTML5 canvas sweeping animations, a 1kHz audio click generator, and spacebar play/pause toggles.
+- **Standby & Still Slide Generator Options:** Added logo option selector (Placeholder Logo, Custom Logo Upload, and Clean Slide) with dynamic vertical centering adjustments and custom client logo preview capability.
+
+### Changed
+- **Upgraded Safe Area Patterns:** Replaced safe area boundaries with high-contrast, dual-tone lines (black outline under white core) and updated coordinates to calculate dynamically to scale cleanly in fullscreen and downloads.
+- **Simplified Speaker Delay Calculator:** Replaced manual speed of sound input with a Meter/Feet unit toggle applying standard sound speeds (343 m/s for meters, 1125 ft/s for feet) for climate-controlled indoor venues.
+
 ## [2.2.4] - 2026-06-19
 
 ### Added

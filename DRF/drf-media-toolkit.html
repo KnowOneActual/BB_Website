@@ -56,6 +56,7 @@
             >
             <a class="nav-link" href="#profiles"><i data-lucide="folders"></i><span>Profiles</span></a>
             <a class="nav-link" href="#audio"><i data-lucide="audio-lines"></i><span>Audio</span></a>
+            <a class="nav-link" href="#sync"><i data-lucide="clock"></i><span>AV Sync</span></a>
             <a class="nav-link" href="#video"><i data-lucide="monitor-play"></i><span>Video</span></a>
             <a class="nav-link" href="#lighting"><i data-lucide="lamp-floor"></i><span>Lighting</span></a>
             <a class="nav-link" href="#network"><i data-lucide="network"></i><span>Networking</span></a>
@@ -69,14 +70,15 @@
 
         <div class="sidebar-card">
           <h2>Keyboard shortcuts</h2>
-          <p>Press 1-6 to jump sections, G for dashboard, and S to toggle Show Mode.</p>
+          <p>Press 1-7 to jump sections, G for dashboard, and S to toggle Show Mode.</p>
           <div class="tag-row">
             <span class="tag">1 Audio</span>
-            <span class="tag">2 Video</span>
-            <span class="tag">3 Lighting</span>
-            <span class="tag">4 Network</span>
-            <span class="tag">5 Ops</span>
-            <span class="tag">6 Trouble</span>
+            <span class="tag">2 AV Sync</span>
+            <span class="tag">3 Video</span>
+            <span class="tag">4 Lighting</span>
+            <span class="tag">5 Network</span>
+            <span class="tag">6 Ops</span>
+            <span class="tag">7 Trouble</span>
           </div>
         </div>
       </aside>
@@ -133,6 +135,9 @@
               <div class="mission-grid">
                 <button class="mission-btn" data-scroll="#audio">
                   <strong>Audio</strong><small>Delay, line checks, speech tuning</small>
+                </button>
+                <button class="mission-btn" data-scroll="#sync">
+                  <strong>AV Sync</strong><small>Lip-sync, canvas sweep, latency</small>
                 </button>
                 <button class="mission-btn" data-scroll="#video">
                   <strong>Video</strong><small>Motion tests, safe areas, patterns</small>
@@ -221,12 +226,26 @@
             <div class="cards-4">
               <div class="subpanel">
                 <h4>Distance to delay</h4>
-                <div class="field">
-                  <label for="distanceFeet">Distance (feet)</label>
-                  <input id="distanceFeet" type="number" value="40" min="0" step="0.5" />
+                <div
+                  class="field-grid"
+                  style="grid-template-columns: 1.2fr 0.8fr; gap: var(--space-2); margin-bottom: var(--space-3)"
+                >
+                  <div class="field">
+                    <label for="delayDistance">Distance</label>
+                    <input id="delayDistance" type="number" value="12" min="0" step="0.1" />
+                  </div>
+                  <div class="field">
+                    <label for="delayUnit">Unit</label>
+                    <select id="delayUnit">
+                      <option value="m" selected>Meters (m)</option>
+                      <option value="ft">Feet (ft)</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="toolbar"><button class="btn btn-primary" id="calcDelayBtn">Calculate</button></div>
-                <p class="result-box" id="delayResult">Delay result will appear here.</p>
+                <p class="result-box" id="delayResult" style="margin-top: var(--space-3)">
+                  Delay result will appear here.
+                </p>
               </div>
               <div class="subpanel">
                 <h4>Speech tuning macro</h4>
@@ -294,6 +313,48 @@
             </div>
           </section>
 
+          <section id="sync" class="panel">
+            <div class="section-head">
+              <div>
+                <h3>AV Lip-Sync Latency Tester</h3>
+                <p>
+                  Simulate and measure latency offsets between speakers and displays. Align the audio click with the
+                  center flash.
+                </p>
+              </div>
+            </div>
+            <div class="video-patterns">
+              <div class="canvas-wrap">
+                <canvas id="syncCanvas" width="1280" height="720" aria-label="AV Lip-Sync Canvas"></canvas>
+              </div>
+              <div class="subpanel">
+                <h4>Sync Controls</h4>
+                <div class="field" style="margin-bottom: var(--space-3)">
+                  <label for="syncDelayRange">Simulate Audio Offset: <span id="syncDelayVal">0 ms</span></label>
+                  <input
+                    type="range"
+                    class="full-width-slider"
+                    id="syncDelayRange"
+                    min="-300"
+                    max="300"
+                    step="5"
+                    value="0"
+                    aria-label="Sync Delay Selector"
+                  />
+                </div>
+                <div class="toolbar">
+                  <button class="btn btn-primary" id="btnToggleSync">▶ Run Sync Sweep</button>
+                  <button class="btn" id="btnResetSync">Reset</button>
+                </div>
+                <p class="result-box" style="margin-top: var(--space-4)">
+                  <strong>Negative (-)</strong>: Audio triggers <em>before</em> the sync flash.<br />
+                  <strong>Positive (+)</strong>: Audio triggers <em>after</em> the sync flash (typical DSP lag).<br />
+                  Press <strong>spacebar</strong> to play/pause when in AV Sync section.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section id="video" class="panel">
             <div class="section-head">
               <div>
@@ -320,6 +381,7 @@
                     <option value="white">Solid White (brightness check)</option>
                     <option value="black">Solid Black (leak/contrast check)</option>
                     <option value="rgb">RGB Color Cycle (pixel audit)</option>
+                    <option value="slide">Standby / SNAFU Slide</option>
                   </select>
                 </div>
                 <div class="field field-mt-4">
@@ -341,6 +403,136 @@
                 <p class="result-box">
                   Use the moving bar mode to spot stutter, frame conversion, and display processing lag.
                 </p>
+              </div>
+            </div>
+
+            <div class="cards-2" style="margin-top: var(--space-6)">
+              <div class="subpanel">
+                <h4>Standby & Still Slide Generator (Logo/SNAFU)</h4>
+                <p style="margin-bottom: var(--space-4)">
+                  Create high-quality standby, walk-in, or technical difficulty slides with custom text and colors for
+                  switcher Still Stores.
+                </p>
+
+                <div class="field-grid" style="margin-bottom: var(--space-3)">
+                  <div class="field">
+                    <label for="slideTemplate">Slide Template</label>
+                    <select id="slideTemplate">
+                      <option value="logo">Generic Logo Still (Walk-in)</option>
+                      <option value="snafu">Technical Difficulties (SNAFU)</option>
+                      <option value="start">Session Will Begin Shortly</option>
+                      <option value="intermission">Intermission (Resuming Shortly)</option>
+                      <option value="qa">Q&A Session</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="slideLogoMode">Logo Option</label>
+                    <select id="slideLogoMode">
+                      <option value="placeholder">Placeholder Logo</option>
+                      <option value="upload">Upload Custom Logo...</option>
+                      <option value="none">No Logo (Clean Slide)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field" id="slideLogoUploadField" style="margin-bottom: var(--space-3); display: none">
+                  <label for="slideLogoInput">Upload Client Logo</label>
+                  <input type="file" id="slideLogoInput" accept="image/*" />
+                </div>
+
+                <div class="field-grid" style="margin-bottom: var(--space-3)">
+                  <div class="field">
+                    <label for="slideTitle">Client / Event Name</label>
+                    <input id="slideTitle" value="ACME CORP KEYNOTE" placeholder="e.g. Acme Corp Annual Keynote" />
+                  </div>
+                  <div class="field">
+                    <label for="slideSubtitle">Message / Subtitle</label>
+                    <input
+                      id="slideSubtitle"
+                      value="Please stand by..."
+                      placeholder="e.g. Session resumes in 10 minutes"
+                    />
+                  </div>
+                </div>
+
+                <div class="field-grid-3" style="margin-bottom: var(--space-3)">
+                  <div class="field">
+                    <label for="slideBgType">Bg Type</label>
+                    <select id="slideBgType">
+                      <option value="gradient-linear">Linear Gradient</option>
+                      <option value="gradient-radial">Radial Gradient</option>
+                      <option value="solid">Solid Color</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="slidePrimaryColor">Theme / Primary</label>
+                    <input
+                      type="color"
+                      id="slidePrimaryColor"
+                      value="#0f172a"
+                      style="padding: 0; height: 44px; cursor: pointer"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="slideSecondaryColor">Secondary Color</label>
+                    <input
+                      type="color"
+                      id="slideSecondaryColor"
+                      value="#1e293b"
+                      style="padding: 0; height: 44px; cursor: pointer"
+                    />
+                  </div>
+                </div>
+
+                <div class="field-grid" style="margin-bottom: var(--space-4)">
+                  <div class="field">
+                    <label for="slideTextColor">Text Color</label>
+                    <input
+                      type="color"
+                      id="slideTextColor"
+                      value="#f8fafc"
+                      style="padding: 0; height: 44px; cursor: pointer"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="slideAccentColor">Accent Color</label>
+                    <input
+                      type="color"
+                      id="slideAccentColor"
+                      value="#38bdf8"
+                      style="padding: 0; height: 44px; cursor: pointer"
+                    />
+                  </div>
+                </div>
+
+                <div class="toolbar">
+                  <button class="btn btn-primary" id="btnPreviewSlide"><i data-lucide="eye"></i>Preview Slide</button>
+                  <button class="btn" id="btnDownload1080p"><i data-lucide="download"></i>Download 1080p</button>
+                  <button class="btn" id="btnDownload4K"><i data-lucide="download"></i>Download 4K</button>
+                </div>
+              </div>
+
+              <div class="subpanel">
+                <h4>Staging Best Practices</h4>
+                <ul style="margin: 0; padding-left: var(--space-4)">
+                  <li style="margin-bottom: var(--space-2)">
+                    <strong>Still Store Upload</strong>: Always pre-load a static logo slide and a SNAFU slide into the
+                    main switcher STILL/LOGO store (e.g. Barco E2 or ATEM) on-site.
+                  </li>
+                  <li style="margin-bottom: var(--space-2)">
+                    <strong>Destination Mappings</strong>: Map a dedicated physical button on the control surface
+                    (Stream Deck, Event Master tool) to transition the program screen to the logo/still store instantly.
+                  </li>
+                  <li style="margin-bottom: var(--space-2)">
+                    <strong>Logo Formats</strong>: For transparent logo overlays, upload PNG files with transparent
+                    backgrounds. For full frame background stills, use 1080p or 4K high-quality PNGs or 100% quality
+                    JPGs.
+                  </li>
+                  <li style="margin-bottom: var(--space-2)">
+                    <strong>Text Contrast</strong>: Ensure text uses a high contrast color (like white or bright yellow)
+                    over the dark brand background to remain clearly legible under bright venue wash lighting.
+                  </li>
+                </ul>
               </div>
             </div>
           </section>

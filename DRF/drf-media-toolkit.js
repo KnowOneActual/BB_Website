@@ -35,6 +35,12 @@ const state = {
   sweepInterval: null,
   activeSoundId: null,
   volume: 0.5,
+  slideLogoImg: null,
+  isSyncRunning: false,
+  syncDelayMs: 0,
+  syncStartFrameTime: 0,
+  syncTesterAnimationId: null,
+  lastBeepTime: 0,
 };
 
 state.activeProfileId = state.profiles[0].id;
@@ -212,16 +218,21 @@ function updateStats() {
 }
 
 function calculateDelay() {
-  const distance = parseFloat($('#distanceFeet').value || '0');
-  const speed = 1130; // Speed of sound in ft/s at standard event room temperature (~70°F)
+  const distance = parseFloat($('#delayDistance').value || '0');
   if (distance <= 0) {
-    $('#delayResult').textContent = 'Enter a valid positive distance in feet.';
+    $('#delayResult').textContent = 'Enter a valid positive distance.';
     return;
   }
+  const unit = $('#delayUnit').value;
+  // Standard speed of sound constants for climate-controlled indoor spaces (approx 20°C/68°F)
+  const speed = unit === 'm' ? 343 : 1125;
+  const unitText = unit === 'm' ? 'meters' : 'feet';
+  const speedText = unit === 'm' ? '343 m/s' : '1,125 ft/s';
+
   const seconds = distance / speed;
   const ms = seconds * 1000;
   $('#delayResult').textContent =
-    `Suggested delay: ${ms.toFixed(1)} ms (${seconds.toFixed(3)} s) for ${distance.toFixed(1)} ft (based on 1,130 ft/s).`;
+    `Suggested delay: ${ms.toFixed(1)} ms (${seconds.toFixed(3)} s) for ${distance.toFixed(1)} ${unitText} (using standard ${speedText} at 20°C/68°F).`;
 }
 
 function renderMacro(note) {
@@ -391,7 +402,17 @@ function toggleShowMode() {
 }
 
 function highlightActiveNav() {
-  const sections = ['#dashboard', '#profiles', '#audio', '#video', '#lighting', '#network', '#ops', '#troubleshooting'];
+  const sections = [
+    '#dashboard',
+    '#profiles',
+    '#audio',
+    '#sync',
+    '#video',
+    '#lighting',
+    '#network',
+    '#ops',
+    '#troubleshooting',
+  ];
   const scrollY = window.scrollY + 120;
   let current = '#dashboard';
 
@@ -410,6 +431,8 @@ const inlineCtx = inlineCanvas.getContext('2d');
 const fullscreenCanvas = $('#fullscreenCanvas');
 const fullscreenCtx = fullscreenCanvas.getContext('2d');
 const fullscreenContainer = $('#fullscreen-canvas-container');
+const syncCanvas = $('#syncCanvas');
+const syncCtx = syncCanvas ? syncCanvas.getContext('2d') : null;
 
 let activeCanvas = inlineCanvas;
 let activeCtx = inlineCtx;
@@ -422,18 +445,48 @@ function clearCanvas() {
 }
 
 function drawSafeArea() {
-  activeCtx.strokeStyle = 'rgba(255,255,255,0.85)';
+  const w = activeCanvas.width;
+  const h = activeCanvas.height;
+  const actionX = w * 0.0625;
+  const actionY = h * 0.0625;
+  const titleX = w * 0.125;
+  const titleY = h * 0.125;
+
+  // 1. Outer safe rect (Action Safe) - Dual-tone
+  activeCtx.strokeStyle = '#000000';
+  activeCtx.lineWidth = 4;
+  activeCtx.strokeRect(actionX, actionY, w - actionX * 2, h - actionY * 2);
+
+  activeCtx.strokeStyle = 'rgba(255,255,255,0.9)';
   activeCtx.lineWidth = 2;
-  activeCtx.strokeRect(80, 45, activeCanvas.width - 160, activeCanvas.height - 90);
+  activeCtx.strokeRect(actionX, actionY, w - actionX * 2, h - actionY * 2);
 
-  activeCtx.strokeStyle = 'rgba(255,255,255,0.35)';
-  activeCtx.strokeRect(160, 90, activeCanvas.width - 320, activeCanvas.height - 180);
+  // 2. Inner safe rect (Title Safe) - Dual-tone
+  activeCtx.strokeStyle = '#000000';
+  activeCtx.lineWidth = 3;
+  activeCtx.strokeRect(titleX, titleY, w - titleX * 2, h - titleY * 2);
 
+  activeCtx.strokeStyle = 'rgba(255,255,255,0.55)';
+  activeCtx.lineWidth = 1.5;
+  activeCtx.strokeRect(titleX, titleY, w - titleX * 2, h - titleY * 2);
+
+  // 3. Center crosshair - Dual-tone
+  activeCtx.strokeStyle = '#000000';
+  activeCtx.lineWidth = 3;
   activeCtx.beginPath();
-  activeCtx.moveTo(activeCanvas.width / 2, 0);
-  activeCtx.lineTo(activeCanvas.width / 2, activeCanvas.height);
-  activeCtx.moveTo(0, activeCanvas.height / 2);
-  activeCtx.lineTo(activeCanvas.width, activeCanvas.height / 2);
+  activeCtx.moveTo(w / 2, 0);
+  activeCtx.lineTo(w / 2, h);
+  activeCtx.moveTo(0, h / 2);
+  activeCtx.lineTo(w, h / 2);
+  activeCtx.stroke();
+
+  activeCtx.strokeStyle = 'rgba(255,255,255,0.85)';
+  activeCtx.lineWidth = 1;
+  activeCtx.beginPath();
+  activeCtx.moveTo(w / 2, 0);
+  activeCtx.lineTo(w / 2, h);
+  activeCtx.moveTo(0, h / 2);
+  activeCtx.lineTo(w, h / 2);
   activeCtx.stroke();
 }
 
@@ -520,6 +573,347 @@ function drawPattern(pattern = $('#patternSelect').value) {
         drawPattern('rgb');
       }
     }, 2000);
+  } else if (pattern === 'slide') {
+    drawStillSlide(activeCanvas, activeCtx);
+  }
+}
+
+function drawStillSlide(canvas, ctx) {
+  const w = canvas.width;
+  const h = canvas.height;
+
+  const bgType = $('#slideBgType').value;
+  const primary = $('#slidePrimaryColor').value;
+  const secondary = $('#slideSecondaryColor').value;
+  const textColor = $('#slideTextColor').value;
+  const accentColor = $('#slideAccentColor').value;
+
+  const template = $('#slideTemplate').value;
+  const title = $('#slideTitle').value.toUpperCase();
+  const subtitle = $('#slideSubtitle').value;
+
+  // 1. Draw Background
+  ctx.clearRect(0, 0, w, h);
+  if (bgType === 'solid') {
+    ctx.fillStyle = primary;
+    ctx.fillRect(0, 0, w, h);
+  } else if (bgType === 'gradient-linear') {
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, primary);
+    grad.addColorStop(1, secondary);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  } else if (bgType === 'gradient-radial') {
+    const grad = ctx.createRadialGradient(w / 2, h / 2, h / 6, w / 2, h / 2, w / 1.2);
+    grad.addColorStop(0, primary);
+    grad.addColorStop(1, secondary);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  // 2. Draw Client Logo or Placeholder
+  const logoMode = $('#slideLogoMode').value;
+  const showPlaceholder = logoMode === 'placeholder';
+  const showUploaded = logoMode === 'upload' && state.slideLogoImg;
+  const showLogo = showPlaceholder || showUploaded;
+  const textShift = showLogo ? 0 : h * 0.15;
+
+  let logoY = h * 0.35;
+  if (showUploaded) {
+    const img = state.slideLogoImg;
+    const maxLogoH = h * 0.22;
+    const scale = Math.min((w * 0.3) / img.width, maxLogoH / img.height);
+    const logoW = img.width * scale;
+    const logoH = img.height * scale;
+    const logoX = (w - logoW) / 2;
+    ctx.drawImage(img, logoX, logoY - logoH / 2, logoW, logoH);
+  } else if (showPlaceholder) {
+    ctx.strokeStyle = accentColor;
+    ctx.lineWidth = Math.max(4, w / 400);
+    ctx.beginPath();
+    ctx.arc(w / 2, logoY, Math.min(w / 24, h / 14), 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.fillStyle = textColor;
+    ctx.font = `800 ${Math.max(14, w / 80)}px 'Cabinet Grotesk', sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('LOGO', w / 2, logoY);
+  }
+
+  // 3. Draw Template Text
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
+
+  if (template === 'logo') {
+    ctx.fillStyle = textColor;
+    ctx.font = `800 ${Math.max(28, w / 32)}px 'Cabinet Grotesk', sans-serif`;
+    ctx.fillText(title, w / 2, h * 0.65 - textShift);
+
+    ctx.fillStyle = accentColor;
+    ctx.font = `500 ${Math.max(16, w / 64)}px Satoshi, sans-serif`;
+    ctx.fillText(subtitle, w / 2, h * 0.73 - textShift);
+  } else if (template === 'snafu') {
+    ctx.fillStyle = accentColor;
+    ctx.font = `700 ${Math.max(14, w / 80)}px Satoshi, sans-serif`;
+    ctx.fillText('ATTENTION', w / 2, h * 0.58 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.font = `800 ${Math.max(32, w / 24)}px 'Cabinet Grotesk', sans-serif`;
+    ctx.fillText('TECHNICAL DIFFICULTIES', w / 2, h * 0.66 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.globalAlpha = 0.7;
+    ctx.font = `500 ${Math.max(16, w / 50)}px Satoshi, sans-serif`;
+    ctx.fillText('PLEASE STAND BY. WE WILL RETURN MOMENTARILY.', w / 2, h * 0.74 - textShift);
+    ctx.globalAlpha = 1.0;
+
+    ctx.fillStyle = accentColor;
+    ctx.font = `600 ${Math.max(12, w / 90)}px Satoshi, sans-serif`;
+    ctx.fillText(title, w / 2, h * 0.85 - textShift);
+  } else if (template === 'start') {
+    ctx.fillStyle = accentColor;
+    ctx.font = `700 ${Math.max(14, w / 80)}px Satoshi, sans-serif`;
+    ctx.fillText('WELCOME TO', w / 2, h * 0.58 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.font = `800 ${Math.max(30, w / 28)}px 'Cabinet Grotesk', sans-serif`;
+    ctx.fillText(title, w / 2, h * 0.66 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.font = `500 ${Math.max(18, w / 48)}px Satoshi, sans-serif`;
+    ctx.fillText(subtitle || 'THE SESSION WILL BEGIN SHORTLY', w / 2, h * 0.75 - textShift);
+  } else if (template === 'intermission') {
+    ctx.fillStyle = accentColor;
+    ctx.font = `700 ${Math.max(14, w / 80)}px Satoshi, sans-serif`;
+    ctx.fillText('INTERMISSION', w / 2, h * 0.58 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.font = `800 ${Math.max(32, w / 26)}px 'Cabinet Grotesk', sans-serif`;
+    ctx.fillText('SESSION RESUMES SHORTLY', w / 2, h * 0.67 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.font = `500 ${Math.max(18, w / 48)}px Satoshi, sans-serif`;
+    ctx.fillText(subtitle || 'Thank you for your patience.', w / 2, h * 0.75 - textShift);
+  } else if (template === 'qa') {
+    ctx.fillStyle = accentColor;
+    ctx.font = `700 ${Math.max(14, w / 80)}px Satoshi, sans-serif`;
+    ctx.fillText('LIVE Q&A', w / 2, h * 0.58 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.font = `800 ${Math.max(32, w / 26)}px 'Cabinet Grotesk', sans-serif`;
+    ctx.fillText('QUESTION & ANSWER SESSION', w / 2, h * 0.67 - textShift);
+
+    ctx.fillStyle = textColor;
+    ctx.font = `500 ${Math.max(18, w / 48)}px Satoshi, sans-serif`;
+    ctx.fillText(subtitle || 'Please submit your questions to the moderator.', w / 2, h * 0.75 - textShift);
+  }
+
+  // 4. Draw safety border
+  ctx.strokeStyle = accentColor;
+  ctx.lineWidth = Math.max(1, w / 400);
+  ctx.globalAlpha = 0.3;
+  ctx.strokeRect(w * 0.05, h * 0.05, w * 0.9, h * 0.9);
+  ctx.globalAlpha = 1.0;
+}
+
+function downloadSlide(resolutionWidth, resolutionHeight) {
+  const offCanvas = document.createElement('canvas');
+  offCanvas.width = resolutionWidth;
+  offCanvas.height = resolutionHeight;
+  const offCtx = offCanvas.getContext('2d');
+
+  drawStillSlide(offCanvas, offCtx);
+
+  const filename = `still_${$('#slideTemplate').value}_${resolutionWidth}x${resolutionHeight}.png`;
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = offCanvas.toDataURL('image/png');
+  link.click();
+}
+
+function drawSyncSkeleton(markerX) {
+  if (!syncCtx || !syncCanvas) return;
+
+  const w = syncCanvas.width;
+  const h = syncCanvas.height;
+
+  // Draw center sync target box
+  syncCtx.strokeStyle = 'rgba(255,255,255,0.2)';
+  syncCtx.lineWidth = 2;
+  const boxW = w * 0.4;
+  const boxH = h * 0.2;
+  syncCtx.strokeRect(w / 2 - boxW / 2, h * 0.1, boxW, boxH);
+
+  syncCtx.fillStyle = '#afa9a1';
+  syncCtx.font = `bold ${Math.max(14, w / 40)}px var(--font-display)`;
+  syncCtx.textAlign = 'center';
+  syncCtx.textBaseline = 'middle';
+  syncCtx.fillText('SYNC TARGET', w / 2, h * 0.2);
+
+  // Draw track container
+  const trackY = h * 0.6;
+  const trackW = w * 0.8;
+  const trackStart = w / 2 - trackW / 2;
+  const trackH = h * 0.15;
+
+  syncCtx.fillStyle = '#0a0e17';
+  syncCtx.fillRect(trackStart, trackY - trackH / 2, trackW, trackH);
+  syncCtx.strokeStyle = 'rgba(255,255,255,0.2)';
+  syncCtx.lineWidth = 2;
+  syncCtx.strokeRect(trackStart, trackY - trackH / 2, trackW, trackH);
+
+  // Draw tick markers
+  const pxPerMs = trackW / 1000;
+  for (let offset = -500; offset <= 500; offset += 100) {
+    const tx = w / 2 + offset * pxPerMs;
+    const isCenter = offset === 0;
+
+    syncCtx.strokeStyle = isCenter ? '#7cbe52' : 'rgba(255,255,255,0.2)';
+    syncCtx.lineWidth = isCenter ? 3 : 1.5;
+
+    syncCtx.beginPath();
+    syncCtx.moveTo(tx, trackY - (isCenter ? trackH * 0.45 : trackH * 0.25));
+    syncCtx.lineTo(tx, trackY + (isCenter ? trackH * 0.45 : trackH * 0.25));
+    syncCtx.stroke();
+
+    if (offset % 200 === 0 || isCenter) {
+      syncCtx.fillStyle = isCenter ? '#7cbe52' : '#afa9a1';
+      syncCtx.font = `${Math.max(10, w / 80)}px monospace`;
+      syncCtx.fillText(isCenter ? '0 ms' : `${offset > 0 ? '+' : ''}${offset}`, tx, trackY + trackH * 0.7);
+    }
+  }
+
+  // Draw Marker
+  if (typeof markerX === 'number') {
+    syncCtx.fillStyle = '#de76ba';
+    const markerW = Math.max(8, w / 150);
+    syncCtx.fillRect(markerX - markerW / 2, trackY - trackH * 0.4, markerW, trackH * 0.8);
+    syncCtx.strokeStyle = '#fff';
+    syncCtx.lineWidth = 1.5;
+    syncCtx.strokeRect(markerX - markerW / 2, trackY - trackH * 0.4, markerW, trackH * 0.8);
+  }
+}
+
+function drawSyncFrame() {
+  if (!state.isSyncRunning || !syncCtx || !syncCanvas) return;
+
+  const w = syncCanvas.width;
+  const h = syncCanvas.height;
+  const now = performance.now();
+
+  const elapsed = (now - state.syncStartFrameTime) % 1000;
+
+  const markerOffsetMs = elapsed - 500;
+  const pxPerMs = (w * 0.8) / 1000;
+  const markerX = w / 2 + markerOffsetMs * pxPerMs;
+
+  const isFlashFrame = Math.abs(elapsed - 500) < 16.7;
+
+  syncCtx.fillStyle = isFlashFrame ? '#243236' : '#0a0e17';
+  syncCtx.fillRect(0, 0, w, h);
+
+  if (isFlashFrame) {
+    syncCtx.fillStyle = '#fff';
+    const boxW = w * 0.4;
+    const boxH = h * 0.2;
+    syncCtx.fillRect(w / 2 - boxW / 2, h * 0.1, boxW, boxH);
+
+    syncCtx.fillStyle = '#0a0e17';
+    syncCtx.font = `bold ${Math.max(16, w / 35)}px var(--font-display)`;
+    syncCtx.textAlign = 'center';
+    syncCtx.textBaseline = 'middle';
+    syncCtx.fillText('FLASH SYNC!', w / 2, h * 0.2);
+  } else {
+    drawSyncSkeleton(markerX);
+  }
+
+  const targetBeepTime = 500 + state.syncDelayMs;
+  const timeDiff = elapsed - targetBeepTime;
+  if (timeDiff >= 0 && timeDiff < 50 && now - state.lastBeepTime > 500) {
+    triggerSyncBeep();
+    state.lastBeepTime = now;
+  }
+
+  syncCtx.fillStyle = '#afa9a1';
+  syncCtx.font = `${Math.max(10, w / 90)}px var(--font-body)`;
+  syncCtx.textAlign = 'center';
+  syncCtx.fillText(`Tester Frame Sweep | Offset Delay: ${state.syncDelayMs} ms`, w / 2, h - 20);
+
+  state.syncTesterAnimationId = requestAnimationFrame(drawSyncFrame);
+}
+
+function triggerSyncBeep() {
+  const ctx = initAudio();
+  if (!ctx) return;
+
+  const osc = ctx.createOscillator();
+  const gainNode = ctx.createGain();
+
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(1000, ctx.currentTime);
+
+  const now = ctx.currentTime;
+  gainNode.gain.setValueAtTime(0.001, now);
+  gainNode.gain.exponentialRampToValueAtTime(state.volume * 0.6, now + 0.002);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+
+  osc.connect(gainNode);
+  gainNode.connect(ctx.destination);
+
+  osc.start(now);
+  osc.stop(now + 0.04);
+}
+
+function toggleSyncTester() {
+  initAudio();
+
+  if (state.isSyncRunning) {
+    state.isSyncRunning = false;
+    const btn = $('#btnToggleSync');
+    if (btn) {
+      btn.textContent = '▶ Run Sync Sweep';
+      btn.classList.remove('btn-danger');
+    }
+    if (state.syncTesterAnimationId) {
+      cancelAnimationFrame(state.syncTesterAnimationId);
+      state.syncTesterAnimationId = null;
+    }
+  } else {
+    stopAllAudio();
+    state.isSyncRunning = true;
+    const btn = $('#btnToggleSync');
+    if (btn) {
+      btn.textContent = '■ Stop Sync Sweep';
+      btn.classList.add('btn-danger');
+    }
+    state.syncStartFrameTime = performance.now();
+    drawSyncFrame();
+  }
+}
+
+function updateSyncDelay(val) {
+  state.syncDelayMs = parseInt(val, 10);
+  const lbl = $('#syncDelayVal');
+  if (lbl) {
+    lbl.textContent = `${state.syncDelayMs > 0 ? '+' : ''}${state.syncDelayMs} ms`;
+  }
+}
+
+function resetSyncTester() {
+  if (state.isSyncRunning) {
+    toggleSyncTester();
+  }
+  updateSyncDelay(0);
+  const slider = $('#syncDelayRange');
+  if (slider) {
+    slider.value = 0;
+  }
+
+  if (syncCtx && syncCanvas) {
+    syncCtx.fillStyle = '#0a0e17';
+    syncCtx.fillRect(0, 0, syncCanvas.width, syncCanvas.height);
+    drawSyncSkeleton(syncCanvas.width / 2);
   }
 }
 
@@ -675,6 +1069,10 @@ function stopAllAudio() {
   if (playBtn) {
     playBtn.textContent = '▶ Start Generator';
     playBtn.classList.remove('btn-danger');
+  }
+
+  if (state.isSyncRunning) {
+    toggleSyncTester();
   }
 }
 
@@ -1046,6 +1444,96 @@ function attachEvents() {
     });
   });
 
+  // Standby Slide Generator Listeners
+  const updateLogoUploadVisibility = () => {
+    const val = $('#slideLogoMode').value;
+    $('#slideLogoUploadField').style.display = val === 'upload' ? 'grid' : 'none';
+  };
+
+  if ($('#slideLogoMode')) {
+    updateLogoUploadVisibility();
+    $('#slideLogoMode').addEventListener('change', updateLogoUploadVisibility);
+  }
+
+  if ($('#slideLogoInput')) {
+    $('#slideLogoInput').addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            state.slideLogoImg = img;
+            if ($('#patternSelect').value === 'slide') {
+              drawPattern('slide');
+            }
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  if ($('#btnPreviewSlide')) {
+    $('#btnPreviewSlide').addEventListener('click', () => {
+      $('#patternSelect').value = 'slide';
+      drawPattern('slide');
+    });
+  }
+
+  if ($('#btnDownload1080p')) {
+    $('#btnDownload1080p').addEventListener('click', () => {
+      downloadSlide(1920, 1080);
+    });
+  }
+
+  if ($('#btnDownload4K')) {
+    $('#btnDownload4K').addEventListener('click', () => {
+      downloadSlide(3840, 2160);
+    });
+  }
+
+  const slideControls = [
+    '#slideTemplate',
+    '#slideLogoMode',
+    '#slideTitle',
+    '#slideSubtitle',
+    '#slideBgType',
+    '#slidePrimaryColor',
+    '#slideSecondaryColor',
+    '#slideTextColor',
+    '#slideAccentColor',
+  ];
+  slideControls.forEach((selector) => {
+    const el = $(selector);
+    if (el) {
+      el.addEventListener('input', () => {
+        if ($('#patternSelect').value === 'slide') {
+          drawPattern('slide');
+        }
+      });
+      el.addEventListener('change', () => {
+        if ($('#patternSelect').value === 'slide') {
+          drawPattern('slide');
+        }
+      });
+    }
+  });
+
+  // Sync Tester Listeners
+  if ($('#btnToggleSync')) {
+    $('#btnToggleSync').addEventListener('click', toggleSyncTester);
+  }
+  if ($('#btnResetSync')) {
+    $('#btnResetSync').addEventListener('click', resetSyncTester);
+  }
+  if ($('#syncDelayRange')) {
+    $('#syncDelayRange').addEventListener('input', (e) => {
+      updateSyncDelay(e.target.value);
+    });
+  }
+
   document.addEventListener('visibilitychange', async () => {
     if (wakeLock !== null && document.visibilityState === 'visible') {
       await requestWakeLock();
@@ -1134,14 +1622,24 @@ function attachEvents() {
 
     const shortcuts = {
       1: '#audio',
-      2: '#video',
-      3: '#lighting',
-      4: '#network',
-      5: '#ops',
-      6: '#troubleshooting',
+      2: '#sync',
+      3: '#video',
+      4: '#lighting',
+      5: '#network',
+      6: '#ops',
+      7: '#troubleshooting',
       g: '#dashboard',
       G: '#dashboard',
     };
+
+    if (event.key === ' ' || event.code === 'Space') {
+      const activeLink = $('.nav-link.active');
+      if (activeLink && activeLink.getAttribute('href') === '#sync') {
+        event.preventDefault();
+        toggleSyncTester();
+        return;
+      }
+    }
 
     if (event.key === 's' || event.key === 'S') toggleShowMode();
     if (shortcuts[event.key]) scrollToSection(shortcuts[event.key]);
@@ -1165,6 +1663,9 @@ function init() {
   generateCribSheet();
   updateStats();
   drawPattern('bars');
+  if (syncCanvas) {
+    resetSyncTester();
+  }
   updateVolume();
   attachEvents();
   highlightActiveNav();

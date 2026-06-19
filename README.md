@@ -1,5 +1,5 @@
 <p align="center">
-<img src="img/readme/BB_logo_green.webp" alt="Beau Bremer Logo" width="150">
+  <img src="img/readme/BB_logo_green.webp" alt="Beau Bremer Logo" width="150">
 </p>
 
 # Beau Bremer's Personal Website & Technical Playground
@@ -12,40 +12,74 @@
 ![Security](https://img.shields.io/badge/Security-Policy-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-This is the repository for [beaubremer.com](https://beaubremer.com/), a portfolio site and technical playground showcasing expertise in **Technical Project Management** and **AV/IT Systems**.
+Repository for [beaubremer.com](https://beaubremer.com/), a static personal site, IT/AV toolset, and serverless playground. The project serves as an operational showcase for a Technical Project Manager and AV/IT Field Engineer.
 
-## Engineering Standards & Architecture
+## Core Technical Architecture
 
-The codebase prioritizes performance, security, and clean architecture:
+Built around client-side performance, data privacy, and minimal external dependencies:
 
-*   **Code Quality & Formatting:** ESLint (with security-focused plugins) and Prettier for automated syntax validation and style enforcement.
-*   **Hardened Security:** A strict Content Security Policy (CSP) with no `'unsafe-inline'` scripts.
-*   **Privacy & Performance:** Self-hosted fonts to eliminate third-party tracking, optimize loading times, and maintain fast tailwind compilations.
-*   **Dependency Auditing:** Automated vulnerability scanning via Snyk.
+*   **Asset Self-Hosting:** Web fonts, stylesheets, and scripts are stored and served locally to block third-party tracking networks, eliminate external DNS lookups, and guarantee rapid rendering.
+*   **Hardened Security Headers:** Configured via [netlify.toml](file:///Users/userx/websites/bb_main/BB_Website/netlify.toml) with a strict Content Security Policy (CSP) that completely bans inline script execution.
+*   **Dependency Resolution & Audits:** Code is scanned using Snyk. Transitive dependencies are pinned using `package.json` overrides to address upstream CVEs (such as security patches for `qs`, `ws`, and `multiparty`).
+*   **Static Linters:** Strictly formatted using Prettier and linted with ESLint using `eslint-plugin-security` rules.
 
-## Implemented Features & Tools
+## Integrated Services & Tools
 
-*   **AI Weather Bot:** A serverless Node.js service integrating Google Gemini and OpenWeatherMap for conversational queries.
-*   **Weather-Responsive Greeting:** Dynamic Chicago-hardcoded weather integration to make the homepage interactive without tracking visitor locations.
-*   **Secure Resume Delivery:** An interactive workflow protecting contact details from scrapers while delivering verified copies.
-*   **Network Diagnostics:** Client-side utilities including a Subnet Calculator and Latency Monitor for AV/IT operations.
+*   **AI Weather Bot:** Netlify serverless functions proxy user weather queries to the Google Gemini (`gemini-2.5-flash`) API and OpenWeatherMap, avoiding public API key exposure.
+*   **Location-Safe Greeting:** Client-side greeting panel fallback configured specifically for Chicago. Prevents visitor geo-tracking by keeping API key validation and location mapping on the backend.
+*   **Scrape-Resistant Resume Flow:** Secure download logic prevents automated crawlers from harvesting email addresses and phone numbers.
+*   **Network Diagnostics:** In-browser tools including a visual IPv4 Subnet Calculator and a network Latency Monitor (WebSocket-based) for field troubleshooting.
+*   **Daily Links Hub:** Interactive dashboard ([dayl.html](file:///Users/userx/websites/bb_main/BB_Website/dayl.html)) featuring live search, instant keyboard shortcuts, category filtering, and client-side caching.
 
-## Technology Stack
+## Tech Stack
 
-*   **Frontend:** HTML5, CSS3, ES6+ JavaScript, Tailwind CSS, Chart.js.
-*   **Backend & Serverless:** Netlify Functions (Node.js), Firebase Firestore.
-*   **Services:** Cloudflare WAF/DNS, Google Gemini API, Resend.
+*   **Frontend:** Semantic HTML5, ES6+ JavaScript, Tailwind CSS, Chart.js.
+*   **Backend / Serverless:** Netlify Functions (Node.js 20+ runtime), Firebase Firestore.
+*   **Third-Party APIs:** Cloudflare DNS, Google Gemini API, Resend Email API, OpenWeatherMap.
 
-## Project Documentation
+## Testing & Quality Control
 
-*   **[Design Rationale](docs/DESIGN_NOTES.md):** Details on color systems, typography choices, and professional branding guidelines.
-*   **[Security Log](securitylog.md):** Audit record of security hardening actions and configurations.
-*   **[Labs (Experimental)](https://beaubremer.com/labs.html):** Creative coding and interactive visual experiments.
-*   **[Tor Onion Service Mirror](https://github.com/KnowOneActual/BB_Website/tree/onion-version):** Minimalist, privacy-focused mirror for the Tor network.
+The project uses Jest for unit and integration testing. Tests reside in the [__tests__/](file:///Users/userx/websites/bb_main/BB_Website/__tests__) directory:
 
----
+*   [daily-links.test.js](file:///Users/userx/websites/bb_main/BB_Website/__tests__/daily-links.test.js): Verifies JSON payload parsing, live search matching, DOM rendering, and security sanitization.
+*   [hero-background.test.js](file:///Users/userx/websites/bb_main/BB_Website/__tests__/hero-background.test.js): Confirms the migration of the hero canvas backdrop from Three.js to GPU-accelerated CSS animations.
 
-## Contact & Links
+Run the test suite:
+```bash
+npm test
+```
+
+Generate a coverage report:
+```bash
+npm run test:coverage
+```
+
+## Local Setup
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Run Local Dev Server & Emulator:**
+   Requires the Netlify CLI to run functions:
+   ```bash
+   npx netlify dev
+   ```
+
+3. **Build Tailwind Assets:**
+   ```bash
+   npm run build:css
+   ```
+
+## Documentation
+
+*   **[Design Rationale](file:///Users/userx/websites/bb_main/BB_Website/docs/DESIGN_NOTES.md):** Indigo/gray theme constraints, typography choices, and professional AV/IT branding guidelines.
+*   **[Security Log](file:///Users/userx/websites/bb_main/BB_Website/securitylog.md):** Ledger of security hardening, CSP changes, and dependency audits.
+*   **[Labs (Experimental)](https://beaubremer.com/labs.html):** Creative coding and browser-based canvas experiments.
+*   **[Tor Onion Service Mirror](https://github.com/KnowOneActual/BB_Website/tree/onion-version):** Privacy-hardened version configured for Onion routing.
+
+## Contact
 
 *   **LinkedIn:** [/in/beau-bremer-chicago](https://www.linkedin.com/in/beau-bremer-chicago/)
 *   **Blog:** [blog.beaubremer.com](https://blog.beaubremer.com/)

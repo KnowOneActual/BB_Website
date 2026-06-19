@@ -122,3 +122,6 @@ __pycache__/
 *.pyo
 *.pyd
 .pytest_cache/
+
+# Workspace AI agents customization
+.agents/

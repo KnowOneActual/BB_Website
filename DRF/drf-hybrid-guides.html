@@ -81,8 +81,7 @@
       </select>
 
       <div class="layout-container">
-        <!-- Sidebar Navigation (Desktop) -->
-        <nav class="sidebar-nav" role="tablist" aria-label="Guides Navigation">
+        <nav class="sidebar-nav" aria-label="Guides Navigation">
           <h3 class="sidebar-title">Select Guide</h3>
 
           <!-- Search box -->
@@ -110,24 +109,24 @@
             />
           </div>
 
-          <ul class="nav-list">
-            <li class="nav-item active">
+          <ul class="nav-list" role="tablist" aria-label="Guides List">
+            <li class="nav-item active" role="presentation">
               <button data-target="general-guide" role="tab" aria-selected="true">
                 <span>🌐</span> General AV Guide
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <button data-target="meet-guide" role="tab" aria-selected="false">
                 <span>🟢</span> Google Meet Guide
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <button data-target="teams-guide" role="tab" aria-selected="false"><span>🟣</span> MS Teams Guide</button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <button data-target="zoom-guide" role="tab" aria-selected="false"><span>🔵</span> Zoom Room Guide</button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <button data-target="zoom-cheat-sheet" role="tab" aria-selected="false">
                 <span>📄</span> Zoom FOH Cheat Sheet
               </button>

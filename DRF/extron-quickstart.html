@@ -89,8 +89,8 @@
       }
 
       .tip {
-        background: rgba(102, 255, 166, 0.1);
-        border-left-color: #66ffa6;
+        background: rgba(255, 209, 102, 0.04);
+        border-left-color: var(--accent);
       }
 
       .code-block {
@@ -187,6 +187,33 @@
   </head>
 
   <body>
+    <header class="glass-header">
+      <div class="header-top">
+        <a href="drf-index.html" class="btn btn-secondary back-link">
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            stroke="currentColor"
+            stroke-width="2.5"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="19" x2="5" y1="12" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to Hub
+        </a>
+      </div>
+      <div class="header-main">
+        <h1>David Rubenstein Forum</h1>
+        <p class="subtitle">Extron & MacBook Guide</p>
+        <p class="desc">Step-by-step AV setups, troubleshooting, and macOS configurations.</p>
+      </div>
+    </header>
+
     <div class="guide-container">
       <section id="overview">
         <h2>Overview</h2>

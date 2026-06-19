@@ -8,20 +8,27 @@ This document establishes design standards, content guidelines, and technical sp
 ### Color Palette
 ```css
 /* Core Colors */
---bg: #0a0e17;        /* Dark navy background */
---fg: #f0f0f0;        /* Light foreground text */
---accent: #FFD166;    /* Gold primary accent */
---muted: #8a8d93;     /* Secondary muted text */
---card: #151a28;      /* Card/container background */
---border: #2a3042;    /* Border color */
+--bg: #060a12;                /* Deepest space navy background */
+--fg: #f3f4f6;                /* High-contrast light text */
+--accent: #ffd166;            /* Gold primary accent */
+--accent-glow: rgba(255, 209, 102, 0.25);
+--muted: #9ca3af;             /* Neutral gray muted text */
+--card: rgba(21, 26, 40, 0.65); /* Glassmorphic card background */
+--card-hover: rgba(30, 37, 56, 0.75);
+--border: rgba(255, 209, 102, 0.12); /* Gold-tinted border */
+--border-hover: rgba(255, 209, 102, 0.35);
 
-/* RGB values (for rgba usage) */
---accent-rgb: 255, 209, 102;
+/* Effects */
+--radius: 16px;
+--radius-sm: 10px;
+--transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+--glow: 0 0 20px var(--accent-glow);
+--shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 ```
 
 ### Typography
-- **Primary Font**: `'Inter', system-ui` - Body text, UI elements
-- **Display Font**: `'Poppins', sans-serif` - Headings, buttons, emphasis
+- **Primary Font**: `'Inter', system-ui` - Body text, UI elements, technical labels
+- **Display Font**: `'Poppins', sans-serif` - Headings, buttons, navigation links
 - **Monospace**: System monospace - Code blocks
 
 **Font Loading**: Always include `/fonts.css` in `<head>`:
@@ -31,14 +38,14 @@ This document establishes design standards, content guidelines, and technical sp
 
 ### Spacing & Layout
 - **Base Unit**: 4px (0.25rem)
-- **Border Radius**: `--radius: 12px`, `--radius-sm: 8px`
-- **Card Padding**: `1rem 1.25rem` (mobile: `0.9rem 1rem`)
-- **Section Spacing**: `1.5rem` margin between sections
+- **Border Radius**: `--radius: 16px`, `--radius-sm: 10px`
+- **Card Padding**: `2rem` (mobile: `1.25rem`)
+- **Section Spacing**: `2.5rem` margin between sections
 
 ### Interactive States
-- **Hover Effects**: Subtle `translateY(-2px)` for cards, border color changes
-- **Transitions**: `0.2s ease` for most interactions
-- **Focus States**: Gold outline with `box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.2)`
+- **Hover Effects**: Subtle `translateY(-4px)` with scaling for cards, border-color change, and glowing drop shadow.
+- **Transitions**: Use smooth bezier transition (`0.3s cubic-bezier(...)`) for state changes to avoid layout-shifting hovers.
+- **Focus States**: Accent-colored border with box-shadow glow indicator.
 
 ## Content Guidelines
 

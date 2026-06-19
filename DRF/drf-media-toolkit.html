@@ -226,10 +226,7 @@
             <div class="cards-4">
               <div class="subpanel">
                 <h4>Distance to delay</h4>
-                <div
-                  class="field-grid"
-                  style="grid-template-columns: 1.2fr 0.8fr; gap: var(--space-2); margin-bottom: var(--space-3)"
-                >
+                <div class="field-grid delay-field-grid">
                   <div class="field">
                     <label for="delayDistance">Distance</label>
                     <input id="delayDistance" type="number" value="12" min="0" step="0.1" />
@@ -243,9 +240,7 @@
                   </div>
                 </div>
                 <div class="toolbar"><button class="btn btn-primary" id="calcDelayBtn">Calculate</button></div>
-                <p class="result-box" id="delayResult" style="margin-top: var(--space-3)">
-                  Delay result will appear here.
-                </p>
+                <p class="result-box mt-3" id="delayResult">Delay result will appear here.</p>
               </div>
               <div class="subpanel">
                 <h4>Speech tuning macro</h4>
@@ -329,7 +324,7 @@
               </div>
               <div class="subpanel">
                 <h4>Sync Controls</h4>
-                <div class="field" style="margin-bottom: var(--space-3)">
+                <div class="field mb-3">
                   <label for="syncDelayRange">Simulate Audio Offset: <span id="syncDelayVal">0 ms</span></label>
                   <input
                     type="range"
@@ -346,7 +341,7 @@
                   <button class="btn btn-primary" id="btnToggleSync">▶ Run Sync Sweep</button>
                   <button class="btn" id="btnResetSync">Reset</button>
                 </div>
-                <p class="result-box" style="margin-top: var(--space-4)">
+                <p class="result-box mt-4">
                   <strong>Negative (-)</strong>: Audio triggers <em>before</em> the sync flash.<br />
                   <strong>Positive (+)</strong>: Audio triggers <em>after</em> the sync flash (typical DSP lag).<br />
                   Press <strong>spacebar</strong> to play/pause when in AV Sync section.
@@ -406,15 +401,15 @@
               </div>
             </div>
 
-            <div class="cards-2" style="margin-top: var(--space-6)">
+            <div class="cards-2 mt-6">
               <div class="subpanel">
                 <h4>Standby & Still Slide Generator (Logo/SNAFU)</h4>
-                <p style="margin-bottom: var(--space-4)">
+                <p class="mb-4">
                   Create high-quality standby, walk-in, or technical difficulty slides with custom text and colors for
                   switcher Still Stores.
                 </p>
 
-                <div class="field-grid" style="margin-bottom: var(--space-3)">
+                <div class="field-grid mb-3">
                   <div class="field">
                     <label for="slideTemplate">Slide Template</label>
                     <select id="slideTemplate">
@@ -435,12 +430,12 @@
                   </div>
                 </div>
 
-                <div class="field" id="slideLogoUploadField" style="margin-bottom: var(--space-3); display: none">
+                <div class="field mb-3 d-none" id="slideLogoUploadField">
                   <label for="slideLogoInput">Upload Client Logo</label>
                   <input type="file" id="slideLogoInput" accept="image/*" />
                 </div>
 
-                <div class="field-grid" style="margin-bottom: var(--space-3)">
+                <div class="field-grid mb-3">
                   <div class="field">
                     <label for="slideTitle">Client / Event Name</label>
                     <input id="slideTitle" value="ACME CORP KEYNOTE" placeholder="e.g. Acme Corp Annual Keynote" />
@@ -455,7 +450,7 @@
                   </div>
                 </div>
 
-                <div class="field-grid-3" style="margin-bottom: var(--space-3)">
+                <div class="field-grid-3 mb-3">
                   <div class="field">
                     <label for="slideBgType">Bg Type</label>
                     <select id="slideBgType">
@@ -466,42 +461,22 @@
                   </div>
                   <div class="field">
                     <label for="slidePrimaryColor">Theme / Primary</label>
-                    <input
-                      type="color"
-                      id="slidePrimaryColor"
-                      value="#0f172a"
-                      style="padding: 0; height: 44px; cursor: pointer"
-                    />
+                    <input type="color" id="slidePrimaryColor" value="#0f172a" class="color-picker-input" />
                   </div>
                   <div class="field">
                     <label for="slideSecondaryColor">Secondary Color</label>
-                    <input
-                      type="color"
-                      id="slideSecondaryColor"
-                      value="#1e293b"
-                      style="padding: 0; height: 44px; cursor: pointer"
-                    />
+                    <input type="color" id="slideSecondaryColor" value="#1e293b" class="color-picker-input" />
                   </div>
                 </div>
 
-                <div class="field-grid" style="margin-bottom: var(--space-4)">
+                <div class="field-grid mb-4">
                   <div class="field">
                     <label for="slideTextColor">Text Color</label>
-                    <input
-                      type="color"
-                      id="slideTextColor"
-                      value="#f8fafc"
-                      style="padding: 0; height: 44px; cursor: pointer"
-                    />
+                    <input type="color" id="slideTextColor" value="#f8fafc" class="color-picker-input" />
                   </div>
                   <div class="field">
                     <label for="slideAccentColor">Accent Color</label>
-                    <input
-                      type="color"
-                      id="slideAccentColor"
-                      value="#38bdf8"
-                      style="padding: 0; height: 44px; cursor: pointer"
-                    />
+                    <input type="color" id="slideAccentColor" value="#38bdf8" class="color-picker-input" />
                   </div>
                 </div>
 
@@ -514,21 +489,21 @@
 
               <div class="subpanel">
                 <h4>Staging Best Practices</h4>
-                <ul style="margin: 0; padding-left: var(--space-4)">
-                  <li style="margin-bottom: var(--space-2)">
+                <ul class="m-0 pl-4">
+                  <li class="mb-2">
                     <strong>Still Store Upload</strong>: Always pre-load a static logo slide and a SNAFU slide into the
                     main switcher STILL/LOGO store (e.g. Barco E2 or ATEM) on-site.
                   </li>
-                  <li style="margin-bottom: var(--space-2)">
+                  <li class="mb-2">
                     <strong>Destination Mappings</strong>: Map a dedicated physical button on the control surface
                     (Stream Deck, Event Master tool) to transition the program screen to the logo/still store instantly.
                   </li>
-                  <li style="margin-bottom: var(--space-2)">
+                  <li class="mb-2">
                     <strong>Logo Formats</strong>: For transparent logo overlays, upload PNG files with transparent
                     backgrounds. For full frame background stills, use 1080p or 4K high-quality PNGs or 100% quality
                     JPGs.
                   </li>
-                  <li style="margin-bottom: var(--space-2)">
+                  <li class="mb-2">
                     <strong>Text Contrast</strong>: Ensure text uses a high contrast color (like white or bright yellow)
                     over the dark brand background to remain clearly legible under bright venue wash lighting.
                   </li>

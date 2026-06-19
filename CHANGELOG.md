@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.6] - 2026-06-19
+
+### Added
+- **Accessible Progress Names on Hybrid Portal:** Added `aria-label` tags to all 8 operator checklist progress indicators within `drf-hybrid-guides.html` to ensure full compliance with Deque AXE / Webhint accessibility guidelines.
+
+### Fixed
+- **Inline Style Elimination in AV Lab:** Migrated all 21 remaining inline layout, visibility, and color-picker style overrides from `drf-media-toolkit.html` into utility classes in `drf-media-toolkit.css` to comply with CSP guidelines.
+- **Toggled Upload Visibility Cleaner:** Updated custom logo input toggles in `drf-media-toolkit.js` to use `classList.toggle('d-none')` rather than dynamic inline `.style.display` modification.
+
 ## [2.2.5] - 2026-06-19
 
 ### Added

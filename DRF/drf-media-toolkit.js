@@ -1447,7 +1447,7 @@ function attachEvents() {
   // Standby Slide Generator Listeners
   const updateLogoUploadVisibility = () => {
     const val = $('#slideLogoMode').value;
-    $('#slideLogoUploadField').style.display = val === 'upload' ? 'grid' : 'none';
+    $('#slideLogoUploadField').classList.toggle('d-none', val !== 'upload');
   };
 
   if ($('#slideLogoMode')) {

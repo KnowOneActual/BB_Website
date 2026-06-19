@@ -32,18 +32,18 @@
   --header-height: 76px;
 
   /* DRF Theme Colors (Light & Dark default to DRF portal palette) */
-  --color-bg: #0a0e17;
-  --color-surface: #151a28;
-  --color-surface-2: #1e2538;
-  --color-surface-offset: #131926;
-  --color-surface-dynamic: #242c42;
-  --color-border: #2a3042;
-  --color-divider: #1f2536;
+  --color-bg: #060a12;
+  --color-surface: rgba(21, 26, 40, 0.65);
+  --color-surface-2: rgba(30, 37, 56, 0.85);
+  --color-surface-offset: #0f1422;
+  --color-surface-dynamic: rgba(42, 52, 79, 0.8);
+  --color-border: rgba(255, 209, 102, 0.12);
+  --color-divider: rgba(255, 209, 102, 0.08);
 
-  --color-text: #f0f0f0;
-  --color-text-muted: #8a8d93;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
   --color-text-faint: #5a5e6b;
-  --color-text-inverse: #0a0e17;
+  --color-text-inverse: #060a12;
 
   --color-primary: #ffd166; /* DRF Gold primary accent */
   --color-primary-hover: #ffc43d;
@@ -55,18 +55,18 @@
 
 [data-theme='light'] {
   /* Retain DRF aesthetic in light-toggled state to maintain high contrast guidelines */
-  --color-bg: #0a0e17;
-  --color-surface: #151a28;
-  --color-surface-2: #1e2538;
-  --color-surface-offset: #131926;
-  --color-surface-dynamic: #242c42;
-  --color-border: #2a3042;
-  --color-divider: #1f2536;
+  --color-bg: #060a12;
+  --color-surface: rgba(21, 26, 40, 0.65);
+  --color-surface-2: rgba(30, 37, 56, 0.85);
+  --color-surface-offset: #0f1422;
+  --color-surface-dynamic: rgba(42, 52, 79, 0.8);
+  --color-border: rgba(255, 209, 102, 0.12);
+  --color-divider: rgba(255, 209, 102, 0.08);
 
-  --color-text: #f0f0f0;
-  --color-text-muted: #8a8d93;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
   --color-text-faint: #5a5e6b;
-  --color-text-inverse: #0a0e17;
+  --color-text-inverse: #060a12;
 
   --color-primary: #ffd166;
   --color-primary-hover: #ffc43d;
@@ -74,18 +74,18 @@
 }
 
 [data-theme='dark'] {
-  --color-bg: #0a0e17;
-  --color-surface: #151a28;
-  --color-surface-2: #1e2538;
-  --color-surface-offset: #131926;
-  --color-surface-dynamic: #242c42;
-  --color-border: #2a3042;
-  --color-divider: #1f2536;
+  --color-bg: #060a12;
+  --color-surface: rgba(21, 26, 40, 0.65);
+  --color-surface-2: rgba(30, 37, 56, 0.85);
+  --color-surface-offset: #0f1422;
+  --color-surface-dynamic: rgba(42, 52, 79, 0.8);
+  --color-border: rgba(255, 209, 102, 0.12);
+  --color-divider: rgba(255, 209, 102, 0.08);
 
-  --color-text: #f0f0f0;
-  --color-text-muted: #8a8d93;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
   --color-text-faint: #5a5e6b;
-  --color-text-inverse: #0a0e17;
+  --color-text-inverse: #060a12;
 
   --color-primary: #ffd166;
   --color-primary-hover: #ffc43d;

@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.3] - 2026-06-18
+
+### Added
+- **DRF Hybrid Meeting Guides Portal:** Created a centralized, interactive, multi-platform documentation portal (`/DRF/drf-hybrid-guides.html`, `.css`, `.js`).
+  - Integrated five AV and operator guides imported from the Obsidian Vault: *General Hybrid AV Guide*, *Google Meet Guide*, *Microsoft Teams Guide*, *Zoom Guide*, and *Zoom FOH Operator Cheat Sheet*.
+  - Implemented interactive operator checklists that track task completion via progress bars and persist checked states using `localStorage` (with checklist Reset capabilities).
+  - Implemented client-side live search with query text highlighting across all active guide elements.
+  - Added code blocks with click-to-copy utility.
+  - Integrated Mermaid.js with custom color-scheme overrides matching the corporate Indigo/Gray/Gold design system.
+  - Added a persistent glassmorphic beta warning banner at the top of the portal reminding users of active development.
+- **Portal Navigation:** Added a featured resource card in `/DRF/drf-index.html` referencing the portal under *Guides*, *Planning*, and *Troubleshooting*.
+
 ## [2.2.2] - 2026-06-17
 
 ### Added

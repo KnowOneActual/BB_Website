@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.7] - 2026-08-09
+
+### Fixed
+- **Root-Relative 404 Stylesheet Links:** Updated stylesheet and font links in `404.html` from relative (`style.css`, `fonts.css`) to root-relative paths (`/style.css`, `/fonts.css`) to ensure custom 404 pages render correctly with full styling when triggered on arbitrary nested subpaths.
+- **404 Action Links & Favicons:** Updated navigation links to root-relative routes (`/` for Return Home and `/toolbag.html` for Check Toolbag) and added root-relative favicon references.
+
+### Changed
+- **404 Visual & UX Polish:** Enhanced `404.html` with an ambient indigo glow background effect, FontAwesome button icons, and responsive layout typography. Rebuilt compiled Tailwind CSS bundle (`style.css`).
+
 ## [2.2.6] - 2026-06-19
 
 ### Added

@@ -1,407 +1,567 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Davis Audio | Field AV Installation Notes</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta name="theme-color" content="#0b0f19">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Davis Audio | Field AV Installation Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="theme-color" content="#0b0f19" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  </head>
+  <body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
 
-  <!-- Toast Notification Container -->
-  <div id="toast-container" class="toast-container"></div>
-
-  <!-- App Header -->
-  <header class="app-header">
-    <div class="header-top">
-      <div class="brand">
-        <div class="brand-icon">DA</div>
-        <div class="brand-text">
-          <h1>Davis Audio</h1>
-          <p>FIELD TECH ASSISTANT</p>
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="header-top">
+        <div class="brand">
+          <div class="brand-icon">DA</div>
+          <div class="brand-text">
+            <h1>Davis Audio</h1>
+            <p>FIELD TECH ASSISTANT</p>
+          </div>
+        </div>
+        <div class="sync-status" id="save-badge">
+          <span class="status-dot"></span>
+          <span id="save-status-text">AUTO-SAVED</span>
         </div>
       </div>
-      <div class="sync-status" id="save-badge">
-        <span class="status-dot"></span>
-        <span id="save-status-text">AUTO-SAVED</span>
+
+      <div class="header-inputs">
+        <div class="form-group" style="margin: 0">
+          <input type="text" id="client-name" placeholder="Client Name / Job Site" autocomplete="off" />
+        </div>
+        <div class="form-group" style="margin: 0">
+          <input type="date" id="job-date" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Top Actions Bar -->
+    <div class="top-actions">
+      <button class="btn btn-outline" onclick="loadSampleData()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+        </svg>
+        Sample Data
+      </button>
+      <button class="btn btn-outline" onclick="clearFormConfirm()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+          ></path>
+        </svg>
+        Clear Form
+      </button>
+      <button class="btn btn-secondary" onclick="openDailyLogModal()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Daily Log
+      </button>
+      <button class="btn btn-primary" onclick="openMarkdownModal()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path
+            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+          ></path>
+        </svg>
+        Full Spec Export
+      </button>
+    </div>
+
+    <!-- Main Container -->
+    <main class="app-container">
+      <!-- SECTION 1: GENERAL NOTES -->
+      <section id="sec-general" class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
+            </svg>
+            1. General Job Notes
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Client Questions</label>
+          <div class="dynamic-list" id="list-questions"></div>
+          <button
+            class="btn btn-outline"
+            style="margin-top: 8px; width: 100%"
+            onclick="addDynamicItem('list-questions')"
+          >
+            + Add Question
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>General Notes</label>
+          <textarea
+            id="general-notes"
+            placeholder="Enter general site observations, installation details..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Active Issues</label>
+          <div class="dynamic-list" id="list-issues"></div>
+          <button class="btn btn-outline" style="margin-top: 8px; width: 100%" onclick="addDynamicItem('list-issues')">
+            + Add Issue
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>Action Items & Logistics</label>
+          <div class="grid-3">
+            <div>
+              <label style="color: var(--primary)">Bring On Next Visit</label>
+              <div class="dynamic-list" id="list-next-visit"></div>
+              <button
+                class="btn btn-outline"
+                style="margin-top: 6px; width: 100%"
+                onclick="addDynamicItem('list-next-visit')"
+              >
+                + Item
+              </button>
+            </div>
+            <div>
+              <label style="color: var(--secondary)">Van Run</label>
+              <div class="dynamic-list" id="list-van-run"></div>
+              <button
+                class="btn btn-outline"
+                style="margin-top: 6px; width: 100%"
+                onclick="addDynamicItem('list-van-run')"
+              >
+                + Item
+              </button>
+            </div>
+            <div>
+              <label style="color: #a855f7">Home Depot Run</label>
+              <div class="dynamic-list" id="list-hd-run"></div>
+              <button
+                class="btn btn-outline"
+                style="margin-top: 6px; width: 100%"
+                onclick="addDynamicItem('list-hd-run')"
+              >
+                + Item
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: MOUNTING SPECS -->
+      <section id="sec-mounting" class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+              ></path>
+            </svg>
+            2. Housing & Mounting Specs
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Wall Measurements (Center)</label>
+          <div class="grid-2">
+            <input type="text" id="wall-tall" placeholder="Wall Height (e.g. 64.5 in)" />
+            <input type="text" id="wall-wide" placeholder="Wall Width (e.g. 80.0 in)" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>TV Measurements & Hardware</label>
+          <div class="grid-2">
+            <input type="text" id="tv-tall" placeholder="TV Height Center" />
+            <input type="text" id="tv-wide" placeholder="TV Width Center" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="grid-2">
+            <div>
+              <label>TV Bracket Model</label>
+              <input type="text" id="tv-bracket" placeholder="e.g. SANUS VLT7" />
+            </div>
+            <div>
+              <label>Soundbar Model</label>
+              <input type="text" id="soundbar-model" placeholder="e.g. Sonos Arc" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="grid-2">
+            <div>
+              <label>Soundbar Bracket</label>
+              <input type="text" id="soundbar-bracket" placeholder="e.g. SANUS Mount" />
+            </div>
+            <div>
+              <label>TV + Soundbar Total Height</label>
+              <input type="text" id="tv-sb-combined" placeholder="Combined Dimension" />
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-banner">
+          <div>
+            <div class="calc-title">Router Setup</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted)">ST & MAC Addresses</div>
+          </div>
+          <div style="text-align: right">
+            <input
+              type="text"
+              id="router-st"
+              class="mono-input"
+              placeholder="Router ST"
+              style="width: 140px; margin-bottom: 4px; font-size: 0.8rem; padding: 4px 8px"
+            />
+            <input
+              type="text"
+              id="router-mac"
+              class="mono-input"
+              placeholder="Router MAC"
+              style="width: 140px; font-size: 0.8rem; padding: 4px 8px"
+            />
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 16px">
+          <div>
+            <label>LAN Connections</label>
+            <div class="dynamic-list" id="list-lan"></div>
+            <button class="btn btn-outline" style="margin-top: 6px; width: 100%" onclick="addDynamicItem('list-lan')">
+              + LAN Port
+            </button>
+          </div>
+          <div>
+            <label>WAN Connections</label>
+            <div class="dynamic-list" id="list-wan"></div>
+            <button class="btn btn-outline" style="margin-top: 6px; width: 100%" onclick="addDynamicItem('list-wan')">
+              + WAN Port
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: RACK & WIRING -->
+      <section id="sec-rack" class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+              ></path>
+            </svg>
+            3. Core Rack & Wiring
+          </div>
+        </div>
+
+        <!-- Core Switch Ports -->
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px">
+            <label style="color: var(--primary); margin: 0">Core Switch (16 Ports)</label>
+            <div style="display: flex; gap: 6px">
+              <input
+                type="text"
+                id="switch-st"
+                class="mono-input"
+                placeholder="ST"
+                style="width: 100px; padding: 4px 8px; font-size: 0.75rem"
+              />
+              <input
+                type="text"
+                id="switch-mac"
+                class="mono-input"
+                placeholder="MAC"
+                style="width: 110px; padding: 4px 8px; font-size: 0.75rem"
+              />
+            </div>
+          </div>
+          <div class="ports-grid" id="switch-ports-grid"></div>
+        </div>
+
+        <!-- Wattbox PDU Outlets -->
+        <div class="form-group" style="margin-top: 20px">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px">
+            <label style="color: var(--secondary); margin: 0">Wattbox PDU (12 Outlets)</label>
+            <div style="display: flex; gap: 6px">
+              <input
+                type="text"
+                id="wattbox-st"
+                class="mono-input"
+                placeholder="ST"
+                style="width: 100px; padding: 4px 8px; font-size: 0.75rem"
+              />
+              <input
+                type="text"
+                id="wattbox-mac"
+                class="mono-input"
+                placeholder="MAC"
+                style="width: 110px; padding: 4px 8px; font-size: 0.75rem"
+              />
+            </div>
+          </div>
+          <div class="ports-grid" id="wattbox-outlets-grid"></div>
+        </div>
+
+        <!-- AVR Inputs & Control4 -->
+        <div class="form-group" style="margin-top: 20px">
+          <label>AVR & Control4 Matrix</label>
+          <div class="grid-2">
+            <div>
+              <label style="font-size: 0.75rem">HDMI Inputs</label>
+              <div id="avr-hdmi-list" style="display: flex; flex-direction: column; gap: 6px"></div>
+            </div>
+            <div>
+              <label style="font-size: 0.75rem">HDMI & RCA Audio Outputs</label>
+              <input type="text" id="avr-hdmi-arc" placeholder="HDMI 1 ARC/eARC" style="margin-bottom: 6px" />
+              <input type="text" id="avr-hdmi-mon" placeholder="HDMI 2 Monitor" style="margin-bottom: 12px" />
+
+              <label style="font-size: 0.75rem">RCA Audio Inputs</label>
+              <div id="avr-rca-list" style="display: flex; flex-direction: column; gap: 6px"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control4 C4-CORE1 -->
+        <div class="form-group" style="margin-top: 16px">
+          <label style="color: #a855f7">Control4 C4-CORE1 Setup</label>
+          <div class="grid-2" style="margin-bottom: 8px">
+            <input type="text" id="c4-hdmi-out" placeholder="HDMI Out (e.g. Family room AVR)" />
+            <input type="text" id="c4-eth-out" placeholder="Ethernet Out (e.g. TV net)" />
+          </div>
+          <label style="font-size: 0.75rem">IR Outputs (1-4)</label>
+          <div class="grid-2">
+            <input type="text" id="c4-ir-1" placeholder="IR Output 1" />
+            <input type="text" id="c4-ir-2" placeholder="IR Output 2" />
+            <input type="text" id="c4-ir-3" placeholder="IR Output 3" />
+            <input type="text" id="c4-ir-4" placeholder="IR Output 4" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: SONOS & CREDENTIALS -->
+      <section id="sec-creds" class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
+            </svg>
+            4. Audio & Credentials Vault
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label style="color: var(--accent-green)">Sonos System</label>
+          <div style="margin-bottom: 8px">
+            <label style="font-size: 0.75rem">Sonos Zones List</label>
+            <div class="dynamic-list" id="list-sonos-zones"></div>
+            <button
+              class="btn btn-outline"
+              style="margin-top: 6px; width: 100%"
+              onclick="addDynamicItem('list-sonos-zones')"
+            >
+              + Sonos Zone
+            </button>
+          </div>
+
+          <div style="margin-top: 12px">
+            <label style="font-size: 0.75rem; color: var(--text-muted)"
+              >Sonos Hardware & Devices (Port, Amp, Arc, Era 100/300, Sub, etc.)</label
+            >
+            <div
+              id="sonos-devices-list"
+              style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px"
+            ></div>
+            <button class="btn btn-outline" style="width: 100%" onclick="addSonosDevice()">+ Add Sonos Product</button>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px">
+          <label style="color: var(--secondary)">Device & Network Logins</label>
+
+          <div class="dynamic-list" id="creds-list">
+            <!-- Populated by JS for Modem, Router, Switch, Wattbox, Sonos, eero, Wi-Fi, Control4, Apple ID, etc. -->
+          </div>
+          <button class="btn btn-outline" style="width: 100%; margin-top: 8px" onclick="addCustomCredential()">
+            + Add Custom Credential
+          </button>
+        </div>
+      </section>
+
+      <!-- SECTION 5: DAILY LOG & SITE PHOTOS -->
+      <section id="sec-photos" class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            5. Daily Log & Site Documentation
+          </div>
+        </div>
+
+        <!-- Tech Times & Inventory Used -->
+        <div class="form-group">
+          <label style="color: var(--secondary)">Tech Hours & On-Site Times</label>
+          <div class="grid-2">
+            <div>
+              <label style="font-size: 0.75rem">Arrival Time</label>
+              <input type="time" id="tech-arrival" />
+            </div>
+            <div>
+              <label style="font-size: 0.75rem">Departure Time</label>
+              <input type="time" id="tech-departure" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label style="color: var(--primary)">Inventory Used for Van Today</label>
+          <div class="dynamic-list" id="list-inventory-used"></div>
+          <button
+            class="btn btn-outline"
+            style="margin-top: 6px; width: 100%"
+            onclick="addDynamicItem('list-inventory-used')"
+          >
+            + Inventory Item Used
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>Site Photos (Camera / Upload)</label>
+          <div class="photo-uploader" onclick="document.getElementById('photo-input').click()">
+            <svg
+              width="32"
+              height="32"
+              fill="none"
+              stroke="var(--primary)"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              style="margin: 0 auto 8px"
+            >
+              <path
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+            <div style="font-size: 0.85rem; font-weight: 700">Tap to take photo or select images</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted)">Supports JPG, PNG, Mobile Camera</div>
+            <input
+              type="file"
+              id="photo-input"
+              accept="image/*"
+              multiple
+              style="display: none"
+              onchange="handlePhotoUpload(event)"
+            />
+          </div>
+          <div class="photo-gallery" id="photo-gallery"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Correspondences</label>
+          <textarea
+            id="email-correspondence"
+            placeholder="Paste or summarize customer emails, architect notes..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Daily Summary Log</label>
+          <textarea
+            id="daily-log-summary"
+            placeholder="Summary of work completed today, technician sign-off..."
+          ></textarea>
+        </div>
+      </section>
+    </main>
+
+    <!-- Sticky Mobile Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="scrollToSection('sec-general', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          ></path>
+        </svg>
+        Notes
+      </button>
+      <button class="nav-item" onclick="scrollToSection('sec-mounting', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+        </svg>
+        Mount
+      </button>
+      <button class="nav-item" onclick="scrollToSection('sec-rack', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+          ></path>
+        </svg>
+        Wiring
+      </button>
+      <button class="nav-item" onclick="openDailyLogModal()">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Daily Log
+      </button>
+      <button class="nav-item" onclick="openMarkdownModal()">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path
+            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+          ></path>
+        </svg>
+        Full Spec
+      </button>
+    </nav>
+
+    <!-- Full Spec Export Modal -->
+    <div id="md-modal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 style="font-size: 1.1rem; color: var(--primary)">Obsidian Full Spec Markdown</h3>
+          <button class="btn btn-outline" style="padding: 4px 8px; min-height: 30px" onclick="closeMarkdownModal()">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <textarea id="markdown-output" readonly></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="downloadMarkdownFile()">Download .md</button>
+          <button class="btn btn-primary" onclick="copyMarkdownToClipboard()">Copy to Clipboard</button>
+        </div>
       </div>
     </div>
-    
-    <div class="header-inputs">
-      <div class="form-group" style="margin:0;">
-        <input type="text" id="client-name" placeholder="Client Name / Job Site" autocomplete="off">
-      </div>
-      <div class="form-group" style="margin:0;">
-        <input type="date" id="job-date">
+
+    <!-- Dedicated Daily Log Modal -->
+    <div id="daily-log-modal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 style="font-size: 1.1rem; color: var(--secondary)">Generate Daily Log</h3>
+          <button class="btn btn-outline" style="padding: 4px 8px; min-height: 30px" onclick="closeDailyLogModal()">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <textarea id="daily-log-output" readonly></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="downloadDailyLogFile()">Download Log</button>
+          <button class="btn btn-secondary" onclick="copyDailyLogToClipboard()">Copy Daily Log</button>
+        </div>
       </div>
     </div>
-  </header>
 
-  <!-- Top Actions Bar -->
-  <div class="top-actions">
-    <button class="btn btn-outline" onclick="loadSampleData()">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-      Sample Data
-    </button>
-    <button class="btn btn-outline" onclick="clearFormConfirm()">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-      Clear Form
-    </button>
-    <button class="btn btn-secondary" onclick="openDailyLogModal()">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-      Daily Log
-    </button>
-    <button class="btn btn-primary" onclick="openMarkdownModal()">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-      Full Spec Export
-    </button>
-  </div>
-
-  <!-- Main Container -->
-  <main class="app-container">
-
-    <!-- SECTION 1: GENERAL NOTES -->
-    <section id="sec-general" class="section-card">
-      <div class="section-header">
-        <div class="section-title">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-          1. General Job Notes
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Client Questions</label>
-        <div class="dynamic-list" id="list-questions"></div>
-        <button class="btn btn-outline" style="margin-top:8px; width:100%;" onclick="addDynamicItem('list-questions')">+ Add Question</button>
-      </div>
-
-      <div class="form-group">
-        <label>General Notes</label>
-        <textarea id="general-notes" placeholder="Enter general site observations, installation details..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Active Issues</label>
-        <div class="dynamic-list" id="list-issues"></div>
-        <button class="btn btn-outline" style="margin-top:8px; width:100%;" onclick="addDynamicItem('list-issues')">+ Add Issue</button>
-      </div>
-
-      <div class="form-group">
-        <label>Action Items & Logistics</label>
-        <div class="grid-3">
-          <div>
-            <label style="color:var(--primary);">Bring On Next Visit</label>
-            <div class="dynamic-list" id="list-next-visit"></div>
-            <button class="btn btn-outline" style="margin-top:6px; width:100%;" onclick="addDynamicItem('list-next-visit')">+ Item</button>
-          </div>
-          <div>
-            <label style="color:var(--secondary);">Van Run</label>
-            <div class="dynamic-list" id="list-van-run"></div>
-            <button class="btn btn-outline" style="margin-top:6px; width:100%;" onclick="addDynamicItem('list-van-run')">+ Item</button>
-          </div>
-          <div>
-            <label style="color:#a855f7;">Home Depot Run</label>
-            <div class="dynamic-list" id="list-hd-run"></div>
-            <button class="btn btn-outline" style="margin-top:6px; width:100%;" onclick="addDynamicItem('list-hd-run')">+ Item</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: MOUNTING SPECS -->
-    <section id="sec-mounting" class="section-card">
-      <div class="section-header">
-        <div class="section-title">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
-          2. Housing & Mounting Specs
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Wall Measurements (Center)</label>
-        <div class="grid-2">
-          <input type="text" id="wall-tall" placeholder="Wall Height (e.g. 64.5 in)">
-          <input type="text" id="wall-wide" placeholder="Wall Width (e.g. 80.0 in)">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>TV Measurements & Hardware</label>
-        <div class="grid-2">
-          <input type="text" id="tv-tall" placeholder="TV Height Center">
-          <input type="text" id="tv-wide" placeholder="TV Width Center">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="grid-2">
-          <div>
-            <label>TV Bracket Model</label>
-            <input type="text" id="tv-bracket" placeholder="e.g. SANUS VLT7">
-          </div>
-          <div>
-            <label>Soundbar Model</label>
-            <input type="text" id="soundbar-model" placeholder="e.g. Sonos Arc">
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="grid-2">
-          <div>
-            <label>Soundbar Bracket</label>
-            <input type="text" id="soundbar-bracket" placeholder="e.g. SANUS Mount">
-          </div>
-          <div>
-            <label>TV + Soundbar Total Height</label>
-            <input type="text" id="tv-sb-combined" placeholder="Combined Dimension">
-          </div>
-        </div>
-      </div>
-
-      <div class="calc-banner">
-        <div>
-          <div class="calc-title">Router Setup</div>
-          <div style="font-size:0.8rem; color:var(--text-muted);">ST & MAC Addresses</div>
-        </div>
-        <div style="text-align:right;">
-          <input type="text" id="router-st" class="mono-input" placeholder="Router ST" style="width:140px; margin-bottom:4px; font-size:0.8rem; padding:4px 8px;">
-          <input type="text" id="router-mac" class="mono-input" placeholder="Router MAC" style="width:140px; font-size:0.8rem; padding:4px 8px;">
-        </div>
-      </div>
-
-      <div class="grid-2" style="margin-top:16px;">
-        <div>
-          <label>LAN Connections</label>
-          <div class="dynamic-list" id="list-lan"></div>
-          <button class="btn btn-outline" style="margin-top:6px; width:100%;" onclick="addDynamicItem('list-lan')">+ LAN Port</button>
-        </div>
-        <div>
-          <label>WAN Connections</label>
-          <div class="dynamic-list" id="list-wan"></div>
-          <button class="btn btn-outline" style="margin-top:6px; width:100%;" onclick="addDynamicItem('list-wan')">+ WAN Port</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: RACK & WIRING -->
-    <section id="sec-rack" class="section-card">
-      <div class="section-header">
-        <div class="section-title">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-          3. Core Rack & Wiring
-        </div>
-      </div>
-
-      <!-- Core Switch Ports -->
-      <div class="form-group">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <label style="color:var(--primary); margin:0;">Core Switch (16 Ports)</label>
-          <div style="display:flex; gap:6px;">
-            <input type="text" id="switch-st" class="mono-input" placeholder="ST" style="width:100px; padding:4px 8px; font-size:0.75rem;">
-            <input type="text" id="switch-mac" class="mono-input" placeholder="MAC" style="width:110px; padding:4px 8px; font-size:0.75rem;">
-          </div>
-        </div>
-        <div class="ports-grid" id="switch-ports-grid"></div>
-      </div>
-
-      <!-- Wattbox PDU Outlets -->
-      <div class="form-group" style="margin-top:20px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <label style="color:var(--secondary); margin:0;">Wattbox PDU (12 Outlets)</label>
-          <div style="display:flex; gap:6px;">
-            <input type="text" id="wattbox-st" class="mono-input" placeholder="ST" style="width:100px; padding:4px 8px; font-size:0.75rem;">
-            <input type="text" id="wattbox-mac" class="mono-input" placeholder="MAC" style="width:110px; padding:4px 8px; font-size:0.75rem;">
-          </div>
-        </div>
-        <div class="ports-grid" id="wattbox-outlets-grid"></div>
-      </div>
-
-      <!-- AVR Inputs & Control4 -->
-      <div class="form-group" style="margin-top:20px;">
-        <label>AVR & Control4 Matrix</label>
-        <div class="grid-2">
-          <div>
-            <label style="font-size:0.75rem;">HDMI Inputs</label>
-            <div id="avr-hdmi-list" style="display:flex; flex-direction:column; gap:6px;"></div>
-          </div>
-          <div>
-            <label style="font-size:0.75rem;">HDMI & RCA Audio Outputs</label>
-            <input type="text" id="avr-hdmi-arc" placeholder="HDMI 1 ARC/eARC" style="margin-bottom:6px;">
-            <input type="text" id="avr-hdmi-mon" placeholder="HDMI 2 Monitor" style="margin-bottom:12px;">
-            
-            <label style="font-size:0.75rem;">RCA Audio Inputs</label>
-            <div id="avr-rca-list" style="display:flex; flex-direction:column; gap:6px;"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Control4 C4-CORE1 -->
-      <div class="form-group" style="margin-top:16px;">
-        <label style="color:#a855f7;">Control4 C4-CORE1 Setup</label>
-        <div class="grid-2" style="margin-bottom:8px;">
-          <input type="text" id="c4-hdmi-out" placeholder="HDMI Out (e.g. Family room AVR)">
-          <input type="text" id="c4-eth-out" placeholder="Ethernet Out (e.g. TV net)">
-        </div>
-        <label style="font-size:0.75rem;">IR Outputs (1-4)</label>
-        <div class="grid-2">
-          <input type="text" id="c4-ir-1" placeholder="IR Output 1">
-          <input type="text" id="c4-ir-2" placeholder="IR Output 2">
-          <input type="text" id="c4-ir-3" placeholder="IR Output 3">
-          <input type="text" id="c4-ir-4" placeholder="IR Output 4">
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: SONOS & CREDENTIALS -->
-    <section id="sec-creds" class="section-card">
-      <div class="section-header">
-        <div class="section-title">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-          4. Audio & Credentials Vault
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label style="color:var(--accent-green);">Sonos System</label>
-        <div style="margin-bottom:8px;">
-          <label style="font-size:0.75rem;">Sonos Zones List</label>
-          <div class="dynamic-list" id="list-sonos-zones"></div>
-          <button class="btn btn-outline" style="margin-top:6px; width:100%;" onclick="addDynamicItem('list-sonos-zones')">+ Sonos Zone</button>
-        </div>
-
-        <div style="margin-top:12px;">
-          <label style="font-size:0.75rem; color:var(--text-muted);">Sonos Hardware & Devices (Port, Amp, Arc, Era 100/300, Sub, etc.)</label>
-          <div id="sonos-devices-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:8px;"></div>
-          <button class="btn btn-outline" style="width:100%;" onclick="addSonosDevice()">+ Add Sonos Product</button>
-        </div>
-      </div>
-
-      <div class="form-group" style="margin-top:20px;">
-        <label style="color:var(--secondary);">Device & Network Logins</label>
-        
-        <div class="dynamic-list" id="creds-list">
-          <!-- Populated by JS for Modem, Router, Switch, Wattbox, Sonos, eero, Wi-Fi, Control4, Apple ID, etc. -->
-        </div>
-        <button class="btn btn-outline" style="width:100%; margin-top:8px;" onclick="addCustomCredential()">+ Add Custom Credential</button>
-      </div>
-    </section>
-
-    <!-- SECTION 5: DAILY LOG & SITE PHOTOS -->
-    <section id="sec-photos" class="section-card">
-      <div class="section-header">
-        <div class="section-title">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          5. Daily Log & Site Documentation
-        </div>
-      </div>
-
-      <!-- Tech Times & Inventory Used -->
-      <div class="form-group">
-        <label style="color:var(--secondary);">Tech Hours & On-Site Times</label>
-        <div class="grid-2">
-          <div>
-            <label style="font-size:0.75rem;">Arrival Time</label>
-            <input type="time" id="tech-arrival">
-          </div>
-          <div>
-            <label style="font-size:0.75rem;">Departure Time</label>
-            <input type="time" id="tech-departure">
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label style="color:var(--primary);">Inventory Used for Van Today</label>
-        <div class="dynamic-list" id="list-inventory-used"></div>
-        <button class="btn btn-outline" style="margin-top:6px; width:100%;" onclick="addDynamicItem('list-inventory-used')">+ Inventory Item Used</button>
-      </div>
-
-      <div class="form-group">
-        <label>Site Photos (Camera / Upload)</label>
-        <div class="photo-uploader" onclick="document.getElementById('photo-input').click()">
-          <svg width="32" height="32" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24" style="margin:0 auto 8px;"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          <div style="font-size:0.85rem; font-weight:700;">Tap to take photo or select images</div>
-          <div style="font-size:0.75rem; color:var(--text-muted);">Supports JPG, PNG, Mobile Camera</div>
-          <input type="file" id="photo-input" accept="image/*" multiple style="display:none;" onchange="handlePhotoUpload(event)">
-        </div>
-        <div class="photo-gallery" id="photo-gallery"></div>
-      </div>
-
-      <div class="form-group">
-        <label>Email Correspondences</label>
-        <textarea id="email-correspondence" placeholder="Paste or summarize customer emails, architect notes..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Daily Summary Log</label>
-        <textarea id="daily-log-summary" placeholder="Summary of work completed today, technician sign-off..."></textarea>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Sticky Mobile Bottom Navigation -->
-  <nav class="bottom-nav">
-    <button class="nav-item active" onclick="scrollToSection('sec-general', this)">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-      Notes
-    </button>
-    <button class="nav-item" onclick="scrollToSection('sec-mounting', this)">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
-      Mount
-    </button>
-    <button class="nav-item" onclick="scrollToSection('sec-rack', this)">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-      Wiring
-    </button>
-    <button class="nav-item" onclick="openDailyLogModal()">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-      Daily Log
-    </button>
-    <button class="nav-item" onclick="openMarkdownModal()">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-      Full Spec
-    </button>
-  </nav>
-
-  <!-- Full Spec Export Modal -->
-  <div id="md-modal" class="modal-overlay">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 style="font-size:1.1rem; color:var(--primary);">Obsidian Full Spec Markdown</h3>
-        <button class="btn btn-outline" style="padding:4px 8px; min-height:30px;" onclick="closeMarkdownModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <textarea id="markdown-output" readonly></textarea>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" onclick="downloadMarkdownFile()">Download .md</button>
-        <button class="btn btn-primary" onclick="copyMarkdownToClipboard()">Copy to Clipboard</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dedicated Daily Log Modal -->
-  <div id="daily-log-modal" class="modal-overlay">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 style="font-size:1.1rem; color:var(--secondary);">Generate Daily Log</h3>
-        <button class="btn btn-outline" style="padding:4px 8px; min-height:30px;" onclick="closeDailyLogModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <textarea id="daily-log-output" readonly></textarea>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" onclick="downloadDailyLogFile()">Download Log</button>
-        <button class="btn btn-secondary" onclick="copyDailyLogToClipboard()">Copy Daily Log</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>

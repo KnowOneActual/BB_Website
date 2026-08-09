@@ -7,14 +7,14 @@
   --surface-input: #0f1623;
   --border-color: #243047;
   --border-color-focus: #00f0ff;
-  
+
   --primary: #00f0ff;
   --primary-glow: rgba(0, 240, 255, 0.25);
   --secondary: #ffb000;
   --secondary-glow: rgba(255, 176, 0, 0.25);
   --accent-green: #10b981;
   --accent-red: #ef4444;
-  
+
   --text-main: #f1f5f9;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
@@ -26,10 +26,10 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
-  
+
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 20px rgba(0, 240, 255, 0.15);
-  
+
   --nav-height: 72px;
 }
 
@@ -125,8 +125,15 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
 }
 
 .header-inputs {
@@ -210,11 +217,11 @@ label {
   margin-bottom: 6px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-input[type="password"],
-input[type="email"],
+input[type='text'],
+input[type='number'],
+input[type='date'],
+input[type='password'],
+input[type='email'],
 textarea,
 select {
   width: 100%;
@@ -229,7 +236,9 @@ select {
   outline: none;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border-color: var(--border-color-focus);
   box-shadow: 0 0 0 3px var(--primary-glow);
 }
@@ -281,13 +290,13 @@ textarea {
   cursor: pointer;
 }
 
-.list-item-row input[type="text"] {
+.list-item-row input[type='text'] {
   border: none;
   background: transparent;
   padding: 4px;
 }
 
-.list-item-row input[type="text"]:focus {
+.list-item-row input[type='text']:focus {
   box-shadow: none;
 }
 
@@ -573,7 +582,9 @@ textarea {
   border-radius: var(--radius-xl);
   font-size: 0.88rem;
   font-weight: 600;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--shadow-glow);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    var(--shadow-glow);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -581,14 +592,23 @@ textarea {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Modal */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   z-index: 500;

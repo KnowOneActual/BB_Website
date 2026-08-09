@@ -4,42 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - Page Not Found | Beau Bremer</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="fonts.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-32x32.webp" sizes="32x32" />
+    <link rel="icon" type="image/webp" href="/img/favicon/favicon-96x96.webp" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/img/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
 
-  <body class="bg-gray-950 text-gray-50 flex items-center justify-center min-h-screen">
-    <section class="max-w-2xl px-6 py-12 text-center">
+  <body
+    class="bg-gray-950 text-gray-50 flex items-center justify-center min-h-screen relative overflow-hidden font-sans"
+  >
+    <!-- Background ambient glow -->
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"
+    ></div>
+
+    <section class="max-w-2xl px-6 py-12 text-center relative z-10">
       <div class="relative mb-8">
-        <h1 class="text-[12rem] font-extrabold text-gray-900 leading-none select-none">404</h1>
+        <h1 class="text-[10rem] sm:text-[12rem] font-extrabold text-gray-900 leading-none select-none tracking-tight">
+          404
+        </h1>
         <div class="absolute inset-0 flex items-center justify-center">
-          <div class="text-5xl md:text-6xl font-extrabold text-indigo-500 tracking-tighter">LOST AT SEA</div>
+          <div class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-indigo-400 tracking-tighter drop-shadow-sm">
+            LOST AT SEA
+          </div>
         </div>
       </div>
 
       <div class="space-y-6">
-        <p class="text-xl md:text-2xl text-gray-400 max-w-md mx-auto leading-relaxed">
+        <p class="text-lg md:text-xl text-gray-400 max-w-md mx-auto leading-relaxed">
           The page you're looking for has drifted off course or never existed in this dimension.
         </p>
 
-        <div class="pt-8 flex flex-wrap justify-center gap-4">
+        <div class="pt-6 flex flex-wrap justify-center gap-4">
           <a
-            href="index.html"
-            class="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition duration-300 shadow-lg shadow-indigo-600/20"
+            href="/"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition duration-300 shadow-lg shadow-indigo-600/25"
           >
-            Return to Home
+            <i class="fa-solid fa-house text-sm"></i>
+            <span>Return to Home</span>
           </a>
           <a
-            href="toolbag.html"
-            class="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-xl transition duration-300 border border-gray-700"
+            href="/toolbag.html"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-gray-200 hover:text-white font-bold rounded-xl transition duration-300 border border-gray-800 hover:border-gray-700"
           >
-            Check my Toolbag
+            <i class="fa-solid fa-toolbox text-sm"></i>
+            <span>Check my Toolbag</span>
           </a>
         </div>
       </div>
     </section>
 
-    <footer class="fixed bottom-0 w-full text-center py-8 text-gray-600 text-xs">
+    <footer class="fixed bottom-0 w-full text-center py-6 text-gray-600 text-xs">
       <p>&copy; 2026 Beau Bremer. Stay bold.</p>
     </footer>
   </body>

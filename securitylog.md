@@ -1,3 +1,29 @@
+## 2026-08-09 - High Severity Dependency Remediation (@fastify/static, js-yaml, brace-expansion, fast-uri, sharp)
+
+*   **Activity:** Remediated multiple high-severity supply chain and development toolchain vulnerabilities flagged in security audits.
+*   **Summary:** Upgraded `netlify-cli` to `v27.1.1` and updated `overrides` in `package.json` for `@fastify/static`, `js-yaml`, `brace-expansion`, `fast-uri`, `sharp`, `tar`, and `postcss`. All reported vulnerability advisories (including path traversal, quadratic CPU exhaustion, host confusion, and libvips CVEs) are fully patched.
+
+---
+
+### Changes Implemented
+
+*   **Dependency Overrides & Upgrades**
+    *   **@fastify/static:** Updated override to `^10.1.3` (Remediates GHSA-83w8-p2f5-377r Path Traversal and GHSA-8pvw-jcv7-9cmj Authorization Bypass).
+    *   **js-yaml:** Upgraded `devDependencies` and override to `^5.2.3` (Remediates GHSA-52cp-r559-cp3m Quadratic CPU & CVE-2026-59870 !!omap resolution DoS).
+    *   **brace-expansion:** Updated override to `^5.0.9` (Remediates GHSA-rgw5-rvv9-x895 DoS via unbounded arrays).
+    *   **fast-uri:** Updated override to `^3.1.5` (Remediates GHSA-7p8r-x3mc-p8w7 host confusion via backslash authority introducer).
+    *   **sharp / libvips:** Upgraded `netlify-cli` to `^27.1.1` and set `sharp` override to `^0.35.3` (Remediates libvips CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591).
+    *   **tar & postcss:** Updated overrides to `^7.5.22` and `^8.5.26` respectively.
+
+### Risk Assessment & Findings
+
+*   **Type:** Dependency Supply Chain / Development Toolchain Security.
+*   **Impact:** **High**. Resolves severe path traversal, DoS, host confusion, and libvips vulnerabilities in development dependencies and build tools.
+*   **Mitigation Status:** **High**. All specific CVEs and advisories reported have been remediated in `package-lock.json`.
+*   **Residual Note:** None. Unit tests, linter, and CSS builds confirm no breaking changes or regressions.
+
+---
+
 ## 2026-06-15 - GitHub Actions CodeQL Upgrade to v4
 
 *   **Activity:** Upgraded deprecated CodeQL Actions in CI workflows to ensure long-term pipeline security.

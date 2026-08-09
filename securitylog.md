@@ -1,3 +1,25 @@
+## 2026-08-09 - CodeQL Alert #18 Remediation (DOM text reinterpreted as HTML in DRF/drf-hybrid-guides.js)
+
+*   **Activity:** Fixed CodeQL security alert #18 (`js/xss-through-dom`) in `DRF/drf-hybrid-guides.js`.
+*   **Summary:** Implemented `escapeHtml` sanitizer before setting `innerHTML` during live full-text search highlighting to prevent DOM text from being reinterpreted as unescaped HTML.
+
+---
+
+### Changes Implemented
+
+*   **HTML Escaping Sanitization (`DRF/drf-hybrid-guides.js`)**
+    *   **Action:** Added `escapeHtml` helper function and wrapped DOM text (`textContent`) and search term (`term`) with `escapeHtml(...)` prior to regex highlighting and `innerHTML` assignment.
+    *   **Reason:** Resolves CodeQL alert #18 (`js/xss-through-dom`). Eliminates DOM-based cross-site scripting (DOM XSS) by ensuring HTML meta-characters (`&`, `<`, `>`, `"`, `'`) extracted from DOM text are safely escaped before rendering highlights.
+
+### Risk Assessment & Findings
+
+*   **Type:** Source Code Security / DOM XSS.
+*   **Impact:** **High**. Prevents potential XSS injection via search text highlighting.
+*   **Mitigation Status:** **High**. Fully sanitized before `innerHTML` sink.
+*   **Residual Note:** None.
+
+---
+
 ## 2026-08-09 - High Severity Dependency Remediation (@fastify/static, js-yaml, brace-expansion, fast-uri, sharp)
 
 *   **Activity:** Remediated multiple high-severity supply chain and development toolchain vulnerabilities flagged in security audits.

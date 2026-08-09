@@ -211,12 +211,28 @@ document.addEventListener('DOMContentLoaded', () => {
           const index = text.toLowerCase().indexOf(term);
 
           if (index !== -1) {
-            // Re-highlight matches using HTML regex replace safely on text content
-            const regex = new RegExp(`(${escapeRegExp(term)})`, 'gi');
-            el.innerHTML = text.replace(regex, '<span class="search-highlight">$1</span>');
+            // Re-highlight matches using HTML regex replace safely on escaped text content
+            const escapedText = escapeHtml(text);
+            const escapedTerm = escapeHtml(term);
+            const regex = new RegExp(`(${escapeRegExp(escapedTerm)})`, 'gi');
+            el.innerHTML = escapedText.replace(regex, '<span class="search-highlight">$1</span>');
           }
         });
       });
+    });
+  }
+
+  // Helper to escape HTML special characters
+  function escapeHtml(string) {
+    return string.replace(/[&<>"']/g, (match) => {
+      const escapeMap = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      };
+      return escapeMap[match];
     });
   }
 
